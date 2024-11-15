@@ -1,7 +1,1 @@
-{
-  "logo": "shopify:\/\/shop_images\/Logo.svg",
-  "current": "Default",
-  "presets": {
-    "Default": {}
-  }
-}
+{"logo":"shopify:\/\/shop_images\/Logo.svg","current":{"logo":"shopify:\/\/shop_images\/Logo.svg","logo_width":100,"cart_type":"page","sections":{"header":{"type":"header","settings":{"menu":"sidebar-menu","menu2":"secondary-menu","enable_sticky_header":true,"year":"© 2024 Humbl"}},"footer":{"type":"footer","blocks":{"footer-0":{"type":"link_list","settings":{"heading":"Quick links","menu":"footer"}},"footer-1":{"type":"country_selector","settings":{"heading":"Country"}}},"block_order":["footer-0","footer-1"],"settings":{}}},"content_for_index":[]},"presets":{"Default":{}}}

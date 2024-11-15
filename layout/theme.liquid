@@ -37,6 +37,11 @@
         --color-contrast: {{ settings.colors_contrast.red }} {{ settings.colors_contrast.green }} {{ settings.colors_contrast.blue }};
         --color-accent: {{ settings.colors_accent.red }} {{ settings.colors_accent.green }} {{ settings.colors_accent.blue }};
       }
+      {% if template != 'index' %}
+        .shopify-section:first-child {
+          padding-top: 6rem;
+        }
+      {% endif %}
     {% endstyle %}
 
     {%- liquid

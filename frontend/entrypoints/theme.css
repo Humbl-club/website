@@ -14,12 +14,6 @@
   --third-family: "Playfair Display", sans-serif;
 }
 
-.shopify-section {
-  &:first-child {
-    padding-top: 6rem;
-  }
-}
-
 .shopify-section + .shopify-section {
   margin-top: 6rem;
 }
