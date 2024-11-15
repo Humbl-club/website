@@ -1,0 +1,41 @@
+@use "../mixins";
+@use "../vars";
+
+.collection-title {
+  font-family: var(--third-family);
+  font-weight: 400;
+  font-size: 4rem;
+  line-height: 110%;
+  letter-spacing: -0.06em;
+  color: #000;
+  text-align: center;
+}
+
+.collection-count {
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 120%;
+  letter-spacing: -0.06em;
+  text-transform: uppercase;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.5);
+  margin-top: 3.2rem;
+}
+
+.collection-list {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  column-gap: 2rem;
+  row-gap: 6rem;
+  @include mixins.breakpoint(vars.$cos-bp) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @include mixins.breakpoint(vars.$xl-bp) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @include mixins.breakpoint(vars.$sm-bp) {
+    display: flex;
+    flex-direction: column;
+  }
+}

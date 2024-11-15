@@ -6,6 +6,7 @@ class HeaderDrawer extends DetailsModal {
     setTimeout(() => {
       this.detailsContainer.classList.add('menu-opening')
     })
+    this.classList.add('parent-opened')
     this.onBodyClickEvent = this.onBodyClickEvent || this.onBodyClick.bind(this)
     event.target.closest('details').setAttribute('open', true)
     document.body.addEventListener('click', this.onBodyClickEvent)
@@ -18,6 +19,7 @@ class HeaderDrawer extends DetailsModal {
     removeTrapFocus(focusToggle ? this.summaryToggle : null)
     document.body.removeEventListener('click', this.onBodyClickEvent)
     this.detailsContainer.classList.remove('menu-opening')
+    this.classList.remove('parent-opened')
     document.body.classList.remove('overflow-hidden', 'lg:overflow-auto')
     this.closeAnimation()
   }

@@ -1,0 +1,36 @@
+<form action="{{ routes.search_url }}" method="get" role="search" class="search search-modal-form header-wrapper">
+  <div class="search-inner">
+    <input
+      class="input search-input"
+      id="{{ input_id }}"
+      type="text"
+      name="q"
+      value="{{ search.terms | escape }}"
+      placeholder="Search for"
+      {%- if settings.predictive_search_enabled -%}
+        role="combobox"
+        aria-expanded="false"
+        aria-owns="predictive-search-results"
+        aria-controls="predictive-search-results"
+        aria-haspopup="listbox"
+        aria-autocomplete="list"
+        autocorrect="off"
+        autocomplete="off"
+        autocapitalize="off"
+        spellcheck="false"
+      {%- endif -%}
+    >
+    <input type="hidden" name="options[prefix]" value="last">
+    <button class="search-button field-button" aria-label="{{ 'general.search.search' | t }}">
+      {% render 'icon-search' %}
+    </button>
+  </div>
+
+  {%- if settings.predictive_search_enabled -%}
+    <div class="predictive-search predictive-search--header" tabindex="-1" data-predictive-search>
+      {%- render 'loading-spinner', class: 'predictive-search-loading-state' -%}
+    </div>
+
+    <span class="predictive-search-status visually-hidden" role="status" aria-hidden="true"></span>
+  {%- endif -%}
+</form>

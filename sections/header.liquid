@@ -1,112 +1,126 @@
 {%- liquid
-  assign container_class = 'bg-contrast/80 text-primary'
-  assign input_class = 'focus:border-primary/20'
+  assign container_class = 'header wrapper'
+  assign input_class = 'header-input'
 -%}
 
-<{% if section.settings.enable_sticky_header %}sticky-header{% else %}div{% endif %} client:idle>
-  <header role="banner" class="{{ container_class }} h-nav w-full leading-none backdrop-blur-lg px-4 flex justify-between items-center gap-4 md:px-8 lg:gap-8 lg:px-12 lg:py-8">
-    <div class="flex items-center justify-start w-full gap-4 lg:hidden">
-      {%- if section.settings.menu != blank -%}
-        <header-drawer client:media="(max-width: 1023px)">
-          <details>
-            <summary class="w-8 h-8 [.no-js_details[open]_&]:absolute [.no-js_details[open]_&]:left-1/2 [.no-js_details[open]_&]:z-50 [.no-js_details[open]_&]:-translate-x-1/2 [.no-js_details[open]_&]:-translate-y-1/2 [.menu-opening_&]:before:absolute [.menu-opening_&]:before:inset-0 [.menu-opening_&]:before:h-screen [.menu-opening_&]:before:bg-black/25" aria-haspopup="dialog" aria-label="{{ 'sections.header.menu' | t }}">
-              <span class="w-full h-full flex items-center justify-center [.no-js_details[open]_&]:hidden">
-                {% render 'icon-menu' %}
-              </span>
-              <span class="w-full h-full hidden items-center justify-center [.no-js_details[open]_&]:flex">
-                {%- render 'icon-close' -%}
-              </span>
-            </summary>
-            <div id="menu-drawer" class="fixed inset-0 h-screen bg-contrast z-20 max-w-lg overflow-y-auto [.js_&]:transition [.js_&]:duration-300 [.js_&]:-translate-x-full [.js_.menu-opening_&]:translate-x-0" role="dialog" aria-modal="true" aria-label="{{ 'sections.header.menu' | t }}" tabindex="-1">
-              <div class="flex items-center px-6 h-nav sm:px-8 md:px-12 justify-between">
-                <h2 class="max-w-prose font-body-weight-bold text-lead">{{ 'sections.header.menu' | t }}</h2>
-                <button type="button" class="p-4 -m-4 transition text-primary hover:text-primary/50 [.no-js_details[open]_&]:hidden" aria-label="{{ 'accessibility.close' | t }}">
-                  {%- render 'icon-close' -%}
-                </button>
-              </div>
-              <nav class="grid gap-4 px-6 py-6 sm:gap-6 sm:px-12 sm:py-8 text-copy after:content-[''] after:block after:h-nav">
-                {%- for link in section.settings.menu.links -%}
-                  <a href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>
-                    {{ link.title | escape }}
-                  </a>
-                {%- endfor -%}
-              </nav>
+<header
+  role="banner"
+  class="{{ container_class }} {% if section.settings.enable_sticky_header %}sticky-header{% endif %}"
+>
+  {%- if section.settings.menu != blank -%}
+    <header-drawer>
+      <details>
+        <summary class="header-summary" aria-haspopup="dialog" aria-label="{{ 'sections.header.menu' | t }}">
+          {% render 'icon-menu' %}
+        </summary>
+        <div
+          id="menu-drawer"
+          class="header-menu"
+          role="dialog"
+          aria-modal="true"
+          aria-label="{{ 'sections.header.menu' | t }}"
+          tabindex="-1"
+        >
+          <button
+            type="button"
+            class="header-close"
+            aria-label="{{ 'accessibility.close' | t }}"
+          >
+            {%- render 'icon-close' -%}
+          </button>
+
+          <div class="header-inner">
+            <nav class="header-nav">
+              {%- for link in section.settings.menu.links -%}
+                <a
+                  href="{{ link.url }}"
+                  {% if link.current %}
+                    aria-current="page"
+                  {% endif %}
+                  class="header-wrapper"
+                >
+                  {{ link.title | escape }}
+                </a>
+              {%- endfor -%}
+            </nav>
+
+            {% render 'menu-search' %}
+
+            <nav class="header-nav-2">
+              {%- for link in section.settings.menu2.links -%}
+                <a
+                  href="{{ link.url }}"
+                  {% if link.current %}
+                    aria-current="page"
+                  {% endif %}
+                  class="header-wrapper"
+                >
+                  {{ link.title | escape }}
+                </a>
+              {%- endfor -%}
+            </nav>
+
+            {% render 'menu-subscribe' %}
+
+            <div class="header-year header-wrapper">
+              {{ section.settings.year }}
             </div>
-          </details>
-        </header-drawer>
-      {%- endif -%}
+          </div>
+        </div>
+      </details>
+    </header-drawer>
+  {%- endif -%}
 
-      <form action="{{ routes.search_url }}" method="get" role="search" class="items-center gap-2 sm:flex w-full max-w-[335px]">
-        <input type="hidden" name="type" value="product">
+  <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
+    {%- if settings.logo != blank -%}
+      <div class="header-logo">
+        {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
+        {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
+        {% capture sizes %}(max-width: {{ settings.logo_width | times: 2 }}px) 50vw, {{ settings.logo_width }}px{% endcapture %}
+        {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
+        {{
+          settings.logo
+          | image_url: width: 600
+          | image_tag:
+            class: 'header__heading-logo motion-reduce',
+            widths: widths,
+            height: logo_height,
+            width: settings.logo_width,
+            alt: logo_alt,
+            sizes: sizes,
+            preload: true
+        }}
 
-        <button type="submit" class="flex items-center justify-center w-8 h-8">
-          {% render 'icon-search' %}
-          <span class="sr-only">{{ 'general.search.search' | t }}</span>
-        </button>
+        {% if template == 'index' %}
+          <div class="header-icontext">{{ settings.logo_text }}</div>
+        {% endif %}
+      </div>
+    {%- else -%}
+      <span class="h2">{{ shop.name }}</span>
+    {%- endif -%}
+  </a>
 
-        <input class="{{ input_class }} bg-transparent hidden md:inline-block text-left lg:text-right border-b transition border-transparent -mb-px border-x-0 border-t-0 appearance-none px-0 py-1 focus:ring-transparent placeholder:opacity-20 placeholder:text-inherit"
-          type="search"
-          name="q"
-          placeholder="{{ 'general.search.search' | t }}"
-        >
-      </form>
-    </div>
+  <a href="{{ routes.cart_url }}" class="header-cart">
+    {% if cart == empty %}
+      {% render 'icon-cart' %}
+    {% else %}
+      {% render 'icon-cart' %}
+    {% endif %}
+    <span hidden>{{ 'templates.cart.cart' | t }}</span>
+    {%- if cart != empty -%}
+      <div class="cart-count-bubble">
+        {%- if cart.item_count < 100 -%}
+          <span aria-hidden="true">{{ cart.item_count }}</span>
+        {%- endif -%}
+        <span hidden>{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
+      </div>
+    {%- endif -%}
+  </a>
+</header>
 
-    <div class="flex items-center gap-12 w-full lg:w-auto">
-      {%- if request.page_type == 'index' -%}
-        <h1 class="w-full lg:w-auto">
-      {%- endif %}
-          <a href="{{ routes.root_url }}" class="flex items-center self-stretch leading-[3rem] justify-center flex-grow w-full h-full font-heading font-heading-weight md:leading-[4rem] lg:inline lg:w-auto lg:h-auto lg:leading-none">
-            {{ shop.name }}
-          </a>
-      {%- if request.page_type == 'index' -%}
-        </h1>
-      {%- endif %}
-
-      <nav class="hidden lg:flex gap-8">
-        {%- for link in section.settings.menu.links -%}
-          <a href="{{ link.url }}">
-            {{ link.title }}
-          </a>
-        {%- endfor -%}
-      </nav>
-    </div>
-
-    <div class="flex items-center justify-end w-full gap-4 lg:gap-1 lg:w-auto">
-      <form action="{{ routes.search_url }}" method="get" role="search" class="hidden lg:flex items-center gap-2">
-        <input class="{{ input_class }} bg-transparent hidden md:inline-block text-left lg:text-right border-b transition border-transparent -mb-px border-x-0 border-t-0 appearance-none px-0 py-1 focus:ring-transparent placeholder:opacity-20 placeholder:text-inherit"
-          type="search"
-          name="q"
-          placeholder="{{ 'general.search.search' | t }}"
-        >
-
-        <button type="submit" class="flex items-center justify-center w-8 h-8">
-          {% render 'icon-search' %}
-          <span class="sr-only">{{ 'general.search.search' | t }}</span>
-        </button>
-      </form>
-
-      {%- if shop.customer_accounts_enabled -%}
-        <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="flex items-center justify-center w-8 h-8">
-          {% render 'icon-account' %}
-          <span class="sr-only">
-            {%- liquid
-              if customer
-                echo 'customer.account_fallback' | t
-              else
-                echo 'customer.log_in' | t
-              endif
-            -%}
-          </span>
-        </a>
-      {%- endif -%}
-
-      <a href="{{ routes.cart_url }}" class="relative flex items-center justify-center w-8 h-8" id="cart-icon-bubble">
-        {%- render 'cart-icon-bubble' -%}
-      </a>
-    </div>
-  </header>
-</{% if section.settings.enable_sticky_header %}sticky-header{% else %}div{% endif %}>
+{% if template != 'index' and section.settings.enable_sticky_header %}
+  <div class="header-spacer"></div>
+{% endif %}
 
 <script type="application/ld+json">
   {
@@ -132,7 +146,7 @@
 </script>
 
 {%- if request.page_type == 'index' -%}
-  {% assign potential_action_target = request.origin | append: routes.search_url | append: "?q={search_term_string}" %}
+  {% assign potential_action_target = request.origin | append: routes.search_url | append: '?q={search_term_string}' %}
   <script type="application/ld+json">
     {
       "@context": "http://schema.org",
@@ -151,7 +165,6 @@
 {% schema %}
 {
   "name": "Header",
-  "class": "z-10",
   "settings": [
     {
       "type": "link_list",
@@ -160,11 +173,22 @@
       "label": "Primary navigation"
     },
     {
+      "type": "link_list",
+      "id": "menu2",
+      "label": "Secondary navigation"
+    },
+    {
       "type": "checkbox",
       "id": "enable_sticky_header",
       "default": true,
       "label": "Enable sticky header",
       "info": "Header shows on the screen as customers scroll up."
+    },
+    {
+      "type": "text",
+      "id": "year",
+      "default": "© 2024 Humbl",
+      "label": "Company text"
     }
   ]
 }

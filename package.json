@@ -4,8 +4,8 @@
   "version": "0.0.0",
   "packageManager": "pnpm@7.12.0",
   "scripts": {
-    "dev": "concurrently --raw --kill-others --passthrough-arguments \"pnpm run shopify:dev {@}\" \"pnpm run vite:dev\" --",
-    "build": "vite build",
+    "dev": "concurrently --raw --kill-others --passthrough-arguments \"pnpm run shopify:dev {@}\" \"pnpm run vite:dev\" --silence-deprecation",
+    "build": "vite build --silence-deprecation flag",
     "deploy": "pnpm run build && pnpm run shopify:deploy",
     "lint": "eslint .",
     "format": "prettier --write --cache .",
@@ -30,6 +30,7 @@
     "postcss-import": "^16.0.0",
     "prettier": "^3.2.5",
     "prettier-plugin-tailwindcss": "^0.5.11",
+    "sass": "1.81.0",
     "tailwindcss": "^3.4.1",
     "vite": "^5.1.1",
     "vite-plugin-shopify": "^3.0.0"

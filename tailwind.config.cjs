@@ -63,10 +63,12 @@ module.exports = {
     }
   },
   plugins: [
-    require('@tailwindcss/forms'),
     require('@tailwindcss/typography'),
     plugin(({ addVariant }) => {
       addVariant('no-js', '.no-js &')
     })
-  ]
+  ],
+  experimental: {
+    optimizeUniversalDefaults: true
+  }
 }

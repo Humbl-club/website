@@ -5,11 +5,11 @@ export default class DetailsModal extends window.HTMLElement {
     super()
     this.detailsContainer = this.querySelector('details')
     this.summaryToggle = this.querySelector('summary')
-
-    this.detailsContainer.addEventListener(
-      'keyup',
-      (event) => event.code.toUpperCase() === 'ESCAPE' && this.close()
-    )
+    this.detailsContainer.addEventListener('keyup', function (event) {
+      if (event?.code) {
+        event.code.toUpperCase() === 'ESCAPE' && this.close()
+      }
+    })
     this.summaryToggle.addEventListener('click', this.onSummaryClick.bind(this))
     this.querySelector('button[type="button"]').addEventListener(
       'click',

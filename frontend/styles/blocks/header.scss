@@ -1,0 +1,348 @@
+@use "../mixins";
+@use "../vars";
+
+.header {
+  width: 100%;
+  transition: transform .3s;
+  z-index: 20;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  background-color: var(--white);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+  @include mixins.breakpoint(vars.$xl-bp) {
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
+  }
+
+  .home-page &,
+  &.sticky-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
+  .home-page & {
+    border: 0;
+    background-color: transparent;
+  }
+}
+
+.header-cart {
+  width: 2.4rem;
+  height: 2.4rem;
+  fill: var(--black);
+  transition: opacity var(--time);
+
+  @include mixins.breakpoint(vars.$xl-bp) {
+    position: relative;
+    z-index: 20;
+
+    .parent-opened~& {
+      fill: var(--white);
+    }
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+.header-btn {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
+.header-close {
+  width: 2.4rem;
+  height: 2.4rem;
+
+  position: absolute;
+  top: 2.4rem;
+  right: 2.4rem;
+
+  @include mixins.breakpoint(vars.$xl-bp) {
+    top: 1.2rem;
+    right: auto;
+    left: 1.6rem;
+  }
+}
+
+.header-menu {
+  max-width: 48rem;
+
+  position: fixed;
+  inset: 0px;
+  height: var(--screen-height, 100vh);
+  height: var(--screen-height, 100svh);
+
+  z-index: 20;
+  transition: transform var(--time);
+  transform: translateX(-100%);
+
+  backdrop-filter: blur(100px);
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+
+  @include mixins.breakpoint(vars.$xl-bp) {
+    padding-top: 6.8rem;
+  }
+
+  .menu-opening & {
+    transform: translateX(0);
+  }
+}
+
+.header-inner {
+  overflow-y: auto;
+  padding-top: 15rem;
+  padding-bottom: 6rem;
+
+  @include mixins.breakpoint(vars.$xl-bp) {
+    padding-top: 0;
+    padding-bottom: 4rem;
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.header-summary {
+  .menu-opening & {
+    &:before {
+      position: absolute;
+      inset: 0px;
+      height: var(--screen-height, 100vh);
+      height: var(--screen-height, 100svh);
+      content: '';
+    }
+  }
+}
+
+.header-nav {
+  display: flex;
+  flex-direction: column;
+
+  a {
+    font-family: var(--second-family);
+    font-weight: 400;
+    font-size: 2rem;
+    line-height: 120%;
+    letter-spacing: -0.06em;
+    text-transform: uppercase;
+    color: #fff;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    width: 100%;
+    transition: opacity var(--time);
+
+    @include mixins.breakpoint(vars.$xl-bp) {
+      font-size: 1.8rem;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+}
+
+.header-nav-2 {
+  display: flex;
+  flex-direction: column;
+  margin-top: 7rem;
+
+  @include mixins.breakpoint(vars.$xl-bp) {
+    margin-top: 4rem;
+  }
+
+  a {
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 1.4rem;
+    line-height: 150%;
+    letter-spacing: -0.04em;
+    color: #fff;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    width: 100%;
+    transition: opacity var(--time);
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+}
+
+.search-modal-form {
+  margin-top: 6rem;
+
+  @include mixins.breakpoint(vars.$xl-bp) {
+    margin-top: 4rem;
+  }
+}
+
+.search-inner {
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid #fff;
+  height: 4.6rem;
+  background-color: transparent;
+  padding: 0;
+
+
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 150%;
+  letter-spacing: -0.04em;
+  color: var(--white);
+  transition: border-color var(--time);
+
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+    opacity: 1;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.5);
+  }
+}
+
+.search-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  transition: opacity var(--time);
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  svg {
+    width: 1.6rem;
+    height: 1.6rem;
+  }
+}
+
+.header-year {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 150%;
+  letter-spacing: -0.04em;
+  color: #fff;
+
+  margin-top: auto;
+  padding-top: 7rem;
+
+  @include mixins.breakpoint(vars.$xl-bp) {
+    padding-top: 4rem;
+  }
+}
+
+.header-wrapper {
+  padding-left: 4.6rem;
+  padding-right: 7.4rem;
+
+  @include mixins.breakpoint(vars.$xl-bp) {
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+  }
+}
+
+.header-subscribe {
+  margin-top: 7rem;
+
+  @include mixins.breakpoint(vars.$xl-bp) {
+    margin-top: 4rem;
+  }
+}
+
+.subscribe-submit {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 150%;
+  letter-spacing: -0.04em;
+  color: #fff;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.header-icontext {
+  position: absolute;
+  top: calc(100% + 1.2rem);
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 20.4rem;
+  min-height: 1.6rem;
+
+  font-family: var(--third-family);
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 110%;
+  letter-spacing: -0.06em;
+  text-align: center;
+  color: #2d4f7f;
+
+  @include mixins.breakpoint(vars.$xl-bp) {
+    min-width: 17.9rem;
+    min-height: 1rem;
+    top: calc(100% + 2.2rem);
+    transition: opacity var(--time);
+
+    font-size: 1.4rem;
+
+    .parent-opened+.header__heading-link & {
+      opacity: 0;
+    }
+  }
+}
+
+.header-spacer {
+  width: 100%;
+  height: 6.4rem;
+
+  @include mixins.breakpoint(vars.$xl-bp) {
+    height: 4.8rem;
+  }
+}
+
+.header-logo {
+  @include mixins.breakpoint(vars.$xl-bp) {
+    z-index: 20;
+    position: relative;
+    transition: filter var(--time);
+
+    .parent-opened+.header__heading-link & {
+      filter: brightness(0) invert(1);
+    }
+  }
+}

@@ -1,6 +1,25 @@
 @import 'tailwindcss/base';
-@import '@/styles/base.css';
 @import 'tailwindcss/components';
-@import '@/styles/components';
 @import 'tailwindcss/utilities';
-@import '@/styles/utilities';
+
+@import '@/styles/style.scss';
+
+:root {
+  --white: #FFFFFF;
+  --black: #000000;
+  --time: .3s;
+
+  --font-family: "Manrope", sans-serif;
+  --second-family: "Inter", sans-serif;
+  --third-family: "Playfair Display", sans-serif;
+}
+
+.shopify-section {
+  &:first-child {
+    padding-top: 6rem;
+  }
+}
+
+.shopify-section + .shopify-section {
+  margin-top: 6rem;
+}
