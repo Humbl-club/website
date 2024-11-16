@@ -1,3 +1,6 @@
+{%- liquid
+  assign number pagination-count = 12
+-%}
 <div id="ProductGridContainer" class="collection wrapper">
   <div
     class="collection-list"
@@ -5,7 +8,7 @@
     data-id="{{ section.id }}"
   >
     {%- liquid
-      paginate collection.products by 12
+      paginate collection.products by pagination-count
         for product in collection.products
           assign lazy_load = false
           if forloop.index > 2
@@ -21,5 +24,18 @@
         endfor
       endpaginate
     -%}
+  </div>
+  <div class="collection-bot">
+    <div class="body-1 text-center opacity-50">
+      {% if collection.all_products_count == 1 %}
+        You’re viewing 1 product
+      {% else %}
+        You’re viewing 1-{{ pagination-count }} of {{ collection.all_products_count }} products
+      {% endif %}
+    </div>
+
+    <button class="collection-up" onclick="window.scrollTo(0,0)">
+      {% render 'icon-up' %}
+    </button>
   </div>
 </div>

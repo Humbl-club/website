@@ -9,6 +9,10 @@
   letter-spacing: -0.06em;
   color: #000;
   text-align: center;
+
+  @include mixins.breakpoint(vars.$xl-bp) {
+    font-size: 3.2rem;
+  }
 }
 
 .collection-count {
@@ -20,22 +24,45 @@
   text-transform: uppercase;
   text-align: center;
   color: rgba(0, 0, 0, 0.5);
-  margin-top: 3.2rem;
+  margin-top: 2.7rem;
+
+  @include mixins.breakpoint(vars.$xl-bp) {
+    font-size: 1.4rem;
+  }
 }
 
 .collection-list {
   display: grid;
-  grid-template-columns: repeat(4,1fr);
+  grid-template-columns: repeat(4, 1fr);
   column-gap: 2rem;
   row-gap: 6rem;
+
   @include mixins.breakpoint(vars.$cos-bp) {
     grid-template-columns: repeat(3, 1fr);
   }
+
   @include mixins.breakpoint(vars.$xl-bp) {
     grid-template-columns: repeat(2, 1fr);
   }
-  @include mixins.breakpoint(vars.$sm-bp) {
-    display: flex;
-    flex-direction: column;
+}
+
+.collection-bot {
+  margin-top: 6rem;
+  display: flex;
+  justify-content: space-between;
+  @include mixins.breakpoint(vars.$xl-bp) {
+    margin-top: 3.2rem;
   }
+
+  &::before {
+    content: '';
+    @include mixins.breakpoint(vars.$xl-bp) {
+    content: normal;
+    }
+  }
+}
+
+.collection-up {
+  width: 2.4rem;
+  height: 2.4rem;
 }

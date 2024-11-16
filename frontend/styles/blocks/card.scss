@@ -1,0 +1,153 @@
+@use "../mixins";
+@use "../vars";
+
+.card {
+  position: relative;
+
+  @media (hover: hover) and (pointer: fine) {
+  &:hover {
+    .card-hover {
+      opacity: 1;
+    }
+    .card-sizes {
+      opacity: 1;
+    }
+  }
+  }
+}
+
+.card-favorite {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  z-index: 15;
+  @include mixins.breakpoint(vars.$xl-bp) {
+    width: 1.8rem;
+    height: 1.8rem;
+    top: 0.8rem;
+    right: 0.8rem;
+  }
+  @media (hover: hover) and (pointer: fine) {
+  &:hover {
+    .card-fill {
+      opacity: 0.1;
+    }
+    .card-stroke {
+      opacity: 0;
+    }
+  }
+  }
+}
+
+.card-fill {
+  opacity: 0;
+  transition: opacity var(--time), fill var(--time);
+  fill: var(--black);
+}
+.card-stroke {
+  fill: var(--black);
+  transition: opacity var(--time), fill var(--time);
+}
+
+.card-image {
+  height: 50rem;
+  background-color: #F6F6F6;
+  position: relative;
+  @include mixins.breakpoint(vars.$sm-bp) {
+    height: 18.8rem;
+
+    &:before {
+      content: '';
+      width: 4.2rem;
+      height: 0.1rem;
+      background-color: var(--black);
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+  }
+}
+
+.card-hover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity var(--time);
+}
+
+.card-sizes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  position: absolute;
+  z-index: 15;
+  left: 1rem;
+  right: 1rem;
+  bottom: 1rem;
+
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.5);
+  transform: translate3d(0, 0, 0);
+  opacity: 0;
+  transition: opacity var(--time);
+}
+
+.card-sizebtn {
+  opacity: 0.5;
+  padding: 1.3rem;
+  display: flex;
+}
+
+.card-cart {
+  display: none;
+  @include mixins.breakpoint(vars.$xl-bp) {
+    width: 3rem;
+    height: 3rem;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.5);
+    transform: translate3d(0, 0, 0);
+    position: absolute;
+    bottom: 0.4rem;
+    right: 0.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    svg {
+      width: 1.4rem;
+      height: 1.4rem;
+    }
+  }
+}
+
+.card-title {
+  a {
+    &::before {
+      content: '';
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+}
+
+.card-bot {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.4rem;
+  @include mixins.breakpoint(vars.$xl-bp) {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}

@@ -1,5 +1,8 @@
 {
   "sections": {
+    "filter-color": {
+      "type": "filter-color"
+    },
     "collection-header": {
       "type": "collection-header",
       "settings": {
@@ -11,5 +14,5 @@
       "settings": {}
     }
   },
-  "order": ["collection-header", "main-collection"]
+  "order": ["filter-color","collection-header", "main-collection"]
 }

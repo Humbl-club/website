@@ -11,7 +11,13 @@
 
 html {
   box-sizing: border-box;
-  font-size: calc(100vw / 1920 * 10);
+
+  font-size: calc(100vw / 2900 * 10);
+
+  @include mixins.breakpoint(vars.$max-bp) {
+    font-size: calc(100vw / 1920 * 10);
+  }
+
   @include mixins.breakpoint(vars.$cos-bp) {
     font-size: calc(100vw / 1440 * 10);
   }
@@ -43,7 +49,7 @@ body {
   font-size: 1.6rem;
   line-height: 150%;
   letter-spacing: -0.04em;
-  color: #000;
+  color: var(--black);
 }
 
 main {
@@ -75,8 +81,12 @@ svg {
 }
 
 .wrapper {
-  padding-right: 4.6rem;
-  padding-left: 4.6rem;
+  padding-right: 32rem;
+  padding-left: 32rem;
+  @include mixins.breakpoint(vars.$max-bp) {
+    padding-right: 4.6rem;
+    padding-left: 4.6rem;
+  }
   @include mixins.breakpoint(vars.$xl-bp) {
     padding-right: 1.6rem;
     padding-left: 1.6rem;
@@ -85,15 +95,18 @@ svg {
 
 .img-contain {
   display: block;
+
   img {
     width: 100%;
     height: 100%;
     object-fit: contain;
   }
 }
+
 .img-cover {
   display: block;
   overflow: hidden;
+
   img {
     width: 100%;
     height: 100%;
@@ -104,9 +117,10 @@ svg {
 .icon {
   width: 2rem;
   height: 2rem;
+
   @include mixins.breakpoint(vars.$sm-bp) {
-    width: 1.6rem;
-    height: 1.6rem;
+    width: 1.8rem;
+    height: 1.8rem;
   }
 }
 
@@ -117,6 +131,183 @@ svg {
   gap: 1rem;
   margin-top: 1rem;
 }
+
+h1,
+.title-1 {
+  font-family: var(--third-family);
+  font-weight: 400;
+  font-size: 4rem;
+  line-height: 110%;
+  letter-spacing: -0.06em;
+
+}
+
+h2,
+.title-2 {
+  font-family: var(--third-family);
+  font-weight: 500;
+  font-size: 1.6rem;
+  line-height: 110%;
+  letter-spacing: -0.06em;
+
+}
+
+.headline-1 {
+  font-family: var(--second-family);
+  font-weight: 500;
+  font-size: 2rem;
+  line-height: 120%;
+  letter-spacing: -0.06em;
+  text-transform: uppercase;
+
+}
+
+.headline-2 {
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 120%;
+  letter-spacing: -0.06em;
+  text-transform: uppercase;
+
+}
+
+.subhead-1 {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 150%;
+  letter-spacing: -0.04em;
+
+}
+
+.subhead-2 {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 150%;
+  letter-spacing: -0.04em;
+
+}
+
+.body-1 {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 150%;
+  letter-spacing: -0.04em;
+  @include mixins.breakpoint(vars.$xl-bp) {
+    font-size: 1.2rem;
+  }
+}
+
+.body-2 {
+  font-family: var(--font-family);
+  font-weight: 500;
+  font-size: 1.4rem;
+  line-height: 150%;
+  letter-spacing: -0.04em;
+
+}
+
+.body-3 {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 150%;
+  letter-spacing: -0.04em;
+
+}
+
+.caption {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 150%;
+  letter-spacing: -0.04em;
+
+}
+
+.button-title-1 {
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 120%;
+  letter-spacing: -0.06em;
+  text-transform: uppercase;
+
+}
+
+.button-title-2 {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 150%;
+  letter-spacing: -0.04em;
+
+}
+
+.button-title-3 {
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 150%;
+  letter-spacing: -0.04em;
+  text-decoration: underline;
+  text-decoration-skip-ink: none;
+
+}
+
+.button-title-4 {
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 120%;
+  letter-spacing: -0.06em;
+  text-transform: uppercase;
+
+}
+
+.button-title-5 {
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 120%;
+  letter-spacing: -0.06em;
+  text-transform: uppercase;
+
+}
+
+.shopify-section + .shopify-section {
+  margin-top: 6rem;
+  @include mixins.breakpoint(vars.$xl-bp) {
+    margin-top: 4rem;
+  }
+}
+
+.shopify-section:not(#shopify-section-header):first-child {
+  padding-top: 6rem;
+  @include mixins.breakpoint(vars.$xl-bp) {
+    padding-top: 3.2rem; 
+  }
+}
+.shopify-section:not(#shopify-section-header):last-child {
+  padding-bottom: 6rem;
+  @include mixins.breakpoint(vars.$xl-bp) {
+    padding-bottom: 3.2rem;
+  }
+}
+
+.home-page {
+  .shopify-section:not(#shopify-section-header):first-child {
+    padding-top: 0;
+  }
+  .shopify-section:not(#shopify-section-header):last-child {
+    padding-bottom: 0;
+  }
+
+}
+
 
 /* Blocks */
 

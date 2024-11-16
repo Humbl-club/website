@@ -6,8 +6,10 @@
 {% if path == "/frontend/entrypoints/customers.js" or path == "customers.js" %}
   <script src="{{ 'customers.D__RjzEQ.min.js' | asset_url | split: '?' | first }}" type="module" crossorigin="anonymous"></script>
   <link rel="modulepreload" href="{{ 'modulepreload-polyfill.ylYzXbQE.min.js' | asset_url | split: '?' | first }}" crossorigin="anonymous">
+{% elsif path == "/frontend/entrypoints/facets.js" or path == "facets.js" %}
+  <script src="{{ 'facets.D2swE_KY.min.js' | asset_url | split: '?' | first }}" type="module" crossorigin="anonymous"></script>
 {% elsif path == "/frontend/entrypoints/theme.css" or path == "theme.css" %}
-  {{ 'theme.G3rA948E.min.css' | asset_url | split: '?' | first | stylesheet_tag: preload: preload_stylesheet }}
+  {{ 'theme.CrxlAxsW.min.css' | asset_url | split: '?' | first | stylesheet_tag: preload: preload_stylesheet }}
 {% elsif path == "/frontend/entrypoints/theme.js" or path == "theme.js" %}
   <script src="{{ 'theme.BY7Kp103.min.js' | asset_url | split: '?' | first }}" type="module" crossorigin="anonymous"></script>
   <link rel="modulepreload" href="{{ 'modulepreload-polyfill.ylYzXbQE.min.js' | asset_url | split: '?' | first }}" crossorigin="anonymous">

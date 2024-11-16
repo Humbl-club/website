@@ -4,6 +4,7 @@ module.exports = {
   semi: false,
   printWidth: 80,
   trailingComma: 'none',
+  endOfLine: 'auto',
   plugins: [
     require.resolve('@shopify/prettier-plugin-liquid/standalone'),
     'prettier-plugin-tailwindcss'

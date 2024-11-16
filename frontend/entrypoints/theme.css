@@ -7,13 +7,11 @@
 :root {
   --white: #FFFFFF;
   --black: #000000;
-  --time: .3s;
+  --blue: #2D4F7F;
+  --time: .5s;
 
   --font-family: "Manrope", sans-serif;
   --second-family: "Inter", sans-serif;
   --third-family: "Playfair Display", sans-serif;
 }
 
-.shopify-section + .shopify-section {
-  margin-top: 6rem;
-}

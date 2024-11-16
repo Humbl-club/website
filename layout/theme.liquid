@@ -37,11 +37,6 @@
         --color-contrast: {{ settings.colors_contrast.red }} {{ settings.colors_contrast.green }} {{ settings.colors_contrast.blue }};
         --color-accent: {{ settings.colors_accent.red }} {{ settings.colors_accent.green }} {{ settings.colors_accent.blue }};
       }
-      {% if template != 'index' %}
-        .shopify-section:first-child {
-          padding-top: 6rem;
-        }
-      {% endif %}
     {% endstyle %}
 
     {%- liquid
@@ -49,6 +44,9 @@
       render 'vite-tag' with 'theme.js'
       if request.page_type contains 'customers/'
         render 'vite-tag' with 'customers.js'
+      endif
+      if request.page_type contains 'collections'
+        render 'vite-tag' with 'facets.js'
       endif
     -%}
 

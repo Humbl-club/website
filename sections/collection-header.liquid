@@ -1,14 +1,25 @@
 <div class="collection-main">
   <h1 class="collection-title">
     <span class="sr-only">{{ 'sections.collection_template.title' | t }}: </span>
-    {{- collection.title | escape -}}
+    {% if collection.handle == 'all' %}
+      All colors
+    {% else %}
+      {{- collection.title | escape -}}
+    {% endif %}
   </h1>
   {%- if section.settings.show_collection_description -%}
     <div class="collection-desc">
       {{ collection.description }}
     </div>
   {%- endif -%}
-  <div class="collection-count">{{ collection.all_products_count }} products</div>
+
+  <div class="collection-count">
+    {% if collection.all_products_count == 1 %}
+      {{ collection.all_products_count }} product
+    {% else %}
+      {{ collection.all_products_count }} products
+    {% endif %}
+  </div>
 </div>
 
 {% schema %}
