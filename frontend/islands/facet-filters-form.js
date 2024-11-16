@@ -6,7 +6,7 @@ import Swiper from 'swiper'
 import { Navigation } from 'swiper/modules'
 
 // init Swiper:
-const filterSwiper = document.querySelectorAll('.filter-swiper')
+const filterSwiper = document.querySelectorAll('.colorfilt-swiper')
 
 if (filterSwiper.length) {
   filterSwiper.forEach((el) => {

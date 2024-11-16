@@ -39,7 +39,7 @@
   fill: var(--black);
   transition: opacity var(--time);
 
-  @include mixins.breakpoint(vars.$xl-bp) {
+  @include mixins.breakpoint(vars.$sm-bp) {
     position: relative;
     z-index: 20;
 
@@ -352,7 +352,7 @@ input:-webkit-autofill:active {
 }
 
 .header-logo {
-  @include mixins.breakpoint(vars.$xl-bp) {
+  @include mixins.breakpoint(vars.$sm-bp) {
     z-index: 20;
     position: relative;
     transition: filter var(--time);

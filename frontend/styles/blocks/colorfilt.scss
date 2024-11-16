@@ -1,15 +1,15 @@
 @use "../mixins";
 @use "../vars";
 
-.filter-title {
+.colorfilt-title {
   text-align: center;
 }
 
-.filter-subtitle {
+.colorfilt-subtitle {
   margin-top: 3.2rem;
 }
 
-.filter-swiper {
+.colorfilt-swiper {
   padding-top: 2rem;
   .swiper-slide {
     width: 28.8rem;
@@ -17,6 +17,6 @@
   }
 }
 
-.filter-item {
+.colorfilt-item {
   background-color: #F6F6F6;
 }
