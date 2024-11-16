@@ -2,6 +2,7 @@
 module.exports = {
   extends: ['standard', 'plugin:prettier/recommended'],
   rules: {
+    'no-new': 0,
     'prettier/prettier': [
       'error',
       {

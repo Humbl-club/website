@@ -1,0 +1,31 @@
+<div class="colorfilt">
+  <h2 class="colorfilt-title subhead-2 wrapper">Shop by Color Drop</h2>
+  <div class="colorfilt-middle wrapper">
+    <h3 class="colorfilt-subtitle subhead-2">The Latest</h3>
+    <div class="colorfilt-pagination">
+      <button class="swiper-arrow next">{% render 'icon-swiper-arrow' %}</button>
+      <button class="swiper-arrow prev">{% render 'icon-swiper-arrow' %}</button>
+    </div>
+  </div>
+  <div class="swiper colorfilt-swiper wrapper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide colorfilt-item">Slide 1</div>
+      <div class="swiper-slide colorfilt-item">Slide 2</div>
+      <div class="swiper-slide colorfilt-item">Slide 3</div>
+      <div class="swiper-slide colorfilt-item">Slide 4</div>
+      <div class="swiper-slide colorfilt-item">Slide 5</div>
+      <div class="swiper-slide colorfilt-item">Slide 6</div>
+      <div class="swiper-slide colorfilt-item">Slide 7</div>
+      <div class="swiper-slide colorfilt-item">Slide 8</div>
+      <div class="swiper-slide colorfilt-item">Slide 9</div>
+    </div>
+  </div>
+
+  {% render 'facet-filters-form' %}
+</div>
+
+{% schema %}
+{
+  "name": "Color filter"
+}
+{% endschema %}
