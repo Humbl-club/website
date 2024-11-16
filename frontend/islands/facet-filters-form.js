@@ -1,6 +1,31 @@
 import { onKeyUpEscape } from '@/lib/a11y'
 import { debounce } from '@/lib/utils'
 
+// core version + navigation, pagination modules:
+import Swiper from 'swiper'
+import { Navigation } from 'swiper/modules'
+
+// init Swiper:
+const filterSwiper = document.querySelectorAll('.filter-swiper')
+
+if (filterSwiper.length) {
+  filterSwiper.forEach((el) => {
+    const nextEl = el.querySelector('.next')
+    const prevEl = el.querySelector('.prev')
+    new Swiper(el, {
+      // configure Swiper to use modules
+      slidesPerView: 'auto',
+      grabCursor: true,
+      speed: 500,
+      navigation: {
+        nextEl,
+        prevEl
+      },
+      modules: [Navigation]
+    })
+  })
+}
+
 class FacetFiltersForm extends window.HTMLElement {
   constructor() {
     super()
@@ -43,10 +68,7 @@ class FacetFiltersForm extends window.HTMLElement {
       '.facets-container .loading__spinner, facet-filters-form .loading__spinner'
     )
     loadingSpinners.forEach((spinner) => spinner.classList.remove('hidden'))
-    document
-      .getElementById('ProductGridContainer')
-      .querySelector('.collection')
-      .classList.add('loading')
+    document.getElementById('ProductGridContainer').classList.add('loading')
     if (countContainer) {
       countContainer.classList.add('loading')
     }
@@ -238,10 +260,11 @@ class FacetFiltersForm extends window.HTMLElement {
         html.querySelector(selector).innerHTML
     })
 
-    document
+    const item = document
       .getElementById('FacetFiltersFormMobile')
       .closest('menu-drawer')
-      .bindEvents()
+    console.log(item)
+    // .bindEvents()
   }
 
   static renderCounts(source, target) {
@@ -411,7 +434,6 @@ class FacetRemove extends window.HTMLElement {
     const facetLink = this.querySelector('a')
     facetLink.setAttribute('role', 'button')
     facetLink.addEventListener('click', this.closeFilter.bind(this))
-    console.log('hello')
     facetLink.addEventListener('keyup', (event) => {
       event.preventDefault()
       if (event.code.toUpperCase() === 'SPACE') this.closeFilter(event)

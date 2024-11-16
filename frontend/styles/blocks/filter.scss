@@ -1,0 +1,22 @@
+@use "../mixins";
+@use "../vars";
+
+.filter-title {
+  text-align: center;
+}
+
+.filter-subtitle {
+  margin-top: 3.2rem;
+}
+
+.filter-swiper {
+  padding-top: 2rem;
+  .swiper-slide {
+    width: 28.8rem;
+    margin-right: 2rem;
+  }
+}
+
+.filter-item {
+  background-color: #F6F6F6;
+}
