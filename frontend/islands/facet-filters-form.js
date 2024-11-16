@@ -10,8 +10,8 @@ const filterSwiper = document.querySelectorAll('.colorfilt-swiper')
 
 if (filterSwiper.length) {
   filterSwiper.forEach((el) => {
-    const nextEl = el.querySelector('.next')
-    const prevEl = el.querySelector('.prev')
+    const nextEl = el.parentElement.querySelector('.next')
+    const prevEl = el.parentElement.querySelector('.prev')
     new Swiper(el, {
       // configure Swiper to use modules
       slidesPerView: 'auto',

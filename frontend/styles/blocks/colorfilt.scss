@@ -8,7 +8,12 @@
 .colorfilt-subtitle {
   margin-top: 3.2rem;
 }
-
+.colorfilt-middle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
 .colorfilt-swiper {
   padding-top: 2rem;
   .swiper-slide {
