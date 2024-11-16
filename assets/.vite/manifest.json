@@ -20,19 +20,13 @@
       "frontend/lib/customer-address.js"
     ]
   },
-  "frontend/entrypoints/facets.js": {
-    "file": "facets.D2swE_KY.min.js",
-    "name": "facets",
-    "src": "frontend/entrypoints/facets.js",
-    "isEntry": true
-  },
   "frontend/entrypoints/theme.css": {
     "file": "theme.CrxlAxsW.min.css",
     "src": "frontend/entrypoints/theme.css",
     "isEntry": true
   },
   "frontend/entrypoints/theme.js": {
-    "file": "theme.BY7Kp103.min.js",
+    "file": "theme.CljV_JjJ.min.js",
     "name": "theme",
     "src": "frontend/entrypoints/theme.js",
     "isEntry": true,
@@ -47,6 +41,7 @@
       "frontend/islands/cart-remove-button.js",
       "frontend/islands/details-disclosure.js",
       "frontend/islands/details-modal.js",
+      "frontend/islands/facet-filters-form.js",
       "frontend/islands/header-drawer.js",
       "frontend/islands/localization-form.js",
       "frontend/islands/password-modal.js",
@@ -59,7 +54,7 @@
     ]
   },
   "frontend/islands/cart-drawer-items.js": {
-    "file": "cart-drawer-items.C8C8z0g5.min.js",
+    "file": "cart-drawer-items.E6GkW8dA.min.js",
     "name": "cart-drawer-items",
     "src": "frontend/islands/cart-drawer-items.js",
     "isDynamicEntry": true,
@@ -71,7 +66,7 @@
     ]
   },
   "frontend/islands/cart-drawer.js": {
-    "file": "cart-drawer.DOFVyBIr.min.js",
+    "file": "cart-drawer.BOmElZUE.min.js",
     "name": "cart-drawer",
     "src": "frontend/islands/cart-drawer.js",
     "isDynamicEntry": true,
@@ -81,7 +76,7 @@
     ]
   },
   "frontend/islands/cart-items.js": {
-    "file": "cart-items.D-NC_j3M.min.js",
+    "file": "cart-items.cS6jYlYv.min.js",
     "name": "cart-items",
     "src": "frontend/islands/cart-items.js",
     "isDynamicEntry": true,
@@ -113,7 +108,7 @@
     "isDynamicEntry": true
   },
   "frontend/islands/details-modal.js": {
-    "file": "details-modal.C3ckmoeH.min.js",
+    "file": "details-modal.a6BsuxhG.min.js",
     "name": "details-modal",
     "src": "frontend/islands/details-modal.js",
     "isDynamicEntry": true,
@@ -122,8 +117,19 @@
       "_modulepreload-polyfill.ylYzXbQE.min.js"
     ]
   },
+  "frontend/islands/facet-filters-form.js": {
+    "file": "facet-filters-form.Dlm5U2in.min.js",
+    "name": "facet-filters-form",
+    "src": "frontend/islands/facet-filters-form.js",
+    "isDynamicEntry": true,
+    "imports": [
+      "frontend/entrypoints/theme.js",
+      "_utils.yhNUuzph.min.js",
+      "_modulepreload-polyfill.ylYzXbQE.min.js"
+    ]
+  },
   "frontend/islands/header-drawer.js": {
-    "file": "header-drawer.CiC1AiJT.min.js",
+    "file": "header-drawer.KjFt98dF.min.js",
     "name": "header-drawer",
     "src": "frontend/islands/header-drawer.js",
     "isDynamicEntry": true,
@@ -140,7 +146,7 @@
     "isDynamicEntry": true
   },
   "frontend/islands/password-modal.js": {
-    "file": "password-modal.DSCgbXa6.min.js",
+    "file": "password-modal.CSQLpMhG.min.js",
     "name": "password-modal",
     "src": "frontend/islands/password-modal.js",
     "isDynamicEntry": true,

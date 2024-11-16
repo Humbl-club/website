@@ -1,5 +1,5 @@
-const { onKeyUpEscape } = require('@/lib/a11y')
-const { debounce } = require('@/lib/utils')
+import { onKeyUpEscape } from '@/lib/a11y'
+import { debounce } from '@/lib/utils'
 
 class FacetFiltersForm extends window.HTMLElement {
   constructor() {
