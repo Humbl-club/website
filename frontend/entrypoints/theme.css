@@ -5,9 +5,9 @@
 @import '@/styles/style.scss';
 
 :root {
-  --white: #FFFFFF;
-  --black: #000000;
-  --blue: #2D4F7F;
+  --white: var(--color-contrast, #fff);
+  --black: var(--color-primary, #000);
+  --blue: var(--color-accent, #2D4F7F);
   --time: .5s;
 
   --font-family: "Manrope", sans-serif;
