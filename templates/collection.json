@@ -1,1 +1,12 @@
-{"sections":{"colorfilt":{"type":"colorfilt","settings":{}},"collection-header":{"type":"collection-header","settings":{"show_collection_description":true}},"main-collection":{"type":"main-collection","settings":{}}},"order":["colorfilt","collection-header","main-collection"]}
+{
+  "sections": {
+    "colorfilt": {
+      "type": "colorfilt"
+    },
+    "main-collection": {
+      "type": "main-collection",
+      "settings": {}
+    }
+  },
+  "order": ["colorfilt", "main-collection"]
+}

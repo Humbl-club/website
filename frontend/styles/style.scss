@@ -74,6 +74,45 @@ svg {
   justify-content: center;
 }
 
+.btn {
+  padding: 1.9rem 2.5rem;
+  display: inline-block;
+  transition: color var(--time), background-color var(--time);
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 120%;
+  letter-spacing: -0.06em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.btn-blue {
+  border: 0.1rem solid var(--blue);
+  background-color: var(--blue);
+  color: var(--white);
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      background-color: var(--white);
+      color: var(--blue);
+    }
+  }
+}
+
+.btn-white {
+  border: 0.1rem solid var(--blue);
+  background-color: var(--white);
+  color: var(--blue);
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      background-color: var(--blue);
+      color: var(--white);
+    }
+  }
+}
+
 .hide {
   display: none;
 }
@@ -85,10 +124,12 @@ svg {
 .wrapper {
   padding-right: 32rem;
   padding-left: 32rem;
+
   @include mixins.breakpoint(vars.$max-bp) {
     padding-right: 4.6rem;
     padding-left: 4.6rem;
   }
+
   @include mixins.breakpoint(vars.$xl-bp) {
     padding-right: 1.6rem;
     padding-left: 1.6rem;
@@ -198,6 +239,7 @@ h2,
   font-size: 1.4rem;
   line-height: 150%;
   letter-spacing: -0.04em;
+
   @include mixins.breakpoint(vars.$xl-bp) {
     font-size: 1.2rem;
   }
@@ -280,8 +322,25 @@ h2,
 
 }
 
-.shopify-section + .shopify-section {
+.section-pt {
+  padding-top: 6rem;
+
+  @include mixins.breakpoint(vars.$xl-bp) {
+    padding-top: 4rem;
+  }
+}
+
+.section-pb {
+  padding-bottom: 6rem;
+
+  @include mixins.breakpoint(vars.$xl-bp) {
+    padding-bottom: 4rem;
+  }
+}
+
+.shopify-section+.shopify-section {
   margin-top: 6rem;
+
   @include mixins.breakpoint(vars.$xl-bp) {
     margin-top: 4rem;
   }
@@ -289,14 +348,27 @@ h2,
 
 .shopify-section:not(#shopify-section-header):first-child {
   padding-top: 6rem;
+
   @include mixins.breakpoint(vars.$xl-bp) {
-    padding-top: 3.2rem; 
+    padding-top: 3.2rem;
   }
 }
-.shopify-section:not(#shopify-section-header):last-child {
+
+.shopify-section:not(#shopify-section-header):not(.main-collection):last-child {
   padding-bottom: 6rem;
+
   @include mixins.breakpoint(vars.$xl-bp) {
     padding-bottom: 3.2rem;
+  }
+}
+
+.main-collection:last-child {
+  .collection-filterspace {
+    padding-bottom: 6rem;
+
+    @include mixins.breakpoint(vars.$xl-bp) {
+      padding-bottom: 3.2rem;
+    }
   }
 }
 
@@ -304,12 +376,18 @@ h2,
   .shopify-section:not(#shopify-section-header):first-child {
     padding-top: 0;
   }
+
   .shopify-section:not(#shopify-section-header):last-child {
     padding-bottom: 0;
   }
 
 }
 
+.overflow-hidden-mobile {
+  @include mixins.breakpoint(vars.$xl-bp) {
+    overflow: hidden
+  }
+}
 
 /* Blocks */
 
