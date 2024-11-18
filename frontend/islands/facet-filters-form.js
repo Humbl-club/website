@@ -1,7 +1,5 @@
 import { onKeyUpEscape } from '@/lib/a11y'
 import { debounce } from '@/lib/utils'
-
-// core version + navigation, pagination modules:
 import Swiper from 'swiper'
 import { Navigation } from 'swiper/modules'
 
@@ -25,6 +23,47 @@ if (filterSwiper.length) {
     })
   })
 }
+
+function initButtons(wrapper = document, timeout) {
+  const btns = wrapper.querySelectorAll('.mobile-facets__open')
+  if (btns.length) {
+    setTimeout(() => {
+      btns.forEach((el) => {
+        if (!el.classList.contains('inited')) {
+          el.addEventListener('click', function () {
+            document.documentElement.classList.toggle('facets-open')
+          })
+          el.classList.add('inited')
+        }
+      })
+    }, timeout)
+  }
+}
+
+initButtons()
+
+function initFacetContainer(html = document, timeout = 0) {
+  const wrapper = html.querySelectorAll('.facets-container')
+  if (wrapper.length) {
+    wrapper.forEach((el) => {
+      if (!el.classList.contains('inited')) {
+        el.addEventListener('click', function (event) {
+          setTimeout(() => {
+            if (event.target.classList.contains('facets-container')) {
+              document.documentElement.classList.remove(
+                'facets-open',
+                'overflow-hidden-mobile'
+              )
+            }
+          }, timeout)
+        })
+        el.classList.add('inited')
+      }
+    })
+  }
+}
+
+initFacetContainer()
 
 class FacetFiltersForm extends window.HTMLElement {
   constructor() {
@@ -68,7 +107,10 @@ class FacetFiltersForm extends window.HTMLElement {
       '.facets-container .loading__spinner, facet-filters-form .loading__spinner'
     )
     loadingSpinners.forEach((spinner) => spinner.classList.remove('hidden'))
-    document.getElementById('ProductGridContainer').classList.add('loading')
+    document
+      .getElementById('ProductGridContainer')
+      .querySelector('.collection')
+      .classList.add('loading')
     if (countContainer) {
       countContainer.classList.add('loading')
     }
@@ -100,6 +142,10 @@ class FacetFiltersForm extends window.HTMLElement {
         FacetFiltersForm.renderFilters(html, event)
         FacetFiltersForm.renderProductGridContainer(html)
         FacetFiltersForm.renderProductCount(html)
+        initButtons()
+        initFacetContainer()
+        if (typeof initializeScrollAnimationTrigger === 'function')
+          window.initializeScrollAnimationTrigger(html.innerHTML)
       })
   }
 
@@ -108,6 +154,10 @@ class FacetFiltersForm extends window.HTMLElement {
     FacetFiltersForm.renderFilters(html, event)
     FacetFiltersForm.renderProductGridContainer(html)
     FacetFiltersForm.renderProductCount(html)
+    initButtons()
+    initFacetContainer()
+    if (typeof initializeScrollAnimationTrigger === 'function')
+      window.initializeScrollAnimationTrigger(html.innerHTML)
   }
 
   static renderProductGridContainer(html) {
@@ -259,12 +309,6 @@ class FacetFiltersForm extends window.HTMLElement {
       document.querySelector(selector).innerHTML =
         html.querySelector(selector).innerHTML
     })
-
-    const item = document
-      .getElementById('FacetFiltersFormMobile')
-      .closest('menu-drawer')
-    console.log(item)
-    // .bindEvents()
   }
 
   static renderCounts(source, target) {
@@ -327,8 +371,10 @@ class FacetFiltersForm extends window.HTMLElement {
   }
 
   createSearchParams(form) {
-    const formData = new FormData(form)
-    return new URLSearchParams(formData).toString()
+    if (form) {
+      const formData = new FormData(form)
+      return new URLSearchParams(formData).toString()
+    }
   }
 
   onSubmitForm(searchParams, event) {
@@ -445,6 +491,12 @@ class FacetRemove extends window.HTMLElement {
     const form =
       this.closest('facet-filters-form') ||
       document.querySelector('facet-filters-form')
+    if (form) {
+      const checkboxes = form.querySelectorAll('input[type="checkbox"]')
+      if (checkboxes.length) {
+        checkboxes.forEach((el) => el.removeAttribute('checked'))
+      }
+    }
     form.onActiveFilterClick(event)
   }
 }

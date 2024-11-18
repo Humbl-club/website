@@ -3,16 +3,10 @@
     "colorfilt": {
       "type": "colorfilt"
     },
-    "collection-header": {
-      "type": "collection-header",
-      "settings": {
-        "show_collection_description": true
-      }
-    },
     "main-collection": {
       "type": "main-collection",
       "settings": {}
     }
   },
-  "order": ["colorfilt","collection-header", "main-collection"]
+  "order": ["colorfilt", "main-collection"]
 }

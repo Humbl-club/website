@@ -97,6 +97,18 @@
     ]
   },
   {
+    "header": "Header",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_sticky_header",
+        "default": true,
+        "label": "Enable sticky header",
+        "info": "Header shows on the screen as customers scroll up."
+      },
+    ]
+  },
+  {
     "name": "Social media",
     "settings": [
       {

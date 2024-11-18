@@ -1,5 +1,8 @@
 <!doctype html>
-<html class="no-js {% if template == 'index' %}home-page{% endif %}" lang="{{ request.locale.iso_code }}">
+<html
+  class="no-js {% if template == 'index' %}home-page{% endif %} {% if settings.enable_sticky_header %}sticky-header{% endif %}"
+  lang="{{ request.locale.iso_code }}"
+>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
