@@ -3,7 +3,6 @@
 
 .header {
   width: 100%;
-  transition: transform .3s;
   z-index: 20;
 
   display: flex;
@@ -79,8 +78,7 @@
 
   position: fixed;
   inset: 0px;
-  height: var(--screen-height, 100vh);
-  height: var(--screen-height, 100svh);
+  height: 100%;
 
   z-index: 20;
   transition: transform var(--time);
@@ -92,7 +90,7 @@
   flex-direction: column;
 
   @include mixins.breakpoint(vars.$xl-bp) {
-    padding-top: 6.8rem;
+    padding-top: 4.8rem;
   }
 
   .menu-opening & {
@@ -106,7 +104,7 @@
   padding-bottom: 6rem;
 
   @include mixins.breakpoint(vars.$xl-bp) {
-    padding-top: 0;
+    padding-top: 2rem;
     padding-bottom: 4rem;
   }
 
@@ -118,6 +116,13 @@
 .header-summary {
   width: 2.4rem;
   height: 2.4rem;
+  fill: var(--black);
+  transition: opacity var(--time);
+  @media (hover: hover) and (pointer: fine) {
+  &:hover {
+  opacity: 0.8;
+  }
+  }
   .menu-opening & {
     &:before {
       position: absolute;
@@ -140,7 +145,7 @@
     line-height: 120%;
     letter-spacing: -0.06em;
     text-transform: uppercase;
-    color: #fff;
+    color: var(--white);
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
     width: 100%;
@@ -175,7 +180,7 @@
     font-size: 1.4rem;
     line-height: 150%;
     letter-spacing: -0.04em;
-    color: #fff;
+    color: var(--white);
     padding-top: 1rem;
     padding-bottom: 1rem;
     width: 100%;
@@ -204,7 +209,7 @@
 .input {
   width: 100%;
   border: 0;
-  border-bottom: 1px solid #fff;
+  border-bottom: 1px solid var(--white);
   height: 4.6rem;
   background-color: transparent;
   padding: 0;
@@ -217,7 +222,7 @@
   letter-spacing: -0.04em;
   color: var(--white);
   transition: border-color var(--time);
-
+  border-radius: 0;
   &::placeholder {
     color: rgba(255, 255, 255, 0.5);
     opacity: 1;
@@ -232,7 +237,7 @@
   &:-webkit-autofill:hover,
   &:-webkit-autofill:focus,
   &:-webkit-autofill:active {
-    -webkit-text-fill-color: #fff !important;
+    -webkit-text-fill-color: var(--white) !important;
   }
 }
 
@@ -268,7 +273,7 @@ input:-webkit-autofill:active {
   font-size: 1.4rem;
   line-height: 150%;
   letter-spacing: -0.04em;
-  color: #fff;
+  color: var(--white);
 
   margin-top: auto;
   padding-top: 7rem;
@@ -302,7 +307,7 @@ input:-webkit-autofill:active {
   font-size: 1.4rem;
   line-height: 150%;
   letter-spacing: -0.04em;
-  color: #fff;
+  color: var(--white);
   position: absolute;
   top: 0;
   right: 0;
@@ -325,7 +330,7 @@ input:-webkit-autofill:active {
   line-height: 110%;
   letter-spacing: -0.06em;
   text-align: center;
-  color: #2d4f7f;
+  color: var(--blue);
 
   @include mixins.breakpoint(vars.$xl-bp) {
     min-width: 17.9rem;
