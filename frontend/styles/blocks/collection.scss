@@ -1,6 +1,10 @@
 @use "../mixins";
 @use "../vars";
 
+.collection {
+  position: relative;
+}
+
 .collection-title {
   font-family: var(--third-family);
   font-weight: 400;
@@ -65,4 +69,8 @@
 .collection-up {
   width: 2.4rem;
   height: 2.4rem;
+}
+
+.collection-filterspace {
+  position: relative;
 }

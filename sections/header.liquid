@@ -5,7 +5,7 @@
 
 <header
   role="banner"
-  class="{{ container_class }} {% if section.settings.enable_sticky_header %}sticky-header{% endif %}"
+  class="{{ container_class }}"
 >
   {%- if section.settings.menu != blank -%}
     <header-drawer>
@@ -118,7 +118,7 @@
   </a>
 </header>
 
-{% if template != 'index' and section.settings.enable_sticky_header %}
+{% if template != 'index' and settings.enable_sticky_header %}
   <div class="header-spacer"></div>
 {% endif %}
 
