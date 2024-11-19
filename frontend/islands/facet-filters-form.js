@@ -21,6 +21,15 @@ if (filterSwiper.length) {
       },
       modules: [Navigation]
     })
+
+    const checkboxes = el.querySelectorAll('label')
+    if (checkboxes.length) {
+      checkboxes.forEach((el) => {
+        el.addEventListener('click', function () {
+          this.classList.toggle('checked')
+        })
+      })
+    }
   })
 }
 
@@ -494,8 +503,15 @@ class FacetRemove extends window.HTMLElement {
     if (form) {
       const checkboxes = form.querySelectorAll('input[type="checkbox"]')
       if (checkboxes.length) {
-        checkboxes.forEach((el) => el.removeAttribute('checked'))
+        checkboxes.forEach((el) => {
+          el.removeAttribute('checked')
+          el.checked = false
+        })
       }
+    }
+    const colorfiltitems = document.querySelectorAll('.colorfilt-item.checked')
+    if (colorfiltitems.length) {
+      colorfiltitems.forEach((el) => el.classList.remove('checked'))
     }
     form.onActiveFilterClick(event)
   }

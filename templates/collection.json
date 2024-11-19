@@ -1,12 +1,9 @@
 {
   "sections": {
-    "colorfilt": {
-      "type": "colorfilt"
-    },
     "main-collection": {
       "type": "main-collection",
       "settings": {}
     }
   },
-  "order": ["colorfilt", "main-collection"]
+  "order": ["main-collection"]
 }

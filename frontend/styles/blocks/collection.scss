@@ -32,6 +32,7 @@
 
   @include mixins.breakpoint(vars.$xl-bp) {
     font-size: 1.4rem;
+    margin-top: 1.6rem;
   }
 }
 
@@ -47,12 +48,14 @@
 
   @include mixins.breakpoint(vars.$xl-bp) {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
   }
 }
 
 .collection-bot {
   margin-top: 6rem;
   display: flex;
+  align-items: center;
   justify-content: space-between;
   @include mixins.breakpoint(vars.$xl-bp) {
     margin-top: 3.2rem;
@@ -73,4 +76,16 @@
 
 .collection-filterspace {
   position: relative;
+}
+
+.collection-middle {
+  @include mixins.breakpoint(vars.$xl-bp) {
+    padding-top: 3rem;
+  }
+}
+
+.collection--empty {
+  min-height: 59.5rem;
+  display: flex;
+  justify-content: center;
 }
