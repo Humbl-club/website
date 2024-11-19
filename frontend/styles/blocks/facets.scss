@@ -84,6 +84,7 @@
   overflow-y: auto;
   padding-top: 3.2rem;
   padding-bottom: 3.2rem;
+  overscroll-behavior: contain;
 }
 
 .mobile-facets__main {

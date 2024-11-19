@@ -51,7 +51,7 @@
   </div>
 </div>
 
-<div class="collection">
+<div class="collection" id="collection">
   <div
     data-id="{{ section.id }}"
   >
@@ -65,7 +65,7 @@
           </button>
 
           <facet-remove class="active-facets__button-wrapper button-title-2">
-            <a href="{{ results_url }}" class="active-facets__button-remove">
+            <a href="{{ collection.url }}" class="active-facets__button-remove">
               <span>{{ 'products.facets.clear_all' | t }}</span>
             </a>
           </facet-remove>
@@ -188,10 +188,6 @@
                   {%- assign skip_card_product_styles = true -%}
                 {%- endfor -%}
               </ul>
-
-              {%- if paginate.pages > 1 -%}
-                {% render 'pagination', paginate: paginate, anchor: '' %}
-              {%- endif -%}
             </div>
           {%- endif -%}
         </div>
@@ -211,7 +207,7 @@
             {% endif %}
           </div>
 
-          <button class="collection-up" onclick="window.scrollTo(0,0)">
+          <button class="collection-up" onclick="document.body.scrollIntoView({behavior: 'smooth'})" aria-label="go up">
             {% render 'icon-up' %}
           </button>
         </div>
