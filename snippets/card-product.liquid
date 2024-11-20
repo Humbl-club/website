@@ -81,14 +81,16 @@
             {% assign ntitle = ',' | append: ntitle | append: ',' %}
             {% if sizes contains ntitle %}
               <li>
-                <a
-                  {% unless variant.available %}
+                <button
+                  {% if variant.available %}
+                    class="card-sizebtn available"
+                  {% else %}
                     class="card-sizebtn"
-                  {% endunless %}
-                  href="{{ variant.url }}"
+                  {% endif %}
+                  data-href="{{ variant.url }}"
                 >
                   {{- ntitle | remove: ',' -}}
-                </a>
+                </button>
               </li>
               {% assign sizes = sizes | remove: ntitle %}
             {% endif %}

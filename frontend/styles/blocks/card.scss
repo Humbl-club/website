@@ -110,6 +110,10 @@
   opacity: 0.5;
   padding: 1.3rem;
   display: flex;
+  opacity: 0.1;
+  &.available {
+    opacity: 0.5;
+  }
 }
 
 .card-cart {

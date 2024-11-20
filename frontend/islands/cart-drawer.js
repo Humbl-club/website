@@ -12,24 +12,17 @@ class CartDrawer extends window.HTMLElement {
       'click',
       this.close.bind(this)
     )
-    // this.setHeaderCartIconAccessibility()
+
+    this.init()
   }
 
-  // setHeaderCartIconAccessibility() {
-  //   const cartLink = document.querySelector('#cart-icon-bubble')
-  //   cartLink.setAttribute('role', 'button')
-  //   cartLink.setAttribute('aria-haspopup', 'dialog')
-  //   cartLink.addEventListener('click', (event) => {
-  //     event.preventDefault()
-  //     this.open(cartLink)
-  //   })
-  //   cartLink.addEventListener('keydown', (event) => {
-  //     if (event.code.toUpperCase() === 'SPACE') {
-  //       event.preventDefault()
-  //       this.open(cartLink)
-  //     }
-  //   })
-  // }
+  init() {
+    document.addEventListener('click', (event) => {
+      if (event.target.classList.contains('card-sizebtn')) {
+        this.open(event.target)
+      }
+    })
+  }
 
   open(triggeredBy) {
     if (triggeredBy) this.setActiveElement(triggeredBy)
