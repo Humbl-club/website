@@ -55,11 +55,9 @@
   </head>
 
   <body>
-    <div class="loading-ring" id="top"></div>
+    <div class="loading-ring"></div>
 
-    {%- if settings.cart_type == 'drawer' -%}
-      {%- render 'cart-drawer' -%}
-    {%- endif -%}
+    {%- render 'cart-drawer' -%}
 
     {% section 'header' %}
 
