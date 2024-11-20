@@ -1,10 +1,19 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main-section": {
       "type": "main-section",
       "settings": {
-        "image": "shopify:\/\/shop_images\/Homepage_fb72eff5-ff09-411d-b77f-e855d1ef2fcc.jpg",
-        "image_mobile": "shopify:\/\/shop_images\/Homepage-mobile.jpg"
+        "image": "shopify://shop_images/Homepage.jpg",
+        "image_mobile": "shopify://shop_images/Homepage-mobile.jpg"
       }
     }
   },

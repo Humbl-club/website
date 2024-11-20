@@ -31,7 +31,7 @@
 
                 {% for value in shop.metaobjects['shopify--color-pattern'].values %}
                   {% if value.label == item.label %}
-                    {% assign color = item.color %}
+                    {% assign color = value.color %}
                     {% if value.image %}
                       {% assign img = value.image
                         | image_url: width: 288, height: 340
