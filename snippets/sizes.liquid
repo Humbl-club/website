@@ -1,0 +1,30 @@
+{% assign sizes = '' %}
+{% for option in card_product.options_with_values %}
+  {% if option.name == 'Size' %}
+    {%- for value in option.values -%}
+      {% assign sizes = sizes | append: ',' | append: value | append: ',' %}
+    {% endfor %}
+  {% endif %}
+{% endfor %}
+
+{% if sizes != '' %}
+  <div class="card-sizes {{ addClass }}">
+    {% for variant in card_product.variants %}
+      {% assign ntitle = variant.title | split: '/ ' | first | strip %}
+      {% assign ntitle = ',' | append: ntitle | append: ',' %}
+      {% if sizes contains ntitle %}
+        <button
+          {% if variant.available %}
+            class="card-sizebtn available"
+          {% else %}
+            class="card-sizebtn"
+          {% endif %}
+          data-href="{{ variant.url }}"
+        >
+          {{- ntitle | remove: ',' -}}
+        </button>
+        {% assign sizes = sizes | remove: ntitle %}
+      {% endif %}
+    {% endfor %}
+  </div>
+{% endif %}
