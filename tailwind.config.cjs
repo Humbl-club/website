@@ -27,7 +27,8 @@ module.exports = {
       },
       spacing: {
         nav: 'var(--height-nav)',
-        screen: 'var(--screen-height, 100vh)'
+        screen: 'var(--screen-height, 100vh)',
+        8: '0.8rem'
       },
       height: {
         screen: 'var(--screen-height, 100vh)',

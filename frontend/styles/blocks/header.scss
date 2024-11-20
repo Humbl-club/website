@@ -36,9 +36,9 @@
   height: 2.4rem;
   fill: var(--black);
   transition: opacity var(--time);
+  position: relative;
 
   @include mixins.breakpoint(vars.$sm-bp) {
-    position: relative;
     z-index: 20;
 
     .parent-opened~& {
@@ -53,6 +53,13 @@
   }
 }
 
+.cart-count-bubble {
+  position: absolute;
+  top: 40%;
+  left: 94%;
+  font-size: 1.4rem;
+}
+
 .header-btn {
   width: 2.4rem;
   height: 2.4rem;
@@ -65,7 +72,7 @@
   position: absolute;
   top: 2.4rem;
   right: 2.4rem;
-
+  fill: var(--white);
   @include mixins.breakpoint(vars.$xl-bp) {
     top: 1.2rem;
     right: auto;

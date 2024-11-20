@@ -100,22 +100,7 @@
     {%- endif -%}
   </a>
 
-  <a href="{{ routes.cart_url }}" class="header-cart">
-    {% if cart == empty %}
-      {% render 'icon-cart' %}
-    {% else %}
-      {% render 'icon-cart' %}
-    {% endif %}
-    <span hidden>{{ 'templates.cart.cart' | t }}</span>
-    {%- if cart != empty -%}
-      <div class="cart-count-bubble">
-        {%- if cart.item_count < 100 -%}
-          <span aria-hidden="true">{{ cart.item_count }}</span>
-        {%- endif -%}
-        <span hidden>{{ 'sections.header.cart_count' | t: count: cart.item_count }}</span>
-      </div>
-    {%- endif -%}
-  </a>
+  {% render 'cart-icon-bubble' %}
 </header>
 
 {% if template != 'index' and settings.enable_sticky_header %}

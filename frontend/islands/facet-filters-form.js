@@ -1,4 +1,5 @@
 import { onKeyUpEscape } from '@/lib/a11y'
+import { xl } from '@/lib/media'
 import { debounce } from '@/lib/utils'
 import Swiper from 'swiper'
 import { Navigation } from 'swiper/modules'
@@ -73,6 +74,73 @@ function initFacetContainer(html = document, timeout = 0) {
 }
 
 initFacetContainer()
+
+function countFilters() {
+  const counts = document.querySelectorAll('.count-items')
+  if (counts.length) {
+    counts.forEach((el) => {
+      const details = el.closest('.mobile-facets__details')
+      if (details) {
+        const checkeds = details.querySelectorAll('input:checked')
+        if (checkeds.length) {
+          el.innerHTML = ` (${checkeds.length})`
+        }
+      }
+    })
+  }
+}
+
+countFilters()
+
+function initCardButtons() {
+  if (xl.matches) {
+    const cardsMobile = document.querySelectorAll('.card-cart')
+    const mobileModal = document.getElementById('mobile-modal')
+    if (mobileModal) {
+      cardsMobile.forEach((btn) => {
+        btn.addEventListener('click', function () {
+          const card = this.closest('.card')
+          if (card) {
+            mobileModal.openModal()
+            mobileModal.innerHTML = card.innerHTML
+          }
+        })
+      })
+      const mobileoverlay = document.getElementById('mobile-modal-overlay')
+      setTimeout(() => {
+        mobileoverlay.addEventListener('click', function () {
+          this.previousElementSibling.classList.remove('open')
+        })
+      })
+    }
+  }
+}
+
+initCardButtons()
+
+class MobileModal extends window.HTMLElement {
+  constructor() {
+    super()
+    this.closeModal = () => {
+      this.closeModal.bind(this)
+    }
+    setTimeout(() => {
+      this.addEventListener('click', () => {
+        this.closeModal.apply(this)
+      })
+    })
+  }
+
+  openModal() {
+    this.classList.add('open')
+  }
+
+  closeModal() {
+    this.classList.remove('open')
+  }
+}
+
+window.customElements.define('mobile-modal', MobileModal)
 
 class FacetFiltersForm extends window.HTMLElement {
   constructor() {
@@ -154,6 +222,7 @@ class FacetFiltersForm extends window.HTMLElement {
         FacetFiltersForm.renderProductCount(html)
         initButtons()
         initFacetContainer()
+        countFilters()
         if (typeof initializeScrollAnimationTrigger === 'function')
           window.initializeScrollAnimationTrigger(html.innerHTML)
       })
@@ -503,7 +572,9 @@ class FacetRemove extends window.HTMLElement {
       this.closest('facet-filters-form') ||
       document.querySelector('facet-filters-form')
     if (form) {
-      const checkboxes = form.querySelectorAll('input[type="checkbox"]')
+      const checkboxes = form.querySelectorAll(
+        'input[type="checkbox"], input[type="radio"]'
+      )
       if (checkboxes.length) {
         checkboxes.forEach((el) => {
           el.removeAttribute('checked')

@@ -49,6 +49,13 @@ label.colorfilt-item {
 .colorfilt-item {
   background-color: #F6F6F6;
   position: relative;
+  height: 34rem;
+  @include mixins.breakpoint(vars.$max-bp) {
+    height: mixins.fluid(198px, 340px);
+  }
+  @include mixins.breakpoint(vars.$sm-bp) {
+    height: 19.8rem;
+  }
 
   @media (hover: hover) and (pointer: fine) {
     &:hover {
@@ -77,6 +84,9 @@ label.colorfilt-item {
     transition: opacity var(--time), background-color var(--time), border-color var(--time);
     opacity: 0;
     z-index: 1;
+    @include mixins.breakpoint(vars.$sm-bp) {
+      border-width: 0.1rem;
+    }
   }
 
   input {

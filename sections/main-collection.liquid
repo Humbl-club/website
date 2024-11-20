@@ -17,32 +17,40 @@
         {% case filter.type %}
           {% when 'boolean', 'list' %}
             {% if filter.label == 'Color' %}
-              {% for value in filter.values %}
-                {% for item in shop.metaobjects.color_filter.values %}
-                  {% if item.color_title == value.label %}
-                    {% assign id = 'Filter-'
-                      | append: filter.param_name
-                      | escape
-                      | append: '-mobile-'
-                      | append: forloop.index
-                    %}
-                    <label for="{{ id }}" class="swiper-slide colorfilt-item img-cover">
-                      {{
-                        item.image
-                        | image_url: width: 288, height: 340
-                        | image_tag: height: 340, width: 288, alt: item.color_title
-                      }}
+              {% for item in filter.values %}
+                {% assign id = 'Filter-'
+                  | append: filter.param_name
+                  | escape
+                  | append: '-mobile-'
+                  | append: forloop.index
+                %}
+                {% liquid
+                  assign color = 'transparent'
+                  assign img = null
+                %}
 
-                      <span class="colorfilt-bot">
-                        <span class="colorfilt-left body-1">
-                          <span class="opacity-50">Color:</span> {{ item.color_title }}
-                        </span>
-                        {% assign color = item.color %}
-                        <span class="colorfilt-box" style="background-color:{{color}};"></span>
-                      </span>
-                    </label>
+                {% for value in shop.metaobjects['shopify--color-pattern'].values %}
+                  {% if value.label == item.label %}
+                    {% assign color = value.color %}
+                    {% if value.image %}
+                      {% assign img = value.image
+                        | image_url: width: 288, height: 340
+                        | image_tag: height: 340, width: 288, alt: item.label
+                      %}
+                    {% endif %}
                   {% endif %}
                 {% endfor %}
+
+                <label
+                  for="{{ id }}"
+                  class="swiper-slide colorfilt-item img-cover {% if item.active %}checked{% endif %}"
+                >
+                  {{ img }}
+                  <span class="colorfilt-bot">
+                    <span class="colorfilt-left body-1"> <span class="opacity-50">Color:</span> {{ item.label }} </span>
+                    <span class="colorfilt-box" style="background-color:{{color}};"></span>
+                  </span>
+                </label>
               {% endfor %}
             {% endif %}
         {% endcase %}
@@ -215,6 +223,9 @@
     {%- endpaginate -%}
   </div>
 </div>
+
+<mobile-modal id="mobile-modal"></mobile-modal>
+<div id="mobile-modal-overlay"></div>
 
 {% schema %}
 {

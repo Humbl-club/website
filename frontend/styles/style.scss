@@ -422,10 +422,6 @@ h2,
   }
 }
 
-.switch-wrap {
-  
-}
-
 .switch-box {
   border: 1px solid #a0a0a0;
   border-radius: 10rem;
@@ -456,16 +452,19 @@ h2,
 
 .loading-ring {
   position: fixed;
-  bottom: 16px;
-  right: 16px;
+  bottom: 1.6rem;
+  right: 1.6rem;
   transition: opacity .3s;
   opacity: 0;
   z-index: 1000000;
   width: 3rem;
   height: 3rem;
+  pointer-events: none;
   @include mixins.breakpoint(vars.$sm-bp) {
     width: 2rem;
     height: 2rem;
+    right: 1rem;
+    bottom: 1rem;
   }
 
   &::after {

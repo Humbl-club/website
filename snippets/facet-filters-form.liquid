@@ -26,6 +26,11 @@
 <div class="facets-container{% if filter_type == 'drawer' %} facets-container-drawer{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
   {% comment %}  Drawer and mobile filter {% endcomment %}
   <facet-filters-form class="facets-menu" client:idle>
+    <div class="facets-mobile-head">
+      <button class="mobile-facets__open facets-close">
+        {% render 'icon-close' %}
+      </button>
+    </div>
     <form id="FacetFiltersFormMobile" class="mobile-facets">
       <div class="mobile-facets__inner">
         <div
@@ -84,14 +89,17 @@
 
                             <li class="mobile-facets__item list-menu__item facets-switches">
                               <label class="{{ label_class }}">
-                                <span class="body-1">
-                                  <a
-                                    href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
-                                    class="link"
-                                  >
-                                    Sign in
-                                  </a>
-                                  to add your sizes
+                                <span class="flex flex-col gap-8">
+                                  <span class="subhead-2 opacity-50">My Sizes</span>
+                                  <span class="body-1">
+                                    <a
+                                      href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
+                                      class="link"
+                                    >
+                                      Sign in
+                                    </a>
+                                    to add your sizes
+                                  </span>
                                 </span>
                                 <span class="switch-wrap">
                                   <input
@@ -104,41 +112,22 @@
                             </li>
 
                             <li class="mobile-facets__item list-menu__item facets-switches">
-                              {% if presentation == 'swatch' %}
-                                <div class="{{ label_class }}">
-                                  <div class="swatch-input-wrapper">
-                                    {% render 'swatch-input',
-                                      id: input_id,
-                                      type: 'checkbox',
-                                      name: value.param_name,
-                                      value: value.value,
-                                      product_form_id: 'FacetFiltersFormMobile',
-                                      swatch: value.swatch,
-                                      checked: value.active,
-                                      disabled: is_disabled
-                                    %}
-                                  </div>
+                              <label for="{{ input_id }}" class="{{ label_class }}">
+                                {{ text_value }}
 
-                                  {{ text_value }}
-                                </div>
-                              {% else %}
-                                <label for="{{ input_id }}" class="{{ label_class }}">
-                                  {{ text_value }}
-
-                                  <span class="switch-wrap">
-                                    <input
-                                      type="checkbox"
-                                      name="{{ value.param_name }}"
-                                      value="{{ value.value }}"
-                                      id="{{ input_id }}"
-                                      {% if value.active %}
-                                        checked
-                                      {% endif %}
-                                    >
-                                    <span class="switch-box"></span>
-                                  </span>
-                                </label>
-                              {% endif %}
+                                <span class="switch-wrap">
+                                  <input
+                                    type="checkbox"
+                                    name="{{ value.param_name }}"
+                                    value="{{ value.value }}"
+                                    id="{{ input_id }}"
+                                    {% if value.active %}
+                                      checked
+                                    {% endif %}
+                                  >
+                                  <span class="switch-box"></span>
+                                </span>
+                              </label>
                             </li>
                           {% endif %}
                         {%- endfor -%}
@@ -155,9 +144,7 @@
                         <summary class="mobile-facets__summary focus-inset">
                           <div>
                             <span>{{ filter.label | escape }}</span>
-                            <span class="mobile-facets__arrow">
-                              {{- 'icon-arrow.svg' | inline_asset_content -}}
-                            </span>
+                            <span class="count-items"></span>
                           </div>
                         </summary>
                         <div
@@ -203,55 +190,36 @@
                                   {%- endcapture -%}
 
                               <li class="mobile-facets__item list-menu__item">
-                                {% if presentation == 'swatch' %}
-                                  <div class="{{ label_class }}">
-                                    <div class="swatch-input-wrapper">
-                                      {% render 'swatch-input',
-                                        id: input_id,
-                                        type: 'checkbox',
-                                        name: value.param_name,
-                                        value: value.value,
-                                        product_form_id: 'FacetFiltersFormMobile',
-                                        swatch: value.swatch,
-                                        checked: value.active,
-                                        disabled: is_disabled
-                                      %}
+                                <label for="{{ input_id }}" class="{{ label_class }}">
+                                  <input
+                                    class="mobile-facets__checkbox"
+                                    type="checkbox"
+                                    name="{{ value.param_name }}"
+                                    value="{{ value.value }}"
+                                    id="{{ input_id }}"
+                                    {% if value.active %}
+                                      checked
+                                    {% endif %}
+                                    {% if is_disabled %}
+                                      disabled
+                                    {% endif %}
+                                  >
+                                  <span class="checkbox-box"></span>
+
+                                  {%- if presentation == 'image' -%}
+                                    <div class="facets__image-wrapper">
+                                      {%- if value.image -%}
+                                        {{
+                                          value.image
+                                          | image_url: width: 300
+                                          | image_tag: class: 'facets__image', alt: value.alt
+                                        }}
+                                      {%- endif -%}
                                     </div>
+                                  {%- endif %}
 
-                                    {{ text_value }}
-                                  </div>
-                                {% else %}
-                                  <label for="{{ input_id }}" class="{{ label_class }}">
-                                    <input
-                                      class="mobile-facets__checkbox"
-                                      type="checkbox"
-                                      name="{{ value.param_name }}"
-                                      value="{{ value.value }}"
-                                      id="{{ input_id }}"
-                                      {% if value.active %}
-                                        checked
-                                      {% endif %}
-                                      {% if is_disabled %}
-                                        disabled
-                                      {% endif %}
-                                    >
-                                    <span class="checkbox-box"></span>
-
-                                    {%- if presentation == 'image' -%}
-                                      <div class="facets__image-wrapper">
-                                        {%- if value.image -%}
-                                          {{
-                                            value.image
-                                            | image_url: width: 300
-                                            | image_tag: class: 'facets__image', alt: value.alt
-                                          }}
-                                        {%- endif -%}
-                                      </div>
-                                    {%- endif %}
-
-                                    {{ text_value }}
-                                  </label>
-                                {% endif %}
+                                  {{ text_value }}
+                                </label>
                               </li>
                             {%- endfor -%}
                           </ul>
@@ -271,6 +239,7 @@
                 <summary class="mobile-facets__summary">
                   <div class="mobile-facets__sort">
                     {{ 'products.facets.sort_by_label' | t }}
+                    <span class="count-items"></span>
                   </div>
                 </summary>
 

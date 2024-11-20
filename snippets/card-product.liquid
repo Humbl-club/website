@@ -65,40 +65,20 @@
         {% comment %}theme-check-enable ImgLazyLoading{% endcomment %}
       {%- endif -%}
 
-      {% assign sizes = '' %}
-      {% for option in card_product.options_with_values %}
-        {% if option.name == 'Size' %}
-          {%- for value in option.values -%}
-            {% assign sizes = sizes | append: ',' | append: value | append: ',' %}
-          {% endfor %}
-        {% endif %}
-      {% endfor %}
+      {% render 'sizes', card_product: card_product, addClass: 'button-title-4' %}
 
-      {% if sizes != '' %}
-        <ul class="card-sizes button-title-4">
-          {% for variant in card_product.variants %}
-            {% assign ntitle = variant.title | split: '/ ' | first | strip %}
-            {% assign ntitle = ',' | append: ntitle | append: ',' %}
-            {% if sizes contains ntitle %}
-              <li>
-                <a
-                  {% unless variant.available %}
-                    class="card-sizebtn"
-                  {% endunless %}
-                  href="{{ variant.url }}"
-                >
-                  {{- ntitle | remove: ',' -}}
-                </a>
-              </li>
-              {% assign sizes = sizes | remove: ntitle %}
-            {% endif %}
-          {% endfor %}
-        </ul>
+      {%- if card_product.available %}
+        <button class="card-cart">
+          <span class="card-btninner">{% render 'icon-cart' %}</span>
+        </button>
       {% endif %}
 
-      <button class="card-cart">
-        {% render 'icon-cart' %}
-      </button>
+      <a
+        href="{{ card_product.url }}"
+        class="card-hiddenlink"
+        aria-label="{{ card_product.title | escape }}"
+      >
+      </a>
     </div>
     <div class="card-bot">
       <h3
@@ -116,6 +96,8 @@
       </h3>
 
       {%- render 'price', product: card_product -%}
+
+      {% render 'sizes', card_product: card_product, addClass: 'button-title-5 only-modal' %}
     </div>
   </div>
 {%- else -%}
