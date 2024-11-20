@@ -49,7 +49,10 @@ label.colorfilt-item {
 .colorfilt-item {
   background-color: #F6F6F6;
   position: relative;
-
+  height: 34rem;
+  @include mixins.breakpoint(vars.$max-bp) {
+    height: mixins.fluid(198px, 340px);
+  }
   @media (hover: hover) and (pointer: fine) {
     &:hover {
       &::before {
