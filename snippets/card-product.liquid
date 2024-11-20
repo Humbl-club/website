@@ -33,9 +33,7 @@
           class="card-hover"
           src="{{ image_hover | image_url: width: 442 }}"
           alt="{{ image_hover.alt | escape }}"
-          {% unless lazy_load == false %}
-            loading="lazy"
-          {% endunless %}
+          loading="lazy"
           width="{{ image_hover.width }}"
           height="{{ image_hover.height }}"
         >
