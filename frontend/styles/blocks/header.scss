@@ -65,7 +65,7 @@
   position: absolute;
   top: 2.4rem;
   right: 2.4rem;
-
+  fill: var(--white);
   @include mixins.breakpoint(vars.$xl-bp) {
     top: 1.2rem;
     right: auto;
