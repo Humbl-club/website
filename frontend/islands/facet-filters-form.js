@@ -21,6 +21,15 @@ if (filterSwiper.length) {
       },
       modules: [Navigation]
     })
+
+    const checkboxes = el.querySelectorAll('label')
+    if (checkboxes.length) {
+      checkboxes.forEach((el) => {
+        el.addEventListener('click', function () {
+          this.classList.toggle('checked')
+        })
+      })
+    }
   })
 }
 
@@ -64,6 +73,23 @@ function initFacetContainer(html = document, timeout = 0) {
 }
 
 initFacetContainer()
+
+function countFilters() {
+  const counts = document.querySelectorAll('.count-items')
+  if (counts.length) {
+    counts.forEach((el) => {
+      const details = el.closest('.mobile-facets__details')
+      if (details) {
+        const checkeds = details.querySelectorAll('input:checked')
+        if (checkeds.length) {
+          el.innerHTML = ` (${checkeds.length})`
+        }
+      }
+    })
+  }
+}
+
+countFilters()
 
 class FacetFiltersForm extends window.HTMLElement {
   constructor() {
@@ -111,6 +137,7 @@ class FacetFiltersForm extends window.HTMLElement {
       .getElementById('ProductGridContainer')
       .querySelector('.collection')
       .classList.add('loading')
+    document.documentElement.classList.add('loading')
     if (countContainer) {
       countContainer.classList.add('loading')
     }
@@ -144,6 +171,7 @@ class FacetFiltersForm extends window.HTMLElement {
         FacetFiltersForm.renderProductCount(html)
         initButtons()
         initFacetContainer()
+        countFilters()
         if (typeof initializeScrollAnimationTrigger === 'function')
           window.initializeScrollAnimationTrigger(html.innerHTML)
       })
@@ -182,6 +210,7 @@ class FacetFiltersForm extends window.HTMLElement {
     const containerDesktop = document.getElementById('ProductCountDesktop')
     container.innerHTML = count
     container.classList.remove('loading')
+    document.documentElement.classList.remove('loading')
     if (containerDesktop) {
       containerDesktop.innerHTML = count
       containerDesktop.classList.remove('loading')
@@ -254,7 +283,6 @@ class FacetFiltersForm extends window.HTMLElement {
 
     if (countsToRender) {
       const closestJSFilterID = event.target.closest('.js-filter').id
-
       if (closestJSFilterID) {
         FacetFiltersForm.renderCounts(
           countsToRender,
@@ -418,6 +446,7 @@ class FacetFiltersForm extends window.HTMLElement {
         : event.currentTarget.href.slice(
             event.currentTarget.href.indexOf('?') + 1
           )
+
     FacetFiltersForm.renderPage(url)
   }
 }
@@ -492,11 +521,21 @@ class FacetRemove extends window.HTMLElement {
       this.closest('facet-filters-form') ||
       document.querySelector('facet-filters-form')
     if (form) {
-      const checkboxes = form.querySelectorAll('input[type="checkbox"]')
+      const checkboxes = form.querySelectorAll(
+        'input[type="checkbox"], input[type="radio"]'
+      )
       if (checkboxes.length) {
-        checkboxes.forEach((el) => el.removeAttribute('checked'))
+        checkboxes.forEach((el) => {
+          el.removeAttribute('checked')
+          el.checked = false
+        })
       }
     }
+    const colorfiltitems = document.querySelectorAll('.colorfilt-item.checked')
+    if (colorfiltitems.length) {
+      colorfiltitems.forEach((el) => el.classList.remove('checked'))
+    }
+
     form.onActiveFilterClick(event)
   }
 }

@@ -16,6 +16,7 @@ module.exports = {
         md: '48em',
         lg: '64em',
         xl: '80em',
+        'xl-max': { max: '1024px' },
         '2xl': '96em',
         'sm-max': { max: '48em' },
         'sm-only': { min: '32em', max: '48em' },
@@ -26,7 +27,8 @@ module.exports = {
       },
       spacing: {
         nav: 'var(--height-nav)',
-        screen: 'var(--screen-height, 100vh)'
+        screen: 'var(--screen-height, 100vh)',
+        8: '0.8rem'
       },
       height: {
         screen: 'var(--screen-height, 100vh)',

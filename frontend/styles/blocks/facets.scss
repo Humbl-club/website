@@ -5,11 +5,15 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding-top: 3.6rem;
-  padding-bottom: 3.6rem;
+  padding-top: 2.8rem;
+  padding-bottom: 2.8rem;
   border: 0.1rem solid rgba($color: #000000, $alpha: 0.1);
   border-left: 0;
   border-right: 0;
+  @include mixins.breakpoint(vars.$xl-bp) {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
 }
 
 .facets-container {
@@ -19,8 +23,14 @@
   width: 100%;
   height: 100%;
   z-index: 20;
-  // animation: fadeEffect var(--time);
+  animation: fadeEffect var(--time);
   display: none;
+  @include mixins.breakpoint(vars.$sm-bp) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 30;
+  }
   &::before {
     content: '';
     background-color: rgba($color: #000000, $alpha: 0.4);
@@ -37,6 +47,25 @@
   }
 }
 
+.facets-mobile-head {
+  display: none;
+  @include mixins.breakpoint(vars.$sm-bp) {
+    display: flex;
+    align-items: center;
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
+    padding-right: 1.6rem;
+    padding-left: 1.6rem;
+  }
+}
+
+.facets-close {
+  width: 2.4rem;
+  height: 2.4rem;
+  fill: var(--black);
+  margin-left: auto;
+}
+
 .facets-menu {
   position: absolute; 
   top: 0;
@@ -45,8 +74,6 @@
   max-width: 100%;
   background-color: var(--white);
   z-index: 10;
-
-  min-height: 70rem;
   height: 100%;
 }
 
@@ -56,9 +83,33 @@
   right: 0;
   margin-left: auto;
   width: 100%;
-  padding: 3.2rem 2.4rem  ;
-  overflow-y: auto;
+  max-height: calc(100svh - var(--header-spacer));
+  max-height: calc(100svh - var(--header-spacer));
+  height: 100%;
+  @include mixins.breakpoint(vars.$sm-bp) {
+    position: relative;
+    top: 0;
+    max-height: calc(100% - 4.8rem);
+  }
+  .facets-menuinner,
+  .mobile-facets__footer {
+    padding-left: 2.4rem;
+    padding-right: 2.4rem;
+  }
+}
+
+.facets-menuinner {
   max-height: 100%;
+  overflow-y: auto;
+  padding-top: 3.2rem;
+  padding-bottom: 3.2rem;
+  overscroll-behavior: contain;
+}
+
+.mobile-facets__main {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 @keyframes fadeEffect {
@@ -72,11 +123,17 @@
 
 .mobile-facets__details {
   border-bottom: 0.1rem solid var(--black);
+  & + & {
+    margin-top: 1rem;
+  }
+  &[open] {
+    padding-bottom: 1rem;
+  }
 }
 
 .mobile-facets__summary {
-  padding-top: 1.8rem;
-  padding-bottom: 1.8rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
   position: relative;
 
   &::before,
@@ -122,6 +179,7 @@
   cursor: pointer;
   padding-top: 1rem;
   padding-bottom: 1rem;
+  position: relative;
   input {
     opacity: 0;
     pointer-events: none;
@@ -169,11 +227,17 @@
 
 .mobile-facets__footer {
   margin-top: auto;
-  padding-top: 11.5rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  
+  background-color: var(--white);
+  padding-top: 2rem;
+  border-top: 0.1rem solid rgba($color: #000000, $alpha: 0.1);
+  padding-bottom: 3.2rem;
+  @include mixins.breakpoint(vars.$xl-bp) {
+    padding-top: 1.6rem;
+    gap: 1.6rem;
+  }
 }
 
 .facets-buttons {
@@ -184,4 +248,16 @@
 
 .mobile-facets__clear {
   width: 100%;
+}
+
+.mobile-facets__inner {
+  height: 100%;
+}
+
+.facets-switches {
+  padding-bottom: 2rem;
+  border-bottom: 0.1rem solid rgba($color: #000000, $alpha: 0.1);
+  & + & {
+    margin-top: 2rem;
+  }
 }

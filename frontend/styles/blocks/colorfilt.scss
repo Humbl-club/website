@@ -1,27 +1,125 @@
 @use "../mixins";
 @use "../vars";
 
-.colorfilt-title {
-  text-align: center;
+.colorfilt {
+  @include mixins.breakpoint(vars.$xl-bp) {
+    padding-bottom: 3.2rem;
+  }
 }
 
-.colorfilt-subtitle {
-  margin-top: 3.2rem;
+.colorfilt-title {
+  text-align: center;
+  line-height: 1;
+  @include mixins.breakpoint(vars.$sm-bp) {
+    text-align: start;
+  }
 }
+
 .colorfilt-middle {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 1rem;
+  margin-top: 3.2rem;
 }
+
 .colorfilt-swiper {
   padding-top: 2rem;
+
   .swiper-slide {
     width: 28.8rem;
     margin-right: 2rem;
+    @include mixins.breakpoint(vars.$xl-bp) {
+      width: 16.6rem;
+    }
+    @include mixins.breakpoint(vars.$sm-bp) {
+      margin-right: 1rem;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
   }
+}
+
+label.colorfilt-item {
+  cursor: pointer;
 }
 
 .colorfilt-item {
   background-color: #F6F6F6;
+  position: relative;
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      &::before {
+        background-color: rgba($color: #000000, $alpha: 0.2);
+        opacity: 1;
+      }
+    }
+  }
+
+  &.checked {
+    &::before {
+      opacity: 1;
+      border-color: var(--black);
+    }
+  }
+
+  &::before {
+    content: '';
+    width: 100%;
+    height: 100%;
+    border: 0.2rem solid transparent;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: opacity var(--time), background-color var(--time), border-color var(--time);
+    opacity: 0;
+    z-index: 1;
+  }
+
+  input {
+    display: none;
+  }
+}
+
+.colorfilt-bot {
+  display: flex;
+  bottom: 1rem;
+  left: 1rem;
+  right: 1rem;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.5);
+  padding: 0.4rem 0.4rem 0.4rem 1rem;
+  position: absolute;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 2;
+  @include mixins.breakpoint(vars.$xl-bp) {
+    padding: 0.2rem;
+    padding-left: 0.8rem;
+    left: 0.4rem;
+    right: 0.4rem;
+    bottom: 0.4rem;
+  }
+}
+
+.colorfilt-box {
+  width: 5rem;
+  height: 5rem;
+  display: block;
+  @include mixins.breakpoint(vars.$xl-bp) {
+    width: 4rem;
+    height: 4rem;
+  }
+}
+
+.colorfilt-pagination{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
 }
