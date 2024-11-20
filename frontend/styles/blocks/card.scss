@@ -113,6 +113,21 @@
   transform: translate3d(0, 0, 0);
   opacity: 0;
   transition: opacity var(--time);
+  @include mixins.breakpoint(vars.$xl-bp) {
+    display: none;
+  }
+
+  &.only-modal {
+    backdrop-filter: none;
+    background-color: transparent;
+    opacity: 1;
+    position: static;
+    justify-content: flex-start;
+  }
+}
+
+.only-modal {
+  display: none;
 }
 
 .card-sizebtn {
@@ -142,23 +157,32 @@
   display: none;
 
   @include mixins.breakpoint(vars.$xl-bp) {
-    width: 3rem;
-    height: 3rem;
-    backdrop-filter: blur(10px);
-    background: rgba(255, 255, 255, 0.5);
-    transform: translate3d(0, 0, 0);
     position: absolute;
-    bottom: 0.4rem;
-    right: 0.4rem;
+    bottom: 0;
+    right: 0;
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 15;
+    padding: 0.4rem;
 
     svg {
       width: 1.4rem;
       height: 1.4rem;
     }
   }
+}
+
+.card-btninner{
+  width: 3rem;
+  height: 3rem;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.5);
+  transform: translate3d(0, 0, 0);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .card-title {
@@ -187,4 +211,8 @@
     gap: 0.5rem;
     margin-top: 0.8rem;
   }
+}
+
+.card-hiddenlink {
+  display: none;
 }
