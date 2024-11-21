@@ -72,6 +72,10 @@ export default class CartItems extends window.HTMLElement {
         this.classList.toggle('is-empty', parsedState.item_count === 0)
         const cartDrawerWrapper = document.querySelector('cart-drawer')
 
+        if (parsedState?.errors) {
+          throw new Error(parsedState.errors)
+        }
+
         if (cartDrawerWrapper)
           cartDrawerWrapper.classList.toggle(
             'is-empty',
@@ -114,15 +118,14 @@ export default class CartItems extends window.HTMLElement {
         }
         this.disableLoading()
       })
-      .catch(() => {
+      .catch((err) => {
         this.querySelectorAll('.loading-overlay').forEach((overlay) =>
           overlay.classList.add('hidden')
         )
         const errors =
           document.getElementById('cart-errors') ||
           document.getElementById('CartDrawer-CartErrors')
-        errors.textContent = window.cartStrings.error
-        console.log(window.cartStrings)
+        errors.textContent = err
         this.disableLoading()
       })
   }
@@ -161,6 +164,7 @@ export default class CartItems extends window.HTMLElement {
   }
 
   enableLoading(line) {
+    document.documentElement.classList.add('loading')
     const mainCartItems =
       document.getElementById('main-cart-items') ||
       document.getElementById('CartDrawer-CartItems')
@@ -184,6 +188,7 @@ export default class CartItems extends window.HTMLElement {
   }
 
   disableLoading() {
+    document.documentElement.classList.remove('loading')
     const mainCartItems =
       document.getElementById('main-cart-items') ||
       document.getElementById('CartDrawer-CartItems')

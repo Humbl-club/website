@@ -265,7 +265,9 @@ h2,
   font-size: 1.4rem;
   line-height: 150%;
   letter-spacing: -0.04em;
-
+  @include mixins.breakpoint(vars.$sm-bp) {
+    font-size: 1.2rem; 
+  }
 }
 
 .body-3 {
@@ -352,11 +354,13 @@ h2,
   }
 }
 
-.shopify-section+.shopify-section {
-  margin-top: 6rem;
-
-  @include mixins.breakpoint(vars.$xl-bp) {
-    margin-top: 4rem;
+main {
+  .shopify-section+.shopify-section {
+    margin-top: 6rem;
+  
+    @include mixins.breakpoint(vars.$xl-bp) {
+      margin-top: 4rem;
+    }
   }
 }
 
@@ -501,6 +505,19 @@ h2,
   input,
   .mobile-facets__clear-wrapper {
     pointer-events: none;
+  }
+}
+
+[data-error-message] {
+
+  .collection .card & {
+    position: absolute;
+    bottom: 12rem;
+    left: 1rem;
+    width: calc(100% - 4rem);
+    animation: fadeEffect var(--time);
+    opacity: 0;
+    transition: opacity var(--time)
   }
 }
 

@@ -7,15 +7,27 @@ class QuantityInput extends window.HTMLElement {
     this.querySelectorAll('button').forEach((button) =>
       button.addEventListener('click', this.onButtonClick.bind(this))
     )
+    this.querySelector('input').addEventListener(
+      'input',
+      this.onInput.bind(this)
+    )
   }
 
   onButtonClick(event) {
     event.preventDefault()
     const previousValue = this.input.value
 
-    event.currentTarget.name === 'plus' ? this.input.stepUp() : this.input.stepDown()
+    event.currentTarget.name === 'plus'
+      ? this.input.stepUp()
+      : this.input.stepDown()
     if (previousValue !== this.input.value)
       this.input.dispatchEvent(this.changeEvent)
+  }
+
+  onInput(event) {
+    if (event.target.value > event.target.max) {
+      event.target.value = event.target.max
+    }
   }
 }
 
