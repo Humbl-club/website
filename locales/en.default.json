@@ -253,7 +253,16 @@
       "title": "Search results",
       "search_for": "Search for “{{ terms }}”",
       "suggestions": "Suggestions",
-      "pages": "Pages"
+      "pages": "Pages",
+      "product_count": {
+        "one": "{{ product_count }} of {{ count }} product",
+        "other": "{{ product_count }} of {{ count }} products",
+        "zero": "No results"
+      },
+      "product_count_simple": {
+        "one": "{{ count }} result",
+        "other": "{{ count }} results"
+      },
     },
     "cart": {
       "cart": "Cart"

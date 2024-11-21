@@ -1,15 +1,10 @@
 @use "../mixins";
 @use "../vars";
 
-.colorfilt {
-  @include mixins.breakpoint(vars.$xl-bp) {
-    padding-bottom: 3.2rem;
-  }
-}
-
 .colorfilt-title {
   text-align: center;
   line-height: 1;
+
   @include mixins.breakpoint(vars.$sm-bp) {
     text-align: start;
   }
@@ -25,13 +20,17 @@
 
 .colorfilt-swiper {
   padding-top: 2rem;
-
+  @include mixins.breakpoint(vars.$xl-bp) {
+    padding-bottom: 3.2rem;
+  }
   .swiper-slide {
     width: 28.8rem;
     margin-right: 2rem;
+
     @include mixins.breakpoint(vars.$xl-bp) {
       width: 16.6rem;
     }
+
     @include mixins.breakpoint(vars.$sm-bp) {
       margin-right: 1rem;
     }
@@ -50,9 +49,17 @@ label.colorfilt-item {
   background-color: #F6F6F6;
   position: relative;
   height: 34rem;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+
   @include mixins.breakpoint(vars.$max-bp) {
     height: mixins.fluid(198px, 340px);
   }
+
   @include mixins.breakpoint(vars.$sm-bp) {
     height: 19.8rem;
   }
@@ -84,6 +91,7 @@ label.colorfilt-item {
     transition: opacity var(--time), background-color var(--time), border-color var(--time);
     opacity: 0;
     z-index: 1;
+
     @include mixins.breakpoint(vars.$sm-bp) {
       border-width: 0.1rem;
     }
@@ -108,6 +116,7 @@ label.colorfilt-item {
   align-items: center;
   justify-content: space-between;
   z-index: 2;
+
   @include mixins.breakpoint(vars.$xl-bp) {
     padding: 0.2rem;
     padding-left: 0.8rem;
@@ -121,13 +130,14 @@ label.colorfilt-item {
   width: 5rem;
   height: 5rem;
   display: block;
+
   @include mixins.breakpoint(vars.$xl-bp) {
     width: 4rem;
     height: 4rem;
   }
 }
 
-.colorfilt-pagination{
+.colorfilt-pagination {
   display: flex;
   align-items: center;
   justify-content: center;

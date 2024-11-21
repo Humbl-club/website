@@ -12,19 +12,6 @@ class CartDrawer extends window.HTMLElement {
       'click',
       this.close.bind(this)
     )
-
-    // this.init()
-  }
-
-  init() {
-    document.addEventListener('click', (event) => {
-      if (
-        event.target.classList.contains('card-sizebtn') &&
-        event.target.classList.contains('available')
-      ) {
-        this.open(event.target)
-      }
-    })
   }
 
   open(triggeredBy) {

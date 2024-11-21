@@ -6,17 +6,8 @@
 }
 
 .collection-title {
-  font-family: var(--third-family);
-  font-weight: 400;
-  font-size: 4rem;
-  line-height: 110%;
-  letter-spacing: -0.06em;
-  color: var(--black);
   text-align: center;
-
-  @include mixins.breakpoint(vars.$xl-bp) {
-    font-size: 3.2rem;
-  }
+  text-transform: capitalize;
 }
 
 .collection-count {
@@ -48,7 +39,7 @@
 
   @include mixins.breakpoint(vars.$xl-bp) {
     grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    gap: 2.8rem 1rem;
   }
 }
 
@@ -57,14 +48,16 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   @include mixins.breakpoint(vars.$xl-bp) {
     margin-top: 3.2rem;
   }
 
   &::before {
     content: '';
+
     @include mixins.breakpoint(vars.$xl-bp) {
-    content: normal;
+      content: normal;
     }
   }
 }
@@ -72,6 +65,12 @@
 .collection-up {
   width: 2.4rem;
   height: 2.4rem;
+  fill: var(--black);
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      fill: var(--blue);
+    }
+  }
 }
 
 .collection-filterspace {
@@ -79,6 +78,8 @@
 }
 
 .collection-middle {
+  padding-top: 5rem;
+
   @include mixins.breakpoint(vars.$xl-bp) {
     padding-top: 3rem;
   }

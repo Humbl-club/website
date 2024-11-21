@@ -132,6 +132,7 @@ svg {
   display: block;
 }
 
+.wrapper-desctop,
 .wrapper {
   padding-right: 32rem;
   padding-left: 32rem;
@@ -141,6 +142,20 @@ svg {
     padding-left: 4.6rem;
   }
 
+  @include mixins.breakpoint(vars.$xl-bp) {
+    padding-right: 1.6rem;
+    padding-left: 1.6rem;
+  }
+}
+
+.wrapper-desctop {
+  @include mixins.breakpoint(vars.$xl-bp) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.wrapper-mobile {
   @include mixins.breakpoint(vars.$xl-bp) {
     padding-right: 1.6rem;
     padding-left: 1.6rem;
@@ -518,6 +533,13 @@ main {
     animation: fadeEffect var(--time);
     opacity: 0;
     transition: opacity var(--time)
+  }
+
+  #mobile-modal & {
+    position: absolute;
+    bottom: 5.5rem;
+    left: 1.6rem;
+    width: calc(100% - 3.2rem);
   }
 }
 
