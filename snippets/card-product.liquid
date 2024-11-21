@@ -20,23 +20,18 @@
 
     <div class="card-image img-cover">
       {% if image_hover %}
-        <img
-          srcset="
-            {%- if image_hover.width >= 165 -%}{{ image_hover | image_url: width: 165 }} 165w,{%- endif -%}
-            {%- if image_hover.width >= 360 -%}{{ image_hover | image_url: width: 360 }} 360w,{%- endif -%}
-            {%- if image_hover.width >= 442 -%}{{ image_hover | image_url: width: 442 }} 442w,{%- endif -%}
-            {%- if image_hover.width >= 720 -%}{{ image_hover | image_url: width: 720 }} 720w,{%- endif -%}
-            {%- if image_hover.width >= 940 -%}{{ image_hover | image_url: width: 940 }} 940w,{%- endif -%}
-            {%- if image_hover.width >= 1066 -%}{{ image_hover | image_url: width: 1066 }} 1066w,{%- endif -%}
-            {{ card_product.featured_media | image_url }} {{ card_product.featured_media.width }}w
-          "
-          class="card-hover"
-          src="{{ image_hover | image_url: width: 442 }}"
-          alt="{{ image_hover.alt | escape }}"
-          loading="lazy"
-          width="{{ image_hover.width }}"
-          height="{{ image_hover.height }}"
-        >
+        {{
+          image_hover
+          | image_url: width: 442, height: 500
+          | image_tag:
+            loading: 'lazy',
+            width: image_hover.width,
+            height: image_hover.height,
+            widths: '375, 412, 442',
+            alt: image_hover.alt,
+            class: 'card-hover'
+          | escape
+        }}
       {% endif %}
 
       {%- if card_product.featured_media -%}
@@ -45,14 +40,11 @@
           srcset="
             {%- if card_product.featured_media.width >= 165 -%}{{ card_product.featured_media | image_url: width: 165 }} 165w,{%- endif -%}
             {%- if card_product.featured_media.width >= 360 -%}{{ card_product.featured_media | image_url: width: 360 }} 360w,{%- endif -%}
-            {%- if card_product.featured_media.width >= 442 -%}{{ card_product.featured_media | image_url: width: 442 }} 442w,{%- endif -%}
-            {%- if card_product.featured_media.width >= 720 -%}{{ card_product.featured_media | image_url: width: 720 }} 720w,{%- endif -%}
-            {%- if card_product.featured_media.width >= 940 -%}{{ card_product.featured_media | image_url: width: 940 }} 940w,{%- endif -%}
-            {%- if card_product.featured_media.width >= 1066 -%}{{ card_product.featured_media | image_url: width: 1066 }} 1066w,{%- endif -%}
+            {%- if card_product.featured_media.width >= 442 -%}{{ card_product.featured_media | image_url: width: 442, height: 500 }} 442w,{%- endif -%}
             {{ card_product.featured_media | image_url }} {{ card_product.featured_media.width }}w
           "
           class="card-img"
-          src="{{ card_product.featured_media | image_url: width: 442 }}"
+          src="{{ card_product.featured_media | image_url: width: 442, height: 500 }}"
           alt="{{ card_product.featured_media.alt | escape }}"
           {% unless lazy_load == false %}
             loading="lazy"
@@ -96,6 +88,32 @@
       {%- render 'price', product: card_product -%}
 
       {% render 'sizes', card_product: card_product, addClass: 'button-title-5 only-modal' %}
+
+      <product-form client:idle>
+        <p class="text-red-500" role="alert" data-error-message hidden></p>
+        {%- assign product_form_id = 'product-form-' | append: section.id -%}
+        {%- form 'product',
+          card_product,
+          id: product_form_id,
+          class: 'form',
+          novalidate: 'novalidate',
+          data-type: 'add-to-cart-form'
+        -%}
+          <input
+            type="hidden"
+            name="id"
+            value=""
+            disabled
+          >
+          <button
+            type="submit"
+            name="add"
+            hidden
+          >
+            {{ 'products.product.add_to_cart' | t }}
+          </button>
+        {%- endform -%}
+      </product-form>
     </div>
   </div>
 {%- else -%}

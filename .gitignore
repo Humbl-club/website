@@ -38,3 +38,4 @@ assets/.vite
 *.sln
 *.sw?
 assets/.vite/manifest.json
+snippets/vite-tag.liquid
