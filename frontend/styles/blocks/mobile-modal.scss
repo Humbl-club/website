@@ -2,90 +2,102 @@
 @use "../vars";
 
 #mobile-modal-overlay {
-  pointer-events: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 50;
-  background-color: transparent;
-  opacity: 0;
-  animation: FadeOut var(--time) ease-in-out;
-  #mobile-modal.open + & {
-    display: block;
-    opacity: 1;
-    animation: FadeIn 1s ease-in-out;
-    pointer-events: all;
-    background-color: rgba($color: #000000, $alpha: 0.4);
-  }
-}
-
-#mobile-modal {
-  background-color: var(--white);
-  padding: 1.6rem;
-  padding-bottom: 8.2rem;
-  position: fixed;
-  left: 0;
-  right: 0;
-  width: 100%;
-  bottom: -5rem;
-  z-index: 100;
-  transform: translateY(100%);
-  display: flex;
-  gap: 1.2rem;
-  border-top: 0.1rem solid rgba($color: #000000, $alpha: 0.1);
-  transition: transform var(--time);
-  &.open {
-    transform: translateY(0);
-  }
-
-
-  .card-image {
-    width: 8.8rem;
-    height: 10rem;
-    &::before {
-      content: normal;
-    }
-  }
-  .card-title {
-    a {
-      &::before {
-        content: normal;
-      }
-    }
-  }
-  .card-favorite,
-  .card-cart {
-    display: none;
-  }
-  .card-hiddenlink {
-    display: block;
-    position: absolute;
+  display: none;
+  @include mixins.breakpoint(vars.$xl-bp) {
+    pointer-events: none;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-  }
+    z-index: 50;
+    background-color: transparent;
+    opacity: 0;
+    animation: FadeOut var(--time) ease-in-out;
 
-  .card-bot {
-    justify-content: flex-start;
-    gap: 0;
-    margin-top: 0;
-  }
-
-  .card-price {
-    margin-top: 0.3rem;
-  }
-
-  .card-sizebtn{
-    &:first-child {
-      padding-left: 0;
+    #mobile-modal.open+& {
+      display: block;
+      opacity: 1;
+      animation: FadeIn 1s ease-in-out;
+      pointer-events: all;
+      background-color: rgba($color: #000000, $alpha: 0.4);
     }
   }
+}
 
-  .only-modal {
+#mobile-modal {
+  display: none;
+
+  @include mixins.breakpoint(vars.$xl-bp) {
+    background-color: var(--white);
+    padding: 1.6rem;
+    padding-bottom: 8.2rem;
+    position: fixed;
+    left: 0;
+    right: 0;
+    width: 100%;
+    bottom: -5rem;
+    z-index: 100;
+    transform: translateY(100%);
     display: flex;
+    gap: 1.2rem;
+    border-top: 0.1rem solid rgba($color: #000000, $alpha: 0.1);
+    transition: transform var(--time);
+
+    &.open {
+      transform: translateY(0);
+    }
+
+    .card-image {
+      width: 8.8rem;
+      height: 10rem;
+
+      &::before {
+        content: normal;
+      }
+    }
+
+    .card-title {
+      a {
+        &::before {
+          content: normal;
+        }
+      }
+    }
+
+    .card-favorite,
+    .card-cart {
+      display: none;
+    }
+
+    .card-hiddenlink {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .card-bot {
+      justify-content: flex-start;
+      gap: 0;
+      margin-top: 0;
+    }
+
+    .card-price {
+      margin-top: 0.3rem;
+    }
+
+    .card-sizebtn {
+      &:first-child {
+        padding-left: 0;
+      }
+    }
+
+    .only-modal {
+      display: flex;
+    }
   }
 }
 
@@ -94,10 +106,12 @@
     display: none;
     opacity: 0;
   }
+
   1% {
     display: block;
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
@@ -108,12 +122,14 @@
     display: block;
     opacity: 1;
   }
+
   99% {
     display: block;
     opacity: 0;
   }
+
   100% {
-    display:none;
+    display: none;
     opacity: 0;
   }
 }

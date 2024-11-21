@@ -98,6 +98,9 @@ function initCardButtons() {
     const mobileModal = document.getElementById('mobile-modal')
     if (mobileModal) {
       cardsMobile.forEach((btn) => {
+        if (btn.classList.contains('inited')) {
+          return
+        }
         btn.addEventListener('click', function () {
           const card = this.closest('.card')
           if (card) {
@@ -105,16 +108,17 @@ function initCardButtons() {
             mobileModal.innerHTML = card.innerHTML
           }
         })
+        btn.classList.add('inited')
       })
       const mobileoverlay = document.getElementById('mobile-modal-overlay')
-      setTimeout(() => {
-        mobileoverlay.addEventListener('click', function () {
-          this.previousElementSibling.classList.remove('open')
-        })
+      mobileoverlay.addEventListener('click', function () {
+        this.previousElementSibling.classList.remove('open')
       })
     }
   }
 }
+
+xl.addEventListener('change', initCardButtons)
 
 initCardButtons()
 
@@ -223,6 +227,7 @@ class FacetFiltersForm extends window.HTMLElement {
         initButtons()
         initFacetContainer()
         countFilters()
+        initCardButtons()
         if (typeof initializeScrollAnimationTrigger === 'function')
           window.initializeScrollAnimationTrigger(html.innerHTML)
       })
