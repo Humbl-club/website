@@ -10,7 +10,8 @@
 {% if sizes != '' %}
   <div class="card-sizes {{ addClass }}">
     {% for variant in card_product.variants %}
-      {% assign ntitle = variant.title | split: '/ ' | first | strip %}
+      {% assign ntitle_array = variant.title | split: '/ ' %}
+      {% assign ntitle = ntitle_array[1] | strip %}
       {% assign ntitle = ',' | append: ntitle | append: ',' %}
       {% if sizes contains ntitle %}
         <button
