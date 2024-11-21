@@ -122,6 +122,7 @@ export default class CartItems extends window.HTMLElement {
           document.getElementById('cart-errors') ||
           document.getElementById('CartDrawer-CartErrors')
         errors.textContent = window.cartStrings.error
+        console.log(window.cartStrings)
         this.disableLoading()
       })
   }
@@ -177,7 +178,9 @@ export default class CartItems extends window.HTMLElement {
     )
 
     document.activeElement.blur()
-    this.lineItemStatusElement.setAttribute('aria-hidden', false)
+    if (this.lineItemStatusElement) {
+      this.lineItemStatusElement.setAttribute('aria-hidden', false)
+    }
   }
 
   disableLoading() {
