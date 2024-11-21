@@ -11,7 +11,7 @@ class MobileModal extends window.HTMLElement {
         event.target.classList.contains('card-sizebtn') &&
         event.target.classList.contains('available')
       ) {
-        const card = this.closest('.card, #mobile-modal')
+        const card = event.target.closest('.card, #mobile-modal')
         if (card) {
           const input = card.querySelector('input[name="id"]')
           if (input) {
