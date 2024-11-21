@@ -88,6 +88,32 @@
       {%- render 'price', product: card_product -%}
 
       {% render 'sizes', card_product: card_product, addClass: 'button-title-5 only-modal' %}
+
+      <product-form client:idle>
+        <p class="text-red-500" role="alert" data-error-message hidden></p>
+        {%- assign product_form_id = 'product-form-' | append: section.id -%}
+        {%- form 'product',
+          card_product,
+          id: product_form_id,
+          class: 'form',
+          novalidate: 'novalidate',
+          data-type: 'add-to-cart-form'
+        -%}
+          <input
+            type="hidden"
+            name="id"
+            value=""
+            disabled
+          >
+          <button
+            type="submit"
+            name="add"
+            hidden
+          >
+            {{ 'products.product.add_to_cart' | t }}
+          </button>
+        {%- endform -%}
+      </product-form>
     </div>
   </div>
 {%- else -%}

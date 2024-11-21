@@ -13,7 +13,7 @@ class CartDrawer extends window.HTMLElement {
       this.close.bind(this)
     )
 
-    this.init()
+    // this.init()
   }
 
   init() {

@@ -122,30 +122,6 @@ xl.addEventListener('change', initCardButtons)
 
 initCardButtons()
 
-class MobileModal extends window.HTMLElement {
-  constructor() {
-    super()
-    this.closeModal = () => {
-      this.closeModal.bind(this)
-    }
-    setTimeout(() => {
-      this.addEventListener('click', () => {
-        this.closeModal.apply(this)
-      })
-    })
-  }
-
-  openModal() {
-    this.classList.add('open')
-  }
-
-  closeModal() {
-    this.classList.remove('open')
-  }
-}
-
-window.customElements.define('mobile-modal', MobileModal)
-
 class FacetFiltersForm extends window.HTMLElement {
   constructor() {
     super()
