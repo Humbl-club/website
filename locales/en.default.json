@@ -294,10 +294,13 @@
     "cart": {
       "title": "Your cart",
       "caption": "Cart items",
+      "remove": "Remove",
       "remove_title": "Remove {{ title }}",
+      "move_to_wishlist": "Move to wishlist",
       "estimated_total": "Estimated total",
       "new_estimated_total": "New estimated total",
       "note": "Order special instructions",
+      "view_bag": "View bag",
       "checkout": "Check out",
       "empty": "Your cart is empty",
       "cart_error": "There was an error while updating your cart. Please try again.",
