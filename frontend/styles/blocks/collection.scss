@@ -41,6 +41,17 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 2.8rem 1rem;
   }
+
+  &.mob-cols-1 {
+    @include mixins.breakpoint(vars.$sm-bp) {
+      display: flex;
+      flex-direction: column;
+
+      .card-image {
+        height: 35rem;
+      }
+    }
+  }
 }
 
 .collection-bot {

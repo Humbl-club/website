@@ -620,6 +620,11 @@
     width: 2rem;
     height: 2rem;
     transition: opacity var(--time);
+    @media (hover: hover) and (pointer: fine) {
+    &:hover {
+    fill: var(--blue);
+    }
+    }
     &.next {
       svg {
         transform: rotate(180deg);
