@@ -115,7 +115,7 @@
           {%- endif -%}
 
           <div
-            class="product-count light{% if filter_type == 'vertical' or filter_type == 'horizontal' %} medium-hide large-up-hide{% endif %}"
+            class="product-count"
             role="status"
           >
             <h2 class="collection-count">
@@ -134,7 +134,6 @@
                 {%- endif -%}
               </span>
             </h2>
-            {%- render 'loading-spinner' -%}
           </div>
         </div>
 

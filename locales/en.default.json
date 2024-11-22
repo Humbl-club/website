@@ -301,7 +301,7 @@
       }
     },
     "cart": {
-      "title": "Your cart",
+      "title": "My bag",
       "caption": "Cart items",
       "remove": "Remove",
       "remove_title": "Remove {{ title }}",
