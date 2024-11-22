@@ -18,6 +18,10 @@
       <div class="swiper colorfilt-swiper wrapper-mobile section-pb">
         <div class="swiper-wrapper">
           {% for filter in collection.filters %}
+            {%- assign lazy = 'eager' -%}
+            {%- if forloop.index > 6 -%}
+              {%- assign lazy = 'lazy' -%}
+            {%- endif -%}
             {% case filter.type %}
               {% when 'boolean', 'list' %}
                 {% if filter.label == 'Color' %}
@@ -39,7 +43,7 @@
                         {% if value.image %}
                           {% assign img = value.image
                             | image_url: width: 288, height: 340
-                            | image_tag: height: 340, width: 288, alt: item.label
+                            | image_tag: height: 340, width: 288, alt: item.label, loading: lazy
                           %}
                         {% endif %}
                       {% endif %}
@@ -174,7 +178,7 @@
                 {% assign skip_card_product_styles = false %}
                 {%- for product in collection.products -%}
                   {% assign lazy_load = false %}
-                  {%- if forloop.index > 2 -%}
+                  {%- if forloop.index > 4 -%}
                     {%- assign lazy_load = true -%}
                   {%- endif -%}
                   <li

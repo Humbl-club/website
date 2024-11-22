@@ -185,7 +185,17 @@
 
                           {% render 'price', product: item, use_variant: true, price_class: 'subhead-2 mt-8' %}
 
-                          {{ item.options }}
+                          {% for option in item.options_with_values %}
+                            {% if option.name == 'Size' %}
+                              <select>
+                                {% for value in option.values %}
+                                  <option value="{{ value.value }}">{{ value.name }}</option>
+                                {% endfor %}
+                              </select>
+                            {% endif %}
+                          {% endfor %}
+
+                          {% comment %} {{ item.options_with_values | json }} {% endcomment %}
                         </div>
                       </li>
                     {% endif %}
