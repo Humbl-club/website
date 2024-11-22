@@ -25,8 +25,8 @@
           | image_url: width: 442, height: 500
           | image_tag:
             loading: 'lazy',
-            width: image_hover.width,
-            height: image_hover.height,
+            width: 442,
+            height: 500,
             widths: '375, 412, 442',
             alt: image_hover.alt,
             class: 'card-hover'
@@ -91,7 +91,7 @@
     </div>
 
     <product-form client:idle>
-      <p class="text-red-500" role="alert" data-error-message hidden></p>
+      <p class="body-2 text-red-500" role="alert" data-error-message hidden></p>
       {%- assign product_form_id = 'product-form-' | append: section.id -%}
       {%- form 'product',
         card_product,

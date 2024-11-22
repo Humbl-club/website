@@ -5,7 +5,11 @@
   {% render 'cart-icon-bubble' %}
 {% endcomment %}
 
-<a href="{{ routes.cart_url }}" class="header-cart" id="cart-icon-bubble">
+<a
+  href="{{ routes.cart_url }}"
+  class="header-cart {% if settings.cart_type == 'drawer' and  template != 'cart' %}drawer{% endif %}"
+  id="cart-icon-bubble"
+>
   {% if cart == empty %}
     {% render 'icon-cart' %}
   {% else %}

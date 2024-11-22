@@ -253,7 +253,16 @@
       "title": "Search results",
       "search_for": "Search for “{{ terms }}”",
       "suggestions": "Suggestions",
-      "pages": "Pages"
+      "pages": "Pages",
+      "product_count": {
+        "one": "{{ product_count }} of {{ count }} product",
+        "other": "{{ product_count }} of {{ count }} products",
+        "zero": "No results"
+      },
+      "product_count_simple": {
+        "one": "{{ count }} result",
+        "other": "{{ count }} results"
+      },
     },
     "cart": {
       "cart": "Cart"
@@ -292,7 +301,7 @@
       }
     },
     "cart": {
-      "title": "Your cart",
+      "title": "My bag",
       "caption": "Cart items",
       "remove": "Remove",
       "remove_title": "Remove {{ title }}",
@@ -331,6 +340,7 @@
       "taxes_included_but_shipping_at_checkout": "Tax included and shipping calculated at checkout",
       "taxes_included_and_shipping_policy_html": "Tax included. <a href=\"{{ link }}\">Shipping</a> calculated at checkout.",
       "taxes_and_shipping_at_checkout": "Taxes and shipping calculated at checkout",
+      "complete_the_look": "Complete the look",
     },
     "footer": {
       "payment": "Payment methods"

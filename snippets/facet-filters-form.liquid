@@ -172,11 +172,20 @@
 
                               {%- capture label_class -%}
                                   facets__label mobile-facets__label{% if is_disabled %} disabled{% endif %}{% if value.active %} active{% endif %} checkbox
-                                  {%- endcapture -%}
-
+                              {%- endcapture -%}
+                              {%- assign is_tag = false -%}
+                              {% if value.param_name contains 'tag' %}
+                                {%- assign is_tag = true -%}
+                              {% endif %}
                               {%- capture text_value -%}
                                     <span class="facet-checkbox__text" aria-hidden="true">
-                                      <span class="facet-checkbox__text-label body-1">{{- value.label | escape }}</span>
+                                      {% if value.label contains 'Collection::' %}
+                                        {%- assign lab = value.label | split: 'Collection::' -%}
+                                        {%- assign lab = lab[1] | escape -%}
+                                      {% else %}
+                                        {%- assign lab = value.label | escape -%}
+                                      {% endif %}
+                                      <span class="facet-checkbox__text-label body-1">{{- lab -}}</span>
                                     </span>
                                     <span class="visually-hidden">
                                       {{- value.label | escape }} (
@@ -187,40 +196,53 @@
                                       {%- endif -%}
                                       )
                                     </span>
-                                  {%- endcapture -%}
+                              {%- endcapture -%}
 
-                              <li class="mobile-facets__item list-menu__item">
-                                <label for="{{ input_id }}" class="{{ label_class }}">
-                                  <input
-                                    class="mobile-facets__checkbox"
-                                    type="checkbox"
-                                    name="{{ value.param_name }}"
-                                    value="{{ value.value }}"
-                                    id="{{ input_id }}"
-                                    {% if value.active %}
-                                      checked
-                                    {% endif %}
-                                    {% if is_disabled %}
-                                      disabled
-                                    {% endif %}
-                                  >
-                                  <span class="checkbox-box"></span>
+                              {% if is_tag %}
+                                {% if value.label contains 'Collection::' %}
+                                  <li class="mobile-facets__item list-menu__item">
+                                    <label for="{{ input_id }}" class="{{ label_class }}">
+                                      <input
+                                        class="mobile-facets__checkbox"
+                                        type="checkbox"
+                                        name="{{ value.param_name }}"
+                                        value="{{ value.value }}"
+                                        id="{{ input_id }}"
+                                        {% if value.active %}
+                                          checked
+                                        {% endif %}
+                                        {% if is_disabled %}
+                                          disabled
+                                        {% endif %}
+                                      >
+                                      <span class="checkbox-box"></span>
 
-                                  {%- if presentation == 'image' -%}
-                                    <div class="facets__image-wrapper">
-                                      {%- if value.image -%}
-                                        {{
-                                          value.image
-                                          | image_url: width: 300
-                                          | image_tag: class: 'facets__image', alt: value.alt
-                                        }}
-                                      {%- endif -%}
-                                    </div>
-                                  {%- endif %}
+                                      {{ text_value }}
+                                    </label>
+                                  </li>
+                                {% endif %}
+                              {% else %}
+                                <li class="mobile-facets__item list-menu__item">
+                                  <label for="{{ input_id }}" class="{{ label_class }}">
+                                    <input
+                                      class="mobile-facets__checkbox"
+                                      type="checkbox"
+                                      name="{{ value.param_name }}"
+                                      value="{{ value.value }}"
+                                      id="{{ input_id }}"
+                                      {% if value.active %}
+                                        checked
+                                      {% endif %}
+                                      {% if is_disabled %}
+                                        disabled
+                                      {% endif %}
+                                    >
+                                    <span class="checkbox-box"></span>
 
-                                  {{ text_value }}
-                                </label>
-                              </li>
+                                    {{ text_value }}
+                                  </label>
+                                </li>
+                              {% endif %}
                             {%- endfor -%}
                           </ul>
                         </div>
@@ -272,10 +294,10 @@
               {%- if results.results_count -%}
                 {{ 'templates.search.results_with_count' | t: terms: results.terms, count: results.results_count }}
               {%- elsif results.products_count == results.all_products_count -%}
-                {{ 'products.facets.product_count_simple' | t: count: results.products_count }}
+                {{ 'templates.search.product_count_simple' | t: count: results.products_count }}
               {%- else -%}
                 {{
-                  'products.facets.product_count'
+                  'templates.search.product_count'
                   | t: product_count: results.products_count, count: results.all_products_count
                 }}
               {%- endif -%}

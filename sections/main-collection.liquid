@@ -2,62 +2,74 @@
   assign number pagination_count = section.settings.products_per_page
 -%}
 
-<div class="colorfilt section-pb">
-  <h2 class="colorfilt-title subhead-2 wrapper">Shop by Color Drop</h2>
-  <div class="colorfilt-middle wrapper">
-    <h3 class="colorfilt-subtitle headline-2">The Latest</h3>
-    <div class="colorfilt-pagination xl-max:hidden">
-      <button class="swiper-arrow prev">{% render 'icon-swiper-arrow' %}</button>
-      <button class="swiper-arrow next">{% render 'icon-swiper-arrow' %}</button>
+{% if section.settings.enable_filtering %}
+  <div class="colorfilt">
+    <h2 class="colorfilt-title subhead-2 wrapper">Shop by Color Drop</h2>
+
+    <div class="colorfilt-middle wrapper">
+      <h3 class="colorfilt-subtitle headline-2">The Latest</h3>
+      <div class="colorfilt-pagination xl-max:hidden">
+        <button class="swiper-arrow prev">{% render 'icon-swiper-arrow' %}</button>
+        <button class="swiper-arrow next">{% render 'icon-swiper-arrow' %}</button>
+      </div>
+    </div>
+
+    <div class="wrapper-desctop">
+      <div class="swiper colorfilt-swiper wrapper-mobile section-pb">
+        <div class="swiper-wrapper">
+          {% for filter in collection.filters %}
+            {%- assign lazy = 'eager' -%}
+            {%- if forloop.index > 6 -%}
+              {%- assign lazy = 'lazy' -%}
+            {%- endif -%}
+            {% case filter.type %}
+              {% when 'boolean', 'list' %}
+                {% if filter.label == 'Color' %}
+                  {% for item in filter.values %}
+                    {% assign id = 'Filter-'
+                      | append: filter.param_name
+                      | escape
+                      | append: '-mobile-'
+                      | append: forloop.index
+                    %}
+                    {% liquid
+                      assign color = 'transparent'
+                      assign img = null
+                    %}
+
+                    {% for value in shop.metaobjects['shopify--color-pattern'].values %}
+                      {% if value.label == item.label %}
+                        {% assign color = value.color %}
+                        {% if value.image %}
+                          {% assign img = value.image
+                            | image_url: width: 288, height: 340
+                            | image_tag: height: 340, width: 288, alt: item.label, loading: lazy
+                          %}
+                        {% endif %}
+                      {% endif %}
+                    {% endfor %}
+
+                    <label
+                      for="{{ id }}"
+                      class="swiper-slide colorfilt-item img-cover {% if item.active %}checked{% endif %}"
+                    >
+                      {{ img }}
+                      <span class="colorfilt-bot">
+                        <span class="colorfilt-left body-1">
+                          <span class="opacity-50">Color:</span> {{ item.label }}
+                        </span>
+                        <span class="colorfilt-box" style="background-color:{{color}};"></span>
+                      </span>
+                    </label>
+                  {% endfor %}
+                {% endif %}
+            {% endcase %}
+          {% endfor %}
+        </div>
+      </div>
     </div>
   </div>
-  <div class="swiper colorfilt-swiper wrapper">
-    <div class="swiper-wrapper">
-      {% for filter in collection.filters %}
-        {% case filter.type %}
-          {% when 'boolean', 'list' %}
-            {% if filter.label == 'Color' %}
-              {% for item in filter.values %}
-                {% assign id = 'Filter-'
-                  | append: filter.param_name
-                  | escape
-                  | append: '-mobile-'
-                  | append: forloop.index
-                %}
-                {% liquid
-                  assign color = 'transparent'
-                  assign img = null
-                %}
-
-                {% for value in shop.metaobjects['shopify--color-pattern'].values %}
-                  {% if value.label == item.label %}
-                    {% assign color = value.color %}
-                    {% if value.image %}
-                      {% assign img = value.image
-                        | image_url: width: 288, height: 340
-                        | image_tag: height: 340, width: 288, alt: item.label
-                      %}
-                    {% endif %}
-                  {% endif %}
-                {% endfor %}
-
-                <label
-                  for="{{ id }}"
-                  class="swiper-slide colorfilt-item img-cover {% if item.active %}checked{% endif %}"
-                >
-                  {{ img }}
-                  <span class="colorfilt-bot">
-                    <span class="colorfilt-left body-1"> <span class="opacity-50">Color:</span> {{ item.label }} </span>
-                    <span class="colorfilt-box" style="background-color:{{color}};"></span>
-                  </span>
-                </label>
-              {% endfor %}
-            {% endif %}
-        {% endcase %}
-      {% endfor %}
-    </div>
-  </div>
-</div>
+{% endif %}
 
 <div class="collection" id="collection">
   <div
@@ -91,8 +103,8 @@
           %}
         {%- endif -%}
 
-        <div class="collection-middle wrapper section-pt">
-          <h1 class="collection-title">
+        <div class="collection-middle wrapper">
+          <h1 class="collection-title title-1">
             <span class="sr-only">{{ 'sections.collection_template.title' | t }}: </span>
             {% if collection.handle == 'all' %}
               All colors
@@ -107,7 +119,7 @@
           {%- endif -%}
 
           <div
-            class="product-count light{% if filter_type == 'vertical' or filter_type == 'horizontal' %} medium-hide large-up-hide{% endif %}"
+            class="product-count"
             role="status"
           >
             <h2 class="collection-count">
@@ -122,14 +134,10 @@
                 {%- elsif collection.products_count == 0 -%}
                   {{ 'products.facets.product_count.zero' | t }}
                 {%- else -%}
-                  {{
-                    'products.facets.product_count'
-                    | t: product_count: collection.products_count, count: collection.all_products_count
-                  }}
+                  {{ 'products.facets.product_count_simple' | t: count: collection.products_count }}
                 {%- endif -%}
               </span>
             </h2>
-            {%- render 'loading-spinner' -%}
           </div>
         </div>
 
@@ -165,12 +173,12 @@
               <ul
                 id="product-grid"
                 data-id="{{ section.id }}"
-                class="collection-list wrapper section-pt"
+                class="collection-list mob-cols-{{ section.settings.columns_mobile }} wrapper section-pt"
               >
                 {% assign skip_card_product_styles = false %}
                 {%- for product in collection.products -%}
                   {% assign lazy_load = false %}
-                  {%- if forloop.index > 2 -%}
+                  {%- if forloop.index > 4 -%}
                     {%- assign lazy_load = true -%}
                   {%- endif -%}
                   <li
@@ -253,21 +261,13 @@
     {
       "type": "select",
       "id": "quick_add",
-      "default": "none",
+      "default": "standard",
       "label": "t:sections.main-collection-product-grid.settings.quick_add.label",
       "info": "t:sections.main-collection-product-grid.settings.quick_add.info",
       "options": [
         {
-          "value": "none",
-          "label": "t:sections.main-collection-product-grid.settings.quick_add.options.option_1"
-        },
-        {
           "value": "standard",
           "label": "t:sections.main-collection-product-grid.settings.quick_add.options.option_2"
-        },
-        {
-          "value": "bulk",
-          "label": "t:sections.main-collection-product-grid.settings.quick_add.options.option_3"
         }
       ]
     },

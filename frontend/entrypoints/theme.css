@@ -9,6 +9,7 @@
   --black: var(--color-primary, #000);
   --blue: var(--color-accent, #2D4F7F);
   --light-grey: rgba(0, 0, 0, 0.5);
+  --milk: #F6F6F6;
   --time: .5s;
 
   --font-family: "Manrope", sans-serif;

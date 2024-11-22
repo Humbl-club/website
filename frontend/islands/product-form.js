@@ -56,6 +56,10 @@ class ProductForm extends window.HTMLElement {
 
         this.error = false
         this.cart.renderContents(response)
+        const mobilemodal = document.getElementById('mobile-modal')
+        if (mobilemodal) {
+          mobilemodal.classList.remove('open')
+        }
       })
       .catch((e) => {
         console.error(e)
@@ -66,10 +70,6 @@ class ProductForm extends window.HTMLElement {
         if (this.cart && this.cart.classList.contains('is-empty'))
           this.cart.classList.remove('is-empty')
         if (!this.error) this.submitButton.removeAttribute('aria-disabled')
-        const mobilemodal = document.getElementById('mobile-modal')
-        if (mobilemodal) {
-          mobilemodal.classList.remove('open')
-        }
       })
   }
 
