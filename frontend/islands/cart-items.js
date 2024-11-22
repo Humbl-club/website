@@ -125,7 +125,12 @@ export default class CartItems extends window.HTMLElement {
         const errors =
           document.getElementById('cart-errors') ||
           document.getElementById('CartDrawer-CartErrors')
-        errors.textContent = err
+        if (errors) {
+          errors.textContent = err
+        }
+        this.disableLoading()
+      })
+      .finally(() => {
         this.disableLoading()
       })
   }
