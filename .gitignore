@@ -24,6 +24,7 @@ dist
 dist-ssr
 *.local
 assets
+assets/.vite
 
 # Editor directories and files
 .vscode/*
@@ -36,3 +37,5 @@ assets
 *.njsproj
 *.sln
 *.sw?
+assets/.vite/manifest.json
+snippets/vite-tag.liquid

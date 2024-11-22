@@ -1,1 +1,31 @@
-{"logo":"shopify:\/\/shop_images\/Logo.svg","current":{"logo":"shopify:\/\/shop_images\/Logo.svg","logo_width":100,"cart_type":"page","favicon":"shopify:\/\/shop_images\/favicon-32x32.png","sections":{"header":{"type":"header","settings":{"menu":"sidebar-menu","menu2":"secondary-menu","enable_sticky_header":true,"year":"© 2024 Humbl"}},"footer":{"type":"footer","blocks":{"footer-0":{"type":"link_list","settings":{"heading":"Quick links","menu":"footer"}},"footer-1":{"type":"country_selector","settings":{"heading":"Country"}}},"block_order":["footer-0","footer-1"],"settings":{}}},"content_for_index":[]},"presets":{"Default":{}}}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "logo": "shopify://shop_images/Logo.svg",
+  "current": {
+    "logo": "shopify://shop_images/Logo.svg",
+    "logo_width": 100,
+    "cart_type": "drawer",
+    "favicon": "shopify://shop_images/favicon-32x32.png",
+    "sections": {
+      "header": {
+        "type": "header",
+        "settings": {
+          "menu": "sidebar-menu",
+          "menu2": "secondary-menu",
+        }
+      },
+    },
+    "content_for_index": []
+  },
+  "presets": {
+    "Default": {}
+  }
+}

@@ -21,6 +21,7 @@ class ProductForm extends window.HTMLElement {
 
     this.submitButton.setAttribute('aria-disabled', true)
     this.submitButton.classList.add('loading')
+    document.documentElement.classList.add('loading')
 
     const config = fetchConfig('javascript')
     config.headers['X-Requested-With'] = 'XMLHttpRequest'
@@ -55,12 +56,17 @@ class ProductForm extends window.HTMLElement {
 
         this.error = false
         this.cart.renderContents(response)
+        const mobilemodal = document.getElementById('mobile-modal')
+        if (mobilemodal) {
+          mobilemodal.classList.remove('open')
+        }
       })
       .catch((e) => {
         console.error(e)
       })
       .finally(() => {
         this.submitButton.classList.remove('loading')
+        document.documentElement.classList.remove('loading')
         if (this.cart && this.cart.classList.contains('is-empty'))
           this.cart.classList.remove('is-empty')
         if (!this.error) this.submitButton.removeAttribute('aria-disabled')
