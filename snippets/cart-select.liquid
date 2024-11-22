@@ -1,10 +1,16 @@
-<cart-select>
+<cart-select client:visible>
   <div class="custom-select">
-    <select>
+    <select
+      name="{{ name }}"
+      {% if required %}
+        required
+      {% endif %}
+    >
       <option value="">{{ label }}</option>
       {% for value in options %}
         {% if value.available %}
-          <option value="{{ value.id }}">{{ value.name }}</option>
+          {{ value }}
+          <option value="{{ value.id }}">{{ value.option2 }}</option>
         {% endif %}
       {% endfor %}
     </select>

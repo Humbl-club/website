@@ -106,6 +106,7 @@
   &-items {
     max-height: calc(100% - 26rem);
     overflow: auto;
+    flex-grow: 1;
     @include mixins.breakpoint(vars.$sm-bp) {
       max-height: calc(100% - 22rem);
     }
@@ -383,6 +384,19 @@
       width: 8.8rem;
       height: 10rem;
     }
+  }
+
+  &-foot {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem; 
+    margin-top: 2rem;
+  }
+
+  &-add {
+    padding-top: 1.3rem;
+    padding-bottom: 1.3rem;
+    
   }
 }
 

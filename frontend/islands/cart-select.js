@@ -62,6 +62,7 @@ class CartSelect extends window.HTMLElement {
         this.nextSibling.classList.toggle('select-hide')
         this.classList.toggle('select-arrow-active')
       })
+      x[i].classList.add('inited')
     }
 
     function closeAllSelect(elmnt) {

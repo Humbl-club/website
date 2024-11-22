@@ -182,16 +182,36 @@
                               {{- item.title | escape -}}
                             </a>
                           </h3>
-
                           {% render 'price', product: item, use_variant: true, price_class: 'subhead-2 mt-8' %}
 
-                          {% for option in item.options_with_values %}
-                            {% if option.name == 'Size' %}
-                              {% render 'cart-select', label: option.name, options: option.values %}
-                            {% endif %}
-                          {% endfor %}
-
-                          {% comment %} {{ item.options_with_values | json }} {% endcomment %}
+                          {% if item.available %}
+                            <product-form client:idle class="relative">
+                              {%- assign product_form_id = 'product-form-' | append: section.id -%}
+                              {%- form 'product',
+                                item,
+                                id: product_form_id,
+                                class: 'form',
+                                data-type: 'add-to-cart-form'
+                              -%}
+                                <div class="cart-drawer-foot">
+                                  {% render 'cart-select',
+                                    name: 'id',
+                                    label: 'Size',
+                                    options: item.variants,
+                                    required: true
+                                  %}
+                                  <button
+                                    type="submit"
+                                    name="add"
+                                    class="cart-drawer-add btn btn-blue button-title-5"
+                                  >
+                                    {{ 'products.product.add_to_cart' | t }}
+                                  </button>
+                                </div>
+                                <p class="body-2 absolute text-red-500" role="alert" data-error-message hidden></p>
+                              {%- endform -%}
+                            </product-form>
+                          {% endif %}
                         </div>
                       </li>
                     {% endif %}
