@@ -19,9 +19,9 @@
         "type": "header",
         "settings": {
           "menu": "sidebar-menu",
-          "menu2": "secondary-menu"
+          "menu2": "secondary-menu",
         }
-      }
+      },
     },
     "content_for_index": []
   },
