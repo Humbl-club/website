@@ -187,11 +187,7 @@
 
                           {% for option in item.options_with_values %}
                             {% if option.name == 'Size' %}
-                              <select>
-                                {% for value in option.values %}
-                                  <option value="{{ value.value }}">{{ value.name }}</option>
-                                {% endfor %}
-                              </select>
+                              {% render 'cart-select', label: option.name, options: option.values %}
                             {% endif %}
                           {% endfor %}
 

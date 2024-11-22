@@ -1,1 +1,12 @@
-<cart-select></cart-select>
+<cart-select>
+  <div class="custom-select">
+    <select>
+      <option value="">{{ label }}</option>
+      {% for value in options %}
+        {% if value.available %}
+          <option value="{{ value.id }}">{{ value.name }}</option>
+        {% endif %}
+      {% endfor %}
+    </select>
+  </div>
+</cart-select>
