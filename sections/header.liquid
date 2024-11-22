@@ -63,7 +63,8 @@
             {% render 'menu-subscribe' %}
 
             <div class="header-year header-wrapper">
-              {{ section.settings.year }}
+              © {{ 'now' | date: '%Y' }}
+              {{ shop.name | link_to: routes.root_url }}
             </div>
           </div>
         </div>
