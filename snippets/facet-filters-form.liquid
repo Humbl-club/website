@@ -39,6 +39,7 @@
         >
           <div class="facets-menuinner">
             {%- if enable_filtering -%}
+              {{ results.filters.values | json }}
               {%- for filter in results.filters -%}
                 {% liquid
                   assign presentation = filter.presentation | default: default_presentation

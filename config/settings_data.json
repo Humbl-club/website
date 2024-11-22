@@ -12,7 +12,7 @@
   "current": {
     "logo": "shopify://shop_images/Logo.svg",
     "logo_width": 100,
-    "cart_type": "page",
+    "cart_type": "drawer",
     "favicon": "shopify://shop_images/favicon-32x32.png",
     "sections": {
       "header": {

@@ -12,6 +12,8 @@ class CartDrawer extends window.HTMLElement {
       'click',
       this.close.bind(this)
     )
+
+    window.openCartDrawer = this.open.bind(this)
   }
 
   open(triggeredBy) {
