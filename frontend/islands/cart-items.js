@@ -128,7 +128,6 @@ export default class CartItems extends window.HTMLElement {
         if (errors) {
           errors.textContent = err
         }
-        this.disableLoading()
       })
       .finally(() => {
         this.disableLoading()
@@ -197,7 +196,9 @@ export default class CartItems extends window.HTMLElement {
     const mainCartItems =
       document.getElementById('main-cart-items') ||
       document.getElementById('CartDrawer-CartItems')
-    mainCartItems.classList.remove('loading')
+    if (mainCartItems) {
+      mainCartItems.classList.remove('loading')
+    }
   }
 }
 

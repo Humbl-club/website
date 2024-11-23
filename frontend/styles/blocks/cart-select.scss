@@ -1,11 +1,9 @@
+@use '../mixins';
+@use '../vars';
+
 /* The container must be positioned relative: */
 .custom-select {
   position: relative;
-  opacity: 0;
-  transition: opacity var(--time);
-  &.inited {
-    opacity: 1;
-  }
 }
 
 .custom-select select {
@@ -23,6 +21,11 @@
   min-height: 4.5rem;
   padding-right: 3.5rem;
   min-width: 8rem;
+  @include mixins.breakpoint(vars.$xl-bp) {
+    padding: 0.6rem 1rem; 
+    min-width: 7.6rem;
+    min-height: 3.8rem;
+  }
 }
 
 /* Style the arrow inside the select element: */
@@ -54,11 +57,13 @@
 .select-items div,.select-selected {
   // border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
   cursor: pointer;
-
 }
 .select-items > div {
   padding: 0.9rem 1.3rem;
   transition: color var(--time), background-color var(--time);
+  @include mixins.breakpoint(vars.$xl-bp) {
+    padding: 0.6rem 1rem; 
+  }
 }
 /* Style items (options): */
 .select-items {
@@ -67,10 +72,17 @@
   top: 100%;
   left: 0;
   right: 0;
-  z-index: 99;
+  z-index: 20;
   overflow: hidden;
   border: 0.1rem solid var(--black);
   border-top: 0;
+
+  &.--top {
+    top: auto;
+    bottom: 100%;
+    border-top: 0.1rem solid var(--black);
+    border-bottom: 0;
+  }
 }
 
 /* Hide the items when the select box is closed: */

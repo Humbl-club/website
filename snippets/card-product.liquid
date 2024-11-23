@@ -85,7 +85,7 @@
         </a>
       </h3>
 
-      {%- render 'price', product: card_product -%}
+      {%- render 'price', product: card_product, price_class: 'body-1 body-3-mobile' -%}
 
       {% render 'sizes', card_product: card_product, addClass: 'button-title-5 only-modal' %}
     </div>
@@ -123,7 +123,7 @@
       <h3 class="card-title body-1">
         {{ 'onboarding.product_title' | t }}
       </h3>
-      <div class="card-price body-1">
+      <div class="card-price body-1 body-3-mobile">
         {{ 1999 | money_without_trailing_zeros }}
       </div>
     </div>

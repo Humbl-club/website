@@ -173,16 +173,20 @@
                             | escape
                           }}
                         </a>
-                        <div>
+                        <div class="cart-drawer-right">
                           <h3>
                             <a
-                              class="cart-item-name"
+                              class="cart-item-name-2"
                               href="{{ item.url }}"
                             >
                               {{- item.title | escape -}}
                             </a>
                           </h3>
-                          {% render 'price', product: item, use_variant: true, price_class: 'subhead-2 mt-8' %}
+                          {% render 'price',
+                            product: item,
+                            use_variant: true,
+                            price_class: 'subhead-2 body-1-mobile cart-drawer-price'
+                          %}
 
                           {% if item.available %}
                             <product-form client:idle class="relative">
@@ -223,8 +227,8 @@
 
         <div class="cart-drawer-footer">
           <div class="subtotal">
-            <h2 class="subtotal-label">{{ 'sections.cart.subtotal' | t }}</h2>
-            <p class="subtotal-amount">{{ cart.total_price | money_without_trailing_zeros }}</p>
+            <h2 class="subtotal-label headline-1">{{ 'sections.cart.subtotal' | t }}</h2>
+            <p class="subtotal-amount headline-1">{{ cart.total_price | money_without_trailing_zeros }}</p>
           </div>
 
           <div class="cart-drawer-footer-buttons">
