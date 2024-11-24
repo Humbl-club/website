@@ -63,7 +63,7 @@ class CartSelect extends window.HTMLElement {
         // Check if there's enough space below to show the dropdown
         if (spaceBelow < dropdownHeight) {
           // Position dropdown above the button
-          this.nextElementSibling.classList.toggle('--top')
+          this.nextElementSibling.classList.add('--top')
         } else {
           // Position dropdown below the button
           this.nextElementSibling.classList.remove('--top')
