@@ -18,8 +18,8 @@
       "header": {
         "type": "header",
         "settings": {
-          "menu": "sidebar-menu",
-          "menu2": "secondary-menu",
+          "menu": "test-sidebar",
+          "menu2": "test-secondary",
         }
       },
     },
