@@ -5,9 +5,9 @@
 @use "mixins";
 @use "reset";
 
-::-webkit-scrollbar {
-  display: none;
-}
+// ::-webkit-scrollbar {
+//   display: none;
+// }
 
 html {
   box-sizing: border-box;
@@ -557,6 +557,10 @@ main {
     left: 1.6rem;
     width: calc(100% - 3.2rem);
   }
+}
+
+.disable-scroll {
+  overflow: hidden;
 }
 
 /* Blocks */
