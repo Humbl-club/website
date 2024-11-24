@@ -1,6 +1,6 @@
 {% assign position_of_size = 1 %}
 {% for option in item.options_with_values %}
-  {% if option.name == 'Size' %}
+  {% if option.name == label %}
     {%- assign position_of_size = option.position | minus: 1 -%}
     {%- for value in option.values -%}
       {% assign sizes = sizes | append: ',' | append: value | append: ',' %}
@@ -33,3 +33,4 @@
     <div class="select-selected">{{ label }}</div>
   </div>
 </cart-select>
+{% assign position_of_size = 1 %}
