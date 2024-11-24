@@ -21,9 +21,23 @@ export const disableScroll = () => {
     window.innerWidth - document.documentElement.clientWidth
   document.body.style.paddingRight = scrollBarWidth + 'px'
   document.documentElement.classList.add('disable-scroll')
+
+  if (
+    document.documentElement.classList.contains('home-page') &&
+    document.documentElement.classList.contains('sticky-header')
+  ) {
+    const header = document.querySelector('.header')
+    if (header) {
+      header.style.paddingRight = scrollBarWidth + 'px'
+    }
+  }
 }
 
 export const enableScroll = () => {
   document.body.style.paddingRight = ''
   document.documentElement.classList.remove('disable-scroll')
+  const header = document.querySelector('.header')
+  if (header) {
+    header.style.paddingRight = ''
+  }
 }

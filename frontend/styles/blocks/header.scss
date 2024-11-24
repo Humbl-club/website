@@ -46,6 +46,9 @@
 
     .parent-opened~& {
       fill: var(--white);
+      .cart-count-bubble {
+        color: var(--white);
+      }
     }
   }
 
@@ -58,9 +61,11 @@
 
 .cart-count-bubble {
   position: absolute;
-  top: 40%;
-  left: 94%;
-  font-size: 1.4rem;
+  top: 58%;
+  left: 50%;
+  font-size: 1rem;
+  transform: translate(-50%, -50%);
+  transition: color var(--time);
 }
 
 .header-btn {
@@ -326,9 +331,13 @@ input:-webkit-autofill:active {
   align-items: center;
 }
 
+.header__heading-link {
+  position: relative;
+}
+
 .header-icontext {
   position: absolute;
-  top: calc(100% + 1.2rem);
+  top: calc(100% + 3.2rem);
   left: 50%;
   transform: translateX(-50%);
   min-width: 20.4rem;

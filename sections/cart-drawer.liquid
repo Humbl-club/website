@@ -61,7 +61,7 @@
                           </a>
                         </h3>
                         <div class="item-options">
-                          <dl class="grid">
+                          <dl class="flex">
                             {% for option in item.options_with_values %}
                               <dt hidden>{{ option.name }}:</dt>
                               <dd>{{ option.value }}</dd>
@@ -73,7 +73,7 @@
                       {% render 'cart-price', item: item %}
                     </div>
                     <div class="item-actions">
-                      <quantity-input class="quantity-input" client:idle>
+                      <quantity-input class="quantity-input" client:visible>
                         <button
                           class="quantity-btn"
                           type="button"
@@ -131,19 +131,6 @@
                 </div>
               {% endfor %}
               <div class="empty:hidden" id="CartDrawer-CartErrors" role="alert"></div>
-              {% if settings.show_cart_note %}
-                <cart-note client:idle>
-                  <div class="cart-note-form">
-                    <label class="note-label" for="Note">{{ 'sections.cart.note' | t }}</label>
-                    <textarea
-                      class="note-textarea"
-                      name="note"
-                      id="Note"
-                      data-cart-note
-                    >{{ cart.note }}</textarea>
-                  </div>
-                </cart-note>
-              {% endif %}
             </div>
             <p hidden id="CartDrawer-LiveRegionText" class="sr-only" role="status"></p>
             <p hidden id="CartDrawer-LineItemStatus" class="sr-only" aria-hidden="true" role="status">
@@ -176,7 +163,7 @@
                         <div class="cart-drawer-right">
                           <h3>
                             <a
-                              class="cart-item-name-2"
+                              class="cart-item-name"
                               href="{{ item.url }}"
                             >
                               {{- item.title | escape -}}

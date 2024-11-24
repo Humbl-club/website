@@ -5,10 +5,6 @@
 @use "mixins";
 @use "reset";
 
-// ::-webkit-scrollbar {
-//   display: none;
-// }
-
 html {
   box-sizing: border-box;
 
@@ -165,7 +161,7 @@ svg {
 
 .img-contain {
   display: block;
-
+  position: relative;
   img {
     width: 100%;
     height: 100%;
@@ -176,7 +172,7 @@ svg {
 .img-cover {
   display: block;
   overflow: hidden;
-
+  position: relative;
   img {
     width: 100%;
     height: 100%;
@@ -532,6 +528,7 @@ main {
   .loading-ring {
     opacity: 1;
   }
+  button,
   label,
   input,
   .mobile-facets__clear-wrapper {

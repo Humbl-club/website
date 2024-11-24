@@ -335,12 +335,15 @@
         "paragraph_html": "<a href=\"{{ link }}\" class=\"link underlined-link\">Log in<\/a> to check out faster."
       },
       "subtotal": "Subtotal",
+      "subtotalwithvat": "SUBTOTAL (VAT INCLUDED):",
       "new_subtotal": "New subtotal",
       "taxes_and_shipping_policy_at_checkout_html": "Taxes and <a href=\"{{ link }}\">shipping</a> calculated at checkout",
       "taxes_included_but_shipping_at_checkout": "Tax included and shipping calculated at checkout",
       "taxes_included_and_shipping_policy_html": "Tax included. <a href=\"{{ link }}\">Shipping</a> calculated at checkout.",
       "taxes_and_shipping_at_checkout": "Taxes and shipping calculated at checkout",
       "complete_the_look": "Complete the look",
+      "free_shipping": "Free shipping on orders over {{ count }}",
+      "shipping": "SHIPPING",
     },
     "footer": {
       "payment": "Payment methods"
