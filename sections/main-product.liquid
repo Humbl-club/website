@@ -11,7 +11,28 @@
     {% if section.settings.show_vendor %}
       <p class="headline-1">{{ product.vendor }}</p>
     {% endif %}
-    {% render 'price', product: product, use_variant: true, price_class: 'product-title headline-1' %}
+
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {%- when 'price' -%}
+          {% render 'price', product: product, use_variant: true, price_class: 'product-title headline-1' %}
+
+        {%- when 'tab' -%}
+          <div {{ block.shopify_attributes }}>
+            <details class="mobile-facets__details" id="Details-{{ block.id }}-{{ section.id }}">
+              <summary class="mobile-facets__summary">
+                <h2 class="body-1">
+                  {{ block.settings.title | default: block.settings.page.title }}
+                </h2>
+              </summary>
+              <div class="body-1" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
+                {{ block.settings.content }}
+                {{ block.settings.page.content }}
+              </div>
+            </details>
+          </div>
+      {% endcase %}
+    {% endfor %}
   </div>
 
   {%- for media in product.media -%}
@@ -28,13 +49,13 @@
     <div class="product-img">
       {{
         media.preview_image
-        | image_url: width: 1445
+        | image_url: height: 745
         | image_tag:
           loading: loading,
           preload: forloop.first,
-          width: media.preview_image.width,
-          height: media.preview_image.height,
-          widths: '550, 1100, 1445, 1680, 2048, 22200, 2890, 4096',
+          width: 595,
+          height: 745,
+          widths: '595, 1100, 1445',
           alt: media.preview_image.alt
         | escape
       }}
@@ -103,54 +124,14 @@
       "type": "checkbox",
       "id": "show_vendor",
       "label": "Show product vendor",
-      "default": true
+      "default": false
     }
   ],
   "blocks": [
     {
-      "type": "@app"
-    },
-    {
       "type": "price",
       "name": "Price",
       "limit": 1
-    },
-    {
-      "type": "variant_picker",
-      "name": "Variant picker",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "select",
-          "id": "picker_type",
-          "options": [
-            {
-              "value": "dropdown",
-              "label": "Dropdown"
-            },
-            {
-              "value": "button",
-              "label": "Buttons"
-            }
-          ],
-          "default": "button",
-          "label": "Type"
-        }
-      ]
-    },
-    {
-      "type": "buy_buttons",
-      "name": "Buy buttons",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "checkbox",
-          "id": "show_dynamic_checkout",
-          "default": true,
-          "label": "Show dynamic checkout buttons",
-          "info": "Using the payment methods available on your store, customers see their preferred option, like PayPal or Apple Pay. [Learn more](https://help.shopify.com/manual/using-themes/change-the-layout/dynamic-checkout)"
-        }
-      ]
     },
     {
       "type": "tab",
@@ -160,7 +141,7 @@
           "type": "text",
           "id": "title",
           "label": "Heading",
-          "default": "Shipping information"
+          "default": "Delivery and Returns"
         },
         {
           "type": "richtext",

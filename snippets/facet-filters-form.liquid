@@ -150,8 +150,8 @@
                           <div class="select" id="sort_by_select">
                             {% assign sorts = 'price-ascending , price-descending , best-selling , created-ascending' %}
                             {%- for option in results.sort_options -%}
-                              {% assign sortName = option.value | escape %}
-                              {% if sorts contains sortName %}
+                              {% assign sort_name = option.value | escape %}
+                              {% if sorts contains sort_name %}
                                 <label class="checkbox">
                                   <input
                                     type="radio"

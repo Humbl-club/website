@@ -79,7 +79,7 @@
 
 .mobile-facets {
   position: sticky;
-  top: 6.4rem;
+  top: var(--header-spacer);
   right: 0;
   margin-left: auto;
   width: 100%;
