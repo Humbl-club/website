@@ -340,7 +340,7 @@ input:-webkit-autofill:active {
   top: calc(100% + 3.2rem);
   left: 50%;
   transform: translateX(-50%);
-  min-width: 20.4rem;
+  min-width: calc(100vw - 3rem);
   min-height: 1.6rem;
 
   font-family: var(--third-family);
@@ -350,9 +350,8 @@ input:-webkit-autofill:active {
   letter-spacing: -0.06em;
   text-align: center;
   color: var(--blue);
-
+  text-align: center;
   @include mixins.breakpoint(vars.$xl-bp) {
-    min-width: 17.9rem;
     min-height: 1rem;
     top: calc(100% + 2.2rem);
     transition: opacity var(--time);

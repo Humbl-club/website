@@ -1,38 +1,6 @@
 import { onKeyUpEscape } from '@/lib/a11y'
 import { xl } from '@/lib/media'
 import { debounce } from '@/lib/utils'
-import Swiper from 'swiper'
-import { Navigation } from 'swiper/modules'
-
-// init Swiper:
-const filterSwiper = document.querySelectorAll('.colorfilt-swiper')
-
-if (filterSwiper.length) {
-  filterSwiper.forEach((el) => {
-    const nextEl = el.parentElement.parentElement.querySelector('.next')
-    const prevEl = el.parentElement.parentElement.querySelector('.prev')
-    new Swiper(el, {
-      // configure Swiper to use modules
-      slidesPerView: 'auto',
-      grabCursor: true,
-      speed: 500,
-      navigation: {
-        nextEl,
-        prevEl
-      },
-      modules: [Navigation]
-    })
-
-    const checkboxes = el.querySelectorAll('label')
-    if (checkboxes.length) {
-      checkboxes.forEach((el) => {
-        el.addEventListener('click', function () {
-          this.classList.toggle('checked')
-        })
-      })
-    }
-  })
-}
 
 function initButtons(wrapper = document, timeout) {
   const btns = wrapper.querySelectorAll('.mobile-facets__open')

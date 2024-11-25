@@ -49,7 +49,7 @@
                 or item.selling_plan_allocation != null
               -%}
                 <div class="cart-options body-3-mobile">
-                  <dl>
+                  <dl class="flex">
                     {% for option in item.options_with_values %}
                       <dt hidden>{{ option.name }}:</dt>
                       <dd>{{ option.value }}</dd>
