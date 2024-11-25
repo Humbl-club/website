@@ -1,0 +1,14 @@
+@use "../mixins";
+@use "../vars";
+
+.product {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 17.4rem;
+} 
+
+.product-img {
+  width: 59.6rem;
+  height: 70rem;
+  background-color: var(--milk);
+}
