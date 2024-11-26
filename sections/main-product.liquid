@@ -3,11 +3,8 @@
   data-section="{{ section.id }}"
   class="wrapper product"
 >
-  <div
-    id="ProductInfo-{{ section.id }}"
-    class="product-left"
-  >
-    <h1 class="title-1 capitalize">{{ product.title | escape }}</h1>
+  <div id="ProductInfo-{{ section.id }}" class="product-sticky">
+    <h1 class="product-title title-1 capitalize">{% render 'product-title' %}</h1>
     {% if section.settings.show_vendor %}
       <p class="headline-1">{{ product.vendor }}</p>
     {% endif %}
@@ -15,52 +12,92 @@
     {% for block in section.blocks %}
       {% case block.type %}
         {%- when 'price' -%}
-          {% render 'price', product: product, use_variant: true, price_class: 'product-title headline-1' %}
+          {% render 'price', product: product, use_variant: true, price_class: 'product-price headline-1' %}
 
         {%- when 'tab' -%}
-          <div {{ block.shopify_attributes }}>
-            <details class="mobile-facets__details" id="Details-{{ block.id }}-{{ section.id }}">
-              <summary class="mobile-facets__summary">
-                <h2 class="body-1">
-                  {{ block.settings.title | default: block.settings.page.title }}
-                </h2>
-              </summary>
-              <div class="body-1" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
-                {{ block.settings.content }}
-                {{ block.settings.page.content }}
-              </div>
-            </details>
-          </div>
+          <details
+            class="mobile-facets__details product-details"
+            id="Details-{{ block.id }}-{{ section.id }}"
+            {{ block.shopify_attributes }}
+          >
+            <summary class="mobile-facets__summary">
+              <h2 class="body-1">
+                {{ block.settings.title | default: block.settings.page.title }}
+              </h2>
+            </summary>
+            <div class="mobile-facets__submenu body-1" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
+              {{ block.settings.content }}
+              {{ block.settings.page.content }}
+            </div>
+          </details>
       {% endcase %}
     {% endfor %}
   </div>
 
-  {%- for media in product.media -%}
-    {%- liquid
-      assign is_first = false
-      if forloop.first
-        assign is_first = true
-      endif
-      assign loading = 'lazy'
-      if is_first
-        assign loading = 'eager'
-      endif
-    -%}
-    <div class="product-img">
-      {{
-        media.preview_image
-        | image_url: height: 745
-        | image_tag:
-          loading: loading,
-          preload: forloop.first,
-          width: 595,
-          height: 745,
-          widths: '595, 1100, 1445',
-          alt: media.preview_image.alt
-        | escape
-      }}
-    </div>
-  {%- endfor -%}
+  <ul class="product-images">
+    {%- for media in product.media -%}
+      {%- liquid
+        assign is_first = false
+        if forloop.first
+          assign is_first = true
+        endif
+        assign loading = 'lazy'
+        if is_first
+          assign loading = 'eager'
+        endif
+      -%}
+      <li class="product-img">
+        {{
+          media.preview_image
+          | image_url: height: 745
+          | image_tag:
+            loading: loading,
+            preload: forloop.first,
+            width: 595,
+            height: 745,
+            widths: '595, 1100, 1445',
+            alt: media.preview_image.alt
+          | escape
+        }}
+      </li>
+    {%- endfor -%}
+  </ul>
+
+  <div class="product-sticky">
+    <button class="product-favorite body-1">
+      {% render 'icon-favorite' %}
+      Add to Wishlist
+    </button>
+
+    {% if product.available %}
+      <div class="product-variants">
+        <div class="product-subtitle body-1 opacity-50">Size:</div>
+
+        <product-form client:idle class="relative">
+          {%- assign product_form_id = 'product-form-' | append: section.id -%}
+          {%- form 'product', product, id: product_form_id, class: 'form', data-type: 'add-to-cart-form' -%}
+            <div class="product-form">
+              {% render 'product-sizes',
+                name: 'id',
+                label: 'Size',
+                options: product.variants,
+                required: true,
+                item: product
+              %}
+              <button
+                type="submit"
+                name="add"
+                class="btn btn-blue product-submit"
+              >
+                {{ 'products.product.add_to_cart' | t }}
+              </button>
+            </div>
+            <p class="body-2 absolute text-red-500" role="alert" data-error-message hidden></p>
+          {%- endform -%}
+        </product-form>
+      </div>
+    {% endif %}
+  </div>
 
   {%- liquid
     if product.selected_or_first_available_variant.featured_media

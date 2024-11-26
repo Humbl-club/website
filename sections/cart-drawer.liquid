@@ -57,7 +57,7 @@
                             class="cart-item-name"
                             href="{{ item.url }}"
                           >
-                            {{- item.product.title | escape -}}
+                            {% render 'product-title', product: item.product %}
                           </a>
                         </h3>
                         <div class="item-options">
@@ -166,7 +166,7 @@
                               class="cart-item-name"
                               href="{{ item.url }}"
                             >
-                              {{- item.title | escape -}}
+                              {% render 'product-title', product: item %}
                             </a>
                           </h3>
                           {% render 'price',

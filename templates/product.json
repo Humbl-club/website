@@ -10,13 +10,29 @@
         "tab": {
           "type": "tab",
           "settings": {}
-        }
+        },
+        "tab1": {
+          "type": "tab",
+          "settings": {
+            "title": "Size & fit",
+            "content": "<p>Lorem ipsum</p>"
+          }
+        },
+        "tab3": {
+          "type": "tab",
+          "settings": {
+            "title": "Product Details",
+            "content": "<p>Lorem ipsum</p>"
+          }
+        } 
       },
       "block_order": [
         "price",
         "variant_picker",
         "buy_buttons",
-        "tab"
+        "tab",
+        "tab1",
+        "tab3"
       ],
       "settings": {}
     },

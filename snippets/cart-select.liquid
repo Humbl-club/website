@@ -23,7 +23,6 @@
         {% assign ntitle = ',' | append: ntitle | append: ',' %}
 
         {% if value.available %}
-          {{ value }}
           <option value="{{ value.id }}">
             {{- ntitle | remove: ',' -}}
           </option>

@@ -87,7 +87,7 @@
           href="{{ card_product.url }}"
           id="CardLink-{{ section_id }}-{{ card_product.id }}"
         >
-          {{ card_product.title | escape }}
+          {% render 'product-title', product: card_product %}
         </a>
       </h3>
 
