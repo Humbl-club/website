@@ -22,13 +22,17 @@
 {% for collection in product.collections %}
   {% if collection.title != 'All colors' %}
     {% if collection.title != '' %}
-      {{ collection.title | append: ' | ' -}}
+      {{ collection.title | append: '&nbsp;| ' -}}
     {% endif %}
     {% if product.type != '' %}
-      {{- product.type | append: ' | ' }}
+      {{- product.type | append: '&nbsp;| ' }}
     {% endif %}
     {% if ntitle != '' %}
-      {{- ntitle | append: ' | ' -}}
+      {{- ntitle | append: '&nbsp;| ' -}}
+    {% endif %}
+
+    {% if product.type == '' and ntitle == '' %}
+      {{ product.title }}
     {% endif %}
     {% break %}
   {% endif %}
