@@ -32,7 +32,7 @@
     {% endif %}
 
     {% if product.type == '' and ntitle == '' %}
-      {{ product.title }}
+      {{ product.title | append: '&nbsp;| ' }}
     {% endif %}
     {% break %}
   {% endif %}

@@ -13,18 +13,19 @@
   {% assign ntitle = ntitle_array[position_of_size] | strip %}
   {% assign ntitle = ',' | append: ntitle | append: ',' %}
 
-  {% if value.available %}
-    <label class="radio">
-      <input
-        type="radio"
-        name="{{ name }}"
-        value="{{ value.id }}"
-        {% if required %}
-          required
-        {% endif %}
-      >
-      <span class="radio-box">{{- ntitle | remove: ',' -}}</span>
-    </label>
-  {% endif %}
+  <label class="radio {{ class }}">
+    <input
+      type="radio"
+      name="{{ name }}"
+      value="{{ value.id }}"
+      {% if value.available == false %}
+        disabled
+      {% endif %}
+      {% if required %}
+        required
+      {% endif %}
+    >
+    <span class="radio-box">{{- ntitle | remove: ',' -}}</span>
+  </label>
 {% endfor %}
 {% assign position_of_size = 1 %}

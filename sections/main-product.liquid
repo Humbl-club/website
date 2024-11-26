@@ -82,7 +82,8 @@
                 label: 'Size',
                 options: product.variants,
                 required: true,
-                item: product
+                item: product,
+                class: 'headline-2'
               %}
               <button
                 type="submit"
@@ -95,6 +96,11 @@
             <p class="body-2 absolute text-red-500" role="alert" data-error-message hidden></p>
           {%- endform -%}
         </product-form>
+        {% if product.available %}
+          <p class="body-3 text-center opacity-50">Few items left</p>
+        {% else %}
+          <p class="body-3 text-center opacity-50">Out of stock</p>
+        {% endif %}
       </div>
     {% endif %}
   </div>
