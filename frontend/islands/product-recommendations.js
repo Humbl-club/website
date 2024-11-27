@@ -1,4 +1,28 @@
+import Swiper from 'swiper'
+import { Navigation } from 'swiper/modules'
+import 'swiper/css'
+
 class ProductRecommendations extends window.HTMLElement {
+  // init Swiper:
+  initSwiper() {
+    const swiper = this.querySelector('.swiper')
+    if (swiper) {
+      const nextEl = swiper.parentElement.parentElement.querySelector('.next')
+      const prevEl = swiper.parentElement.parentElement.querySelector('.prev')
+      new Swiper(swiper, {
+        // configure Swiper to use modules
+        slidesPerView: 'auto',
+        grabCursor: true,
+        speed: 500,
+        navigation: {
+          nextEl,
+          prevEl
+        },
+        modules: [Navigation]
+      })
+    }
+  }
+
   connectedCallback() {
     fetch(this.dataset.url)
       .then((response) => response.text())
@@ -9,6 +33,7 @@ class ProductRecommendations extends window.HTMLElement {
 
         if (recommendations && recommendations.innerHTML.trim().length) {
           this.innerHTML = recommendations.innerHTML
+          this.initSwiper()
         }
       })
       .catch((e) => {

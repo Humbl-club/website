@@ -138,6 +138,13 @@
             </p>
           </form>
 
+          <pre>
+          {% for item in collection.products %}
+            {{ item | json }}
+            {{ item.recommendations.products_count | json }}
+            {{ recommendations.performed | json }}
+          {% endfor %}
+        </pre>
           {% if section.blocks.size > 0 %}
             <h3 class="headline-2 section-pt">{{ 'sections.cart.complete_the_look' | t }}</h3>
 

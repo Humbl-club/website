@@ -1,0 +1,29 @@
+@use "../mixins";
+@use "../vars";
+
+.recommendations {
+
+}
+
+.recommendations-swiper {
+  padding-top: 2rem;
+  @include mixins.breakpoint(vars.$xl-bp) {
+    padding-bottom: 3.2rem;
+  }
+  .swiper-slide {
+    width: calc(100% / 4 - (2rem - (2rem / 6)));
+    margin-right: 2rem;
+
+    @include mixins.breakpoint(vars.$xl-bp) {
+      width: 16.6rem;
+    }
+
+    @include mixins.breakpoint(vars.$sm-bp) {
+      margin-right: 1rem;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

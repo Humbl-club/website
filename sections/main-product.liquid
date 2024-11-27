@@ -46,17 +46,11 @@
           assign loading = 'eager'
         endif
       -%}
-      <li class="product-img">
+      <li class="product-img img-cover">
         {{
           media.preview_image
           | image_url: height: 745
-          | image_tag:
-            loading: loading,
-            preload: forloop.first,
-            width: 595,
-            height: 745,
-            widths: '595, 1100, 1445',
-            alt: media.preview_image.alt
+          | image_tag: loading: loading, preload: forloop.first, width: 595, height: 745, alt: media.preview_image.alt
           | escape
         }}
       </li>
