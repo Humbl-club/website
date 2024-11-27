@@ -1,10 +1,6 @@
 @use "../mixins";
 @use "../vars";
 
-.recommendations {
-
-}
-
 .recommendations-swiper {
   padding-top: 2rem;
   @include mixins.breakpoint(vars.$xl-bp) {

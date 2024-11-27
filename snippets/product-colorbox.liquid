@@ -1,0 +1,18 @@
+{% assign break_loop = false %}
+{% for variant in product.variants %}
+  {% for value in shop.metaobjects['shopify--color-pattern'].values %}
+    {% if variant.title contains value.label %}
+      {%- assign color = value.color -%}
+      <a
+        href="{{ product.url }}"
+        class="product-colorbox {% if checked == true%}checked{% endif %}"
+        style="background-color: {{color}};"
+      ></a>
+      {% assign break_loop = true %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+  {% if break_loop %}
+    {% break %}
+  {% endif %}
+{% endfor %}

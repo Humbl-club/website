@@ -64,16 +64,52 @@
   &:first-of-type {
     margin-top: 11.2rem;
   }
+
+  & + & {
+    margin-top: 4rem;
+  }
 }
 
 .product-form {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
-
-
 }
 
 .product-submit {
   grid-column: 3 span;
+}
+
+.product-colorboxes {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.product-colorbox {
+  width: 5rem;
+  height: 5rem;
+  display: block;
+  &::before {
+    content: '';
+    border: 0.1rem solid var(--black);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity var(--time);
+    opacity: 0;
+  }
+  &.checked {
+    position: relative;
+    &::before {
+      opacity: 1;
+    }
+  }
+
+}
+
+.product-recommendations {
+  min-height: 63.4rem;
 }

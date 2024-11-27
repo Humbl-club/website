@@ -13,13 +13,17 @@
         {%- endfor -%}
       </div>
     </div>
+  {% else %}
+    <div class="product-placeholder"></div>
   {%- endif -%}
 </product-recommendations>
+
+{% render 'quick-add-modal' %}
 
 {% schema %}
 {
   "name": "Product recommendations",
-  "class": "wrapper recommendations section-2-mt",
+  "class": "wrapper recommendations product-recommendations section-2-mt",
   "settings": [
     {
       "type": "text",
@@ -33,7 +37,7 @@
       "min": 2,
       "max": 10,
       "step": 1,
-      "default": 4,
+      "default": 8,
       "label": "Maximum products to show"
     }
   ]

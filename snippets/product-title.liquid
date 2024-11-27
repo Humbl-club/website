@@ -1,6 +1,7 @@
 {% assign colors = '' %}
 {%- assign ntitle = '' -%}
 {% assign position_of_color = 0 %}
+{%- assign no_color = false -%}
 {% for option in product.options_with_values %}
   {% if option.name == 'Color' %}
     {%- assign position_of_color = option.position | minus: 1 -%}
@@ -18,25 +19,34 @@
       {%- assign ntitle = ntitle | remove: ',' -%}
     {% endif %}
   {% endfor %}
+{% else %}
+  {%- assign no_color = true -%}
 {% endif %}
-{% for collection in product.collections %}
-  {% if collection.title != 'All colors' %}
-    {% if collection.title != '' %}
-      {{ collection.title | append: '&nbsp;| ' -}}
-    {% endif %}
-    {% if product.type != '' %}
-      {{- product.type | append: '&nbsp;| ' }}
-    {% endif %}
-    {% if ntitle != '' %}
-      {{- ntitle | append: '&nbsp;| ' -}}
-    {% endif %}
+{% if product.collections.size > 0 %}
+  {% for collection in product.collections %}
+    {% if collection.title != 'All colors' %}
+      {% if collection.title != '' %}
+        {{ collection.title | append: '&nbsp;| ' -}}
+      {% endif %}
+      {% if product.type != '' %}
+        {{- product.type | append: '&nbsp;| ' }}
+      {% endif %}
+      {% if ntitle != '' %}
+        {{- ntitle | append: '&nbsp;| ' -}}
+      {% endif %}
 
-    {% if product.type == '' and ntitle == '' %}
-      {{ product.title | append: '&nbsp;| ' }}
+      {% if product.type == '' and ntitle == '' %}
+        {{ product.title | append: '&nbsp;| ' }}
+      {% endif %}
+      {% break %}
     {% endif %}
-    {% break %}
-  {% endif %}
-{% endfor %}
+  {% endfor %}
+{% endif %}
 
+{% if product.collections.size == 1 and product.type == '' and no_color == true %}
+  {{ product.title }}
+{% endif %}
+
+{%- assign no_color = false -%}
 {%- assign ntitle = '' -%}
 {%- assign colors = '' -%}

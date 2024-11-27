@@ -1,11 +1,5 @@
 class MobileModal extends window.HTMLElement {
-  constructor() {
-    super()
-
-    this.init()
-  }
-
-  init() {
+  connectedCallback() {
     document.addEventListener('click', (event) => {
       if (
         event.target.classList.contains('card-sizebtn') &&
