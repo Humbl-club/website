@@ -7,6 +7,12 @@
   gap: 17.4rem;
 } 
 
+.product-desctop {
+  @include mixins.breakpoint(vars.$xl-bp) {
+    display: none;
+  } 
+}
+
 .product-sticky {
   position: sticky;
   top: calc(var(--header-spacer) + 6.1rem);

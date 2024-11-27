@@ -1,6 +1,7 @@
 import Swiper from 'swiper'
 import { Navigation } from 'swiper/modules'
-import 'swiper/css'
+import '@/styles/blocks/swiper.scss'
+import '@/styles/blocks/product-recommendations.scss'
 
 class ProductRecommendations extends window.HTMLElement {
   // init Swiper:
