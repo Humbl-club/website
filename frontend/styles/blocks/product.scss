@@ -12,14 +12,48 @@
     display: flex;
     flex-direction: column;
   }
+
+  .shopify-app-block {
+    .jdgm-prev-badge {
+      display: flex !important;
+      align-items: center; 
+      gap: 0.4rem;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+    .jdgm-star {
+      width: 2rem;
+      height: 2rem;
+      display: inline-flex !important;
+      flex: 0 0 auto;
+      padding: 0 !important;
+  
+      &::before {
+        content: '';
+        background-image: url("data:image/svg+xml,%3Csvg width='30' height='28' viewBox='0 0 30 28' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 0L18.3677 10.3647H29.2658L20.4491 16.7705L23.8168 27.1353L15 20.7295L6.18322 27.1353L9.55093 16.7705L0.734152 10.3647H11.6323L15 0Z' fill='%23BDAFAF'/%3E%3C/svg%3E%0A");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        width: 100%;
+        height: 100%;
+      }
+    }
+  
+    .jdgm-star.jdgm--off {
+      &::before {
+        background-image: url("data:image/svg+xml,%3Csvg width='30' height='28' viewBox='0 0 30 28' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 1.61804L17.8922 10.5193L18.0044 10.8647H18.3677H27.727L20.1552 16.366L19.8613 16.5795L19.9735 16.925L22.8657 25.8262L15.2939 20.325L15 20.1115L14.7061 20.325L7.13428 25.8262L10.0265 16.925L10.1387 16.5795L9.84482 16.366L2.27299 10.8647H11.6323H11.9956L12.1078 10.5193L15 1.61804Z' stroke='%23BDAFAF'/%3E%3C/svg%3E%0A");
+      }
+    }
+  }
 } 
 
 .product-sticky {
   position: sticky;
   top: calc(var(--header-spacer) + 6.1rem);
   left: 0;
-  min-height: calc(100vh - var(--header-spacer)); 
-  min-height: calc(100svh - var(--header-spacer)); 
+  min-height: calc(100vh - var(--header-spacer) - 7rem); 
+  min-height: calc(100svh - var(--header-spacer) - 7rem); 
   height: min-content;
   display: flex;
   flex-direction: column;
@@ -127,7 +161,7 @@
 }
 
 .product-complementary {
-  min-height: 30rem;
+  min-height: 22rem;
   margin-top: auto;
   padding-top: 3rem;
 }

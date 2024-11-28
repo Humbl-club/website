@@ -1,4 +1,6 @@
-<div class="wrapper">
+<product-reviews class="product-reviews wrapper block" style="opacity: 0" client:visible>
+  <h2 class="headline-2">Reviews</h2>
+
   <!-- Start of Judge.me code -->
   <div style="clear:both"></div>
   <div
@@ -12,10 +14,12 @@
   </div>
   <!-- End of Judge.me code -->
 
-  <button class="collection-up" onclick="document.body.scrollIntoView({behavior: 'smooth'})" aria-label="go up">
-    {% render 'icon-up' %}
-  </button>
-</div>
+  <div class="flex justify-end">
+    <button class="collection-up" onclick="document.body.scrollIntoView({behavior: 'smooth'})" aria-label="go up">
+      {% render 'icon-up' %}
+    </button>
+  </div>
+</product-reviews>
 
 {% schema %}
 {
