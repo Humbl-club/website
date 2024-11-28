@@ -467,8 +467,8 @@ main {
     opacity: 0;
 
     &:checked+.switch-box {
-      background-color: #a0a0a0;
-
+      background-color: #34C759;
+      border-color: #34C759;
       &::before {
         background-color: var(--white);
         box-shadow: 0 3px 1px 0 rgba(0, 0, 0, 0.06), 0 3px 8px 0 rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.04);
