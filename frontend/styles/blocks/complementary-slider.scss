@@ -1,0 +1,24 @@
+@use "../mixins";
+@use "../vars";
+
+.complementary-swiper {
+  max-width: 44.2rem;
+  overflow: visible;
+  padding-top: 2rem;
+  opacity: 0;
+  transition: opacity var(--time);
+  transition-delay: 500ms;
+  &.swiper-initialized {
+    opacity: 1  ;
+  }
+}
+
+.complementary-arrows {
+  position: absolute;
+  top: 2rem;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  z-index: 10;
+}

@@ -40,7 +40,7 @@
       {
         "type": "text",
         "id": "logo_text",
-        "default": "Athleisure yoga wear for Women",
+        "default": "Cologne, Germany",
         "label": "Logo text bottom"
       }
     ]
@@ -89,12 +89,6 @@
         "default": "drawer",
         "label": "Cart type"
       },
-      {
-        "type": "checkbox",
-        "id": "show_cart_note",
-        "label": "Enable cart note",
-        "default": false
-      }
     ]
   },
   {

@@ -24,7 +24,7 @@
     padding-bottom: 3.2rem;
   }
   .swiper-slide {
-    width: 28.8rem;
+    width: calc(100% / 6 - (2rem - (2rem / 6)));
     margin-right: 2rem;
 
     @include mixins.breakpoint(vars.$xl-bp) {

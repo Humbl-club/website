@@ -12,7 +12,7 @@
 
 {%- if card_product and card_product != empty -%}
   {% assign image_hover = card_product.media[1] %}
-
+  {% comment %} <button class="st-wishlist-button" data-type="details" data-handle="{{ card_product.handle }}">helo</button> {% endcomment %}
   <div class="card {% if wrapper_class != blank %} {{ wrapper_class }}{% endif %}">
     <button class="card-favorite">
       {% render 'icon-favorite' %}
@@ -35,24 +35,30 @@
       {% endif %}
 
       {%- if card_product.featured_media -%}
-        {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
-        <img
-          srcset="
-            {%- if card_product.featured_media.width >= 165 -%}{{ card_product.featured_media | image_url: width: 165 }} 165w,{%- endif -%}
-            {%- if card_product.featured_media.width >= 360 -%}{{ card_product.featured_media | image_url: width: 360 }} 360w,{%- endif -%}
-            {%- if card_product.featured_media.width >= 442 -%}{{ card_product.featured_media | image_url: width: 442, height: 500 }} 442w,{%- endif -%}
-            {{ card_product.featured_media | image_url }} {{ card_product.featured_media.width }}w
-          "
-          class="card-img"
-          src="{{ card_product.featured_media | image_url: width: 442, height: 500 }}"
-          alt="{{ card_product.featured_media.alt | escape }}"
-          {% unless lazy_load == false %}
-            loading="lazy"
-          {% endunless %}
-          width="{{ card_product.featured_media.width }}"
-          height="{{ card_product.featured_media.height }}"
-        >
-        {% comment %}theme-check-enable ImgLazyLoading{% endcomment %}
+        <picture>
+          {% if section.settings.columns_mobile == '2' %}
+            <source
+              srcset="{{ card_product.featured_media | image_url: width: 183, height: 207 }}"
+              media="(max-width:412px)"
+            >
+          {% endif %}
+          <img
+            srcset="
+              {%- if card_product.featured_media.width >= 165 -%}{{ card_product.featured_media | image_url: width: 165 }} 165w,{%- endif -%}
+              {%- if card_product.featured_media.width >= 360 -%}{{ card_product.featured_media | image_url: width: 360 }} 360w,{%- endif -%}
+              {%- if card_product.featured_media.width >= 442 -%}{{ card_product.featured_media | image_url: width: 442, height: 500 }} 442w,{%- endif -%}
+              {{ card_product.featured_media | image_url }} {{ card_product.featured_media.width }}w
+            "
+            class="card-img"
+            src="{{ card_product.featured_media | image_url: width: 442, height: 500 }}"
+            alt="{{ card_product.featured_media.alt | escape }}"
+            {% unless lazy_load == false %}
+              loading="lazy"
+            {% endunless %}
+            width="{{ card_product.featured_media.width }}"
+            height="{{ card_product.featured_media.height }}"
+          >
+        </picture>
       {%- endif -%}
 
       {% render 'sizes', card_product: card_product, addClass: 'button-title-4' %}
@@ -81,11 +87,11 @@
           href="{{ card_product.url }}"
           id="CardLink-{{ section_id }}-{{ card_product.id }}"
         >
-          {{ card_product.title | escape }}
+          {% render 'product-title', product: card_product %}
         </a>
       </h3>
 
-      {%- render 'price', product: card_product -%}
+      {%- render 'price', product: card_product, price_class: 'body-1 body-3-mobile' -%}
 
       {% render 'sizes', card_product: card_product, addClass: 'button-title-5 only-modal' %}
     </div>
@@ -123,7 +129,7 @@
       <h3 class="card-title body-1">
         {{ 'onboarding.product_title' | t }}
       </h3>
-      <div class="card-price body-1">
+      <div class="card-price body-1 body-3-mobile">
         {{ 1999 | money_without_trailing_zeros }}
       </div>
     </div>

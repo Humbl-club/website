@@ -1,6 +1,8 @@
 {% assign sizes = '' %}
+{% assign position_of_size = 1 %}
 {% for option in card_product.options_with_values %}
   {% if option.name == 'Size' %}
+    {%- assign position_of_size = option.position | minus: 1 -%}
     {%- for value in option.values -%}
       {% assign sizes = sizes | append: ',' | append: value | append: ',' %}
     {% endfor %}
@@ -10,7 +12,7 @@
   <div class="card-sizes {{ addClass }}">
     {% for variant in card_product.variants %}
       {% assign ntitle_array = variant.title | split: '/ ' %}
-      {% assign ntitle = ntitle_array[1] | strip %}
+      {% assign ntitle = ntitle_array[position_of_size] | strip %}
       {% assign ntitle = ',' | append: ntitle | append: ',' %}
       {% if sizes contains ntitle %}
         <button

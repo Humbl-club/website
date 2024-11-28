@@ -1,12 +1,35 @@
-<cart-select>
+{% assign position_of_size = 1 %}
+{% for option in item.options_with_values %}
+  {% if option.name == label %}
+    {%- assign position_of_size = option.position | minus: 1 -%}
+    {%- for value in option.values -%}
+      {% assign sizes = sizes | append: ',' | append: value | append: ',' %}
+    {% endfor %}
+  {% endif %}
+{% endfor %}
+
+<cart-select client:visible>
   <div class="custom-select">
-    <select>
+    <select
+      name="{{ name }}"
+      {% if required %}
+        required
+      {% endif %}
+    >
       <option value="">{{ label }}</option>
       {% for value in options %}
+        {% assign ntitle_array = value.title | split: '/ ' %}
+        {% assign ntitle = ntitle_array[position_of_size] | strip %}
+        {% assign ntitle = ',' | append: ntitle | append: ',' %}
+
         {% if value.available %}
-          <option value="{{ value.id }}">{{ value.name }}</option>
+          <option value="{{ value.id }}">
+            {{- ntitle | remove: ',' -}}
+          </option>
         {% endif %}
       {% endfor %}
     </select>
+    <div class="select-selected">{{ label }}</div>
   </div>
 </cart-select>
+{% assign position_of_size = 1 %}

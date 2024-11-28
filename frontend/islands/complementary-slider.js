@@ -1,9 +1,10 @@
 import Swiper from 'swiper'
-import { Navigation } from 'swiper/modules'
+import { Navigation, EffectFade } from 'swiper/modules'
 import '@/styles/blocks/swiper.scss'
-import '@/styles/blocks/product-recommendations.scss'
+import '@/styles/blocks/complementary-block.scss'
+import '@/styles/blocks/complementary-slider.scss'
 
-class ProductRecommendations extends window.HTMLElement {
+class ComplementarySlider extends window.HTMLElement {
   // init Swiper:
   initSwiper() {
     const swiper = this.querySelector('.swiper')
@@ -12,14 +13,19 @@ class ProductRecommendations extends window.HTMLElement {
       const prevEl = swiper.parentElement.parentElement.querySelector('.prev')
       new Swiper(swiper, {
         // configure Swiper to use modules
+        fadeEffect: {
+          crossFade: true
+        },
+        rewind: true,
         slidesPerView: 'auto',
+        effect: 'fade',
         grabCursor: true,
         speed: 500,
         navigation: {
           nextEl,
           prevEl
         },
-        modules: [Navigation]
+        modules: [Navigation, EffectFade]
       })
     }
   }
@@ -30,18 +36,11 @@ class ProductRecommendations extends window.HTMLElement {
       .then((text) => {
         const html = document.createElement('div')
         html.innerHTML = text
-        const recommendations = html.querySelector('product-recommendations')
+        const recommendations = html.querySelector('complementary-slider')
 
         if (recommendations && recommendations.innerHTML.trim().length) {
           this.innerHTML = recommendations.innerHTML
           this.initSwiper()
-
-          const mobileModal = document.getElementById('mobile-modal')
-          if (mobileModal) {
-            setTimeout(() => {
-              mobileModal.initCardButtons()
-            })
-          }
         }
       })
       .catch((e) => {
@@ -50,4 +49,4 @@ class ProductRecommendations extends window.HTMLElement {
   }
 }
 
-window.customElements.define('product-recommendations', ProductRecommendations)
+window.customElements.define('complementary-slider', ComplementarySlider)

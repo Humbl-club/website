@@ -1,38 +1,5 @@
 import { onKeyUpEscape } from '@/lib/a11y'
-import { xl } from '@/lib/media'
 import { debounce } from '@/lib/utils'
-import Swiper from 'swiper'
-import { Navigation } from 'swiper/modules'
-
-// init Swiper:
-const filterSwiper = document.querySelectorAll('.colorfilt-swiper')
-
-if (filterSwiper.length) {
-  filterSwiper.forEach((el) => {
-    const nextEl = el.parentElement.parentElement.querySelector('.next')
-    const prevEl = el.parentElement.parentElement.querySelector('.prev')
-    new Swiper(el, {
-      // configure Swiper to use modules
-      slidesPerView: 'auto',
-      grabCursor: true,
-      speed: 500,
-      navigation: {
-        nextEl,
-        prevEl
-      },
-      modules: [Navigation]
-    })
-
-    const checkboxes = el.querySelectorAll('label')
-    if (checkboxes.length) {
-      checkboxes.forEach((el) => {
-        el.addEventListener('click', function () {
-          this.classList.toggle('checked')
-        })
-      })
-    }
-  })
-}
 
 function initButtons(wrapper = document, timeout) {
   const btns = wrapper.querySelectorAll('.mobile-facets__open')
@@ -91,36 +58,6 @@ function countFilters() {
 }
 
 countFilters()
-
-function initCardButtons() {
-  if (xl.matches) {
-    const cardsMobile = document.querySelectorAll('.card-cart')
-    const mobileModal = document.getElementById('mobile-modal')
-    if (mobileModal) {
-      cardsMobile.forEach((btn) => {
-        if (btn.classList.contains('inited')) {
-          return
-        }
-        btn.addEventListener('click', function () {
-          const card = this.closest('.card')
-          if (card) {
-            mobileModal.openModal()
-            mobileModal.innerHTML = card.innerHTML
-          }
-        })
-        btn.classList.add('inited')
-      })
-      const mobileoverlay = document.getElementById('mobile-modal-overlay')
-      mobileoverlay.addEventListener('click', function () {
-        this.previousElementSibling.classList.remove('open')
-      })
-    }
-  }
-}
-
-xl.addEventListener('change', initCardButtons)
-
-initCardButtons()
 
 class FacetFiltersForm extends window.HTMLElement {
   constructor() {
@@ -203,7 +140,13 @@ class FacetFiltersForm extends window.HTMLElement {
         initButtons()
         initFacetContainer()
         countFilters()
-        initCardButtons()
+        const mobileModal = document.getElementById('mobile-modal')
+        if (mobileModal) {
+          setTimeout(() => {
+            mobileModal.initCardButtons()
+          })
+        }
+
         if (typeof initializeScrollAnimationTrigger === 'function')
           window.initializeScrollAnimationTrigger(html.innerHTML)
       })

@@ -5,8 +5,10 @@
 @use 'blocks/header.scss';
 @use 'blocks/collection.scss';
 @use 'blocks/card.scss';
-@use 'blocks/colorfilt.scss';
 @use 'blocks/facets.scss';
 @use 'blocks/cart-drawer.scss';
 @use 'blocks/mobile-modal.scss';
-@use 'blocks/cart-select.scss'
+@use 'blocks/cart-select.scss';
+@use 'blocks/cart.scss';
+@use 'blocks/quantity-input.scss';
+@use 'blocks/product.scss'; 

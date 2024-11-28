@@ -1,9 +1,8 @@
 {%- liquid
-  assign container_class = 'header wrapper'
-  assign input_class = 'header-input'
+  assign container_class = 'header-container wrapper'
 -%}
 
-<header
+<div
   role="banner"
   class="{{ container_class }}"
 >
@@ -93,7 +92,10 @@
         }}
 
         {% if template == 'index' %}
-          <div class="header-icontext">{{ settings.logo_text }}</div>
+          <div class="header-icontext">
+            {{ settings.logo_text }} |&nbsp;
+            <span id="datetime">{{- 'now' | date: '%A,&nbsp;%B&nbsp;%d,&nbsp;%Y' }}</span>
+          </div>
         {% endif %}
       </div>
     {%- else -%}
@@ -102,11 +104,7 @@
   </a>
 
   {% render 'cart-icon-bubble' %}
-</header>
-
-{% if template != 'index' and settings.enable_sticky_header %}
-  <div class="header-spacer"></div>
-{% endif %}
+</div>
 
 <script type="application/ld+json">
   {
@@ -151,6 +149,8 @@
 {% schema %}
 {
   "name": "Header",
+  "tag": "header",
+  "class": "header",
   "settings": [
     {
       "type": "link_list",
