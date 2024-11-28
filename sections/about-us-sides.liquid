@@ -1,0 +1,124 @@
+{{ 'about_us-sides.css' | asset_url | stylesheet_tag }}
+
+<section class="section-{{ section.id }}-padding about-us">
+    <div class="container">
+        <div class="about-us__wrapper ">
+            {% if section.settings.blocks_order == "image-first" %}
+                {%- if section.settings.about_image != blank -%}
+                    <div class="about-us__img {% if section.settings.mob_image_order == "image-over" %}over-text{%- else -%}under-text{%- endif -%}"
+                         style="background-color: {{ section.settings.img_bg_color }}">
+                        <img src="{{ section.settings.about_image | img_url: '914x800' }}" alt="About Us Image">
+                    </div>
+                {%- endif -%}
+
+                <div class="about-us__data right-side">
+                    {%- if section.settings.about_title != blank -%}
+                        <h2>{{ section.settings.about_title }}</h2>
+                    {%- endif -%}
+
+                    {%- if section.settings.about_text != blank -%}
+                        <div class="about-us__data_description">
+                            {{ section.settings.about_text }}
+                        </div>
+                    {%- endif -%}
+                </div>
+            {%- else -%}
+                <div class="about-us__data left-side">
+                    {%- if section.settings.about_title != blank -%}
+                        <h2>{{ section.settings.about_title }}</h2>
+                    {%- endif -%}
+
+                    {%- if section.settings.about_text != blank -%}
+                        <div class="about-us__data_description">
+                            {{ section.settings.about_text }}
+                        </div>
+                    {%- endif -%}
+                </div>
+
+                {%- if section.settings.about_image != blank -%}
+                    <div class="about-us__img {% if section.settings.mob_image_order == "image-over" %}over-text{%- else -%}under-text{%- endif -%}"
+                         style="background-color: {{ section.settings.img_bg_color }}">
+                        <img src="{{ section.settings.about_image | img_url: '914x800' }}" alt="About Us Image">
+                    </div>
+                {%- endif -%}
+            {%- endif -%}
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+  "name": "Images on sides",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer"
+    ]
+  },
+  "settings": [
+    {
+      "type": "radio",
+      "id": "blocks_order",
+      "label": "Block Order",
+      "options": [
+        {
+          "value": "image-first",
+          "label": "Image First"
+        },
+        {
+          "value": "data-first",
+          "label": "Data First"
+        }
+      ],
+      "default": "image-first"
+    },
+    {
+      "type": "radio",
+      "id": "mob_image_order",
+      "label": "Mobile Image Order",
+      "options": [
+        {
+          "value": "image-over",
+          "label": "Image Over Text"
+        },
+        {
+          "value": "image-under",
+          "label": "Image Under Text"
+        }
+      ],
+      "default": "image-over"
+    },
+    {
+      "type": "image_picker",
+      "id": "about_image",
+      "label": "About Image"
+    },
+    {
+      "type": "color",
+      "id": "img_bg_color",
+      "label": "Background Color for Image Block",
+      "default": "#d9d4d0"
+    },
+    {
+      "type": "text",
+      "id": "about_title",
+      "label": "About Title",
+      "default": "About Title"
+    },
+    {
+      "type": "richtext",
+      "id": "about_text",
+      "label": "About Text",
+      "default": "<p>Description for the card.</p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Images on sides",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
