@@ -63,16 +63,18 @@
       Add to Wishlist
     </button>
 
-    {% if product.available %}
-      {% render 'product-colors' %}
+    {% render 'product-colors' %}
 
-      <div class="product-variants">
+    <div class="product-variants">
+      {% if product.available %}
         <div class="product-subtitle body-1 opacity-50">Size:</div>
+      {% endif %}
 
-        <product-form client:idle class="relative">
-          {%- assign product_form_id = 'product-form-' | append: section.id -%}
-          {%- form 'product', product, id: product_form_id, class: 'form', data-type: 'add-to-cart-form' -%}
-            <div class="product-form">
+      <product-form client:idle class="relative">
+        {%- assign product_form_id = 'product-form-' | append: section.id -%}
+        {%- form 'product', product, id: product_form_id, class: 'form', data-type: 'add-to-cart-form' -%}
+          <div class="product-form">
+            {% if product.available %}
               {% render 'product-sizes',
                 name: 'id',
                 label: 'Size',
@@ -81,24 +83,28 @@
                 item: product,
                 class: 'headline-2'
               %}
-              <button
-                type="submit"
-                name="add"
-                class="btn btn-blue product-submit"
-              >
-                {{ 'products.product.add_to_cart' | t }}
-              </button>
-            </div>
-            <p class="body-2 absolute text-red-500" role="alert" data-error-message hidden></p>
-          {%- endform -%}
-        </product-form>
-        {% if product.available %}
-          <p class="body-3 text-center opacity-50">Few items left</p>
-        {% else %}
-          <p class="body-3 text-center opacity-50">Out of stock</p>
-        {% endif %}
-      </div>
-    {% endif %}
+            {% endif %}
+
+            <button
+              type="submit"
+              name="add"
+              class="btn btn-blue product-submit"
+              {% if product.available == false %}
+                disabled
+              {% endif %}
+            >
+              {{ 'products.product.add_to_cart' | t }}
+            </button>
+          </div>
+          <p class="body-2 absolute text-red-500" role="alert" data-error-message hidden></p>
+        {%- endform -%}
+      </product-form>
+      {% if product.available %}
+        <p class="body-3 text-center opacity-50">Few items left</p>
+      {% else %}
+        <p class="body-3 text-center opacity-50">Out of stock</p>
+      {% endif %}
+    </div>
   </div>
 
   {%- liquid

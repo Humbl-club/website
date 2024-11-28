@@ -1,13 +1,15 @@
 {% assign break_loop = false %}
 {% for variant in product.variants %}
   {% for value in shop.metaobjects['shopify--color-pattern'].values %}
-    {% if variant.title contains value.label %}
+    {% if variant.title contains value.label or value.label contains ntitle %}
       {%- assign color = value.color -%}
       <a
         href="{{ product.url }}"
         class="product-colorbox {% if checked == true%}checked{% endif %}"
         style="background-color: {{color}};"
-      ></a>
+      >
+        <span class="sr-only">{{ product.title }}</span>
+      </a>
       {% assign break_loop = true %}
       {% break %}
     {% endif %}

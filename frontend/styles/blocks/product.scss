@@ -90,6 +90,7 @@
   width: 5rem;
   height: 5rem;
   display: block;
+  position: relative;
   &::before {
     content: '';
     border: 0.1rem solid var(--black);
@@ -112,4 +113,7 @@
 
 .product-recommendations {
   min-height: 63.4rem;
+  @include mixins.breakpoint(vars.$sm-bp) {
+    min-height: 30.5rem;
+  }
 }
