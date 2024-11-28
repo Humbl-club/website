@@ -1,0 +1,36 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "first": {
+      "type": "about-us-sides",
+      "settings": {
+        "blocks_order": "image-first",
+        "mob_image_order": "image-over",
+        "about_image": "shopify://shop_images/1_612aab8f-5152-49bb-9cfd-fd2ec0152557.jpg",
+        "img_bg_color": "#d9d4d0",
+        "about_title": "About Title",
+        "about_text": "<p>Description for the card.</p>"
+      }
+    },
+    "brand_block_Bzba97": {
+      "type": "brand-block",
+      "settings": {
+        "image": "shopify://shop_images/2_ea8ddf71-9af3-4df8-bc61-87fc91693556.jpg",
+        "title": "Title",
+        "text": "Description."
+      }
+    }
+  },
+  "order": [
+    "first",
+    "brand_block_Bzba97"
+  ]
+}
