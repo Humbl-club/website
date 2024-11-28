@@ -40,9 +40,14 @@
       "type": "product-recommendations",
       "settings": {}
     },
+    "product-reviews": {
+      "type": "product-reviews",
+      "settings": {}
+    }
   },
   "order": [
     "main",
-    "product-recommendations"
+    "product-recommendations",
+    "product-reviews"
   ]
 }

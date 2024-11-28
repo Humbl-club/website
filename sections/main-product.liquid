@@ -11,6 +11,8 @@
 
     {% for block in section.blocks %}
       {% case block.type %}
+        {%- when '@app' -%}
+          {% render block %}
         {%- when 'price' -%}
           {% render 'price', product: product, use_variant: true, price_class: 'product-price headline-1' %}
 
@@ -171,6 +173,9 @@
     }
   ],
   "blocks": [
+    {
+      "type": "@app"
+    },
     {
       "type": "price",
       "name": "Price",
