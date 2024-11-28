@@ -6,7 +6,7 @@
     client:visible
   >
     {%- if recommendations.performed and recommendations.products_count > 0 -%}
-      <div class="swiper complementary-swiper">
+      <div class="swiper complementary-swiper  {% if recommendations.products_count == 1 %}swiper-initialized{% endif %}">
         <div class="complementary-arrows">
           <button class="swiper-arrow prev">
             {% render 'icon-swiper-arrow' %}

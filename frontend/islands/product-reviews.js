@@ -13,7 +13,9 @@ class ProductReviews extends window.HTMLElement {
       let text = reviewsNumberBlock.innerHTML.split('Based on')
       if (text.length > 0) {
         text = text[1]
-        reviewsNumberBlock.innerHTML = text
+        if (text) {
+          reviewsNumberBlock.innerHTML = text
+        }
       }
     }
 
