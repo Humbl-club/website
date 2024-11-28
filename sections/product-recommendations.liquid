@@ -13,8 +13,8 @@
         {%- endfor -%}
       </div>
     </div>
-  {% else %}
-    <div class="product-placeholder"></div>
+  {% elsif recommendations.performed and recommendations.products_count == 0 %}
+    <div class="recommendations-placeholder headline-2">No Similar items</div>
   {%- endif -%}
 </product-recommendations>
 

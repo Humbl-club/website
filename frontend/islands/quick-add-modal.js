@@ -1,3 +1,5 @@
+import { xl } from '@/lib/media'
+
 class MobileModal extends window.HTMLElement {
   connectedCallback() {
     document.addEventListener('click', (event) => {
@@ -21,6 +23,36 @@ class MobileModal extends window.HTMLElement {
         }
       }
     })
+
+    xl.addEventListener('change', this.initCardButtons)
+
+    this.initCardButtons()
+  }
+
+  initCardButtons() {
+    if (xl.matches) {
+      const cardsMobile = document.querySelectorAll('.card-cart')
+      const mobileModal = document.getElementById('mobile-modal')
+      if (mobileModal) {
+        cardsMobile.forEach((btn) => {
+          if (btn.classList.contains('inited')) {
+            return
+          }
+          btn.addEventListener('click', function () {
+            const card = this.closest('.card')
+            if (card) {
+              mobileModal.openModal()
+              mobileModal.innerHTML = card.innerHTML
+            }
+          })
+          btn.classList.add('inited')
+        })
+        const mobileoverlay = document.getElementById('mobile-modal-overlay')
+        mobileoverlay.addEventListener('click', function () {
+          this.previousElementSibling.classList.remove('open')
+        })
+      }
+    }
   }
 
   openModal() {

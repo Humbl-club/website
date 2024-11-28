@@ -1,7 +1,7 @@
 <section
   id="MainProduct-{{ section.id }}"
   data-section="{{ section.id }}"
-  class="wrapper product product-desctop"
+  class="wrapper product"
 >
   <div id="ProductInfo-{{ section.id }}" class="product-sticky">
     <h1 class="product-title title-1 capitalize">{% render 'product-title' %}</h1>
@@ -66,14 +66,10 @@
     {% render 'product-colors' %}
 
     <div class="product-variants">
-      {% if product.available %}
-        <div class="product-subtitle body-1 opacity-50">Size:</div>
-      {% endif %}
-
       <product-form client:idle class="relative">
         {%- assign product_form_id = 'product-form-' | append: section.id -%}
         {%- form 'product', product, id: product_form_id, class: 'form', data-type: 'add-to-cart-form' -%}
-          <div class="product-form">
+          <div>
             {% if product.available %}
               {% render 'product-sizes',
                 name: 'id',
@@ -105,6 +101,8 @@
         <p class="body-3 text-center opacity-50">Out of stock</p>
       {% endif %}
     </div>
+
+    {% render 'complementary-slider' %}
   </div>
 
   {%- liquid

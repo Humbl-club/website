@@ -70,7 +70,6 @@ export function revive(islands) {
     }
 
     let child = node.firstElementChild
-
     while (child) {
       dfs(child)
       child = child.nextElementSibling

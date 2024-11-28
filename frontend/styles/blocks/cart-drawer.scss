@@ -284,57 +284,6 @@
       gap: 1.6rem;
     }
   }
-
-  &-block {
-    display: flex;
-    gap: 2rem;
-    @include mixins.breakpoint(vars.$sm-bp) {
-      gap: 1rem;
-    }
-  }
-
-  &-subimg {
-    width: 13.4rem;
-    height: 14rem;
-    @include mixins.breakpoint(vars.$xl-bp) {
-      width: 8.8rem;
-      height: 10rem;
-    }
-  }
-
-  &-foot {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem; 
-    margin-top: 2rem;
-    @include mixins.breakpoint(vars.$sm-bp) {
-      margin-top: 1.1rem;
-    }
-  }
-
-  &-add {
-    padding-top: 1.3rem;
-    padding-bottom: 1.3rem;
-    @include mixins.breakpoint(vars.$sm-bp) {
-      flex-grow: 1;
-      font-size: 1.2;
-      padding-top: 1rem;
-      padding-bottom: 1rem;
-    }
-  }
-
-  &-right {
-    @include mixins.breakpoint(vars.$sm-bp) {
-      flex-grow: 1;
-    }
-  }
-
-  &-price {
-    margin-top: 0.8rem;
-    @include mixins.breakpoint(vars.$xl-bp) {
-      margin-top: 0.2rem;
-    }
-  }
 }
 
 .cart-item-name {

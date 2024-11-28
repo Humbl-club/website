@@ -15,7 +15,7 @@ html {
   }
 
   @include mixins.breakpoint(vars.$cos-bp) {
-    font-size: calc(100vw / 1440 * 10);
+    font-size: calc(100vw / 1600 * 10);
   }
 
   @include mixins.breakpoint(vars.$xl-bp) {

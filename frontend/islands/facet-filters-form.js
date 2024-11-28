@@ -1,5 +1,4 @@
 import { onKeyUpEscape } from '@/lib/a11y'
-import { xl } from '@/lib/media'
 import { debounce } from '@/lib/utils'
 
 function initButtons(wrapper = document, timeout) {
@@ -59,36 +58,6 @@ function countFilters() {
 }
 
 countFilters()
-
-function initCardButtons() {
-  if (xl.matches) {
-    const cardsMobile = document.querySelectorAll('.card-cart')
-    const mobileModal = document.getElementById('mobile-modal')
-    if (mobileModal) {
-      cardsMobile.forEach((btn) => {
-        if (btn.classList.contains('inited')) {
-          return
-        }
-        btn.addEventListener('click', function () {
-          const card = this.closest('.card')
-          if (card) {
-            mobileModal.openModal()
-            mobileModal.innerHTML = card.innerHTML
-          }
-        })
-        btn.classList.add('inited')
-      })
-      const mobileoverlay = document.getElementById('mobile-modal-overlay')
-      mobileoverlay.addEventListener('click', function () {
-        this.previousElementSibling.classList.remove('open')
-      })
-    }
-  }
-}
-
-xl.addEventListener('change', initCardButtons)
-
-initCardButtons()
 
 class FacetFiltersForm extends window.HTMLElement {
   constructor() {
@@ -171,7 +140,13 @@ class FacetFiltersForm extends window.HTMLElement {
         initButtons()
         initFacetContainer()
         countFilters()
-        initCardButtons()
+        const mobileModal = document.getElementById('mobile-modal')
+        if (mobileModal) {
+          setTimeout(() => {
+            mobileModal.initCardButtons()
+          })
+        }
+
         if (typeof initializeScrollAnimationTrigger === 'function')
           window.initializeScrollAnimationTrigger(html.innerHTML)
       })

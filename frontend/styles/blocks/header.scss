@@ -107,6 +107,9 @@
   @include mixins.breakpoint(vars.$xl-bp) {
     padding-top: 4.8rem;
   }
+  @include mixins.breakpoint(vars.$sm-bp) {
+    width: 100%;
+  }
 
   .menu-opening & {
     transform: translateX(0);

@@ -39,7 +39,7 @@
     "product-recommendations": {
       "type": "product-recommendations",
       "settings": {}
-    }
+    },
   },
   "order": [
     "main",
