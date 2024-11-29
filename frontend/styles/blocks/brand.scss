@@ -2,24 +2,7 @@
 @use "../vars";
 
 .brand {
-  .container {
-    max-width: 1952px;
-    margin: 0 auto;
-    padding-right: 16px;
-    padding-left: 16px;
-
-    @media screen and (min-width: vars.$xl-bp) {
-      max-width: 2012px;
-      padding-right: 46px;
-      padding-left: 46px;
-    }
-
-    @media screen and (min-width: vars.$max-bp) {
-      max-width: 1984px;
-      padding-right: 32px;
-      padding-left: 32px;
-    }
-  }
+  margin: 0 !important;
 
   &__wrapper {
     padding: 127px 16px;
