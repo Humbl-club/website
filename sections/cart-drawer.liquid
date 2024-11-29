@@ -29,7 +29,7 @@
       {% else %}
         <cart-drawer-items class="cart-drawer-items {% if cart == empty %}is-empty{% endif %}" client:idle>
           <form action="{{ routes.cart_url }}" id="CartDrawer-Form" method="post">
-            <div id="CartDrawer-CartItems" class="cart-drawer-items">
+            <div id="CartDrawer-CartItems">
               {% for item in cart.items %}
                 <div id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="cart-drawer-item">
                   <div class="item-image img-cover">
@@ -137,15 +137,11 @@
               {{ 'accessibility.loading' | t }}
             </p>
           </form>
-          {%- assign section_id = section.id | append: '-cart-drawer-complementary' -%}
-          <div id="{{ section_id }}">
-            {% render 'complementary-slider',
-              class: 'cart-drawer-complementary',
-              slider: false,
-              product: cart.items.first.product,
-              section_id: section_id
-            %}
-          </div>
+          {% render 'complementary-slider',
+            class: 'cart-drawer-complementary',
+            slider: false,
+            product: cart.items.first.product
+          %}
         </cart-drawer-items>
 
         <div class="cart-drawer-footer">
