@@ -1,7 +1,7 @@
 {{ 'about_us-sides.css' | asset_url | stylesheet_tag }}
 
 <section class="section-{{ section.id }}-padding about-us">
-    <div class="container">
+    <div class="wrapper">
         <div class="about-us__wrapper ">
             {% if section.settings.blocks_order == "image-first" %}
                 {%- if section.settings.about_image != blank -%}
