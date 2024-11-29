@@ -302,6 +302,11 @@
 
 .product-available {
    margin-top: 2rem;
+   &.--desc {
+    @include mixins.breakpoint(vars.$xl-bp) {
+      display: none;
+    }
+   }
 }
 
 .product-mobile-spacer {
