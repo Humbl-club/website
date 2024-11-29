@@ -27,6 +27,15 @@
       position: absolute;
       bottom: 0;
       left: 0;
+      @include mixins.breakpoint(vars.$xl-bp) {
+        top: 0;
+        bottom: auto;
+      }
+    }
+
+    .jdgm-prev-badge__stars {
+      display: flex;
+      gap: 0.2rem;
     }
 
     .jdgm-star {
@@ -35,7 +44,10 @@
       display: inline-flex !important;
       flex: 0 0 auto;
       padding: 0 !important;
-
+      @include mixins.breakpoint(vars.$xl-bp) {
+        width: 1.6rem;
+        height: 1.6rem;
+      }
       &::before {
         content: '';
         background-image: url("data:image/svg+xml,%3Csvg width='30' height='28' viewBox='0 0 30 28' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 0L18.3677 10.3647H29.2658L20.4491 16.7705L23.8168 27.1353L15 20.7295L6.18322 27.1353L9.55093 16.7705L0.734152 10.3647H11.6323L15 0Z' fill='%23BDAFAF'/%3E%3C/svg%3E%0A");
@@ -66,6 +78,30 @@
   flex-direction: column;
   max-width: 100%;
   width: 100%;
+  @include mixins.breakpoint(vars.$xl-bp) {
+    position: relative;
+    top: 0;
+  }
+}
+
+.product-left {
+  display: block;
+  @include mixins.breakpoint(vars.$xl-bp) {
+    order: 1;
+    padding-top: 2rem;
+  }
+}
+
+.product-swiper {
+  @include mixins.breakpoint(vars.$xl-bp) {
+     
+  }
+}
+
+.product-right {
+  @include mixins.breakpoint(vars.$xl-bp) {
+    order: 1;
+  }
 }
 
 .product-images {
@@ -73,6 +109,10 @@
   flex-direction: column;
   align-items: center;
   gap: 2rem;
+  @include mixins.breakpoint(vars.$xl-bp) {
+    flex-direction: row;
+    gap: 0;
+  }
 }
 
 .product-img {
@@ -84,20 +124,33 @@
     width: 50rem;
     height: 65rem;
   }
+  @include mixins.breakpoint(vars.$xl-bp) {
+    width: 34.3rem;
+    height: 40.3rem;
+  }
 }
 
 .product-title {
   margin-bottom: 2rem;
+  @include mixins.breakpoint(vars.$xl-bp) {
+    margin-top: 0.5rem;
+  }
 }
 
 .product-price {
   margin-top: 2rem;
   margin-bottom: 6rem;
+  @include mixins.breakpoint(vars.$xl-bp) {
+    display: none;
+  }
 }
 
 .product-details {
   &:first-of-type {
     margin-top: 6rem;
+    @include mixins.breakpoint(vars.$xl-bp) {
+      margin-top: 2rem;
+    }
   }
 }
 
@@ -105,7 +158,9 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-
+  @include mixins.breakpoint(vars.$xl-bp) {
+    display: none;
+  }
   svg {
     width: 2.4rem;
     height: 2.4rem;

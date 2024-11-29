@@ -1,6 +1,5 @@
 import Swiper from 'swiper'
 import { Navigation, EffectFade } from 'swiper/modules'
-import '@/styles/blocks/swiper.scss'
 import '@/styles/blocks/complementary-block.scss'
 import '@/styles/blocks/complementary-slider.scss'
 

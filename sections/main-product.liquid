@@ -3,7 +3,7 @@
   data-section="{{ section.id }}"
   class="wrapper product"
 >
-  <div id="ProductInfo-{{ section.id }}" class="product-sticky">
+  <div id="ProductInfo-{{ section.id }}" class="product-sticky product-left">
     <h1 class="product-title title-1 capitalize">{% render 'product-title' %}</h1>
     {% if section.settings.show_vendor %}
       <p class="headline-1">{{ product.vendor }}</p>
@@ -36,30 +36,40 @@
     {% endfor %}
   </div>
 
-  <ul class="product-images">
-    {%- for media in product.media -%}
-      {%- liquid
-        assign is_first = false
-        if forloop.first
-          assign is_first = true
-        endif
-        assign loading = 'lazy'
-        if is_first
-          assign loading = 'eager'
-        endif
-      -%}
-      <li class="product-img img-cover">
-        {{
-          media.preview_image
-          | image_url: height: 745
-          | image_tag: loading: loading, preload: forloop.first, width: 595, height: 745, alt: media.preview_image.alt
-          | escape
-        }}
-      </li>
-    {%- endfor -%}
-  </ul>
+  <product-swiper client:media="(max-width: 1024px)" class="product-swiper swiper">
+    <div class="swiper-wrapper product-images">
+      {%- for media in product.media -%}
+        {%- liquid
+          assign is_first = false
+          if forloop.first
+            assign is_first = true
+          endif
+          assign loading = 'lazy'
+          if is_first
+            assign loading = 'eager'
+          endif
+        -%}
+        <div class="product-img img-cover swiper-slide">
+          <picture>
+            <source srcset="{{ media.preview_image | image_url: height: 443, width: 377 }}" media="(max-width:412px)">
+            {{
+              media.preview_image
+              | image_url: height: 745
+              | image_tag:
+                loading: loading,
+                preload: forloop.first,
+                width: 595,
+                height: 745,
+                alt: media.preview_image.alt
+              | escape
+            }}
+          </picture>
+        </div>
+      {%- endfor -%}
+    </div>
+  </product-swiper>
 
-  <div class="product-sticky">
+  <div class="product-sticky product-right">
     <button class="product-favorite body-1">
       {% render 'icon-favorite' %}
       Add to Wishlist

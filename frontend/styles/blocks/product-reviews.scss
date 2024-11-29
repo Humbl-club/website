@@ -1,3 +1,6 @@
+@use "../mixins";
+@use "../vars";
+
 .product-reviews {
   opacity: 1 !important;
   transition: opacity var(--time);
@@ -60,7 +63,10 @@
     display: inline-flex !important;
     flex: 0 0 auto;
     padding: 0 !important;
-
+    @include mixins.breakpoint(vars.$xl-bp) {
+      width: 1.6rem;
+      height: 1.6rem;
+    }
     &::before {
       content: '';
       background-image: url("data:image/svg+xml,%3Csvg width='30' height='28' viewBox='0 0 30 28' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 0L18.3677 10.3647H29.2658L20.4491 16.7705L23.8168 27.1353L15 20.7295L6.18322 27.1353L9.55093 16.7705L0.734152 10.3647H11.6323L15 0Z' fill='%23BDAFAF'/%3E%3C/svg%3E%0A");
@@ -108,6 +114,10 @@
     gap: 4rem;
     padding-top: 3.2rem !important;
     padding-bottom: 3.2rem !important;
+    @include mixins.breakpoint(vars.$xl-bp) {
+      display: flex;
+      flex-direction: column; 
+    }
   }
 
   .jdgm-rev__title {
