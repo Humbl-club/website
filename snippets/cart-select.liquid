@@ -8,28 +8,30 @@
   {% endif %}
 {% endfor %}
 
-<cart-select client:visible>
-  <div class="custom-select">
-    <select
-      name="{{ name }}"
-      {% if required %}
-        required
-      {% endif %}
-    >
-      <option value="">{{ label }}</option>
-      {% for value in options %}
-        {% assign ntitle_array = value.title | split: '/ ' %}
-        {% assign ntitle = ntitle_array[position_of_size] | strip %}
-        {% assign ntitle = ',' | append: ntitle | append: ',' %}
-
-        {% if value.available %}
-          <option value="{{ value.id }}">
-            {{- ntitle | remove: ',' -}}
-          </option>
+{% if sizes %}
+  <cart-select client:visible>
+    <div class="custom-select">
+      <select
+        name="{{ name }}"
+        {% if required %}
+          required
         {% endif %}
-      {% endfor %}
-    </select>
-    <div class="select-selected">{{ label }}</div>
-  </div>
-</cart-select>
+      >
+        <option value="">{{ label }}</option>
+        {% for value in options %}
+          {% assign ntitle_array = value.title | split: '/ ' %}
+          {% assign ntitle = ntitle_array[position_of_size] | strip %}
+          {% assign ntitle = ',' | append: ntitle | append: ',' %}
+
+          {% if value.available %}
+            <option value="{{ value.id }}">
+              {{- ntitle | remove: ',' -}}
+            </option>
+          {% endif %}
+        {% endfor %}
+      </select>
+      <div class="select-selected">{{ label }}</div>
+    </div>
+  </cart-select>
+{% endif %}
 {% assign position_of_size = 1 %}

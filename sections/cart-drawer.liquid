@@ -137,20 +137,14 @@
               {{ 'accessibility.loading' | t }}
             </p>
           </form>
-
-          {% if section.blocks.size > 0 %}
-            <h3 class="headline-2 section-pt">{{ 'sections.cart.complete_the_look' | t }}</h3>
-
-            <div class="cart-drawer-blocks section-pb">
-              {% for block in section.blocks %}
-                {%- case block.type -%}
-                  {%- when 'product' -%}
-                    {% if block.settings.product != null %}
-                    {% endif %}
-                {%- endcase -%}
-              {% endfor %}
-            </div>
-          {% endif %}
+          {%- assign section_id = section.id | append: '-cart-drawer-complementary' -%}
+          <div id="{{ section_id }}">
+            {% render 'complementary-slider',
+              slider: false,
+              product: cart.items.first.product,
+              section_id: section_id
+            %}
+          </div>
         </cart-drawer-items>
 
         <div class="cart-drawer-footer">
@@ -184,19 +178,6 @@
 
 {% schema %}
 {
-  "name": "Cart drawer",
-  "blocks": [
-    {
-      "type": "product",
-      "name": "t:sections.collage.blocks.product.name",
-      "settings": [
-        {
-          "type": "product",
-          "id": "product",
-          "label": "t:sections.collage.blocks.product.settings.product.label"
-        }
-      ]
-    }
-  ]
+  "name": "Cart drawer"
 }
 {% endschema %}

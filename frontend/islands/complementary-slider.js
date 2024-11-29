@@ -9,8 +9,8 @@ class ComplementarySlider extends window.HTMLElement {
   initSwiper() {
     const swiper = this.querySelector('.swiper')
     if (swiper) {
-      const nextEl = swiper.parentElement.parentElement.querySelector('.next')
-      const prevEl = swiper.parentElement.parentElement.querySelector('.prev')
+      const nextEl = swiper.querySelector('.next')
+      const prevEl = swiper.querySelector('.prev')
       new Swiper(swiper, {
         // configure Swiper to use modules
         fadeEffect: {
@@ -37,7 +37,6 @@ class ComplementarySlider extends window.HTMLElement {
         const html = document.createElement('div')
         html.innerHTML = text
         const recommendations = html.querySelector('complementary-slider')
-
         if (recommendations && recommendations.innerHTML.trim().length) {
           this.innerHTML = recommendations.innerHTML
           this.initSwiper()

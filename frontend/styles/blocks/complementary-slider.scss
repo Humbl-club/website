@@ -13,6 +13,16 @@
   }
 }
 
+.complementary-blocks {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  @include mixins.breakpoint(vars.$sm-bp) {
+    gap: 1.6rem;
+  }
+}
+
 .complementary-arrows {
   position: absolute;
   top: 2rem;
