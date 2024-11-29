@@ -140,6 +140,7 @@
           {%- assign section_id = section.id | append: '-cart-drawer-complementary' -%}
           <div id="{{ section_id }}">
             {% render 'complementary-slider',
+              class: 'cart-drawer-complementary',
               slider: false,
               product: cart.items.first.product,
               section_id: section_id
