@@ -9,9 +9,9 @@
 {% endfor %}
 
 {% if sizes %}
-  <div class="product-subtitle body-1 opacity-50">Size:</div>
+  <div class="product-selected body-1 opacity-50">Size:</div>
 
-  <div class="product-form">
+  <div class="product-form product-dropdown">
     {% for value in options %}
       {% assign ntitle_array = value.title | split: '/ ' %}
       {% assign ntitle = ntitle_array[position_of_size] | strip %}

@@ -1,4 +1,4 @@
-<section
+<main-product
   id="MainProduct-{{ section.id }}"
   data-section="{{ section.id }}"
   class="wrapper product"
@@ -75,44 +75,44 @@
       Add to Wishlist
     </button>
 
-    {% render 'product-colors' %}
+    <product-form client:idle class="product-fixed">
+      {%- assign product_form_id = 'product-form-' | append: section.id -%}
+      {%- form 'product', product, id: product_form_id, class: 'form', data-type: 'add-to-cart-form' -%}
+        {% render 'product-colors' %}
 
-    <div class="product-variants">
-      <product-form client:idle class="relative">
-        {%- assign product_form_id = 'product-form-' | append: section.id -%}
-        {%- form 'product', product, id: product_form_id, class: 'form', data-type: 'add-to-cart-form' -%}
-          <div>
-            {% if product.available %}
-              {% render 'product-sizes',
-                name: 'id',
-                label: 'Size',
-                options: product.variants,
-                required: true,
-                item: product,
-                class: 'headline-2'
-              %}
-            {% endif %}
+        <product-select class="product-variants" client:media="(max-width: 1024px)">
+          {% if product.available %}
+            {% render 'product-sizes',
+              name: 'id',
+              label: 'Size',
+              options: product.variants,
+              required: true,
+              item: product,
+              class: 'headline-2'
+            %}
+          {% endif %}
+        </product-select>
 
-            <button
-              type="submit"
-              name="add"
-              class="btn btn-blue product-submit"
-              {% if product.available == false %}
-                disabled
-              {% endif %}
-            >
-              {{ 'products.product.add_to_cart' | t }}
-            </button>
-          </div>
-          <p class="body-2 absolute text-red-500" role="alert" data-error-message hidden></p>
-        {%- endform -%}
-      </product-form>
-      {% if product.available %}
-        <p class="body-3 text-center opacity-50">Few items left</p>
-      {% else %}
-        <p class="body-3 text-center opacity-50">Out of stock</p>
-      {% endif %}
-    </div>
+        <button
+          type="submit"
+          name="add"
+          class="btn btn-blue product-submit"
+          {% if product.available == false %}
+            disabled
+          {% endif %}
+        >
+          {{ 'products.product.add_to_cart' | t }}
+        </button>
+
+        <p class="body-2 absolute text-red-500" role="alert" data-error-message hidden></p>
+
+        {% if product.available %}
+          <p class="product-available body-3 text-center opacity-50">Few items left</p>
+        {% else %}
+          <p class="product-available body-3 text-center opacity-50">Out of stock</p>
+        {% endif %}
+      {%- endform -%}
+    </product-form>
 
     {% render 'complementary-slider', slider: true %}
   </div>
@@ -169,7 +169,7 @@
       ]
     }
   </script>
-</section>
+</main-product>
 
 {% schema %}
 {

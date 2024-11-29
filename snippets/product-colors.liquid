@@ -21,11 +21,11 @@
 {% endif %}
 
 {% if ntitle != '' %}
-  <div class="product-variants">
-    <div class="product-subtitle body-1 "><span class="opacity-50">Color</span>: {{ ntitle }}</div>
+  <product-select class="product-variants" client:media="(max-width: 1024px)">
+    <div class="product-selected body-1 "><span class="opacity-50">Color</span>: {{ ntitle }}</div>
 
     <product-colors client:visible>
-      <div class="product-colorboxes">
+      <div class="product-colorboxes product-dropdown">
         {% render 'product-colorbox', checked: true, ntitle: ntitle %}
         {% if product.metafields.custom.related_colors %}
           {% for item in product.metafields.custom.related_colors.value %}
@@ -34,7 +34,7 @@
         {% endif %}
       </div>
     </product-colors>
-  </div>
+  </product-select>
 {% endif %}
 
 {%- assign ntitle = '' -%}
