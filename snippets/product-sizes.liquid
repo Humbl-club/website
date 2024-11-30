@@ -9,7 +9,10 @@
 {% endfor %}
 
 {% if sizes %}
-  <div class="product-selected body-1 opacity-50">Size:</div>
+  <div class="product-selected body-1">
+    <span class="product-select-desc opacity-50">Size:</span>
+    <span class="product-select-mobile"></span>
+  </div>
 
   <div class="product-form product-dropdown">
     {% for value in options %}

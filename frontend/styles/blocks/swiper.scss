@@ -382,10 +382,8 @@
   }
   /* Scrollbar */
   .swiper-scrollbar {
-    border-radius: 10px;
     position: relative;
     -ms-touch-action: none;
-    background: rgba(0, 0, 0, 0.1);
   }
   .swiper-scrollbar-disabled > .swiper-scrollbar,
   .swiper-scrollbar.swiper-scrollbar-disabled {
@@ -394,11 +392,11 @@
   .swiper-horizontal > .swiper-scrollbar,
   .swiper-scrollbar.swiper-scrollbar-horizontal {
     position: absolute;
-    left: 1%;
-    bottom: 3px;
+    left: 0;
+    bottom: 0;
     z-index: 50;
-    height: 5px;
-    width: 98%;
+    height: 0.1rem;
+    width: 100%;
   }
   .swiper-vertical > .swiper-scrollbar,
   .swiper-scrollbar.swiper-scrollbar-vertical {
@@ -413,8 +411,7 @@
     height: 100%;
     width: 100%;
     position: relative;
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
+    background: var(--black);
     left: 0;
     top: 0;
   }

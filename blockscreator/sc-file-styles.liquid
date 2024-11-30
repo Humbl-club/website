@@ -1,0 +1,14 @@
+{% render 'vite-tag' with '{name}.css', preload_stylesheet: true %}
+
+{% schema %}
+{
+  "name": "{name}",
+  "tag": "section",
+  "class": "{name}",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [],
+  "blocks": []
+}
+{% endschema %}

@@ -39,6 +39,7 @@ class ComplementarySlider extends window.HTMLElement {
         if (recommendations && recommendations.innerHTML.trim().length) {
           this.innerHTML = recommendations.innerHTML
           this.initSwiper()
+          this.classList.add('inited')
         }
       })
       .catch((e) => {

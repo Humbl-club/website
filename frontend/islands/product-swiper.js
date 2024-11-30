@@ -1,5 +1,6 @@
 import Swiper from 'swiper'
 import { xl } from '@/lib/media'
+import { Scrollbar } from 'swiper/modules'
 
 class ProductSwiper extends window.HTMLElement {
   constructor() {
@@ -18,7 +19,10 @@ class ProductSwiper extends window.HTMLElement {
           slidesPerView: 'auto',
           grabCursor: true,
           speed: 500,
-          modules: []
+          scrollbar: {
+            el: '.swiper-scrollbar'
+          },
+          modules: [Scrollbar]
         })
       }
     } else {

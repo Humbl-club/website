@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "packageManager": "pnpm@7.12.0",
+  "type": "module",
   "scripts": {
     "dev": "concurrently --raw --kill-others --passthrough-arguments \"pnpm run shopify:dev {@}\" \"pnpm run vite:dev\"",
     "build": "vite build",
@@ -11,7 +12,10 @@
     "format": "prettier --write --cache .",
     "vite:dev": "vite",
     "shopify:dev": "shopify theme dev",
-    "shopify:deploy": "shopify theme push"
+    "shopify:deploy": "shopify theme push",
+    "make:section": "node blockscreator/section-creator.js",
+    "make:island": "node blockscreator/island-creator.js",
+    "make:snippet": "node blockscreator/snippet-creator.js"
   },
   "devDependencies": {
     "@shopify/prettier-plugin-liquid": "^1.4.2",

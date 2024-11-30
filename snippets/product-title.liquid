@@ -43,7 +43,7 @@
   {% endfor %}
 {% endif %}
 
-{% if product.collections.size == 1 and product.type == '' and no_color == true %}
+{% if product.collections.size == 1 or product.collections.size == 0 or product.type == '' and no_color == true %}
   {{ product.title }}
 {% endif %}
 

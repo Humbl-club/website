@@ -87,11 +87,12 @@
   left: 0;
   right: 0;
   z-index: 20;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
   border: 0.1rem solid var(--black);
   border-top: 0;
   animation: fadeEffect var(--time);
-
+  max-height: 36rem;
   &.--top {
     top: auto;
     bottom: 100%;

@@ -1,5 +1,10 @@
-@use "../mixins";
-@use "../vars";
+@use "../styles/mixins";
+@use "../styles/vars";
+
+.product-section {
+  position: relative;
+  z-index: 2;  
+}
 
 .product {
   display: grid;
@@ -123,6 +128,12 @@
     padding-top: 2rem;
     padding-bottom: 4rem;
     border-top: 0.1rem solid rgba($color: #000000, $alpha: 0.1);
+
+    & > * {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      column-gap: 1rem;
+    }
   }
 }
 
@@ -193,7 +204,9 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
-
+  @include mixins.breakpoint(vars.$xl-bp) {
+    gap: 0;
+  }
   &:first-of-type {
     margin-top: auto;
     padding-top: 4rem;
@@ -220,6 +233,10 @@
 .product-submit {
   width: 100%;
   margin-top: 4rem;
+  @include mixins.breakpoint(vars.$xl-bp) {
+    grid-column: 2 span;
+    margin-top: 1rem;
+  }
 }
 
 .product-colorboxes {
@@ -291,7 +308,17 @@
 }
 
 .product-selected {
+  @include mixins.breakpoint(vars.$xl-bp) {
+    min-height: 3.8rem;
+    border: 0.1rem solid var(--black);
+  }
+}
 
+
+.product-select-desc {
+  @include mixins.breakpoint(vars.$xl-bp) {
+    display: none;
+  }
 }
 
 .product-dropdown{
@@ -314,3 +341,4 @@
     padding-top: 19.2rem;
   }
 }
+

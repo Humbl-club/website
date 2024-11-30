@@ -32,3 +32,11 @@
   gap: 2rem;
   z-index: 10;
 }
+
+.complementary-title {
+  opacity: 0;
+  transition: opacity var(--time);
+  .inited & {
+    opacity: 1;
+  }
+}
