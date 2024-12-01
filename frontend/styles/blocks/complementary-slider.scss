@@ -3,13 +3,14 @@
 
 .complementary-swiper {
   max-width: 44.2rem;
-  overflow: visible;
+  overflow: hidden;
   padding-top: 2rem;
   opacity: 0;
   transition: opacity var(--time);
   transition-delay: 500ms;
-  &.swiper-initialized {
-    opacity: 1  ;
+  .inited & {
+    opacity: 1;
+    overflow: visible;
   }
 }
 
@@ -18,6 +19,7 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
+
   @include mixins.breakpoint(vars.$sm-bp) {
     gap: 1.6rem;
   }
@@ -36,6 +38,7 @@
 .complementary-title {
   opacity: 0;
   transition: opacity var(--time);
+
   .inited & {
     opacity: 1;
   }

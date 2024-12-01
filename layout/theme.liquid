@@ -65,11 +65,11 @@
 
     <main role="main" id="MainContent" tabindex="-1">
       {{ content_for_layout }}
-
-      {% if template == 'product' %}
-        <div class="product-mobile-spacer"></div>
-      {% endif %}
     </main>
+
+    {% if template == 'product' %}
+      <div class="product-mobile-spacer"></div>
+    {% endif %}
 
     <ul hidden>
       <li id="a11y-new-window-message">{{ 'accessibility.link_messages.new_window' | t }}</li>

@@ -79,6 +79,11 @@
     <product-form client:idle class="product-fixed">
       {%- assign product_form_id = 'product-form-' | append: section.id -%}
       {%- form 'product', product, id: product_form_id, class: 'form', data-type: 'add-to-cart-form' -%}
+        <div class="product-fixed-head">
+          {% render 'product-available' %}
+          {% render 'price', product: product, use_variant: true, price_class: 'product-price-mobile headline-1' %}
+        </div>
+
         {% render 'product-colors' %}
 
         <product-select class="product-variants" client:media="(max-width: 1024px)">

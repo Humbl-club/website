@@ -54,6 +54,10 @@
     .jdgm-star {
       width: 3rem;
       height: 3rem;
+      @include mixins.breakpoint(vars.$xl-bp) {
+        width: 2rem;
+        height: 2rem;
+      }
     }
   }
 
@@ -101,6 +105,10 @@
     display: none !important;
   }
 
+  .jdgm-row-rating {
+    margin-bottom: 0!important;
+  }
+
   .jdgm-rev__header {
     display: flex;
     flex-direction: column-reverse;
@@ -108,7 +116,21 @@
     border-right: 1px solid rgba(0, 0, 0, 0.1);
     @include mixins.breakpoint(vars.$xl-bp) {
       border-right: 0;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      margin-bottom: 0!important;
+
     }
+  }
+
+  .jdgm-rev__br {
+    @include mixins.breakpoint(vars.$xl-bp) {
+      display: none!important;
+    }
+  }
+
+  .jdgm-rev__custom-form {
+    display: none!important;
   }
 
   .jdgm-rev.jdgm-divider-top {
@@ -120,6 +142,9 @@
     @include mixins.breakpoint(vars.$xl-bp) {
       display: flex;
       flex-direction: column; 
+      padding-top: 2.4rem!important;
+      padding-bottom: 2.4rem!important;
+      gap: 3.2rem!important;
     }
   }
 

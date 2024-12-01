@@ -125,7 +125,7 @@
     position: fixed;
     bottom: -4rem;
     left: 0;
-    z-index: 10;
+    z-index: 20;
     background-color: var(--white);
     width: 100%;
     padding-left: 1.6rem;
@@ -139,6 +139,17 @@
       grid-template-columns: repeat(2, 1fr);
       column-gap: 1rem;
     }
+  }
+}
+
+.product-fixed-head {
+  display: none;
+  @include mixins.breakpoint(vars.$xl-bp) {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    grid-column: 2 span;
+    padding-bottom: 1rem;
   }
 }
 
@@ -181,10 +192,13 @@
 .product-price {
   margin-top: 2rem;
   margin-bottom: 6rem;
-
   @include mixins.breakpoint(vars.$xl-bp) {
     display: none;
   }
+}
+
+.product-price-mobile {
+  margin-left: auto;
 }
 
 .product-details {
@@ -268,7 +282,9 @@
   height: 5rem;
   display: block;
   position: relative;
-
+  @include mixins.breakpoint(vars.$xl-bp) {
+    display: none;
+  }
   &::before {
     content: '';
     border: 0.1rem solid var(--black);
@@ -291,10 +307,18 @@
 
 }
 
+.product-colorbox-mobile {
+  width: 1rem;
+  height: 1rem;
+  margin-right: 1rem;
+  display: inline-block;
+}
+
 .product-complementary {
   min-height: 22rem;
   margin-top: auto;
   padding-top: 3rem;
+  max-width: 100%;
 }
 
 .product-recommendations {
@@ -336,7 +360,7 @@
     display: flex;
     align-items: center;
     position: relative;
-
+    height: 100%;
     &::after {
       content: '';
       background-repeat: no-repeat;
@@ -413,7 +437,10 @@
 
 .product-available {
   margin-top: 2rem;
-
+  @include mixins.breakpoint(vars.$xl-bp) {
+    margin-top: 0;
+    margin-right: auto;
+  }
   &.--desc {
     @include mixins.breakpoint(vars.$xl-bp) {
       display: none;
@@ -423,6 +450,6 @@
 
 .product-mobile-spacer {
   @include mixins.breakpoint(vars.$xl-bp) {
-    padding-top: 19.2rem;
+    padding-top: 15rem;
   }
 }
