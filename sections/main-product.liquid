@@ -107,11 +107,7 @@
 
         <p class="body-2 absolute text-red-500" role="alert" data-error-message hidden></p>
 
-        {% if product.available %}
-          <p class="product-available --desc body-3 text-center opacity-50">Few items left</p>
-        {% else %}
-          <p class="product-available --desc body-3 text-center opacity-50">Out of stock</p>
-        {% endif %}
+        {% render 'product-available', desc: true %}
       {%- endform -%}
     </product-form>
 

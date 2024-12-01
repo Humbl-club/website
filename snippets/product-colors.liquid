@@ -28,7 +28,7 @@
     </div>
 
     <product-colors client:visible>
-      <div class="product-colorboxes product-dropdown">
+      <div class="product-colorboxes product-dropdown dropdown-hidden">
         {% render 'product-colorbox', checked: true, ntitle: ntitle %}
         {% if product.metafields.custom.related_colors %}
           {% for item in product.metafields.custom.related_colors.value %}

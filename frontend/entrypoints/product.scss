@@ -3,7 +3,7 @@
 
 .product-section {
   position: relative;
-  z-index: 2;  
+  z-index: 2;
 }
 
 .product {
@@ -23,8 +23,9 @@
   .shopify-app-block {
     .jdgm-widget.jdgm-preview-badge {
       padding-bottom: 4rem !important;
+
       @include mixins.breakpoint(vars.$xl-bp) {
-        padding-bottom: 0!important;
+        padding-bottom: 0 !important;
       }
     }
 
@@ -35,6 +36,7 @@
       position: absolute;
       bottom: 0;
       left: 0;
+
       @include mixins.breakpoint(vars.$xl-bp) {
         top: 0;
         bottom: auto;
@@ -52,10 +54,12 @@
       display: inline-flex !important;
       flex: 0 0 auto;
       padding: 0 !important;
+
       @include mixins.breakpoint(vars.$xl-bp) {
         width: 1.6rem;
         height: 1.6rem;
       }
+
       &::before {
         content: '';
         background-image: url("data:image/svg+xml,%3Csvg width='30' height='28' viewBox='0 0 30 28' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M15 0L18.3677 10.3647H29.2658L20.4491 16.7705L23.8168 27.1353L15 20.7295L6.18322 27.1353L9.55093 16.7705L0.734152 10.3647H11.6323L15 0Z' fill='%23BDAFAF'/%3E%3C/svg%3E%0A");
@@ -86,6 +90,7 @@
   flex-direction: column;
   max-width: 100%;
   width: 100%;
+
   @include mixins.breakpoint(vars.$xl-bp) {
     position: relative;
     top: 0;
@@ -95,6 +100,7 @@
 
 .product-left {
   display: block;
+
   @include mixins.breakpoint(vars.$xl-bp) {
     order: 1;
     padding-top: 2rem;
@@ -102,23 +108,22 @@
 }
 
 .product-swiper {
-  @include mixins.breakpoint(vars.$xl-bp) {
-     
-  }
+  @include mixins.breakpoint(vars.$xl-bp) {}
 }
 
 .product-right {
   @include mixins.breakpoint(vars.$xl-bp) {
     order: 1;
-    
+
   }
 }
 
 .product-fixed {
   display: block;
+
   @include mixins.breakpoint(vars.$xl-bp) {
     position: fixed;
-    bottom: -3rem;
+    bottom: -4rem;
     left: 0;
     z-index: 10;
     background-color: var(--white);
@@ -126,10 +131,10 @@
     padding-left: 1.6rem;
     padding-right: 1.6rem;
     padding-top: 2rem;
-    padding-bottom: 4rem;
+    padding-bottom: 5rem;
     border-top: 0.1rem solid rgba($color: #000000, $alpha: 0.1);
 
-    & > * {
+    &>* {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       column-gap: 1rem;
@@ -142,6 +147,7 @@
   flex-direction: column;
   align-items: center;
   gap: 2rem;
+
   @include mixins.breakpoint(vars.$xl-bp) {
     flex-direction: row;
     gap: 0;
@@ -157,6 +163,7 @@
     width: 50rem;
     height: 65rem;
   }
+
   @include mixins.breakpoint(vars.$xl-bp) {
     width: 34.3rem;
     height: 40.3rem;
@@ -165,6 +172,7 @@
 
 .product-title {
   margin-bottom: 2rem;
+
   @include mixins.breakpoint(vars.$xl-bp) {
     margin-top: 0.5rem;
   }
@@ -173,6 +181,7 @@
 .product-price {
   margin-top: 2rem;
   margin-bottom: 6rem;
+
   @include mixins.breakpoint(vars.$xl-bp) {
     display: none;
   }
@@ -181,6 +190,7 @@
 .product-details {
   &:first-of-type {
     margin-top: 6rem;
+
     @include mixins.breakpoint(vars.$xl-bp) {
       margin-top: 2rem;
     }
@@ -191,9 +201,11 @@
   display: flex;
   align-items: center;
   gap: 1rem;
+
   @include mixins.breakpoint(vars.$xl-bp) {
     display: none;
   }
+
   svg {
     width: 2.4rem;
     height: 2.4rem;
@@ -204,12 +216,16 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
+
   @include mixins.breakpoint(vars.$xl-bp) {
     gap: 0;
+    position: relative;
   }
+
   &:first-of-type {
     margin-top: auto;
     padding-top: 4rem;
+
     @include mixins.breakpoint(vars.$xl-bp) {
       padding-top: 0;
     }
@@ -217,6 +233,7 @@
 
   &+& {
     margin-top: 4rem;
+
     @include mixins.breakpoint(vars.$xl-bp) {
       margin-top: 0;
     }
@@ -233,6 +250,7 @@
 .product-submit {
   width: 100%;
   margin-top: 4rem;
+
   @include mixins.breakpoint(vars.$xl-bp) {
     grid-column: 2 span;
     margin-top: 1rem;
@@ -292,9 +310,11 @@
   display: flex;
   gap: 1rem;
   margin-top: 2rem;
+
   @include mixins.breakpoint(vars.$xl-bp) {
     display: none;
   }
+
   &::before {
     content: '';
     background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M10.881 1.35183C11.8799 0.938058 13.0023 0.938067 14.0012 1.35182C14.4073 1.52 14.7668 1.77652 15.1544 2.11464C15.534 2.44577 15.9729 2.88464 16.5276 3.43938L16.5607 3.47248C17.1155 4.02724 17.5544 4.46613 17.8855 4.84577C18.2236 5.23341 18.4802 5.59292 18.6483 5.99894C19.0621 6.99787 19.0621 8.12025 18.6483 9.11918C18.4802 9.5252 18.2236 9.88472 17.8855 10.2724C17.5543 10.6521 17.1153 11.0911 16.5603 11.6461L11.6466 16.5598C11.0916 17.1148 10.6526 17.5538 10.2729 17.885C9.88521 18.2232 9.52569 18.4797 9.11967 18.6478C8.12074 19.0616 6.99836 19.0616 5.99943 18.6478C5.59341 18.4797 5.23389 18.2232 4.84625 17.885C4.46661 17.5539 4.02772 17.115 3.47297 16.5602L3.43986 16.5271C2.88513 15.9724 2.44626 15.5335 2.11513 15.1539C1.777 14.7663 1.5205 14.4068 1.35232 14.0008C0.938558 13.0018 0.938544 11.8794 1.35232 10.8805C1.52049 10.4745 1.77699 10.115 2.11512 9.72731C2.44639 9.34751 2.88549 8.90842 3.44057 8.35335L8.35383 3.44009C8.9089 2.88501 9.34799 2.44591 9.7278 2.11463C10.1154 1.7765 10.475 1.52001 10.881 1.35183ZM13.5229 2.50668C12.8302 2.21977 12.0519 2.21978 11.3593 2.50668C11.131 2.60125 10.889 2.76045 10.5495 3.05664C10.2056 3.35653 9.79652 3.76516 9.22185 4.33984L4.34032 9.22136C3.76565 9.79603 3.35701 10.2052 3.05712 10.549C2.76093 10.8885 2.60174 11.1305 2.50716 11.3588C2.22027 12.0514 2.22026 12.8297 2.50716 13.5224L3.05711 14.3322C3.35701 14.676 3.76564 15.0851 4.34032 15.6598C4.915 16.2345 5.32412 16.6431 5.66793 16.943C6.0075 17.2392 6.24947 17.3984 6.47778 17.493C7.17042 17.7799 7.94867 17.7799 8.64131 17.493C8.86963 17.3984 9.11161 17.2392 9.45119 16.943C9.57567 16.8344 9.70871 16.7116 9.85507 16.5718L8.30838 15.0251C8.06431 14.781 8.06431 14.3853 8.30838 14.1412C8.55246 13.8972 8.94819 13.8972 9.19227 14.1412L10.7448 15.6938C10.7561 15.6825 10.7674 15.6712 10.7788 15.6598L12.7776 13.661L11.2251 12.1084C10.981 11.8644 10.981 11.4686 11.2251 11.2246C11.4691 10.9805 11.8649 10.9805 12.1089 11.2246L13.6615 12.7771L15.6603 10.7783L15.6937 10.7438L14.1417 9.19178C13.8976 8.9477 13.8976 8.55197 14.1417 8.3079C14.3858 8.06382 14.7815 8.06382 15.0256 8.3079L16.5625 9.84484L16.9435 9.4507L17.4935 8.64083C17.7804 7.94819 17.7804 7.16994 17.4935 6.4773L16.9435 5.66744L15.6603 4.33984L14.3327 3.05663L13.5229 2.50668Z' fill='black'/%3E%3C/svg%3E%0A");
@@ -310,7 +330,33 @@
 .product-selected {
   @include mixins.breakpoint(vars.$xl-bp) {
     min-height: 3.8rem;
-    border: 0.1rem solid var(--black);
+    border: 0.1rem solid rgba($color: #000000, $alpha: 0.1);
+    padding: 0.6rem 1.2rem;
+    padding-right: 2.8rem;
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    &::after {
+      content: '';
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      background-image: url("data:image/svg+xml,%3Csvg width='17' height='16' viewBox='0 0 17 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M4.90435 5.70607L4.90247 5.70353C4.73872 5.48119 4.42572 5.43368 4.20337 5.59743C3.98102 5.76118 3.93377 6.07452 4.09752 6.29687L4.09999 6.30021L4.10723 6.31L4.13481 6.34709C4.15884 6.37933 4.19398 6.42624 4.2389 6.48565C4.32871 6.60443 4.45774 6.77333 4.61543 6.97484C4.9982 7.46396 5.55456 8.15134 6.13089 8.7816C6.51781 9.20473 6.92447 9.61399 7.30066 9.9213C7.48848 10.0747 7.68003 10.2121 7.86677 10.3134C8.04459 10.4099 8.26545 10.5 8.49987 10.5C8.76517 10.5 9.01719 10.3843 9.21676 10.2658C9.42925 10.1396 9.6504 9.9685 9.86843 9.77801C10.3055 9.39611 10.7773 8.89456 11.2096 8.4003C11.7533 7.77858 12.2508 7.14986 12.5626 6.74534C12.668 6.60857 12.7525 6.49694 12.8109 6.41926C12.8401 6.38041 12.8628 6.35003 12.8783 6.32922L12.896 6.30531L12.9019 6.29729L12.9025 6.29657C13.0662 6.07422 13.0187 5.76122 12.7964 5.59747C12.574 5.43371 12.2608 5.48148 12.0971 5.70383L12.0962 5.70508L12.0922 5.71048L12.0758 5.73248C12.0613 5.752 12.0397 5.78101 12.0116 5.81842C11.9553 5.89326 11.8732 6.00166 11.7705 6.13489C11.4654 6.53082 10.9818 7.14174 10.4569 7.74195C10.0357 8.22344 9.59804 8.68634 9.21048 9.02495C9.01617 9.19472 8.84617 9.32286 8.70627 9.40591C8.57614 9.48317 8.51215 9.4971 8.50097 9.49953L8.49958 9.49957C8.49028 9.49764 8.44147 9.48752 8.34355 9.43441C8.23211 9.37396 8.09433 9.2784 7.93329 9.14685C7.61178 8.88421 7.24266 8.51555 6.86886 8.10677C6.3171 7.50337 5.77845 6.83838 5.40296 6.35855C5.24917 6.16203 5.12354 5.99759 5.03656 5.88255C4.99308 5.82504 4.95929 5.77992 4.9365 5.74935L4.91073 5.7147L4.90435 5.70607Z' fill='black'/%3E%3C/svg%3E%0A");
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 1.2rem;
+      width: 1.7rem;
+      height: 1.6rem;
+      transition: transform var(--time);
+    }
+
+    product-select.active & {
+      &::after {
+        transform: translateY(-50%) rotate(180deg);
+      }
+    }
   }
 }
 
@@ -321,19 +367,58 @@
   }
 }
 
-.product-dropdown{
+.product-select-mobile {
+  display: none;
+
   @include mixins.breakpoint(vars.$xl-bp) {
-    display: none;
+    display: block;
+  }
+}
+
+.product-dropdown {
+  @include mixins.breakpoint(vars.$xl-bp) {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0.1rem solid rgba($color: #000000, $alpha: 0.1);
+    background-color: var(--white);
+    animation: fadeEffect var(--time);
+    .radio-box {
+      display: none;
+    }
+
+    product-select & {
+      display: none;
+    }
+    product-select.active & {
+      display: flex;
+    }
+  }
+}
+
+.product-select-item {
+  display: none;
+  @include mixins.breakpoint(vars.$xl-bp) {
+    display: block;
+    padding: 0.6rem 1.2rem;
   }
 }
 
 .product-available {
-   margin-top: 2rem;
-   &.--desc {
+  margin-top: 2rem;
+
+  &.--desc {
     @include mixins.breakpoint(vars.$xl-bp) {
       display: none;
     }
-   }
+  }
 }
 
 .product-mobile-spacer {
@@ -341,4 +426,3 @@
     padding-top: 19.2rem;
   }
 }
-
