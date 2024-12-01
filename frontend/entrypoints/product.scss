@@ -258,7 +258,6 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
-  margin-top: 2rem;
 }
 
 .product-submit {
@@ -333,7 +332,6 @@
   text-decoration: underline;
   display: flex;
   gap: 1rem;
-  margin-top: 2rem;
 
   @include mixins.breakpoint(vars.$xl-bp) {
     display: none;
