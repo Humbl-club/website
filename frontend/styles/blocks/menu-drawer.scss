@@ -135,6 +135,9 @@ menu-drawer {
       border: 1px solid #E6E6E6;
       border-collapse: collapse;
       font-weight: 400;
+      @include mixins.breakpoint(vars.$xl-bp) {
+        padding: 1.4rem 1rem;
+      }
     }
 
     @include mixins.breakpoint(vars.$sm-bp) {
