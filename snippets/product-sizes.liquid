@@ -37,8 +37,10 @@
         <div class="product-select-item button-title-2">{{- ntitle | remove: ',' -}}</div>
       </label>
     {% endfor %}
+
+    <button type="button" class="product-sizebtn" data-modal="modal-sizes">Size Guide</button>
   </div>
 
-  <button type="button" class="product-sizebtn" data-modal="#modal-sizes">Size Guide</button>
+  <button type="button" class="product-sizebtn" data-modal="modal-sizes">Size Guide</button>
 {% endif %}
 {% assign position_of_size = 1 %}

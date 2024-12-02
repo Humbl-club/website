@@ -15,3 +15,18 @@ if (drawerbtn) {
     }
   })
 }
+
+document.addEventListener('click', modalHandler)
+function modalHandler(event) {
+  const btn = event.target.closest('[data-modal]')
+  if (btn) {
+    const modal = document.getElementById(btn.dataset.modal)
+    if (modal) {
+      if (modal.dataset.open === 'true') {
+        modal.dataset.open = 'false'
+      } else {
+        modal.dataset.open = 'true'
+      }
+    }
+  }
+}
