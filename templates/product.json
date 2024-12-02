@@ -66,11 +66,15 @@
     "product-reviews": {
       "type": "product-reviews",
       "settings": {}
+    },
+    "modal-sizes": {
+      "type": "modal-sizes",
     }
   },
   "order": [
     "main",
     "product-recommendations",
-    "product-reviews"
+    "product-reviews",
+    "modal-sizes"
   ]
 }

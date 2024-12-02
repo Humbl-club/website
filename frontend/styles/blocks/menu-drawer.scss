@@ -145,7 +145,7 @@ menu-drawer {
     }
   }
 
-  dl {
+  .dl {
     margin-top: 3.2rem;
     display: flex;
     flex-direction: column;
@@ -154,10 +154,10 @@ menu-drawer {
       margin-top: 2.4rem;
       
     }
-    div {
+    .dr {
       display: flex;
     }
-    dt {
+    .dt {
       opacity: 0.5;
       margin-right: 0.8rem;
     }
