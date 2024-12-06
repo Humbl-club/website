@@ -46,7 +46,9 @@
     },
     "search": {
       "search": "Search",
-      "reset": "Clear search term"
+      "reset": "Clear search term",
+      "no_results_html": "Nothing finded",
+      "submit": "Submit"
     },
     "cart": {
       "view": "View cart ({{ count }})",
@@ -67,7 +69,7 @@
     }
   },
   "newsletter": {
-    "label": "Email",
+    "label": "Enter your email",
     "success": "Thanks for subscribing",
     "button_label": "Subscribe"
   },

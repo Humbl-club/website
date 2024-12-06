@@ -71,38 +71,39 @@
     </header-drawer>
   {%- endif -%}
 
-  <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
-    {%- if settings.logo != blank -%}
-      <div class="header-logo">
-        {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
-        {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
-        {% capture sizes %}(max-width: {{ settings.logo_width | times: 2 }}px) 50vw, {{ settings.logo_width }}px{% endcapture %}
-        {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
-        {{
-          settings.logo
-          | image_url: width: 600
-          | image_tag:
-            class: 'header__heading-logo motion-reduce',
-            widths: widths,
-            height: logo_height,
-            width: settings.logo_width,
-            alt: logo_alt,
-            sizes: sizes,
-            preload: true,
-            fetchpriority: 'high'
-        }}
-
-        {% if template == 'index' %}
-          <div class="header-icontext">
-            {{ settings.logo_text }} |&nbsp;
-            <span id="datetime">{{- 'now' | date: '%A,&nbsp;%B&nbsp;%d,&nbsp;%Y' }}</span>
-          </div>
-        {% endif %}
+  <div class="relative">
+    <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
+      {%- if settings.logo != blank -%}
+        <div class="header-logo">
+          {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
+          {%- assign logo_height = settings.logo_width | divided_by: settings.logo.aspect_ratio -%}
+          {% capture sizes %}(max-width: {{ settings.logo_width | times: 2 }}px) 50vw, {{ settings.logo_width }}px{% endcapture %}
+          {% capture widths %}{{ settings.logo_width }}, {{ settings.logo_width | times: 1.5 | round }}, {{ settings.logo_width | times: 2 }}{% endcapture %}
+          {{
+            settings.logo
+            | image_url: width: 600
+            | image_tag:
+              class: 'header__heading-logo motion-reduce',
+              widths: widths,
+              height: logo_height,
+              width: settings.logo_width,
+              alt: logo_alt,
+              sizes: sizes,
+              preload: true,
+              fetchpriority: 'high'
+          }}
+        </div>
+      {%- else -%}
+        <span class="h2">{{ shop.name }}</span>
+      {%- endif -%}
+    </a>
+    {% if template == 'index' %}
+      <div class="header-icontext">
+        {{ settings.logo_text }} |&nbsp;
+        <span id="datetime">{{- 'now' | date: '%A,&nbsp;%B&nbsp;%d,&nbsp;%Y' }}</span>
       </div>
-    {%- else -%}
-      <span class="h2">{{ shop.name }}</span>
-    {%- endif -%}
-  </a>
+    {% endif %}
+  </div>
 
   {% render 'cart-icon-bubble' %}
 </div>

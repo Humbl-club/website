@@ -44,7 +44,7 @@
     {%- endif -%}
   </div>
   {%- if form.posted_successfully? -%}
-    <h3 class="" id="Newsletter-success--{{ section.id }}" tabindex="-1" autofocus>
+    <h3 class="header-wrapper" id="Newsletter-success--{{ section.id }}" tabindex="-1" autofocus>
       {% render 'icon-success' -%}
       {{- 'newsletter.success' | t }}
     </h3>

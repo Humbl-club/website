@@ -69,6 +69,9 @@
     },
     "modal-sizes": {
       "type": "modal-sizes",
+      "settings": {
+        "page": "sizes"
+      }
     }
   },
   "order": [
