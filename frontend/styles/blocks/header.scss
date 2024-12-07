@@ -367,6 +367,14 @@ input:-webkit-autofill:active {
   }
 }
 
+#Newsletter-success--header {
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
 .header-logo {
   @include mixins.breakpoint(vars.$sm-bp) {
     z-index: 20;

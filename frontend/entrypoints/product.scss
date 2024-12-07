@@ -144,6 +144,7 @@
 
 .product-fixed-head {
   display: none;
+
   @include mixins.breakpoint(vars.$xl-bp) {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -192,6 +193,7 @@
 .product-price {
   margin-top: 2rem;
   margin-bottom: 6rem;
+
   @include mixins.breakpoint(vars.$xl-bp) {
     display: none;
   }
@@ -281,9 +283,11 @@
   height: 5rem;
   display: block;
   position: relative;
+
   @include mixins.breakpoint(vars.$xl-bp) {
     display: none;
   }
+
   &::before {
     content: '';
     border: 0.1rem solid var(--black);
@@ -335,6 +339,13 @@
 
   @include mixins.breakpoint(vars.$xl-bp) {
     display: none;
+    gap: 0.8rem;
+    margin-top: 0;
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+    padding-left: 1.1rem;
+    padding-right: 1.1rem;
+    border-top: 0.1rem solid rgba($color: #000000, $alpha: 0.1);
   }
 
   &::before {
@@ -346,6 +357,10 @@
     width: 2rem;
     height: 2rem;
     display: block;
+    @include mixins.breakpoint(vars.$xl-bp) {
+      width: 1.6rem;
+      height: 1.6rem;
+    }
   }
 }
 
@@ -359,6 +374,7 @@
     align-items: center;
     position: relative;
     height: 100%;
+
     &::after {
       content: '';
       background-repeat: no-repeat;
@@ -412,6 +428,7 @@
     border: 0.1rem solid rgba($color: #000000, $alpha: 0.1);
     background-color: var(--white);
     animation: fadeEffect var(--time);
+
     .radio-box {
       display: none;
     }
@@ -419,7 +436,16 @@
     product-select & {
       display: none;
     }
+
     product-select.active & {
+      display: flex;
+    }
+  }
+
+  .product-sizebtn {
+    display: none;
+
+    @include mixins.breakpoint(vars.$xl-bp) {
       display: flex;
     }
   }
@@ -427,6 +453,7 @@
 
 .product-select-item {
   display: none;
+
   @include mixins.breakpoint(vars.$xl-bp) {
     display: block;
     padding: 0.6rem 1.2rem;
@@ -435,10 +462,12 @@
 
 .product-available {
   margin-top: 2rem;
+
   @include mixins.breakpoint(vars.$xl-bp) {
     margin-top: 0;
     margin-right: auto;
   }
+
   &.--desc {
     @include mixins.breakpoint(vars.$xl-bp) {
       display: none;
