@@ -1,0 +1,18 @@
+<div class="cart-links {{ class }}">
+  <button type="button" class="cart-link button-title-3">
+    {{ 'sections.cart.move_to_wishlist' | t }}
+  </button>
+
+  <cart-remove-button
+    id="Remove-{{ item.index | plus: 1 }}"
+    data-index="{{ item.index | plus: 1 }}"
+  >
+    <button
+      type="button"
+      class="cart-link button-title-3"
+      aria-label="{{ 'sections.cart.remove_title' | t: title: item.title }}"
+    >
+      {{ 'sections.cart.remove' | t }}
+    </button>
+  </cart-remove-button>
+</div>

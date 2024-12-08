@@ -3,6 +3,13 @@
 
 .margin-top-0 {
   margin-top: 0!important;
+  padding-top: 0!important;
+  &:first-child {
+    padding-top: 6rem!important;
+    @include mixins.breakpoint(vars.$xl-bp) {
+      padding-top: 3.2rem!important;
+    }
+  }
 }
 
 .about-us {

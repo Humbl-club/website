@@ -1,0 +1,17 @@
+@use "../styles/mixins";
+@use "../styles/vars";
+
+.page-collection-title {
+  margin-top: 3.2rem;
+  margin-bottom: 3.2rem;
+}
+
+.page-collection-image {
+  margin-top: 12rem;
+  margin-bottom: 12rem;
+} 
+
+.page-collection-description {
+  margin-top: 12rem;
+  margin-bottom: 12rem;
+}

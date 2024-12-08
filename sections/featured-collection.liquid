@@ -1,22 +1,47 @@
-<div class="grid w-full gap-4 py-6 md:gap-8 md:py-8 lg:py-12">
-  <h2 class="px-6 font-heading text-lead font-heading-weight md:px-8 lg:px-12">
+{% if section.settings.title %}
+  <h2 class="title-1">
     {{ section.settings.title | escape }}
   </h2>
-  <div class="swimlane hidden-scroll md:scroll-px-8 md:px-8 md:pb-8 lg:scroll-px-12 lg:px-12">
+{% endif %}
+
+{% if section.settings.isSlider? %}
+  <featured-swiper class="swiper recommendations-swiper featured-swiper wrapper" client:visible>
+    <div class="swiper-wrapper">
+      {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
+        {%- render 'card-product', card_product: product, wrapper_class: 'swiper-slide' -%}
+      {%- else -%}
+        {%- for i in (1..4) -%}
+          {% render 'card-product', card_product: product, wrapper_class: 'swiper-slide' %}
+        {%- endfor -%}
+      {%- endfor -%}
+    </div>
+  </featured-swiper>
+{% else %}
+  <featured-swiper class="featured-list wrapper" client:visible>
     {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
-      {%- render 'card-product', card_product: product, wrapper_class: 'w-80' -%}
+      {%- render 'card-product', card_product: product, wrapper_class: '' -%}
     {%- else -%}
       {%- for i in (1..4) -%}
-        {% render 'card-product', wrapper_class: 'w-80' %}
+        {% render 'card-product', card_product: product, wrapper_class: '' %}
       {%- endfor -%}
     {%- endfor -%}
-  </div>
-</div>
+  </featured-swiper>
+{% endif %}
+
+{% render 'quick-add-modal' %}
 
 {% schema %}
 {
   "name": "Featured collection",
+  "tag": "section",
+  "class": "overflow-hidden",
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "isSlider?",
+      "label": "Enable slider",
+      "default": false
+    },
     {
       "type": "text",
       "id": "title",
@@ -32,9 +57,9 @@
       "type": "range",
       "id": "products_to_show",
       "label": "Maximum products to show",
-      "default": 5,
-      "min": 5,
-      "max": 15,
+      "default": 4,
+      "min": 4,
+      "max": 16,
       "step": 1
     }
   ],

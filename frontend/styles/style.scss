@@ -101,6 +101,7 @@ svg {
   }
 }
 
+.shopify-challenge__button,
 .btn-blue {
   border: 0.1rem solid var(--blue);
   background-color: var(--blue);
@@ -417,7 +418,7 @@ main {
   }
 }
 
-.shopify-section:not(#shopify-section-header):first-child {
+.shopify-section {
   padding-top: 6rem;
 
   @include mixins.breakpoint(vars.$xl-bp) {
@@ -654,6 +655,15 @@ main {
     transition: opacity var(--time);
   }
 
+}
+
+.shopify-challenge__container {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+.shopify-challenge__message{
+  margin-bottom: 2rem;
 }
 
 /* Blocks */

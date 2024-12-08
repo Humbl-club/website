@@ -1,6 +1,12 @@
 @use "../mixins";
 @use "../vars";
 
+.cart-main {
+  @include mixins.breakpoint(vars.$xl-bp) {
+    padding-top: 2.4rem;
+  }
+}
+
 .cart-header {
   display: grid;
   grid-template-columns: 1fr 13.4rem 32.8rem 13.4rem;
@@ -8,7 +14,18 @@
   padding-top: 2rem;
   padding-bottom: 2rem;
   margin-top: 3.2rem;
+  @include mixins.breakpoint(vars.$xl-bp) {
+    display: flex;
+    margin-top: 0.8rem;
+    padding-bottom: 1.4rem;
+  }
   & > li {
+    @include mixins.breakpoint(vars.$xl-bp) {
+      display: none;
+      &:first-child {
+        display: block;
+      }
+    }
     &:nth-child(3) {
       text-align: center;
     }
@@ -18,12 +35,24 @@
   }
 }
 
+.cart-form {
+  @include mixins.breakpoint(vars.$xl-bp) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
 .cart-item {
   display: flex;
   gap: 2rem;
   padding-top: 2rem;
   padding-bottom: 2rem;
   border-bottom: 0.1rem solid rgba($color: #000000, $alpha: 0.1);
+  @include mixins.breakpoint(vars.$xl-bp) {
+    padding-top: 1.6rem;
+    padding-bottom: 1.6rem;
+    gap: 1rem;
+  }
   &:first-child {
     border-top: 0.1rem solid rgba($color: #000000, $alpha: 0.1);
   }
@@ -35,16 +64,28 @@
   grid-template-columns: 1fr 13.4rem 32.8rem 13.4rem;
   gap: 2rem;
   flex-grow: 1;
+  @include mixins.breakpoint(vars.$xl-bp) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
 }
 
 .cart-info {
   display: flex;
   flex-direction: column;
+  @include mixins.breakpoint(vars.$xl-bp) {
+    margin-top: -0.6rem;
+  }
 }
 
 .cart-quantity {
   margin: auto;
   margin-left: 0;
+  @include mixins.breakpoint(vars.$xl-bp) {
+    grid-column-start: 1;
+    margin-top: auto;
+    margin-bottom: 0;
+  }
 }
 
 .cart-price {
@@ -52,6 +93,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  @include mixins.breakpoint(vars.$xl-bp) {
+    display: none;
+  }
 }
 
 .cart-total {
@@ -59,31 +103,63 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  @include mixins.breakpoint(vars.$xl-bp) {
+    grid-row-start: 1;
+    grid-column-start: 2;
+    align-items: flex-start;
+    margin-top: -0.6rem;
+  }
 }
 
 .cart-img {
   width: 13.4rem;
   height: 15rem;
   background-color: var(--milk);
+  @include mixins.breakpoint(vars.$xl-bp) {
+    width: 8.8rem;
+    height: 10rem;
+  }
 }
 
 .cart-options {
   display: flex;
   align-items: center;
   opacity: 0.5;
+  @include mixins.breakpoint(vars.$xl-bp) {
+    margin-top: 0.4rem;
+  }
 }
 
 .cart-links {
   margin-top: auto;
   display: flex;
   gap: 1.6rem;
+  @include mixins.breakpoint(vars.$xl-bp) {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0;
+
+  }
+  &.--mobile-hidden {
+    @include mixins.breakpoint(vars.$xl-bp) {
+      display: none;
+    }
+  }
+  &.--desctop-hidden {
+    display: none;
+    @include mixins.breakpoint(vars.$xl-bp) {
+      display: flex;
+    }
+  }
 }
 
 .cart-link {
   text-decoration: underline;
   text-decoration-skip-ink: none;
   cursor: pointer;
-
+  @include mixins.breakpoint(vars.$xl-bp) {
+    text-align: end;
+  }
   &:hover {
     opacity: 0.8;
   }
@@ -93,6 +169,29 @@
   max-width: 59.6rem;
   margin-left: auto;
   width: 100%;
+  @include mixins.breakpoint(vars.$xl-bp) {
+    position: fixed;
+    bottom: -4.4rem;
+    padding-bottom: 5.4rem;
+    background-color: var(--white);
+    border-top: 0.1rem solid rgba($color: #000000, $alpha: 0.1);
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.cart-subtotal {
+  @include mixins.breakpoint(vars.$xl-bp) {
+    order: 1;
+  }
+}
+
+#cart-spacer {
+  display: none;
+  @include mixins.breakpoint(vars.$xl-bp) {
+    display: block;
+    padding-top: 20rem;
+  }
 }
 
 .cart-line {
@@ -102,11 +201,23 @@
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid rgba($color: #000000, $alpha: 0.1);
+  @include mixins.breakpoint(vars.$xl-bp) {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    .headline-1 {
+      @include mixins.breakpoint(vars.$xl-bp) {
+        letter-spacing: -0.05em;
+      }
+    }
+  }
 }
 
 .cart-checkout {
   margin-top: 4rem;
   width: 100%;
+  @include mixins.breakpoint(vars.$xl-bp) {
+    margin-top: 2rem;
+  }
 }
 
 .cart-empty {
@@ -115,5 +226,18 @@
   gap: 1rem;
   .is-empty & {
     display: flex;
+  }
+}
+
+.cart-paypal {
+  @include mixins.breakpoint(vars.$xl-bp) {
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+}
+
+.cart-botnote {
+  @include mixins.breakpoint(vars.$xl-bp) {
+    order: 1;
   }
 }
