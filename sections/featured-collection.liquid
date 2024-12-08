@@ -5,7 +5,7 @@
 {% endif %}
 
 {% if section.settings.isSlider? %}
-  <featured-swiper class="swiper recommendations-swiper featured-swiper wrapper" client:visible>
+  <featured-swiper class="swiper recommendations-swiper featured-swiper opacity-0" client:visible>
     <div class="swiper-wrapper">
       {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
         {%- render 'card-product', card_product: product, wrapper_class: 'swiper-slide' -%}
@@ -17,7 +17,7 @@
     </div>
   </featured-swiper>
 {% else %}
-  <featured-swiper class="featured-list wrapper" client:visible>
+  <div class="featured-list">
     {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
       {%- render 'card-product', card_product: product, wrapper_class: '' -%}
     {%- else -%}
@@ -25,7 +25,13 @@
         {% render 'card-product', card_product: product, wrapper_class: '' %}
       {%- endfor -%}
     {%- endfor -%}
-  </featured-swiper>
+  </div>
+{% endif %}
+
+{% if section.settings.addLink? and section.settings.collection %}
+  <a class="featured-link link button-title-3" href="{{ section.settings.collection.url }}">
+    {{- section.settings.collection -}}
+  </a>
 {% endif %}
 
 {% render 'quick-add-modal' %}
@@ -34,8 +40,14 @@
 {
   "name": "Featured collection",
   "tag": "section",
-  "class": "overflow-hidden",
+  "class": "overflow-hidden wrapper pt-0",
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "addLink?",
+      "label": "Show link to collection",
+      "default": true
+    },
     {
       "type": "checkbox",
       "id": "isSlider?",

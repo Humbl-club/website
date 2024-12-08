@@ -1,9 +1,75 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "page-collection": {
       "type": "page-collection",
+      "blocks": {
+        "date_QhLgMj": {
+          "type": "date",
+          "settings": {
+            "date": "september 28, 2024",
+            "title": "Core Collection Lookbook",
+            "collection": "aura-24"
+          }
+        },
+        "image_WEhTAE": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/image.jpg",
+            "image_mobile": "shopify://shop_images/image-mobile-2.jpg"
+          }
+        },
+        "subtitle_di6bdq": {
+          "type": "subtitle",
+          "settings": {
+            "description": "<p>Essentials from the Humbl wardrobe in classic colors.</p><p>Pick from unisex fleece and comfortable activewear to achieve timeless style.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "date_QhLgMj",
+        "image_WEhTAE",
+        "subtitle_di6bdq"
+      ],
       "settings": {}
+    },
+    "gallery": {
+      "type": "gallery",
+    },
+    "brand_block_GEgbfr": {
+      "type": "brand-block",
+      "custom_css": [
+        "p {max-width: 48rem; margin: 0 auto;}"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/image-3-mobile.jpg",
+        "image_mobile": "shopify://shop_images/image-3.jpg",
+        "title": "Core Fleece & Jersey",
+        "text": "Made in the USA following the same specifications as your favorite vintage sweatshirt and featuring some of our iconic logos."
+      }
+    },
+    "featured_collection_3Tmgzw": {
+      "type": "featured-collection",
+      "settings": {
+        "isSlider": true,
+        "title": "",
+        "collection": "aura-24",
+        "products_to_show": 4
+      }
     }
   },
-  "order": ["page-collection"]
+  "order": [
+    "page-collection",
+    "gallery",
+    "brand_block_GEgbfr",
+    "featured_collection_3Tmgzw"
+  ]
 }

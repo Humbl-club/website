@@ -424,6 +424,10 @@ main {
   @include mixins.breakpoint(vars.$xl-bp) {
     padding-top: 3.2rem;
   }
+
+  &.pt-0 {
+    padding-top: 0;
+  }
 }
 
 .shopify-section:not(#shopify-section-header):not(.main-collection):last-child {
