@@ -4,7 +4,7 @@
   </h2>
 {% endif %}
 
-{% if section.settings.isSlider? %}
+{% if section.settings.isSlider %}
   <featured-swiper class="swiper recommendations-swiper featured-swiper opacity-0" client:visible>
     <div class="swiper-wrapper">
       {%- for product in section.settings.collection.products limit: section.settings.products_to_show -%}
@@ -28,7 +28,7 @@
   </div>
 {% endif %}
 
-{% if section.settings.addLink? and section.settings.collection %}
+{% if section.settings.addLink and section.settings.collection %}
   <a class="featured-link link button-title-3" href="{{ section.settings.collection.url }}">
     {{- section.settings.collection -}}
   </a>
@@ -44,13 +44,13 @@
   "settings": [
     {
       "type": "checkbox",
-      "id": "addLink?",
+      "id": "addLink",
       "label": "Show link to collection",
       "default": true
     },
     {
       "type": "checkbox",
-      "id": "isSlider?",
+      "id": "isSlider",
       "label": "Enable slider",
       "default": false
     },

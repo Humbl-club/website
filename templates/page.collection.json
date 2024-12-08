@@ -43,6 +43,25 @@
     },
     "gallery": {
       "type": "gallery",
+      "blocks": {
+        "image_hBXyVj": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/4.jpg"
+          }
+        },
+        "image_JM7UKc": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/5_a63c72a6-6f3d-4227-9d55-fcf92348c0d4.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "image_hBXyVj",
+        "image_JM7UKc"
+      ],
+      "settings": {}
     },
     "brand_block_GEgbfr": {
       "type": "brand-block",
@@ -59,7 +78,8 @@
     "featured_collection_3Tmgzw": {
       "type": "featured-collection",
       "settings": {
-        "isSlider": true,
+        "addLink": true,
+        "isSlider": false,
         "title": "",
         "collection": "aura-24",
         "products_to_show": 4
