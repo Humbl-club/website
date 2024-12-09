@@ -20,7 +20,7 @@
       {% if image_hover %}
         {{
           image_hover
-          | image_url: width: 442, height: 500
+          | image_url: width: 884, height: 1000
           | image_tag:
             loading: 'lazy',
             width: 442,
@@ -39,14 +39,10 @@
               srcset="{{ card_product.featured_media | image_url: width: 364, height: 414 }}"
               media="(max-width:412px)"
             >
-            <source
-              srcset="{{ card_product.featured_media | image_url: width: 884, height: 1000 }} 2x, {{ card_product.featured_media | image_url: width: 442, height: 500 }} 1x"
-              media="(min-resolution: 192dpi)"
-            >
           {% endif %}
           <img
             class="card-img"
-            src="{{ card_product.featured_media | image_url: width: 442, height: 500 }}"
+            src="{{ card_product.featured_media | image_url: width: 884, height: 1000 }}"
             alt="{{ card_product.featured_media.alt | escape }}"
             {% unless lazy_load == false %}
               loading="lazy"

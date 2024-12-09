@@ -53,13 +53,9 @@
         <div class="product-img img-cover swiper-slide">
           <picture>
             <source srcset="{{ media.preview_image | image_url: height: 443, width: 377 }}" media="(max-width:412px)">
-            <source
-              srcset="{{ media.preview_image | image_url: width: 1190, height: 1490 }} 2x, {{ media.preview_image | image_url: width: 595, height: 745 }} 1x"
-              media="(min-resolution: 192dpi)"
-            >
             {{
               media.preview_image
-              | image_url: height: 745
+              | image_url: height: 1490, width: 1190
               | image_tag:
                 loading: loading,
                 preload: forloop.first,
