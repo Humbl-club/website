@@ -1,21 +1,32 @@
-{%- paginate blog.articles by 6 -%}
-  <div class="grid w-full justify-items-start gap-0 p-6 py-8 md:p-8 lg:p-12">
-    <h1 class="inline-block max-w-prose-narrow font-heading text-heading font-heading-weight">
-      {{ blog.title | escape }}
-    </h1>
+{% render 'vite-tag' with 'blog.scss', preload_stylesheet: true %}
 
-    <div class="grid w-full grid-flow-row grid-cols-2 gap-6 pt-24">
-      {%- for article in blog.articles -%}
-        <div>
-          {%- render 'article-card', article: article -%}
-        </div>
-      {%- endfor -%}
-    </div>
+{%- paginate blog.articles by 10 -%}
+  <h1 class="title-1 text-center">
+    {{ blog.title | escape }}
+  </h1>
+
+  <div class="blog-list">
+    {%- for article in blog.articles -%}
+      {%- assign module = forloop.index | modulo: 5 -%}
+      {% if module == 0 or forloop.index == 1 %}
+        {%- render 'article-card',
+          article: article,
+          class: 'big',
+          title_class: 'subhead-1',
+          width: 1058,
+          height: 800
+        -%}
+      {% else %}
+        {%- render 'article-card', article: article, class: '', title_class: 'subhead-2', width: 288 -%}
+      {% endif %}
+    {%- endfor -%}
   </div>
 {%- endpaginate -%}
 
 {% schema %}
 {
-  "name": "Blog posts"
+  "name": "Blog posts",
+  "tag": "section",
+  "class": "wrapper"
 }
 {% endschema %}
