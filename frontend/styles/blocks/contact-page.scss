@@ -1,0 +1,150 @@
+@use "../mixins";
+@use "../vars";
+
+.contact-page {
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+    max-width: 1828px;
+    width: 100%;
+    margin: 0 auto;
+
+    @media screen and (min-width: vars.$xl-bp) {
+      flex-direction: row;
+      align-items: normal;
+      gap: 60px;
+    }
+
+    @media screen and (min-width: vars.$cos-bp) {
+      gap: 180px;
+    }
+  }
+
+  &__img {
+    padding: 10px;
+    max-height: 896px;
+    height: 100%;
+    max-width: 914px;
+    width: 100%;
+
+    @media screen and (min-width: vars.$xl-bp) {
+      order: 0;
+      padding: 40px;
+    }
+
+    img {
+      display: block;
+      height: auto;
+      width: 100%;
+      max-width: none;
+
+      @media screen and (min-width: vars.$xl-bp) {
+        max-width: 834px;
+      }
+    }
+
+    &.over-text {
+      order: -1;
+
+      @media screen and (min-width: vars.$xl-bp) {
+        order: 0;
+      }
+    }
+
+    &.under-text {
+      order: 1;
+
+      @media screen and (min-width: vars.$xl-bp) {
+        order: 0;
+      }
+    }
+  }
+
+  &__data {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 0;
+
+    @media screen and (min-width: vars.$cos-bp) {
+      padding-top: 200px;
+    }
+
+    &_points {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      margin: 0 0 59px;
+      gap: 16px;
+
+      @media screen and (min-width: vars.$sm-bp) {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      @media screen and (min-width: vars.$xl-bp) {
+        gap: 32px;
+        flex-direction: column;
+        margin: 0;
+        max-width: 554px;
+      }
+
+      &_point {
+        & p {
+          font-family: var(--font-family);
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 21px;
+          letter-spacing: -0.04em;
+          text-transform: uppercase;
+          margin: 0 0 8px;
+          color: #000;
+          opacity: 0.5;
+
+          @media screen and (min-width: vars.$xl-bp) {
+            font-size: 14px;
+            font-weight: 400;
+            margin: 0 0 10px;
+          }
+        }
+
+        & a, &_pop-up {
+          text-transform: uppercase;
+          cursor: pointer;
+          font-size: 18px;
+          font-weight: 400;
+          line-height: 21.6px;
+          letter-spacing: -0.06em;
+          color: #000;
+
+          @media screen and (min-width: vars.$xl-bp) {
+            font-size: 20px;
+            line-height: 24px;
+          }
+        }
+      }
+    }
+
+    &_timings {
+      & p {
+        font-family: var(--font-family);
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 21px;
+        letter-spacing: -0.04em;
+        margin: 0 0 24px;
+
+        @media screen and (min-width: vars.$sm-bp) {
+          text-align: center;
+        }
+
+        @media screen and (min-width: vars.$xl-bp) {
+          text-align: left;
+          margin: 0;
+        }
+      }
+    }
+  }
+}

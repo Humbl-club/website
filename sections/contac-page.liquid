@@ -1,0 +1,135 @@
+{{ 'contact-page.css' | asset_url | stylesheet_tag }}
+
+<section class="section-{{ section.id }}-padding contact-page">
+        <div class="contact-page__wrapper ">
+            {%- if section.settings.about_image != blank -%}
+                <div class="contact-page__img {% if section.settings.mob_image_order == "image-over" %}over-text{%- else -%}under-text{%- endif -%}"
+                     style="background-color: {{ section.settings.img_bg_color }}">
+                    <img src="{{ section.settings.about_image | img_url: '914x800' }}" alt="About Us Image">
+                </div>
+            {%- endif -%}
+
+            <div class="contact-page__data">
+                <div class="contact-page__data_points">
+                    {% for block in section.blocks %}
+                        {% assign field_type = block.settings.field_type %}
+                        {% assign link_value = block.settings.link_value %}
+                        {% assign link_title = block.settings.link_title %}
+                        {% assign link_heading = block.settings.link_heading %}
+
+                        <div class="contact-page__data_points_point">
+                            {% if link_heading != blank %}
+                                <p>{{ link_heading }}</p>
+                            {% endif %}
+
+                            {% if field_type == "mailto" %}
+                                <a href="mailto:{{ link_value }}">{{ link_title }}</a>
+
+                            {% elsif field_type == "tel" %}
+                                <a href="tel:{{ link_value }}">{{ link_title }}</a>
+
+                            {% elsif field_type == "socials" %}
+                                <a href="{{ link_value }}">{{ link_title }}</a>
+
+                            {% elsif field_type == "form" %}
+                              <div class="contact-page__data_points_point_pop-up">{{ link_title }}</div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div class="contact-page__data_timings">
+                    {{ section.settings.working_time }}
+                </div>
+            </div>
+        </div>
+</section>
+
+{% schema %}
+{
+  "name": "Contact Page Block",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": [
+      "header",
+      "footer"
+    ]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "about_image",
+      "label": "About Image"
+    },
+    {
+      "type": "color",
+      "id": "img_bg_color",
+      "label": "Background Color for Image Block",
+      "default": "#d9d4d0"
+    },
+    {
+      "type": "richtext",
+      "id": "working_time",
+      "label": "Working Time",
+      "default": "<p>The HUMBL client service is open from Monday to Saturday, 9 am to 9 pm, Eastern time</p>"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link_block",
+      "name": "Link Block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "link_heading",
+          "label": "Link Heading",
+          "default": "inst/mail/phone"
+        },
+        {
+          "type": "select",
+          "id": "field_type",
+          "label": "Type of field",
+          "options": [
+            {
+              "value": "mailto",
+              "label": "Email"
+            },
+            {
+              "value": "tel",
+              "label": "Phone"
+            },
+            {
+              "value": "form",
+              "label": "Pop-up for form"
+            },
+            {
+              "value": "socials",
+              "label": "Socials"
+            }
+          ],
+          "default": "mailto"
+        },
+        {
+          "type": "text",
+          "id": "link_value",
+          "label": "Link value",
+          "default": "example@example.com, https://example.com or +18333685963"
+        },
+        {
+          "type": "text",
+          "id": "link_title",
+          "label": "Link Text",
+          "default": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact Page",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
