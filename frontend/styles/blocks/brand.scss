@@ -106,4 +106,17 @@
   position: absolute;
   bottom: 8rem;
   right: 4.6rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  fill: var(--white);
+  @include mixins.breakpoint(vars.$xl-bp) {
+    right: 1.6rem;
+    bottom: 4rem;
+  }
+  @media (hover: hover) and (pointer: fine) {
+  &:hover {
+  fill: var(--blue);
+  }
+  }
+
 }

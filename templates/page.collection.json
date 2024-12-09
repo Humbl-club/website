@@ -90,6 +90,15 @@
       "settings": {
         "collection": "aura-24"
       }
+    },
+    "collection_footer_kgTMzM": {
+      "type": "collection-footer",
+      "settings": {
+        "image": "shopify://shop_images/image_cc1aa514-e141-429c-9aad-f74032919656.jpg",
+        "image_mobile": "shopify://shop_images/image-mobile_ba0916be-11bb-4386-8a79-25ce38401599.jpg",
+        "title": "Discover our Core Collection",
+        "text": ""
+      }
     }
   },
   "order": [
@@ -98,5 +107,6 @@
     "brand_block_GEgbfr",
     "featured_collection_3Tmgzw",
     "collection_gallery",
+    "collection_footer_kgTMzM"
   ]
 }

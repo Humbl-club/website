@@ -430,7 +430,7 @@ main {
   }
 }
 
-.shopify-section:not(#shopify-section-header):not(.main-collection):not(.padding-bottom-0):last-child {
+.shopify-section:not(#shopify-section-header):not(.main-collection):not(.padding-bottom-0):not(.main):last-child {
   padding-bottom: 6rem;
 
   @include mixins.breakpoint(vars.$xl-bp) {

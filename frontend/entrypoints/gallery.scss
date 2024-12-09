@@ -8,6 +8,11 @@
   max-width: 1828px;
   width: 100%;
   margin: 0 auto;
+  @include mixins.breakpoint(vars.$sm-bp) {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
 }
 
 .gallery-main {
