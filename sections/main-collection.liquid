@@ -138,31 +138,30 @@
               </ul>
             </div>
           {%- endif -%}
-        </div>
 
-        <div class="collection-bot wrapper">
-          <div class="body-1 body-3-mobile text-center opacity-50">
-            {% if collection.all_products_count == 1 %}
-              You’re viewing 1 product
-            {% else %}
-              You’re viewing 1-
-              {% if pagination_count > collection.all_products_count %}
-                {{ collection.all_products_count }}
+          <collection-endlesspoint client:visible></collection-endlesspoint>
+
+          <div class="collection-bot wrapper" id="collection-bot">
+            <div class="body-1 body-3-mobile text-center opacity-50">
+              {% if collection.products_count <= pagination_count %}
+                You’re viewing {{ collection.products_count }} of {{ collection.all_products_count }} products
               {% else %}
-                {{ pagination_count }}
+                You’re viewing {{ collection.all_products_count }} products
               {% endif %}
-              of {{ collection.all_products_count }} products
-            {% endif %}
-          </div>
+            </div>
 
-          <button class="collection-up" onclick="document.body.scrollIntoView({behavior: 'smooth'})" aria-label="go up">
-            {% render 'icon-up' %}
-          </button>
+            <button
+              class="collection-up"
+              onclick="document.body.scrollIntoView({behavior: 'smooth'})"
+              aria-label="go up"
+            >
+              {% render 'icon-up' %}
+            </button>
+          </div>
         </div>
       </div>
     {%- endpaginate -%}
   </div>
-  <collection-endlesspoint client:visible></collection-endlesspoint>
 </div>
 
 {% render 'quick-add-modal' %}

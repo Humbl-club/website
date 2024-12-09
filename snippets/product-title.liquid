@@ -47,7 +47,7 @@
   or product.collections.size == 0
   or product.type == ''
   and no_color == true
-  and product.collections.size < 1
+  and product.collections.size <= 1
 %}
   {{ product.title }}
 {% endif %}

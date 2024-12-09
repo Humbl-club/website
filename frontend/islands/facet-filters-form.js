@@ -122,6 +122,8 @@ class FacetFiltersForm extends window.HTMLElement {
         : FacetFiltersForm.renderSectionFromFetch(url, event)
     })
 
+    window.page = 1
+
     if (updateURLHash) FacetFiltersForm.updateURLHash(searchParams)
   }
 

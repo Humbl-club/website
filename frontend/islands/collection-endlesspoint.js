@@ -1,12 +1,13 @@
 class CollectionEndlesspoint extends window.HTMLElement {
   connectedCallback() {
-    console.log('collection-endlesspoint connected')
     this.init()
   }
 
   init() {
     this.url = new URL(window.location.href)
-    this.page = Number(document.getElementById('current-page').innerText || 1)
+    this.page = window.page = Number(
+      document.getElementById('current-page').innerText || 1
+    )
     this.allPages = Number(document.getElementById('all-pages').innerText || 1)
 
     this.sendFetch()
@@ -35,8 +36,8 @@ class CollectionEndlesspoint extends window.HTMLElement {
   }
 
   sendFetch() {
-    this.url.searchParams.set('page', this.page + 1)
-
+    this.url.searchParams.set('page', ++window.page)
+    this.page = window.page
     fetch(this.url)
       .then((response) => response.text())
       .then((responseText) => {
@@ -66,6 +67,7 @@ class CollectionEndlesspoint extends window.HTMLElement {
 
             productgrid.appendChild(fragment)
 
+            window.page = currentPage
             this.page = currentPage
             this.allPages = allPages
 
