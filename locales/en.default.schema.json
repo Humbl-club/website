@@ -343,9 +343,6 @@
         "show_vendor": {
           "label": "Show vendor"
         },
-        "show_cart_note": {
-          "label": "Enable cart note"
-        },
         "cart_drawer": {
           "header": "Cart drawer",
           "collection": {

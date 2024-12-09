@@ -5,10 +5,6 @@
 @use "mixins";
 @use "reset";
 
-::-webkit-scrollbar {
-  display: none;
-}
-
 html {
   box-sizing: border-box;
 
@@ -19,7 +15,7 @@ html {
   }
 
   @include mixins.breakpoint(vars.$cos-bp) {
-    font-size: calc(100vw / 1440 * 10);
+    font-size: calc(100vw / 1600 * 10);
   }
 
   @include mixins.breakpoint(vars.$xl-bp) {
@@ -56,8 +52,10 @@ body {
   letter-spacing: -0.04em;
   color: var(--black);
   background-color: var(--white);
+
   @include mixins.breakpoint(vars.$sm-bp) {
-    --header-spacer: 4.8rem
+    --header-spacer: 4.8rem;
+    font-size: 1.4rem;
   }
 }
 
@@ -92,12 +90,18 @@ svg {
   letter-spacing: -0.06em;
   text-transform: uppercase;
   text-align: center;
+
   @include mixins.breakpoint(vars.$xl-bp) {
     padding: 1.6rem 2rem;
     font-size: 1.4rem;
   }
+
+  &:disabled {
+    pointer-events: none;
+  }
 }
 
+.shopify-challenge__button,
 .btn-blue {
   border: 0.1rem solid var(--blue);
   background-color: var(--blue);
@@ -108,6 +112,12 @@ svg {
       background-color: var(--white);
       color: var(--blue);
     }
+  }
+
+  &:disabled {
+    background-color: rgba($color: #000000, $alpha: 0.1);
+    border-color: transparent;
+    color: #A0A0A0;
   }
 }
 
@@ -164,6 +174,7 @@ svg {
 
 .img-contain {
   display: block;
+  position: relative;
 
   img {
     width: 100%;
@@ -175,6 +186,7 @@ svg {
 .img-cover {
   display: block;
   overflow: hidden;
+  position: relative;
 
   img {
     width: 100%;
@@ -208,7 +220,9 @@ h1,
   font-size: 4rem;
   line-height: 110%;
   letter-spacing: -0.06em;
-
+  @include mixins.breakpoint(vars.$xl-bp) {
+    font-size: 3.2rem;
+  }
 }
 
 h2,
@@ -229,6 +243,9 @@ h2,
   letter-spacing: -0.06em;
   text-transform: uppercase;
 
+  @include mixins.breakpoint(vars.$xl-bp) {
+    font-size: 1.6rem;
+  }
 }
 
 .headline-2 {
@@ -238,6 +255,7 @@ h2,
   line-height: 120%;
   letter-spacing: -0.06em;
   text-transform: uppercase;
+
   @include mixins.breakpoint(vars.$sm-bp) {
     font-size: 1.4rem;
   }
@@ -270,7 +288,13 @@ h2,
   letter-spacing: -0.04em;
 
   @include mixins.breakpoint(vars.$xl-bp) {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
+  }
+}
+
+.body-1-mobile {
+  @include mixins.breakpoint(vars.$xl-bp) {
+    font-size: 1.4rem;
   }
 }
 
@@ -280,8 +304,9 @@ h2,
   font-size: 1.4rem;
   line-height: 150%;
   letter-spacing: -0.04em;
+
   @include mixins.breakpoint(vars.$sm-bp) {
-    font-size: 1.2rem; 
+    font-size: 1.2rem;
   }
 }
 
@@ -291,7 +316,12 @@ h2,
   font-size: 1.2rem;
   line-height: 150%;
   letter-spacing: -0.04em;
+}
 
+.body-3-mobile {
+  @include mixins.breakpoint(vars.$sm-bp) {
+    font-size: 1.2rem;
+  }
 }
 
 .caption {
@@ -351,11 +381,14 @@ h2,
   letter-spacing: -0.06em;
   text-transform: uppercase;
 
+  @include mixins.breakpoint(vars.$xl-bp) {
+    font-size: 1.2rem;
+  }
 }
 
 .section-pt {
   padding-top: 6rem;
-  
+
   @include mixins.breakpoint(vars.$xl-bp) {
     padding-top: 4rem;
   }
@@ -372,22 +405,32 @@ h2,
 main {
   .shopify-section+.shopify-section {
     margin-top: 6rem;
-  
+
     @include mixins.breakpoint(vars.$xl-bp) {
       margin-top: 4rem;
     }
   }
+  .shopify-section+.section-2-mt {
+    margin-top: 12rem;
+    @include mixins.breakpoint(vars.$xl-bp) {
+      margin-top: 6rem;
+    }
+  }
 }
 
-.shopify-section:not(#shopify-section-header):first-child {
+.shopify-section {
   padding-top: 6rem;
 
   @include mixins.breakpoint(vars.$xl-bp) {
     padding-top: 3.2rem;
   }
+
+  &.pt-0 {
+    padding-top: 0;
+  }
 }
 
-.shopify-section:not(#shopify-section-header):not(.main-collection):last-child {
+.shopify-section:not(#shopify-section-header):not(.main-collection):not(.padding-bottom-0):not(.main):last-child {
   padding-bottom: 6rem;
 
   @include mixins.breakpoint(vars.$xl-bp) {
@@ -426,18 +469,21 @@ main {
   display: flex;
   justify-content: space-between;
   align-items: center;
+
   input {
     position: absolute;
     pointer-events: none;
     opacity: 0;
-    &:checked + .switch-box {
-      background-color: #a0a0a0;
+
+    &:checked+.switch-box {
+      background-color: #34C759;
+      border-color: #34C759;
       &::before {
         background-color: var(--white);
         box-shadow: 0 3px 1px 0 rgba(0, 0, 0, 0.06), 0 3px 8px 0 rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.04);
         transform: translate3d(calc(100% - 50% + 0.3rem), -50%, 0);
       }
-    } 
+    }
   }
 }
 
@@ -450,6 +496,7 @@ main {
   position: relative;
   cursor: pointer;
   transition: background-color var(--time);
+
   &::before {
     content: '';
     background: #a0a0a0;
@@ -479,6 +526,7 @@ main {
   width: 3rem;
   height: 3rem;
   pointer-events: none;
+
   @include mixins.breakpoint(vars.$sm-bp) {
     width: 2rem;
     height: 2rem;
@@ -516,6 +564,8 @@ main {
   .loading-ring {
     opacity: 1;
   }
+
+  button,
   label,
   input,
   .mobile-facets__clear-wrapper {
@@ -541,6 +591,83 @@ main {
     left: 1.6rem;
     width: calc(100% - 3.2rem);
   }
+}
+
+.disable-scroll {
+  overflow: hidden;
+}
+
+.radio {
+  position: relative;
+
+  input {
+    pointer-events: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0;
+  }
+}
+
+.radio-box {
+  width: 100%;
+  height: 100%;
+  border: 1px solid var(--black);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  cursor: pointer;
+  transition: border-color var(--time), background-color var(--time), color var(--time);
+  border-color: rgba($color: #000000, $alpha: 0.1);
+  input:checked + & {
+    border-color: var(--black);
+  }
+  input:disabled + & {
+    cursor: auto;
+    background-color: rgba($color: #000000, $alpha: 0.1);
+    border-color: transparent;
+    color: #A0A0A0;
+  }
+}
+
+.radio2-label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+}
+
+.radio2-box {
+  width: 2rem;
+  height: 2rem;
+  border: 0.1rem solid rgba($color: #000000, $alpha: 0.1);  
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  transition: background-color var(--time);
+  &::before {
+    content: '';
+    width: 0.8rem;
+    height: 0.8rem;
+    background-color: var(--white);
+    opacity: 0;
+    border-radius: 100%;
+    transition: opacity var(--time);
+  }
+
+}
+
+.shopify-challenge__container {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+.shopify-challenge__message{
+  margin-bottom: 2rem;
 }
 
 /* Blocks */

@@ -1,0 +1,58 @@
+{% render 'vite-tag' with 'gallery.scss', preload_stylesheet: true %}
+
+<div class="gallery-wrapper">
+  {% for block in section.blocks %}
+    {% case block.type %}
+      {% when 'image' %}
+        <div class="gallery-image" {{ block.shopify_attributes }}>
+          <picture>
+            {% if block.settings.image_mobile != blank %}
+              <source media="(max-width: 500px)" srcset="{{ block.settings.image_mobile | image_url: width: 500 }}">
+            {% endif %}
+            {{
+              block.settings.image
+              | image_url: width: 904
+              | image_tag:
+                loading: 'eager',
+                width: block.settings.image.width,
+                height: block.settings.image.height,
+                widths: '375, 412, 500, 750, 1100, 1500, 1780, 1920, 2000, 3000, 3840',
+                alt: block.settings.image.alt,
+                fetchpriority: 'high'
+              | escape
+            }}
+          </picture>
+        </div>
+    {% endcase %}
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "Gallery",
+  "tag": "section",
+  "class": "gallery-main wrapper pt-0",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [],
+  "blocks": [
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Mobile image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

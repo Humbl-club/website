@@ -46,7 +46,9 @@
     },
     "search": {
       "search": "Search",
-      "reset": "Clear search term"
+      "reset": "Clear search term",
+      "no_results_html": "Nothing finded",
+      "submit": "Submit"
     },
     "cart": {
       "view": "View cart ({{ count }})",
@@ -67,7 +69,7 @@
     }
   },
   "newsletter": {
-    "label": "Email",
+    "label": "Enter your email",
     "success": "Thanks for subscribing",
     "button_label": "Subscribe"
   },
@@ -115,7 +117,7 @@
   },
   "products": {
     "product": {
-      "add_to_cart": "Add to cart",
+      "add_to_cart": "Add to bag",
       "choose_options": "Choose options",
       "choose_product_options": "Choose options for {{ product_name }}",
       "description": "Description",
@@ -168,7 +170,7 @@
         "refresh": "Refresh"
       },
       "price": {
-        "from_price_html": "From {{ price }}",
+        "from_price_html": "From {{ min_price }} to {{ max_price }}",
         "regular_price": "Regular price",
         "sale_price": "Sale price",
         "unit_price": "Unit price"
@@ -335,12 +337,15 @@
         "paragraph_html": "<a href=\"{{ link }}\" class=\"link underlined-link\">Log in<\/a> to check out faster."
       },
       "subtotal": "Subtotal",
+      "subtotalwithvat": "SUBTOTAL (VAT INCLUDED):",
       "new_subtotal": "New subtotal",
       "taxes_and_shipping_policy_at_checkout_html": "Taxes and <a href=\"{{ link }}\">shipping</a> calculated at checkout",
       "taxes_included_but_shipping_at_checkout": "Tax included and shipping calculated at checkout",
       "taxes_included_and_shipping_policy_html": "Tax included. <a href=\"{{ link }}\">Shipping</a> calculated at checkout.",
       "taxes_and_shipping_at_checkout": "Taxes and shipping calculated at checkout",
       "complete_the_look": "Complete the look",
+      "free_shipping": "Free shipping on orders over {{ count }}",
+      "shipping": "SHIPPING",
     },
     "footer": {
       "payment": "Payment methods"

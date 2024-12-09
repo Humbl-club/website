@@ -1,0 +1,122 @@
+@use "../mixins";
+@use "../vars";
+
+.brand {
+  margin: 0 !important;
+
+  &__wrapper-2 {
+    padding: 127px 16px;
+    max-width: 1920px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+
+    @media screen and (min-width: vars.$xl-bp) {
+      padding: 240px 0;
+    }
+  }
+
+  &__wrapper {
+    padding: 127px 16px;
+    max-width: 1828px;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+
+    @media screen and (min-width: vars.$xl-bp) {
+      padding: 240px 0;
+    }
+  }
+
+  &__background {
+    & img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+
+      &:first-child {
+        display: none;
+
+        @media screen and (min-width: vars.$xl-bp) {
+          display: block;
+        }
+      }
+
+      &:last-child {
+        display: block;
+
+        @media screen and (min-width: vars.$xl-bp) {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &__background-2 {
+    & img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+
+  &__data {
+    max-width: 752px;
+    margin: 0 auto;
+
+    & h2 {
+      font-family: var(--third-family);
+      letter-spacing: -0.06em;
+      font-weight: 400;
+      font-size: 32px;
+      text-align: center;
+      line-height: 110%;
+      color: #fff;
+      margin: 0 0 32px;
+
+      @media screen and (min-width: vars.$xl-bp) {
+        font-size: 40px;
+      }
+    }
+
+    & p {
+      font-family: var(--font-family);
+      letter-spacing: -0.04em;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 150%;
+      text-align: center;
+      margin: 0;
+      color: rgba(255, 255, 255, 0.5);
+    }
+  }
+}
+
+.brand-up {
+  position: absolute;
+  bottom: 8rem;
+  right: 4.6rem;
+  width: 2.4rem;
+  height: 2.4rem;
+  fill: var(--white);
+  @include mixins.breakpoint(vars.$xl-bp) {
+    right: 1.6rem;
+    bottom: 4rem;
+  }
+  @media (hover: hover) and (pointer: fine) {
+  &:hover {
+  fill: var(--blue);
+  }
+  }
+
+}

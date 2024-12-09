@@ -1,0 +1,29 @@
+{% assign break_loop = false %}
+{% for variant in product.variants %}
+  {% for value in shop.metaobjects['shopify--color-pattern'].values %}
+    {% if variant.title contains value.label or value.label contains ntitle %}
+      {%- assign color = value.color -%}
+      <div>
+        <a
+          href="{{ product.url }}"
+          class="product-colorbox {% if checked == true%}checked{% endif %}"
+          style="background-color: {{color}};"
+        >
+          <span class="sr-only">{{ value.label }}</span>
+        </a>
+        <a
+          href="{{ product.url }}"
+          class="product-select-item button-title-2 {% if checked == true%}same-as-selected{% endif %}"
+        >
+          <span class="product-colorbox-mobile" style="background-color: {{color}};"></span>
+          {{- value.label -}}
+        </a>
+      </div>
+      {% assign break_loop = true %}
+      {% break %}
+    {% endif %}
+  {% endfor %}
+  {% if break_loop %}
+    {% break %}
+  {% endif %}
+{% endfor %}

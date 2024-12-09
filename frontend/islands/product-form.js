@@ -5,7 +5,9 @@ class ProductForm extends window.HTMLElement {
     super()
 
     this.form = this.querySelector('form')
-    this.form.querySelector('[name="id"]').disabled = false
+    if (this.form.querySelector('[name="id"]')) {
+      this.form.querySelector('[name="id"]').disabled = false
+    }
     this.form.addEventListener('submit', this.onSubmitHandler.bind(this))
     this.cart = document.querySelector('cart-drawer')
     this.submitButton = this.querySelector('[type="submit"]')

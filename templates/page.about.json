@@ -1,0 +1,61 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "first": {
+      "type": "about-us-sides",
+      "settings": {
+        "blocks_order": "image-first",
+        "mob_image_order": "image-over",
+        "about_image": "shopify://shop_images/1_612aab8f-5152-49bb-9cfd-fd2ec0152557.jpg",
+        "img_bg_color": "#d9d4d0",
+        "about_title": "About Humbl",
+        "about_text": "<p>Humbl began as a mood board for life; a collection of images from past and present that represent a life surrounded by beauty. It soon expanded into a print magazine, covering design, love, creativity, and forgotten moments and people. Now, we offer a collection of simple, yet thoughtfully designed products that emphasize longevity over momentary relevance.</p><p>Our <a href=\"#\" target=\"_blank\" title=\"#\">Instagram</a></p>"
+      }
+    },
+    "brand_block_Bzba97": {
+      "type": "brand-block",
+      "settings": {
+        "image": "shopify://shop_images/2_ea8ddf71-9af3-4df8-bc61-87fc91693556.jpg",
+        "image_mobile": "shopify://shop_images/image_af27f20f-54e4-4775-a9a1-25a3451d7b4f.jpg",
+        "title": "As a brand, we value our mother earth",
+        "text": "This is why we have partnered with leading environmental non-profit organizations to help reduce and offset the damage that producing garments does to our planet. We encourage our customers to keep their S&R pieces forever, as they will only get better with time."
+      }
+    },
+    "about_us_sides_37xy6A": {
+      "type": "about-us-sides",
+      "settings": {
+        "blocks_order": "data-first",
+        "mob_image_order": "image-under",
+        "about_image": "shopify://shop_images/image_8c47f665-e5b3-4591-a3c7-e9e64ad69b5f.jpg",
+        "img_bg_color": "#7d8d83",
+        "about_title": "Brand",
+        "about_text": "<p>As a brand, we value our mother earth. This is why we have partnered with leading environmental non-profit organizations to help reduce and offset the damage that producing garments does to our planet. We encourage our customers to keep their S&R pieces forever, as they will only get better with time. </p>"
+      }
+    },
+    "about_us_sides_wcAmUW": {
+      "type": "about-us-sides",
+      "settings": {
+        "blocks_order": "image-first",
+        "mob_image_order": "image-over",
+        "about_image": "shopify://shop_images/image_1a1ee0a0-cb1e-41ef-a2db-d3f837f09c7d.jpg",
+        "img_bg_color": "#bdafaf",
+        "about_title": "Our Founder",
+        "about_text": "<p>Emily Oberg was born in Calgary, Alberta. In 2015 she moved to New York to work at Complex Magazine as an editorial producer. While there, she began developing the Sporty & Rich universe and identity— vintage sportswear tied with luxury. S&R started out as an Instagram mood board, followed by a print magazine and later, a small assortment of apparel. <br/>With no intention of turning it into a real brand, it naturally progressed into something more than what Emily initially envisioned. She now lives between Los Angeles and Paris— where the Sporty & Rich headquarters are based along with its team. From its inception, Emily has served as the brand's visual director, overseeing everything from design, marketing, casting, production, social strategy, collaborations and art direction.</p><p><a href=\"#\" target=\"_blank\" title=\"#\">Subscribe</a> to Emily Loves Newsletter</p>"
+      }
+    }
+  },
+  "order": [
+    "first",
+    "brand_block_Bzba97",
+    "about_us_sides_37xy6A",
+    "about_us_sides_wcAmUW"
+  ]
+}

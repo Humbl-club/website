@@ -1,0 +1,7 @@
+@use "../mixins";
+@use "../vars";
+
+.featured-swiper {
+  transition: opacity var(--time);
+  opacity: 1;
+}

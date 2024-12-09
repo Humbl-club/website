@@ -29,7 +29,7 @@
       {% else %}
         <cart-drawer-items class="cart-drawer-items {% if cart == empty %}is-empty{% endif %}" client:idle>
           <form action="{{ routes.cart_url }}" id="CartDrawer-Form" method="post">
-            <div id="CartDrawer-CartItems" class="cart-drawer-items">
+            <div id="CartDrawer-CartItems">
               {% for item in cart.items %}
                 <div id="CartDrawer-Item-{{ item.index | plus: 1 }}" class="cart-drawer-item">
                   <div class="item-image img-cover">
@@ -57,11 +57,11 @@
                             class="cart-item-name"
                             href="{{ item.url }}"
                           >
-                            {{- item.product.title | escape -}}
+                            {% render 'product-title', product: item.product %}
                           </a>
                         </h3>
                         <div class="item-options">
-                          <dl class="grid">
+                          <dl class="flex">
                             {% for option in item.options_with_values %}
                               <dt hidden>{{ option.name }}:</dt>
                               <dd>{{ option.value }}</dd>
@@ -73,7 +73,7 @@
                       {% render 'cart-price', item: item %}
                     </div>
                     <div class="item-actions">
-                      <quantity-input class="quantity-input" client:idle>
+                      <quantity-input class="quantity-input" client:visible>
                         <button
                           class="quantity-btn"
                           type="button"
@@ -131,80 +131,23 @@
                 </div>
               {% endfor %}
               <div class="empty:hidden" id="CartDrawer-CartErrors" role="alert"></div>
-              {% if settings.show_cart_note %}
-                <cart-note client:idle>
-                  <div class="cart-note-form">
-                    <label class="note-label" for="Note">{{ 'sections.cart.note' | t }}</label>
-                    <textarea
-                      class="note-textarea"
-                      name="note"
-                      id="Note"
-                      data-cart-note
-                    >{{ cart.note }}</textarea>
-                  </div>
-                </cart-note>
-              {% endif %}
             </div>
             <p hidden id="CartDrawer-LiveRegionText" class="sr-only" role="status"></p>
             <p hidden id="CartDrawer-LineItemStatus" class="sr-only" aria-hidden="true" role="status">
               {{ 'accessibility.loading' | t }}
             </p>
           </form>
-
-          {% if section.blocks.size > 0 %}
-            <h3 class="headline-2 section-pt">{{ 'sections.cart.complete_the_look' | t }}</h3>
-
-            <ul class="cart-drawer-blocks section-pb">
-              {% for block in section.blocks %}
-                {%- case block.type -%}
-                  {%- when 'product' -%}
-                    {% if block.settings.product != null %}
-                      <li class="cart-drawer-block" {{ block.shopify_attributes }}>
-                        {%- assign item = block.settings.product -%}
-                        {%- assign img = item.featured_media -%}
-                        {%- assign w = 134 -%}
-                        {%- assign h = 140 -%}
-
-                        <a href="{{ item.url }}" class="cart-drawer-subimg img-cover">
-                          {{
-                            img
-                            | image_url: width: w, height: h
-                            | image_tag: loading: 'lazy', width: w, height: h, alt: img.alt
-                            | escape
-                          }}
-                        </a>
-                        <div>
-                          <h3>
-                            <a
-                              class="cart-item-name"
-                              href="{{ item.url }}"
-                            >
-                              {{- item.title | escape -}}
-                            </a>
-                          </h3>
-
-                          {% render 'price', product: item, use_variant: true, price_class: 'subhead-2 mt-8' %}
-
-                          {% for option in item.options_with_values %}
-                            {% if option.name == 'Size' %}
-                              {% render 'cart-select', label: option.name, options: option.values %}
-                            {% endif %}
-                          {% endfor %}
-
-                          {% comment %} {{ item.options_with_values | json }} {% endcomment %}
-                        </div>
-                      </li>
-                    {% endif %}
-                {%- endcase -%}
-              {% endfor %}
-            </ul>
-          {% endif %}
+          {% render 'complementary-slider',
+            class: 'cart-drawer-complementary',
+            slider: false,
+            product: cart.items.first.product
+          %}
         </cart-drawer-items>
 
         <div class="cart-drawer-footer">
           <div class="subtotal">
-            <h2 class="subtotal-label">{{ 'sections.cart.subtotal' | t }}</h2>
-            <p class="subtotal-amount">{{ cart.total_price | money_without_trailing_zeros }}</p>
+            <h2 class="subtotal-label headline-1">{{ 'sections.cart.subtotal' | t }}</h2>
+            <p class="subtotal-amount headline-1">{{ cart.total_price | money_without_trailing_zeros }}</p>
           </div>
 
           <div class="cart-drawer-footer-buttons">
@@ -233,18 +176,6 @@
 {% schema %}
 {
   "name": "Cart drawer",
-  "blocks": [
-    {
-      "type": "product",
-      "name": "t:sections.collage.blocks.product.name",
-      "settings": [
-        {
-          "type": "product",
-          "id": "product",
-          "label": "t:sections.collage.blocks.product.settings.product.label"
-        }
-      ]
-    }
-  ]
+  "class": "cart-drawer-main"
 }
 {% endschema %}

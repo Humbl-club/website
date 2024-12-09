@@ -190,6 +190,9 @@
 }
 
 .card-title {
+  @include mixins.breakpoint(vars.$sm-bp) {
+    font-size: 1.2rem;
+  }
   a {
     &::before {
       content: '';

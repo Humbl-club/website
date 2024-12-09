@@ -1,0 +1,37 @@
+<div class="{{ class }}">
+  <complementary-slider
+    class="complementary-slider"
+    data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&intent=complementary"
+    client:visible
+  >
+    {%- if recommendations.performed and recommendations.products_count > 0 -%}
+      <h3 class="complementary-title headline-2">{{ 'sections.cart.complete_the_look' | t }}</h3>
+    {% endif %}
+
+    {% if slider == true %}
+      {%- if recommendations.performed and recommendations.products_count > 0 -%}
+        <div class="swiper complementary-swiper  {% if recommendations.products_count == 1 %}swiper-initialized{% endif %}">
+          <div class="complementary-arrows">
+            <button class="swiper-arrow prev">
+              {% render 'icon-swiper-arrow' %}
+            </button>
+            <button class="swiper-arrow next">
+              {% render 'icon-swiper-arrow' %}
+            </button>
+          </div>
+          <div class="swiper-wrapper">
+            {%- for recommendation in recommendations.products -%}
+              {% render 'complementary-block', product: recommendation, wrapper_class: 'swiper-slide' %}
+            {%- endfor -%}
+          </div>
+        </div>
+      {% endif %}
+    {% else %}
+      <div class="complementary-blocks">
+        {%- for recommendation in recommendations.products -%}
+          {% render 'complementary-block', product: recommendation, wrapper_class: '' %}
+        {%- endfor -%}
+      </div>
+    {% endif %}
+  </complementary-slider>
+</div>

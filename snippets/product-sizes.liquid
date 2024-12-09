@@ -1,0 +1,46 @@
+{% assign position_of_size = 1 %}
+{% for option in item.options_with_values %}
+  {% if option.name == label %}
+    {%- assign position_of_size = option.position | minus: 1 -%}
+    {%- for value in option.values -%}
+      {% assign sizes = sizes | append: ',' | append: value | append: ',' %}
+    {% endfor %}
+  {% endif %}
+{% endfor %}
+
+{% if sizes %}
+  <div class="product-selected body-1">
+    <span class="product-select-desc opacity-50">Size:</span>
+    <span class="product-select-mobile button-title-2">Size</span>
+  </div>
+
+  <div class="product-form product-dropdown dropdown-hidden">
+    {% for value in options %}
+      {% assign ntitle_array = value.title | split: '/ ' %}
+      {% assign ntitle = ntitle_array[position_of_size] | strip %}
+      {% assign ntitle = ',' | append: ntitle | append: ',' %}
+
+      <label class="radio {{ class }}">
+        <input
+          type="radio"
+          name="{{ name }}"
+          value="{{ value.id }}"
+          {% if value.available == false %}
+            disabled
+          {% endif %}
+          {% if required %}
+            required
+          {% endif %}
+        >
+        <span class="radio-box">{{- ntitle | remove: ',' -}}</span>
+
+        <div class="product-select-item button-title-2">{{- ntitle | remove: ',' -}}</div>
+      </label>
+    {% endfor %}
+
+    <button type="button" class="product-sizebtn" data-modal="modal-sizes">Size Guide</button>
+  </div>
+
+  <button type="button" class="product-sizebtn" data-modal="modal-sizes">Size Guide</button>
+{% endif %}
+{% assign position_of_size = 1 %}

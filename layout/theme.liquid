@@ -49,6 +49,9 @@
       if request.page_type contains 'customers/'
         render 'vite-tag' with 'customers.js'
       endif
+      if template == 'product'
+        render 'vite-tag' with 'product.scss', preload_stylesheet: true
+      endif
     -%}
 
     {{ content_for_header }}
@@ -63,6 +66,10 @@
     <main role="main" id="MainContent" tabindex="-1">
       {{ content_for_layout }}
     </main>
+
+    {% if template == 'product' %}
+      <div class="product-mobile-spacer"></div>
+    {% endif %}
 
     <ul hidden>
       <li id="a11y-new-window-message">{{ 'accessibility.link_messages.new_window' | t }}</li>

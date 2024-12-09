@@ -101,3 +101,49 @@
   display: flex;
   justify-content: center;
 }
+
+collection-endlesspoint {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding-top: 12rem;
+  width: 100%;
+  pointer-events: none;
+}
+
+.featured-swiper {
+  overflow: hidden;
+  display: block;
+}
+
+.featured-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  @include mixins.breakpoint(vars.$cos-bp) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @include mixins.breakpoint(vars.$xl-bp) {
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 3.2rem;
+    column-gap: 1rem;
+  }
+
+  @include mixins.breakpoint(vars.$sm-bp) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.featured-link {
+  margin-top: 6.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-transform: capitalize;
+  @include mixins.breakpoint(vars.$xl-bp) {
+    margin-top: 3.7rem;
+  }
+}

@@ -1,17 +1,32 @@
+@use '../mixins';
+@use '../vars';
+
 /* The container must be positioned relative: */
 .custom-select {
   position: relative;
 }
 
 .custom-select select {
-  display: none; /*hide original SELECT element: */
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 .select-selected {
   border: 0.1rem solid var(--black);
-  border-radius: 0.5rem;
   background-color: var(--white);
+  padding: 0.9rem 1.3rem;
+  min-height: 4.5rem;
+  padding-right: 3.5rem;
+  min-width: 8rem;
 
+  @include mixins.breakpoint(vars.$xl-bp) {
+    padding: 0.6rem 1rem;
+    min-width: 7.6rem;
+    min-height: 3.8rem;
+  }
 }
 
 /* Style the arrow inside the select element: */
@@ -23,7 +38,8 @@
   right: 1.3rem;
   width: 1.6rem;
   height: 1.6rem;
-  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M4.40435 5.70607L4.40247 5.70353C4.23872 5.48119 3.92572 5.43368 3.70337 5.59743C3.48102 5.76118 3.43377 6.07452 3.59752 6.29687L3.59999 6.30021L3.60723 6.31L3.63481 6.34709C3.65884 6.37933 3.69398 6.42624 3.7389 6.48565C3.82871 6.60443 3.95774 6.77333 4.11543 6.97484C4.4982 7.46396 5.05456 8.15134 5.63089 8.7816C6.01781 9.20473 6.42447 9.61399 6.80066 9.9213C6.98848 10.0747 7.18003 10.2121 7.36677 10.3134C7.54459 10.4099 7.76545 10.5 7.99987 10.5C8.26517 10.5 8.51719 10.3843 8.71676 10.2658C8.92925 10.1396 9.1504 9.9685 9.36843 9.77801C9.80555 9.39611 10.2773 8.89456 10.7096 8.4003C11.2533 7.77858 11.7508 7.14986 12.0626 6.74534C12.168 6.60857 12.2525 6.49694 12.3109 6.41926C12.3401 6.38041 12.3628 6.35003 12.3783 6.32922L12.396 6.30531L12.4019 6.29729L12.4025 6.29657C12.5662 6.07422 12.5187 5.76122 12.2964 5.59747C12.074 5.43371 11.7608 5.48148 11.5971 5.70383L11.5962 5.70508L11.5922 5.71048L11.5758 5.73248C11.5613 5.752 11.5397 5.78101 11.5116 5.81842C11.4553 5.89326 11.3732 6.00166 11.2705 6.13489C10.9654 6.53082 10.4818 7.14174 9.95685 7.74195C9.53572 8.22344 9.09804 8.68634 8.71048 9.02495C8.51617 9.19472 8.34617 9.32286 8.20627 9.40591C8.07614 9.48317 8.01215 9.4971 8.00097 9.49953L7.99958 9.49957C7.99028 9.49764 7.94147 9.48752 7.84355 9.43441C7.73211 9.37396 7.59433 9.2784 7.43329 9.14685C7.11178 8.88421 6.74266 8.51555 6.36886 8.10677C5.8171 7.50337 5.27845 6.83838 4.90296 6.35855C4.74917 6.16203 4.62354 5.99759 4.53656 5.88255C4.49308 5.82504 4.45929 5.77992 4.4365 5.74935L4.41073 5.7147L4.40435 5.70607Z' fill='black'/%3E%3C/svg%3E%0A");  transition: transform .3s;
+  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M4.40435 5.70607L4.40247 5.70353C4.23872 5.48119 3.92572 5.43368 3.70337 5.59743C3.48102 5.76118 3.43377 6.07452 3.59752 6.29687L3.59999 6.30021L3.60723 6.31L3.63481 6.34709C3.65884 6.37933 3.69398 6.42624 3.7389 6.48565C3.82871 6.60443 3.95774 6.77333 4.11543 6.97484C4.4982 7.46396 5.05456 8.15134 5.63089 8.7816C6.01781 9.20473 6.42447 9.61399 6.80066 9.9213C6.98848 10.0747 7.18003 10.2121 7.36677 10.3134C7.54459 10.4099 7.76545 10.5 7.99987 10.5C8.26517 10.5 8.51719 10.3843 8.71676 10.2658C8.92925 10.1396 9.1504 9.9685 9.36843 9.77801C9.80555 9.39611 10.2773 8.89456 10.7096 8.4003C11.2533 7.77858 11.7508 7.14986 12.0626 6.74534C12.168 6.60857 12.2525 6.49694 12.3109 6.41926C12.3401 6.38041 12.3628 6.35003 12.3783 6.32922L12.396 6.30531L12.4019 6.29729L12.4025 6.29657C12.5662 6.07422 12.5187 5.76122 12.2964 5.59747C12.074 5.43371 11.7608 5.48148 11.5971 5.70383L11.5962 5.70508L11.5922 5.71048L11.5758 5.73248C11.5613 5.752 11.5397 5.78101 11.5116 5.81842C11.4553 5.89326 11.3732 6.00166 11.2705 6.13489C10.9654 6.53082 10.4818 7.14174 9.95685 7.74195C9.53572 8.22344 9.09804 8.68634 8.71048 9.02495C8.51617 9.19472 8.34617 9.32286 8.20627 9.40591C8.07614 9.48317 8.01215 9.4971 8.00097 9.49953L7.99958 9.49957C7.99028 9.49764 7.94147 9.48752 7.84355 9.43441C7.73211 9.37396 7.59433 9.2784 7.43329 9.14685C7.11178 8.88421 6.74266 8.51555 6.36886 8.10677C5.8171 7.50337 5.27845 6.83838 4.90296 6.35855C4.74917 6.16203 4.62354 5.99759 4.53656 5.88255C4.49308 5.82504 4.45929 5.77992 4.4365 5.74935L4.41073 5.7147L4.40435 5.70607Z' fill='black'/%3E%3C/svg%3E%0A");
+  transition: transform .3s;
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -34,25 +50,35 @@
   // border-color: transparent transparent #fff transparent;
   transform: translateY(-50%) rotate(180deg);
 }
+
 .select-arrow-active {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
 
 /* style the items (options), including the selected item: */
-.select-items div,.select-selected {
-  color: var(--grey);
-  font-size: 1.4rem;
-  line-height: 140%;
-  padding: 1.5rem 1.6rem;
+.select-items div,
+.select-selected {
   // border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
   cursor: pointer;
 
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
 }
-.select-items > div {
-  color: var(--black);
-  padding: 1rem 1.2rem;
+
+.select-items>div {
+  padding: 0.9rem 1.3rem;
+  transition: color var(--time), background-color var(--time);
+
+  @include mixins.breakpoint(vars.$xl-bp) {
+    padding: 0.6rem 1rem;
+  }
 }
+
 /* Style items (options): */
 .select-items {
   position: absolute;
@@ -60,23 +86,33 @@
   top: 100%;
   left: 0;
   right: 0;
-  z-index: 99;
-  border-bottom-left-radius: 0.5rem;
-  border-bottom-right-radius: 0.5rem;
-  overflow: hidden;
-  box-shadow: 0px 0.5rem 1rem rgba(19, 33, 42, 0.15);
-  border: 0.1rem solid var(--grey);
+  z-index: 20;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border: 0.1rem solid var(--black);
   border-top: 0;
+  animation: fadeEffect var(--time);
+  max-height: 36rem;
+  &.--top {
+    top: auto;
+    bottom: 100%;
+    border-top: 0.1rem solid var(--black);
+    border-bottom: 0;
+  }
 }
 
 /* Hide the items when the select box is closed: */
 .select-hide {
-  display: none;
+  visibility: hidden;
+  pointer-events: none;
 }
 
-.select-items div:hover, .same-as-selected {
-  background-color: var(--lgreen);
+.select-items div:hover,
+.same-as-selected {
+  background-color: var(--black);
+  color: var(--white);
 }
+
 .select-selected--active {
   color: var(--black);
 }

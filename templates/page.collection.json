@@ -1,0 +1,112 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "page-collection": {
+      "type": "page-collection",
+      "blocks": {
+        "date_QhLgMj": {
+          "type": "date",
+          "settings": {
+            "date": "september 28, 2024",
+            "title": "Core Collection Lookbook",
+            "collection": "aura-24"
+          }
+        },
+        "image_WEhTAE": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/image.jpg",
+            "image_mobile": "shopify://shop_images/image-mobile-2.jpg"
+          }
+        },
+        "subtitle_di6bdq": {
+          "type": "subtitle",
+          "settings": {
+            "description": "<p>Essentials from the Humbl wardrobe in classic colors.</p><p>Pick from unisex fleece and comfortable activewear to achieve timeless style.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "date_QhLgMj",
+        "image_WEhTAE",
+        "subtitle_di6bdq"
+      ],
+      "settings": {}
+    },
+    "gallery": {
+      "type": "gallery",
+      "blocks": {
+        "image_hBXyVj": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/4.jpg"
+          }
+        },
+        "image_JM7UKc": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/5_a63c72a6-6f3d-4227-9d55-fcf92348c0d4.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "image_hBXyVj",
+        "image_JM7UKc"
+      ],
+      "settings": {}
+    },
+    "brand_block_GEgbfr": {
+      "type": "brand-block",
+      "custom_css": [
+        "p {max-width: 48rem; margin: 0 auto;}"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/image-3-mobile.jpg",
+        "image_mobile": "shopify://shop_images/image-3.jpg",
+        "title": "Core Fleece & Jersey",
+        "text": "Made in the USA following the same specifications as your favorite vintage sweatshirt and featuring some of our iconic logos."
+      }
+    },
+    "featured_collection_3Tmgzw": {
+      "type": "featured-collection",
+      "settings": {
+        "addLink": true,
+        "isSlider": false,
+        "title": "",
+        "collection": "aura-24",
+        "products_to_show": 4
+      }
+    },
+    "collection_gallery": {
+      "type": "collection-gallery",
+      "settings": {
+        "collection": "aura-24"
+      }
+    },
+    "collection_footer_kgTMzM": {
+      "type": "collection-footer",
+      "settings": {
+        "image": "shopify://shop_images/image_cc1aa514-e141-429c-9aad-f74032919656.jpg",
+        "image_mobile": "shopify://shop_images/image-mobile_ba0916be-11bb-4386-8a79-25ce38401599.jpg",
+        "title": "Discover our Core Collection",
+        "text": ""
+      }
+    }
+  },
+  "order": [
+    "page-collection",
+    "gallery",
+    "brand_block_GEgbfr",
+    "featured_collection_3Tmgzw",
+    "collection_gallery",
+    "collection_footer_kgTMzM"
+  ]
+}

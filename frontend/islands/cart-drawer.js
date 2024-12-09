@@ -1,9 +1,8 @@
 import { trapFocus, removeTrapFocus } from '@/lib/a11y'
+import { disableScroll, enableScroll } from '@/lib/utils'
 
 class CartDrawer extends window.HTMLElement {
-  constructor() {
-    super()
-
+  connectedCallback() {
     this.addEventListener(
       'keyup',
       (evt) => evt.code === 'Escape' && this.close()
@@ -33,13 +32,13 @@ class CartDrawer extends window.HTMLElement {
       { once: true }
     )
 
-    document.body.classList.add('overflow-hidden')
+    disableScroll()
   }
 
   close() {
     this.classList.remove('active')
     removeTrapFocus(this.activeElement)
-    document.body.classList.remove('overflow-hidden')
+    enableScroll()
   }
 
   renderContents(parsedState) {

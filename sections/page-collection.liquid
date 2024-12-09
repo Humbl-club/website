@@ -1,0 +1,120 @@
+{% render 'vite-tag' with 'page-collection.scss', preload_stylesheet: true %}
+
+{% for block in section.blocks %}
+  {% case block.type %}
+    {% when 'date' %}
+      <div class="wrapper text-center" {{ block.shopify_attributes }}>
+        {% if block.settings.date %}
+          <div class="headline-2 page-collection-date opacity-50">
+            {{ block.settings.date }}
+          </div>
+        {% endif %}
+
+        {% if block.settings.title %}
+          <h1 class="title-1 page-collection-title">{{ block.settings.title }}</h1>
+        {% endif %}
+
+        {% if block.settings.collection %}
+          <a class="link" href="{{ block.settings.collection.url }}">View the Collection</a>
+        {% endif %}
+      </div>
+
+    {% when 'image' %}
+      {% if block.settings.image != blank %}
+        <div class="page-collection-image" {{ block.shopify_attributes }}>
+          <picture>
+            {% if block.settings.image_mobile != blank %}
+              <source media="(max-width: 500px)" srcset="{{ block.settings.image_mobile | image_url: width: 500 }}">
+            {% endif %}
+            {{
+              block.settings.image
+              | image_url: width: 1920
+              | image_tag:
+                loading: 'eager',
+                width: block.settings.image.width,
+                height: block.settings.image.height,
+                widths: '375, 412, 500, 750, 1100, 1500, 1780, 1920, 2000, 3000, 3840',
+                alt: block.settings.image.alt,
+                fetchpriority: 'high'
+              | escape
+            }}
+          </picture>
+        </div>
+      {% endif %}
+    {% when 'subtitle' %}
+      <div class="subhead-2 page-collection-description wrapper text-center" {{ block.shopify_attributes }}>
+        {{ block.settings.description }}
+      </div>
+  {% endcase %}
+{% endfor %}
+
+{% schema %}
+{
+  "name": "Collection",
+  "tag": "section",
+  "class": "page-collection",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [],
+  "blocks": [
+    {
+      "type": "date",
+      "name": "Top block",
+      "settings": [
+        {
+          "type": "text",
+          "id": "date",
+          "label": "Date",
+          "default": "september 28, 2024"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Main title",
+          "default": "Core Collection Lookbook"
+        },
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection link"
+        }
+      ],
+      "limit": 1
+    },
+    {
+      "type": "image",
+      "name": "Image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "Mobile image"
+        }
+      ]
+    },
+    {
+      "type": "subtitle",
+      "name": "Collection description",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description",
+          "default": "<p>Essentials from the Humbl wardrobe in classic colors.</p><p>Pick from unisex fleece and comfortable activewear to achieve timeless style.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection"
+    }
+  ]
+}
+{% endschema %}

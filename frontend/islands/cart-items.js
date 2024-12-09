@@ -5,10 +5,6 @@ export default class CartItems extends window.HTMLElement {
   constructor() {
     super()
 
-    this.lineItemStatusElement =
-      document.getElementById('shopping-cart-line-item-status') ||
-      document.getElementById('CartDrawer-LineItemStatus')
-
     this.currentItemCount = Array.from(
       this.querySelectorAll('[name="updates[]"]')
     ).reduce((total, quantityInput) => total + parseInt(quantityInput.value), 0)
@@ -81,17 +77,18 @@ export default class CartItems extends window.HTMLElement {
             'is-empty',
             parsedState.item_count === 0
           )
-
         this.getSectionsToRender().forEach((section) => {
           const elementToReplace =
             document
               .getElementById(section.id)
               .querySelector(section.selector) ||
             document.getElementById(section.id)
-          elementToReplace.innerHTML = this.getSectionInnerHTML(
-            parsedState.sections[section.section],
-            section.selector
-          )
+          if (elementToReplace) {
+            elementToReplace.innerHTML = this.getSectionInnerHTML(
+              parsedState.sections[section.section],
+              section.selector
+            )
+          }
         })
 
         this.updateLiveRegions(line, parsedState.item_count)
@@ -119,16 +116,12 @@ export default class CartItems extends window.HTMLElement {
         this.disableLoading()
       })
       .catch((err) => {
-        this.querySelectorAll('.loading-overlay').forEach((overlay) =>
-          overlay.classList.add('hidden')
-        )
         const errors =
           document.getElementById('cart-errors') ||
           document.getElementById('CartDrawer-CartErrors')
         if (errors) {
           errors.textContent = err
         }
-        this.disableLoading()
       })
       .finally(() => {
         this.disableLoading()
@@ -150,7 +143,6 @@ export default class CartItems extends window.HTMLElement {
     }
 
     this.currentItemCount = itemCount
-    this.lineItemStatusElement.setAttribute('aria-hidden', true)
 
     const cartStatus =
       document.getElementById('cart-live-region-text') ||
@@ -163,41 +155,19 @@ export default class CartItems extends window.HTMLElement {
   }
 
   getSectionInnerHTML(html, selector) {
-    return new window.DOMParser()
+    const parser = new window.DOMParser()
       .parseFromString(html, 'text/html')
       .querySelector(selector).innerHTML
+    return parser
   }
 
   enableLoading(line) {
     document.documentElement.classList.add('loading')
-    const mainCartItems =
-      document.getElementById('main-cart-items') ||
-      document.getElementById('CartDrawer-CartItems')
-    mainCartItems.classList.add('loading')
-
-    const cartItemElements = this.querySelectorAll(
-      `#CartItem-${line} .loading-overlay`
-    )
-    const cartDrawerItemElements = this.querySelectorAll(
-      `#CartDrawer-Item-${line} .loading-overlay`
-    )
-
-    ;[...cartItemElements, ...cartDrawerItemElements].forEach((overlay) =>
-      overlay.classList.remove('hidden')
-    )
-
     document.activeElement.blur()
-    if (this.lineItemStatusElement) {
-      this.lineItemStatusElement.setAttribute('aria-hidden', false)
-    }
   }
 
   disableLoading() {
     document.documentElement.classList.remove('loading')
-    const mainCartItems =
-      document.getElementById('main-cart-items') ||
-      document.getElementById('CartDrawer-CartItems')
-    mainCartItems.classList.remove('loading')
   }
 }
 

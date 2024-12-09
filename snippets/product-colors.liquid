@@ -1,0 +1,43 @@
+{%- assign ntitle = '' -%}
+{%- assign colors = '' -%}
+{% assign position_of_color = 0 %}
+{% for option in product.options_with_values %}
+  {% if option.name == 'Color' %}
+    {%- assign position_of_color = option.position | minus: 1 -%}
+    {%- for value in option.values -%}
+      {% assign colors = colors | append: ',' | append: value | append: ',' %}
+    {% endfor %}
+  {% endif %}
+{% endfor %}
+{% if colors != '' %}
+  {% for variant in product.variants %}
+    {% assign ntitle_array = variant.title | split: '/ ' %}
+    {% assign ntitle = ntitle_array[position_of_color] | strip %}
+    {% assign ntitle = ',' | append: ntitle | append: ',' %}
+    {% if colors contains ntitle %}
+      {%- assign ntitle = ntitle | remove: ',' -%}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% if ntitle != '' %}
+  <product-select class="product-variants" client:media="(max-width: 1024px)">
+    <div class="product-selected body-1 ">
+      <span class="product-select-desc"><span class="opacity-50">Color</span>: {{ ntitle }}</span>
+      <span class="product-select-mobile">{{ ntitle }}</span>
+    </div>
+
+    <product-colors client:visible>
+      <div class="product-colorboxes product-dropdown dropdown-hidden">
+        {% render 'product-colorbox', checked: true, ntitle: ntitle %}
+        {% if product.metafields.custom.related_colors %}
+          {% for item in product.metafields.custom.related_colors.value %}
+            {% render 'product-colorbox', product: item %}
+          {% endfor %}
+        {% endif %}
+      </div>
+    </product-colors>
+  </product-select>
+{% endif %}
+
+{%- assign ntitle = '' -%}

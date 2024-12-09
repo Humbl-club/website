@@ -1,0 +1,228 @@
+@use "../mixins";
+@use "../vars";
+
+menu-drawer {
+  display: none;
+
+  &[data-open="true"] {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 30;
+    display: block;
+  }
+}
+
+.modal-overlay {
+  background-color: rgba($color: #000000, $alpha: 0.4);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transition: opacity var(--time);
+  opacity: 1;
+
+  &.add-opacity {
+    opacity: 0;
+  }
+}
+
+.modal {
+  background-color: var(--white);
+  max-width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate3d(100%, 0, 0);
+  transition: transform var(--time);
+  display: flex;
+  flex-direction: column;
+
+  &.open {
+    transform: translate3d(0, 0, 0);
+  }
+
+  .modal-sizes & {
+    width: 70rem;
+  }
+
+  .modal-header,
+  .modal-page,
+  .modal-footer {
+    padding-left: 2.4rem;
+    padding-right: 2.4rem;
+    @include mixins.breakpoint(vars.$xl-bp) {
+      padding-right: 1.6rem;
+      padding-left: 1.6rem;
+    }
+  }
+}
+
+.modal-header {
+  padding-top: 3.2rem;
+  padding-bottom: 3.2rem;
+  border-bottom: 0.1rem solid rgba($color: #000000, $alpha: 0.1);
+  display: flex;
+  justify-content: space-between;
+  @include mixins.breakpoint(vars.$xl-bp) {
+    padding-top: 1.2rem;
+    padding-bottom: 2.4rem;
+    
+  }
+}
+
+.modal-close-styles {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
+.modal-inner {
+  overflow: auto;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-footer {
+  padding-bottom: 3.2rem;
+  padding-top: 3.2rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 3.2rem;
+  margin-top: auto;
+  @include mixins.breakpoint(vars.$xl-bp) {
+    flex-direction: column;
+    gap: 2rem;
+    padding-bottom: 1rem;
+
+  }
+}
+
+.modal-footleft {
+  gap: 1.6rem;
+}
+
+.modal-page {
+  padding-top: 4rem;
+  padding-bottom: 3.2rem;
+  thead {
+    tr {
+      background-color: #F7F7F7;
+    }
+  }
+
+  tbody {
+    &>tr {
+      &:nth-child(even) {
+        background-color: #F7F7F7;
+      }
+    }
+  }
+
+  table {
+    width: 100%;
+    animation: fadeEffect var(--time);
+
+    td,
+    th {
+      padding: 1.6rem 1.4rem;
+      text-align: start;
+      border: 1px solid #E6E6E6;
+      border-collapse: collapse;
+      font-weight: 400;
+      @include mixins.breakpoint(vars.$xl-bp) {
+        padding: 1.4rem 1rem;
+      }
+    }
+
+    @include mixins.breakpoint(vars.$sm-bp) {
+      font-size: 1.4rem;
+    }
+  }
+
+  .dl {
+    margin-top: 3.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    @include mixins.breakpoint(vars.$xl-bp) {
+      margin-top: 2.4rem;
+      
+    }
+    .dr {
+      display: flex;
+    }
+    .dt {
+      opacity: 0.5;
+      margin-right: 0.8rem;
+    }
+  }
+
+  small {
+    margin-top: 3.2rem;
+    opacity: 0.5;
+    display: block;
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 1.2rem;
+    line-height: 150%;
+    letter-spacing: -0.04em;
+    @include mixins.breakpoint(vars.$xl-bp) {
+      margin-top: 2.4rem;
+    }
+  }
+}
+
+.modal-labels {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2.4rem;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+
+  input {
+    display: none;
+
+    &:checked {
+      &+.radio2-label {
+        .radio2-box {
+          background-color: var(--black);
+
+          &::before {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+
+  @for $i from 1 through 3 {
+    #tab-#{$i}:checked ~ .modal-tabs .modal-tab[data-tab="#{$i}"] {
+      display: block;
+    }
+  }
+}
+
+.modal-tab {
+  display: none;
+}
+
+.modal-tabs{
+  width: 100%;
+}
+
+.modal-page-title {
+  margin-top: 6rem;
+  @include mixins.breakpoint(vars.$xl-bp) {
+    margin-top: 4rem;
+  }
+}

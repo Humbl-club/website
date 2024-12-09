@@ -1,0 +1,45 @@
+@use "../mixins";
+@use "../vars";
+
+.complementary-swiper {
+  max-width: 44.2rem;
+  overflow: hidden;
+  padding-top: 2rem;
+  opacity: 0;
+  transition: opacity var(--time);
+  transition-delay: 500ms;
+  .inited & {
+    opacity: 1;
+    overflow: visible;
+  }
+}
+
+.complementary-blocks {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  @include mixins.breakpoint(vars.$sm-bp) {
+    gap: 1.6rem;
+  }
+}
+
+.complementary-arrows {
+  position: absolute;
+  top: 2rem;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  z-index: 10;
+}
+
+.complementary-title {
+  opacity: 0;
+  transition: opacity var(--time);
+
+  .inited & {
+    opacity: 1;
+  }
+}
