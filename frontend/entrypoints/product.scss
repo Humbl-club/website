@@ -100,7 +100,7 @@
 
 .product-left {
   display: block;
-
+  padding-top: 13rem;
   @include mixins.breakpoint(vars.$xl-bp) {
     order: 1;
     padding-top: 2rem;
@@ -322,6 +322,9 @@
   margin-top: auto;
   padding-top: 3rem;
   max-width: 100%;
+  @include mixins.breakpoint(vars.$sm-bp) {
+    min-height: 16.5rem;
+  }
 }
 
 .product-recommendations {
@@ -329,6 +332,7 @@
 
   @include mixins.breakpoint(vars.$sm-bp) {
     min-height: 30.5rem;
+    padding-top: 0;
   }
 }
 

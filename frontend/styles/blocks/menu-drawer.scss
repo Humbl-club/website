@@ -130,7 +130,7 @@ menu-drawer {
 
     td,
     th {
-      padding: 1.6rem 1.4rem;
+      padding: 1.5rem 1.3rem;
       text-align: start;
       border: 1px solid #E6E6E6;
       border-collapse: collapse;
@@ -146,10 +146,10 @@ menu-drawer {
   }
 
   .dl {
-    margin-top: 3.2rem;
+    margin-top: 3rem;
     display: flex;
     flex-direction: column;
-    gap: 1.6rem;
+    gap: 1.4rem;
     @include mixins.breakpoint(vars.$xl-bp) {
       margin-top: 2.4rem;
       
@@ -164,7 +164,7 @@ menu-drawer {
   }
 
   small {
-    margin-top: 3.2rem;
+    margin-top: 3rem;
     opacity: 0.5;
     display: block;
     font-family: var(--font-family);
@@ -221,7 +221,7 @@ menu-drawer {
 }
 
 .modal-page-title {
-  margin-top: 6rem;
+  margin-top: 5.5rem; 
   @include mixins.breakpoint(vars.$xl-bp) {
     margin-top: 4rem;
   }

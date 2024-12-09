@@ -37,6 +37,7 @@
   </div>
 
   <product-swiper client:media="(max-width: 1024px)" class="product-swiper swiper">
+    {% render 'card-favorite', class: 'only-mobile' %}
     <div class="swiper-wrapper product-images">
       {%- for media in product.media -%}
         {%- liquid
