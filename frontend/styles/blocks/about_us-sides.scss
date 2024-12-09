@@ -15,6 +15,12 @@
 .about-us {
   margin: 0 !important;
 
+  &__wrapper-2 {
+    max-width: 1920px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
   &__wrapper {
     display: flex;
     flex-direction: column;

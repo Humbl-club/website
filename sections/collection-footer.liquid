@@ -1,0 +1,81 @@
+{% render 'vite-tag' with 'collection-footer.scss', preload_stylesheet: true %}
+
+<div class="brand">
+  <div class="brand__wrapper-2">
+    <div class="brand__data">
+      {%- if section.settings.title != blank -%}
+        <h2>{{ section.settings.title }}</h2>
+      {%- endif -%}
+
+      {%- if section.settings.text != blank -%}
+        <p>
+          {{ section.settings.text }}
+        </p>
+      {%- endif -%}
+    </div>
+
+    <div class="brand__background-2">
+      <picture>
+        {% if section.settings.image_mobile != blank %}
+          <source media="(max-width: 500px)" srcset="{{ section.settings.image_mobile | image_url: width: 500 }}">
+        {% endif %}
+        {{
+          section.settings.image
+          | image_url: width: 1920
+          | image_tag:
+            loading: 'lazy',
+            width: section.settings.image.width,
+            height: section.settings.image.height,
+            widths: '375, 412, 500, 750, 1100, 1500, 1780, 1920, 2000, 3000, 3840',
+            alt: section.settings.image.alt
+          | escape
+        }}
+      </picture>
+    </div>
+  </div>
+
+  <button class="brand-up" onclick="document.body.scrollIntoView({behavior: 'smooth'})" aria-label="go up">
+    {% render 'icon-up' %}
+  </button>
+</div>
+
+{% schema %}
+{
+  "name": "collection-footer",
+  "tag": "section",
+  "class": "collection-footer padding-bottom-0",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Mobile Background Image"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "label": "Block Title",
+      "default": "Title"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Block Description",
+      "default": "Description."
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "collection-footer"
+    }
+  ]
+}
+{% endschema %}

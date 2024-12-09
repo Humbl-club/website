@@ -1,0 +1,25 @@
+@use "../styles/mixins";
+@use "../styles/vars";
+
+.collection-gallery-list {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 2rem;
+  max-width: 1828px;
+  width: 100%;
+  margin: 0 auto;
+  @include mixins.breakpoint(vars.$cos-bp) {
+    grid-template-columns: repeat(5, 1fr);
+  }
+  @include mixins.breakpoint(vars.$xl-bp) {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+  @include mixins.breakpoint(vars.$sm-bp) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.collection-gallery-item {
+  background-color: var(--milk);
+}

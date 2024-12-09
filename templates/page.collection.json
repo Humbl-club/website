@@ -84,12 +84,19 @@
         "collection": "aura-24",
         "products_to_show": 4
       }
+    },
+    "collection_gallery": {
+      "type": "collection-gallery",
+      "settings": {
+        "collection": "aura-24"
+      }
     }
   },
   "order": [
     "page-collection",
     "gallery",
     "brand_block_GEgbfr",
-    "featured_collection_3Tmgzw"
+    "featured_collection_3Tmgzw",
+    "collection_gallery",
   ]
 }
