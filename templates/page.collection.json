@@ -15,7 +15,7 @@
         "date_QhLgMj": {
           "type": "date",
           "settings": {
-            "date": "september 28, 2024",
+            "date": true,
             "title": "Core Collection Lookbook",
             "collection": "aura-24"
           }

@@ -6,7 +6,7 @@
       <div class="wrapper text-center" {{ block.shopify_attributes }}>
         {% if block.settings.date %}
           <div class="headline-2 page-collection-date opacity-50">
-            {{ block.settings.date }}
+            {{- 'now' | date: '&nbsp;%B&nbsp;%d,&nbsp;%Y' }}
           </div>
         {% endif %}
 
@@ -63,10 +63,10 @@
       "name": "Top block",
       "settings": [
         {
-          "type": "text",
+          "type": "checkbox",
           "id": "date",
           "label": "Date",
-          "default": "september 28, 2024"
+          "default": true
         },
         {
           "type": "text",
