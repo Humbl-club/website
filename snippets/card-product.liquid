@@ -46,12 +46,6 @@
             >
           {% endif %}
           <img
-            srcset="
-              {%- if card_product.featured_media.width >= 165 -%}{{ card_product.featured_media | image_url: width: 165 }} 165w,{%- endif -%}
-              {%- if card_product.featured_media.width >= 360 -%}{{ card_product.featured_media | image_url: width: 360 }} 360w,{%- endif -%}
-              {%- if card_product.featured_media.width >= 442 -%}{{ card_product.featured_media | image_url: width: 442, height: 500 }} 442w,{%- endif -%}
-              {{ card_product.featured_media | image_url }} {{ 442 }}w
-            "
             class="card-img"
             src="{{ card_product.featured_media | image_url: width: 442, height: 500 }}"
             alt="{{ card_product.featured_media.alt | escape }}"
