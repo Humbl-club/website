@@ -1,0 +1,29 @@
+
+
+<menu-drawer id="modal-sizes" class="modal-sizes" client:idle data-open="false">
+  <div class="modal-overlay add-opacity"></div>
+  <div class="modal">
+    <div class="modal-header">
+      <div class="title-1">Size Guide</div>
+      <button class="modal-close modal-close-styles">{% render 'icon-close' %}</button>
+    </div>
+
+    <div class="modal-inner">
+      <div class="modal-page">
+        {% render 'contact-form' %}
+      </div>
+    </div>
+  </div>
+</menu-drawer>
+
+{% schema %}
+{
+  "name": "Section name",
+  "settings": [],
+  "presets": [
+    {
+      "name": "Modal Contact Form"
+    }
+  ]
+}
+{% endschema %}
