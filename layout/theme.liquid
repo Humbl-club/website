@@ -54,6 +54,10 @@
       endif
     -%}
 
+    {% if template == 'blog' or template == 'article' %}
+      {% render 'vite-tag' with 'blog.scss', preload_stylesheet: true %}
+    {% endif %}
+
     {{ content_for_header }}
   </head>
 
@@ -69,10 +73,6 @@
 
     {% if template == 'product' %}
       <div class="product-mobile-spacer"></div>
-    {% endif %}
-
-    {% if template == 'blog' %}
-      {% render 'vite-tag' with 'blog.scss', preload_stylesheet: true %}
     {% endif %}
 
     <ul hidden>

@@ -1,0 +1,29 @@
+@use "../mixins";
+@use "../vars";
+
+.article-title {
+  margin-top: 4.8rem;
+  text-align: center;
+}
+
+.article-wrapper {
+  max-width: 90.4rem;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.article-image {
+  margin-top: 6rem;
+}
+
+.article-info {
+  margin-top: 3.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3.2rem;
+}
+
+.article-bot {
+  margin-top: 6.5rem;
+}
