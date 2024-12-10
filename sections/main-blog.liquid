@@ -4,22 +4,64 @@
   <h1 class="title-1 text-center">
     {{ blog.title | escape }}
   </h1>
+  <ul class="blog-filter">
+    {%- assign active = '' -%}
+    {%- assign active_count = 0 -%}
+    {% for tag in blog.all_tags %}
+      {% for current_tag in current_tags %}
+        {% if current_tag == tag %}
+          {%- assign active = 'active' -%}
+          {% assign active_count = active_count | plus: 1 %}
+        {% endif %}
+      {% endfor %}
+      <li class="{{ active }}">
+        {{ tag | link_to_tag: tag }}
+      </li>
+      {%- assign active = '' -%}
+    {% endfor %}
 
-  <div class="blog-list">
+    {% if active_count == 0 %}
+      <li class="all active"><a href="{{ blog.url }}">All</a></li>
+    {% else %}
+      <li class="all"><a href="{{ blog.url }}">All</a></li>
+    {% endif %}
+  </ul>
+  <div class="blog-list" id="blog-grid">
     {%- for article in blog.articles -%}
       {%- assign module = forloop.index | modulo: 5 -%}
+      {% assign lazy_load = false %}
+
+      {% if forloop.index > 5 %}
+        {% assign lazy_load = true %}
+      {% endif %}
       {% if module == 0 or forloop.index == 1 %}
         {%- render 'article-card',
           article: article,
           class: 'big',
           title_class: 'subhead-1',
           width: 1058,
-          height: 800
+          height: 800,
+          lazy_load: lazy_load
         -%}
       {% else %}
         {%- render 'article-card', article: article, class: '', title_class: 'subhead-2', width: 288 -%}
       {% endif %}
     {%- endfor -%}
+  </div>
+
+  <div class="collection-bot" id="collection-bot">
+    <collection-endlesspoint client:visible data-container="blog-grid" data-item=".blog-item">
+      <div id="current-page" hidden>{{ paginate.current_page }}</div>
+      <div id="all-pages" hidden>{{ paginate.pages }}</div>
+    </collection-endlesspoint>
+
+    <button
+      class="collection-up"
+      onclick="document.body.scrollIntoView({behavior: 'smooth'})"
+      aria-label="go up"
+    >
+      {% render 'icon-up' %}
+    </button>
   </div>
 {%- endpaginate -%}
 
@@ -27,6 +69,6 @@
 {
   "name": "Blog posts",
   "tag": "section",
-  "class": "wrapper"
+  "class": "blog-main wrapper"
 }
 {% endschema %}

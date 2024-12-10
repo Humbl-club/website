@@ -54,11 +54,11 @@ class CollectionEndlesspoint extends window.HTMLElement {
 
         if (currentPage <= allPages) {
           const cards = parser
-            .getElementById('ProductGridContainer')
-            .querySelectorAll('.grid__item')
+            .getElementById(this.getContainer())
+            .querySelectorAll(this.getItem())
           const fragment = new window.DocumentFragment()
 
-          const productgrid = document.getElementById('product-grid')
+          const productgrid = document.getElementById(this.getContainer())
 
           if (cards.length) {
             cards.forEach((el) => {
@@ -75,6 +75,14 @@ class CollectionEndlesspoint extends window.HTMLElement {
           }
         }
       })
+  }
+
+  getContainer() {
+    return this.dataset.container || 'product-grid'
+  }
+
+  getItem() {
+    return this.dataset.item || '.grid__item'
   }
 }
 

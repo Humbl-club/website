@@ -24,7 +24,7 @@
         <div class="page-collection-image" {{ block.shopify_attributes }}>
           <picture>
             {% if block.settings.image_mobile != blank %}
-              <source media="(max-width: 500px)" srcset="{{ block.settings.image_mobile | image_url: width: 500 }}">
+              <source media="(max-width: 412px)" srcset="{{ block.settings.image_mobile | image_url: width: 412 }}">
             {% endif %}
             {{
               block.settings.image

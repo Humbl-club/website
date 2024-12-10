@@ -8,8 +8,6 @@
   >
     {%- paginate collection.products by section.settings.products_per_page -%}
       {% comment %} Sort is the first tabbable element when filter type is vertical {% endcomment %}
-      <div id="current-page" hidden>{{ paginate.current_page }}</div>
-      <div id="all-pages" hidden>{{ paginate.pages }}</div>
       {%- if section.settings.enable_filtering or section.settings.enable_sorting -%}
         <div class="facets-head subhead-2 wrapper">
           <button class="mobile-facets__open">
@@ -139,7 +137,10 @@
             </div>
           {%- endif -%}
 
-          <collection-endlesspoint client:visible></collection-endlesspoint>
+          <collection-endlesspoint client:visible data-container="product-grid" data-item=".grid__item">
+            <div id="current-page" hidden>{{ paginate.current_page }}</div>
+            <div id="all-pages" hidden>{{ paginate.pages }}</div>
+          </collection-endlesspoint>
 
           <div class="collection-bot wrapper" id="collection-bot">
             <div class="body-1 body-3-mobile text-center opacity-50">

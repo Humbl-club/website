@@ -10,42 +10,46 @@
   {% render 'article-card' article: article %}
 {% endcomment %}
 {% if width %}
-  {%- assign itemWidth = width -%}
+  {%- assign item_width = width -%}
 {% else %}
-  {% assign itemWidth = article.image.width %}
+  {% assign item_width = article.image.width %}
 {% endif %}
 
 {% if height %}
-  {%- assign itemHeight = height -%}
+  {%- assign item_height = height -%}
 {% else %}
   {% if width %}
-    {% assign itemHeight = width | times: article.image.aspect_ratio %}
+    {% assign item_height = width | times: article.image.aspect_ratio %}
   {% else %}
-    {% assign itemHeight = article.image.height %}
+    {% assign item_height = article.image.height %}
   {% endif %}
 {% endif %}
 
 <div class="blog-item {{ class }}">
-  <div class="blog-img">
+  <a class="blog-link" href="{{ article.url }}">
+    {{ article.title }}
+  </a>
+
+  <div class="blog-img img-cover">
     {%- if article.image -%}
+      {%- assign item_width_scaled = item_width | times: 2 -%}
+      {%- assign item_height_scaled = item_height | times: 2 -%}
       {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
       <img
-        src="{{ article.image.src | image_url: width: itemWidth, height: itemHeight }}"
+        src="{{ article.image.src | image_url: width: item_width_scaled, height: item_height_scaled }}"
         alt="{{ article.image.src.alt | escape }}"
         {% unless lazy_load == false %}
           loading="lazy"
         {% endunless %}
-        width="{{ itemWidth }}"
-        height="{{ itemHeight }}"
+        width="{{ item_width }}"
+        height="{{ item_height }}"
       >
       {% comment %}theme-check-enable ImgLazyLoading{% endcomment %}
     {%- endif -%}
   </div>
   <div>
     <h3 class="{{ title_class }}">
-      <a href="{{ article.url }}">
-        {{- article.title -}}
-      </a>
+      {{- article.title -}}
     </h3>
     <div class="subhead-2 blog-date opacity-50">
       {{ article.published_at | time_tag: format: 'date' }}
@@ -53,9 +57,7 @@
 
     <div class="blog-tags">
       {% for tag in article.tags %}
-        <div class="blog-tag">
-          {{ tag }}
-        </div>
+        {{ tag | link_to_tag: tag }}
       {% endfor %}
     </div>
   </div>
