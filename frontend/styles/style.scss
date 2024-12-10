@@ -708,8 +708,17 @@ menu-drawer {
   margin-bottom: 4rem;
 }
 
+.shopify-policy__container {
+  padding-bottom: 6rem;
+}
+
 .shopify-policy__body,
 .wysiwyg {
+  & > * {
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
   h1 {
     margin-bottom: 4rem;
   }
@@ -726,6 +735,9 @@ menu-drawer {
 
   p {
     margin-bottom: 2rem;
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   image {
@@ -766,6 +778,9 @@ menu-drawer {
     flex-direction: column;
     gap: 2rem;
     margin-bottom: 2rem;
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   a {
