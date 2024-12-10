@@ -168,17 +168,14 @@
 
 .product-img {
   width: 59.6rem;
-  height: 70rem;
   background-color: var(--milk);
 
   @include mixins.breakpoint(vars.$cos-bp) {
     width: 50rem;
-    height: 65rem;
   }
 
   @include mixins.breakpoint(vars.$xl-bp) {
     width: 34.3rem;
-    height: 40.3rem;
   }
 }
 

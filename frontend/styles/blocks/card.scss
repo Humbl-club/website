@@ -78,13 +78,10 @@
 }
 
 .card-image {
-  height: 50rem;
   background-color: var(--milk);
   position: relative;
 
   @include mixins.breakpoint(vars.$sm-bp) {
-    height: 18.8rem;
-
     &:before {
       content: '';
       width: 4.2rem;

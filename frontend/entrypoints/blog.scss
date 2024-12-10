@@ -33,11 +33,16 @@
     justify-content: center;
     text-align: center;
     border: 0.1rem solid rgba($color: #000000, $alpha: 0.1);
-
+    transition: border-color var(--time);
     @include mixins.breakpoint(vars.$xl-bp) {
       padding: 0.5rem 1.5rem;
       min-width: 4.7rem;
+    }
 
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        border-color: var(--blue);
+      }
     }
   }
 
@@ -120,7 +125,7 @@
   @include mixins.breakpoint(vars.$xl-bp) {
     gap: 1rem;
 
-    
+
     padding-top: 1.6rem;
     margin-top: 1.6rem;
     border-top: 0.1rem solid rgba($color: #000000, $alpha: 0.1);
@@ -130,15 +135,18 @@
     flex-direction: column;
     gap: 1.2rem;
     grid-row: 4 span;
+
     @include mixins.breakpoint(vars.$xl-bp) {
       gap: 0.8rem;
       padding-top: 0;
       margin-top: 7.6rem;
       border: 0;
+
       &:first-child {
         margin-top: 0;
       }
-      & + .blog-item {
+
+      &+.blog-item {
         padding-top: 0;
         margin-top: 0;
         border: 0;
@@ -189,9 +197,15 @@
     justify-content: center;
     text-align: center;
     border: 0.1rem solid rgba($color: #000000, $alpha: 0.1);
-
+    transition: border-color var(--time);
     @include mixins.breakpoint(vars.$xl-bp) {
       white-space: nowrap;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      &:hover {
+        border-color: var(--blue);
+      }
     }
   }
 }

@@ -52,7 +52,7 @@
         -%}
         <div class="product-img img-cover swiper-slide">
           <picture>
-            <source srcset="{{ media.preview_image | image_url: height: 443, width: 377 }}" media="(max-width:412px)">
+            <source srcset="{{ media.preview_image | image_url: width: 377 }}" media="(max-width:412px)">
             {{
               media.preview_image
               | image_url: width: 1190
