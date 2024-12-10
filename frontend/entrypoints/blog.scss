@@ -1,10 +1,6 @@
 @use "../styles/mixins";
 @use "../styles/vars";
 
-::-webkit-scrollbar {
-  display: none;
-}
-
 .blog-main {
   padding-top: 4.9rem;
 
