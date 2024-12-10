@@ -9,17 +9,17 @@
   Usage:
   {% render 'article-card' article: article %}
 {% endcomment %}
+
 {% if width %}
   {%- assign item_width = width -%}
 {% else %}
   {% assign item_width = article.image.width %}
 {% endif %}
-
 {% if height %}
   {%- assign item_height = height -%}
 {% else %}
   {% if width %}
-    {% assign item_height = width | times: article.image.aspect_ratio %}
+    {% assign item_height = width | divided_by: article.image.aspect_ratio | floor %}
   {% else %}
     {% assign item_height = article.image.height %}
   {% endif %}
@@ -38,27 +38,29 @@
       <img
         src="{{ article.image.src | image_url: width: item_width_scaled, height: item_height_scaled }}"
         alt="{{ article.image.src.alt | escape }}"
-        {% unless lazy_load == false %}
+        {% if lazy_load == true %}
           loading="lazy"
-        {% endunless %}
+        {% endif %}
         width="{{ item_width }}"
         height="{{ item_height }}"
       >
       {% comment %}theme-check-enable ImgLazyLoading{% endcomment %}
     {%- endif -%}
   </div>
-  <div>
-    <h3 class="{{ title_class }}">
+  <div class="relative flex flex-col overflow-hidden">
+    <h3 class="blog-name {{ title_class }}">
       {{- article.title -}}
     </h3>
-    <div class="subhead-2 blog-date opacity-50">
+    <div class="blog-date  {{ date_class }} opacity-50">
       {{ article.published_at | time_tag: format: 'date' }}
     </div>
 
-    <div class="blog-tags">
-      {% for tag in article.tags %}
-        {{ tag | link_to_tag: tag }}
-      {% endfor %}
+    <div class="blog-tagswrap">
+      <div class="blog-tags">
+        {% for tag in article.tags %}
+          {{ tag | link_to_tag: tag }}
+        {% endfor %}
+      </div>
     </div>
   </div>
 </div>

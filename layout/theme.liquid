@@ -71,6 +71,10 @@
       <div class="product-mobile-spacer"></div>
     {% endif %}
 
+    {% if template == 'blog' %}
+      {% render 'vite-tag' with 'blog.scss', preload_stylesheet: true %}
+    {% endif %}
+
     <ul hidden>
       <li id="a11y-new-window-message">{{ 'accessibility.link_messages.new_window' | t }}</li>
     </ul>

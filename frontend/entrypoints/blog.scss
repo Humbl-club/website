@@ -1,8 +1,16 @@
 @use "../styles/mixins";
 @use "../styles/vars";
 
-.blog-main {
+::-webkit-scrollbar {
+  display: none;
+}
 
+.blog-main {
+  padding-top: 4.9rem;
+
+  @include mixins.breakpoint(vars.$xl-bp) {
+    padding-top: 5.2rem;
+  }
 }
 
 .blog-filter {
@@ -11,7 +19,11 @@
   align-items: center;
   gap: 1rem;
   flex-wrap: wrap;
-  margin-top: 4.8rem;
+  margin-top: 4.2rem;
+
+  @include mixins.breakpoint(vars.$xl-bp) {
+    margin-top: 3.6rem;
+  }
 
   a {
     padding: 1.5rem;
@@ -21,6 +33,12 @@
     justify-content: center;
     text-align: center;
     border: 0.1rem solid rgba($color: #000000, $alpha: 0.1);
+
+    @include mixins.breakpoint(vars.$xl-bp) {
+      padding: 0.5rem 1.5rem;
+      min-width: 4.7rem;
+
+    }
   }
 
   .active {
@@ -32,7 +50,7 @@
   li {
     order: 1;
   }
-  
+
   .all {
     order: 0;
   }
@@ -41,30 +59,104 @@
 .blog-list {
   position: relative;
   display: grid;
-  grid-template-columns: 1fr 0.73fr;
+  grid-template-columns: 1fr 0.71fr;
   gap: 2rem;
   margin-top: 6rem;
+
   @include mixins.breakpoint(vars.$xl-bp) {
     grid-template-columns: repeat(2, 1fr);
   }
+
   @include mixins.breakpoint(vars.$sm-bp) {
     display: flex;
     flex-direction: column;
+    gap: 0;
+  }
+}
+
+.blog-right {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+
+  @include mixins.breakpoint(vars.$xl-bp) {
+    gap: 0;
+  }
+}
+
+.blog-name {
+  margin-top: -0.5rem;
+  max-width: 100%;
+
+  .big & {
+    margin-top: 0;
   }
 }
 
 .blog-date {
-  margin-top: 4rem;
+  margin-top: 2.6rem;
+  max-width: 100%;
+
+  @include mixins.breakpoint(vars.$xl-bp) {
+    margin-top: 1.4rem;
+  }
+
+  .big & {
+    margin-top: 1.8rem;
+  }
 }
 
 .blog-item {
   display: flex;
   position: relative;
+  overflow: hidden;
   gap: 2rem;
+  width: 100%;
+  flex: 0 0 auto;
+
+  @include mixins.breakpoint(vars.$xl-bp) {
+    gap: 1rem;
+
+    
+    padding-top: 1.6rem;
+    margin-top: 1.6rem;
+    border-top: 0.1rem solid rgba($color: #000000, $alpha: 0.1);
+  }
 
   &.big {
     flex-direction: column;
+    gap: 1.2rem;
     grid-row: 4 span;
+    @include mixins.breakpoint(vars.$xl-bp) {
+      gap: 0.8rem;
+      padding-top: 0;
+      margin-top: 7.6rem;
+      border: 0;
+      &:first-child {
+        margin-top: 0;
+      }
+      & + .blog-item {
+        padding-top: 0;
+        margin-top: 0;
+        border: 0;
+        margin-top: 6rem;
+      }
+    }
+  }
+}
+
+.blog-tagswrap {
+  @include mixins.breakpoint(vars.$sm-bp) {
+    position: relative;
+    overflow: hidden;
+    list-style: none;
+    padding: 0;
+    /* Fix of Webkit flickering */
+    z-index: 1;
+    max-width: 100%;
   }
 }
 
@@ -73,27 +165,50 @@
   align-items: center;
   gap: 1rem;
   flex-wrap: wrap;
-  margin-top: 2rem; 
+  margin-top: 1.5rem;
   position: relative;
   z-index: 2;
+
+  @include mixins.breakpoint(vars.$sm-bp) {
+    margin-top: 1rem;
+    flex-wrap: nowrap;
+
+    overflow-x: auto;
+    max-width: 100%;
+    position: relative;
+    width: 100%;
+  }
+
   a {
-    padding: 1.5rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
     min-height: 4rem;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     border: 0.1rem solid rgba($color: #000000, $alpha: 0.1);
+
+    @include mixins.breakpoint(vars.$xl-bp) {
+      white-space: nowrap;
+    }
   }
 }
 
 .blog-img {
-  width: 28rem;
+  width: 28.8rem;
   position: relative;
   overflow: hidden;
+  flex: 0 0 auto;
+
+  @include mixins.breakpoint(vars.$sm-bp) {
+    width: 8.8rem;
+  }
+
   img {
     transition: transform var(--time);
   }
+
   .big & {
     width: 100%;
   }
@@ -107,13 +222,30 @@
   height: 100%;
   opacity: 0;
   z-index: 1;
+
   @media (hover: hover) and (pointer: fine) {
-  &:hover {
-    & + .blog-img {
-      img {
-        transform: scale(1.05); 
+    &:hover {
+      &+.blog-img {
+        img {
+          transform: scale(1.05);
+        }
       }
     }
   }
+}
+
+.blog-bot {
+  margin-top: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+
+  @include mixins.breakpoint(vars.$xl-bp) {
+    margin-top: 3.2rem;
+  }
+
+  &::before {
+    content: '';
   }
 }

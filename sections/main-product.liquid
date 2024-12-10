@@ -55,7 +55,7 @@
             <source srcset="{{ media.preview_image | image_url: height: 443, width: 377 }}" media="(max-width:412px)">
             {{
               media.preview_image
-              | image_url: height: 1490, width: 1190
+              | image_url: width: 1190
               | image_tag:
                 loading: loading,
                 preload: forloop.first,
