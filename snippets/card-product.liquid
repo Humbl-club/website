@@ -14,7 +14,7 @@
   {% assign image_hover = card_product.media[1] %}
   {% comment %} <button class="st-wishlist-button" data-type="details" data-handle="{{ card_product.handle }}">helo</button> {% endcomment %}
   <div class="card {% if wrapper_class != blank %} {{ wrapper_class }}{% endif %}">
-    {% render 'card-favorite' %}
+    {% render 'card-favorite', product: card_product %}
 
     <div class="card-image img-cover">
       {% if image_hover %}
