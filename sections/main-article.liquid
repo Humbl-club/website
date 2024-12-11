@@ -1,43 +1,75 @@
-<ul class="blog-filter">
-  {% for tag in article.tags %}
-    <li>
-      {{ tag | link_to_tag: tag }}
-    </li>
-  {% endfor %}
-</ul>
+<div class="article-wrapper">
+  <ul class="blog-filter">
+    {% for tag in article.tags %}
+      <li>
+        {{ tag | link_to_tag: tag }}
+      </li>
+    {% endfor %}
+  </ul>
 
-<h1 class="title-1 article-title">
-  {{ article.title | escape }}
-</h1>
-<div class="article-info headline-2 opacity-50">
-  <div class="article-date">{{ article.published_at | time_tag: format: 'date' }}</div>
-  <span>/</span>
-  <div class="article-author body-1">
-    {{ article.author }}
+  <h1 class="title-1 article-title">
+    {{ article.title | escape }}
+  </h1>
+  <div class="article-info headline-2 opacity-50">
+    <div class="article-date">{{ article.published_at | time_tag: format: 'date' }}</div>
+    <span>/</span>
+    <div class="article-author body-1">
+      {{ article.author }}
+    </div>
+  </div>
+  <div class="article-image img-cover">
+    {%- if article.image -%}
+      <img
+        src="{{ article.image | image_url: width: 1808 }}"
+        loading="eager"
+        fetchpriority="high"
+        width="904"
+        height="800"
+        alt="{{ article.image.alt | escape }}"
+      >
+    {%- endif -%}
+  </div>
+  <div class="article-wysiwyg wysiwyg">{{ article.content }}</div>
+
+  <div class="article-bot flex items-center justify-between">
+    {% if blog.previous_article %}
+      <a href="{{ blog.previous_article.url }}" class="article-prev link">Previous</a>
+    {% endif %}
+    {% if blog.next_article %}
+      <a href="{{ blog.next_article.url }}" class="article-next link">Next</a>
+    {% endif %}
   </div>
 </div>
-<div class="article-image img-cover">
-  {%- if article.image -%}
-    <img
-      src="{{ article.image | image_url: width: 1808 }}"
-      loading="eager"
-      fetchpriority="high"
-      width="904"
-      height="800"
-      alt="{{ article.image.alt | escape }}"
-    >
-  {%- endif -%}
-</div>
-<div class="article-wysiwyg wysiwyg">{{ article.content }}</div>
 
-<div class="article-bot flex items-center justify-between">
-  {% if blog.previous_article %}
-    <a href="{{ blog.previous_article.url }}" class="article-prev link">Previous</a>
-  {% endif %}
-  {% if blog.next_article %}
-    <a href="{{ blog.next_article.url }}" class="article-next link">Next</a>
-  {% endif %}
-</div>
+{% if article.tags.size > 0 %}
+  <div class="article-slider wrapper-desctop">
+    <h3 class="headline-2 wrapper-mobile">Related articles</h3>
+
+    <blogs-swiper class="swiper article-swiper wrapper-mobile" client:visible>
+      <div class="swiper-wrapper">
+        {% assign similar_articles = '' %}
+        {% for tag in article.tags %}
+          {% for article_item in blog.articles %}
+            {% if article_item.id != article.id and article_item.tags contains tag %}
+              {% unless similar_articles contains article_item.id %}
+                {% assign similar_articles = similar_articles | append: article_item.id | append: ',' %}
+                {%- render 'article-card',
+                  article: article_item,
+                  class: 'swiper-slide big',
+                  title_class: 'subhead-2',
+                  date_class: 'hidden',
+                  width: 442,
+                  height: 500,
+                  lazy_load: true
+                -%}
+              {% endunless %}
+            {% endif %}
+          {% endfor %}
+        {% endfor %}
+      </div>
+    </blogs-swiper>
+  </div>
+{% endif %}
 
 <script type="application/ld+json">
   {
@@ -81,6 +113,6 @@
 {% schema %}
 {
   "tag": "section",
-  "class": "article-wrapper"
+  "class": "article"
 }
 {% endschema %}

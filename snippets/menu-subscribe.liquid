@@ -37,7 +37,7 @@
         </button>
       </div>
       {%- if form.errors -%}
-        <small class="header-wrapper error-text" id="Newsletter-error--{{ section.id }}">
+        <small class="error-text" id="Newsletter-error--{{ section.id }}">
           {%- render 'icon-error' -%}
           {{- form.errors.translated_fields.email | capitalize }}
           {{ form.errors.messages.email -}}

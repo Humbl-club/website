@@ -148,6 +148,9 @@
         border: 0;
         margin-top: 6rem;
       }
+      &.swiper-slide + .blog-item {
+        margin-top: 0;
+      }
     }
   }
 }
