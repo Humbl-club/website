@@ -64,6 +64,12 @@
       }
     }
   }
+  
+  &.active {
+    .card-fill {
+      opacity: 1;
+    }
+  }
 }
 
 .card-fill {

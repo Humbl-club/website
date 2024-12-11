@@ -1,3 +1,7 @@
-<button class="card-favorite st-wishlist-button {{ class }}" data-type="details" data-handle="{{ product.handle }}">
-  {% render 'icon-favorite' %}
-</button>
+<card-favorite>
+  <button class="card-favorite {{ class }}">
+    {% render 'icon-favorite' %}
+  </button>
+
+  <button class="st-wishlist-button" data-type="details" data-handle="{{ product.handle }}" hidden></button>
+</card-favorite>

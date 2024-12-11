@@ -796,6 +796,10 @@ menu-drawer {
   }
 }
 
+.st-wishlist-details-button {
+  display: none!important
+}
+
 /* Blocks */
 
 @include meta.load-css("importsBlocks");
