@@ -8,6 +8,7 @@
   --white: var(--color-contrast, #fff);
   --black: var(--color-primary, #000);
   --blue: var(--color-accent, #2D4F7F);
+  --red: #D41B1B;
   --light-grey: rgba(0, 0, 0, 0.5);
   --milk: #F6F6F6;
   --time: .5s;

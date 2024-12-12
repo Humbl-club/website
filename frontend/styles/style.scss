@@ -205,12 +205,32 @@ svg {
   }
 }
 
+.errors-list {
+  list-style-type: none;
+  margin-top: 0.2rem;
+  ul,li {
+    list-style-type: none;
+    color: var(--red);
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 150%;
+    letter-spacing: -0.04em;
+  }
+}
+
 .error-text {
-  color: red;
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-top: 1rem;
+  margin-top: 0.2rem;
+
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 150%;
+  letter-spacing: -0.04em;
+  color: var(--red);
 }
 
 h1,
@@ -699,16 +719,22 @@ menu-drawer {
   width: 100%;
   border-radius: 0;
   background-color: var(--white);
+
   &:focus {
     outline: none;
     border-color: var(--blue);
     transition: border-color var(--time)
   }
+
+  &.error,
+  &[aria-invalid="true"] {
+    border-color: var(--red);
+  }
 }
 
 .search-inp {
   @include mixins.breakpoint(vars.$xl-bp) {
-    height: 3rem; 
+    height: 3rem;
   }
 }
 
@@ -723,11 +749,12 @@ menu-drawer {
 
 .shopify-policy__body,
 .wysiwyg {
-  & > * {
+  &>* {
     &:last-child {
       margin-bottom: 0;
     }
   }
+
   h1 {
     margin-bottom: 4rem;
   }
@@ -744,6 +771,7 @@ menu-drawer {
 
   p {
     margin-bottom: 2rem;
+
     &:last-child {
       margin-bottom: 0;
     }
@@ -787,6 +815,7 @@ menu-drawer {
     flex-direction: column;
     gap: 2rem;
     margin-bottom: 2rem;
+
     &:last-child {
       margin-bottom: 0;
     }
@@ -806,11 +835,12 @@ menu-drawer {
 }
 
 .st-wishlist-details-button {
-  display: none!important
+  display: none !important
 }
 
 .st-toast {
-  border-radius: 0!important;
+  border-radius: 0 !important;
+
   svg {
     width: 2.4rem;
     height: 2.4rem;
@@ -820,6 +850,7 @@ menu-drawer {
 .st-close-button {
   visibility: hidden;
   position: relative;
+
   &::before {
     content: '';
     background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M5.53033 4.46967C5.23744 4.17678 4.76256 4.17678 4.46967 4.46967C4.17678 4.76256 4.17678 5.23744 4.46967 5.53033L10.9393 12L4.46967 18.4697C4.17678 18.7626 4.17678 19.2375 4.46967 19.5304C4.76256 19.8232 5.23744 19.8232 5.53033 19.5304L12 13.0607L18.4697 19.5304C18.7626 19.8232 19.2374 19.8232 19.5303 19.5304C19.8232 19.2375 19.8232 18.7626 19.5303 18.4697L13.0607 12L19.5303 5.53033C19.8232 5.23744 19.8232 4.76256 19.5303 4.46967C19.2374 4.17678 18.7626 4.17678 18.4697 4.46967L12 10.9393L5.53033 4.46967Z' fill='black'/%3E%3C/svg%3E%0A");

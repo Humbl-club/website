@@ -468,7 +468,7 @@
       "guest_continue": "Continue",
       "guest_title": "Continue as a guest",
       "password": "Password",
-      "title": "Login",
+      "title": "My Account",
       "sign_in": "Sign in",
       "submit": "Submit",
       "alternate_provider_separator": "or"
@@ -510,7 +510,7 @@
       "none": "You haven't placed any orders yet."
     },
     "recover_password": {
-      "title": "Reset your password",
+      "title": "Retrieve Password",
       "subtext": "We will send you an email to reset your password",
       "success": "We've sent you an email with a link to update your password."
     },
@@ -520,7 +520,7 @@
       "last_name": "Last name",
       "email": "Email",
       "password": "Password",
-      "submit": "Create"
+      "submit": "Create account"
     },
     "reset_password": {
       "title": "Reset account password",
