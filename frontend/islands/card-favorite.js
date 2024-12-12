@@ -1,6 +1,6 @@
 class CardFavorite extends window.HTMLElement {
   connectedCallback() {
-    const mainFavoriteBtn = this.querySelector('.card-favorite')
+    const mainFavoriteBtn = this.querySelector('.favorite-label')
     const favoriteBtn = this.querySelector('.st-wishlist-button')
 
     if (favoriteBtn && mainFavoriteBtn) {

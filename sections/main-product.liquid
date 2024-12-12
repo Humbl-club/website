@@ -53,6 +53,7 @@
         <div class="product-img img-cover swiper-slide">
           <picture>
             <source srcset="{{ media.preview_image | image_url: width: 377 }}" media="(max-width:412px)">
+            {% assign height_by_aspect = 595 | divided_by: media.aspect_ratio | floor %}
             {{
               media.preview_image
               | image_url: width: 1190
@@ -60,7 +61,7 @@
                 loading: loading,
                 preload: forloop.first,
                 width: 595,
-                height: 745,
+                height: height_by_aspect,
                 alt: media.preview_image.alt
               | escape
             }}
@@ -72,10 +73,14 @@
   </product-swiper>
 
   <div class="product-sticky product-right">
-    <button class="product-favorite body-1">
-      {% render 'icon-favorite' %}
-      Add to Wishlist
-    </button>
+    <card-favorite class="flex">
+      <button class="product-favorite favorite-label body-1">
+        {% render 'icon-favorite' %}
+        <span class="add">{{ 'sections.cart.move_to_wishlist' | t }}</span>
+        <span class="delete">{{ 'sections.cart.delete_from_wishlist' | t }}</span>
+      </button>
+      <button class="st-wishlist-button" data-type="details" data-handle="{{ product.handle }}" hidden></button>
+    </card-favorite>
 
     <product-form client:idle class="product-fixed">
       {%- assign product_form_id = 'product-form-' | append: section.id -%}

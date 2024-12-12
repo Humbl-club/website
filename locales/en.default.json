@@ -308,6 +308,7 @@
       "remove": "Remove",
       "remove_title": "Remove {{ title }}",
       "move_to_wishlist": "Move to wishlist",
+      "delete_from_wishlist": "Delete from wishlist",
       "estimated_total": "Estimated total",
       "new_estimated_total": "New estimated total",
       "note": "Order special instructions",

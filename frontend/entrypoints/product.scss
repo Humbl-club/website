@@ -163,19 +163,21 @@
   @include mixins.breakpoint(vars.$xl-bp) {
     flex-direction: row;
     gap: 0;
+    background-color: var(--milk);
   }
 }
 
 .product-img {
   width: 59.6rem;
   background-color: var(--milk);
-
+  height: auto;
   @include mixins.breakpoint(vars.$cos-bp) {
     width: 50rem;
   }
 
   @include mixins.breakpoint(vars.$xl-bp) {
     width: 34.3rem;
+    height: 100%;
   }
 }
 
@@ -219,9 +221,38 @@
     display: none;
   }
 
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      .card-fill {
+        opacity: 0.1;
+      }
+
+      .card-stroke {
+        opacity: 0;
+      }
+    }
+  }
+
   svg {
     width: 2.4rem;
     height: 2.4rem;
+  }
+
+  .delete {
+    display: none;
+  }
+  
+  &.active {
+    .card-fill {
+      opacity: 1;
+    }
+
+    .delete {
+      display: inline;
+    }
+    .add {
+      display: none;
+    }
   }
 }
 

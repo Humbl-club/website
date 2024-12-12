@@ -113,11 +113,9 @@
 
 .cart-img {
   width: 13.4rem;
-  height: 15rem;
   background-color: var(--milk);
   @include mixins.breakpoint(vars.$xl-bp) {
     width: 8.8rem;
-    height: 10rem;
   }
 }
 
@@ -239,5 +237,20 @@
 .cart-botnote {
   @include mixins.breakpoint(vars.$xl-bp) {
     order: 1;
+  }
+}
+
+.cart-favorite {
+  .delete {
+    display: none;
+  }
+
+  &.active {
+    .delete {
+      display: inline;
+    }
+    .add {
+      display: none;
+    }
   }
 }

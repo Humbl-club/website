@@ -18,6 +18,21 @@
     display: block;
   }
 
+  &-favorite {
+    .delete {
+      display: none;
+    }
+
+    &.active {
+      .delete {
+        display: inline;
+      }
+      .add {
+        display: none;
+      }
+    }
+  }
+
   &-content {
     position: absolute;
     top: 0;
