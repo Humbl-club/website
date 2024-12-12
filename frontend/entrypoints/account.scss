@@ -69,3 +69,16 @@ main {
   margin-top: 6.5rem;
 }
 
+.account-content {
+  display: flex;
+  justify-content: center;
+  padding-right: 18.8rem;
+}
+
+.account-target {
+  display: none;
+  animation: fadeEffect var(--time);
+  &:target {
+    display: block;
+  }
+}

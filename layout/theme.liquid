@@ -46,7 +46,7 @@
     {%- liquid
       render 'vite-tag' with 'theme.css', preload_stylesheet: true
       render 'vite-tag' with 'theme.js'
-      if request.page_type contains 'customers/'
+      if request.page_type contains 'customers/' or page.handle == 'wishlist'
         render 'vite-tag' with 'customers.js'
         render 'vite-tag' with 'account.scss', preload_stylesheet: true
       endif
