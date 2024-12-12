@@ -11,14 +11,16 @@
 </nav>
 
 <div class="account-content">
-  <div class="account-wrapper"></div>
+  <div class="account-wrapper">
+    <main-wishlist client:idle></main-wishlist>
+  </div>
 </div>
 
 {% schema %}
 {
   "name": "main-wishlist",
   "tag": "section",
-  "class": "main-wishlist",
+  "class": "main-wishlist account-main wrapper",
   "disabled_on": {
     "groups": ["header", "footer"]
   },
