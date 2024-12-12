@@ -345,6 +345,7 @@
       "taxes_included_and_shipping_policy_html": "Tax included. <a href=\"{{ link }}\">Shipping</a> calculated at checkout.",
       "taxes_and_shipping_at_checkout": "Taxes and shipping calculated at checkout",
       "complete_the_look": "Complete the look",
+      "no_results": "No results",
       "free_shipping": "Free shipping on orders over {{ count }}",
       "shipping": "SHIPPING",
     },
