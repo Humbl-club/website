@@ -4,7 +4,6 @@
 main {
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
 }
 
@@ -44,4 +43,8 @@ main {
 .account-createbtn {
   grid-column: 2 span;
   margin-top: 2rem;
+}
+
+.account-main {
+  align-self: flex-start;
 }
