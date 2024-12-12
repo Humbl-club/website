@@ -47,4 +47,25 @@ main {
 
 .account-main {
   align-self: flex-start;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 18.8rem 1fr;
 }
+
+.account-aside {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  position: sticky;
+  top: 10rem;
+}
+
+.account-link {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.account-logout {
+  margin-top: 6.5rem;
+}
+
