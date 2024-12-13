@@ -206,6 +206,7 @@
   align-items: center;
   justify-content: center;
   transition: background-color var(--time), border-color var(--time);
+  flex: 0 0 auto;
   .checkbox input:disabled + & {
     border-color: rgba($color: #000000, $alpha: 0.1);
   }

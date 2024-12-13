@@ -2,8 +2,8 @@
 
 <div class="account-content">
   <div class="account-wrapper">
-    <div class="account-target section-pt" id="info" style="scroll-margin-block-start: 64px"></div>
-    <div class="account-target section-pt" id="orders" style="scroll-margin-block-start: 64px">
+    <div class="account-target section-pt" id="info" style="scroll-margin-block-start: var(--header-spacer)"></div>
+    <div class="account-target section-pt" id="orders" style="scroll-margin-block-start: var(--header-spacer)">
       {% paginate customer.orders by 20 %}
         {%- if customer.orders.size > 0 -%}
           <table role="table" class="w-full table-auto border-collapse border-b border-primary md:border">

@@ -34,6 +34,8 @@ main {
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
   margin-top: 2rem;
+  position: relative;
+  padding-bottom: 1rem;
 }
 
 .account-recblock {
@@ -84,5 +86,16 @@ main {
   animation: fadeEffect var(--time);
   &:target {
     display: block;
+  }
+}
+
+#errors-container_custom-name {
+  position: absolute;
+  bottom: 0;
+  & > * {
+    display: none;
+    &:first-child {
+      display: block;
+    }
   }
 }
