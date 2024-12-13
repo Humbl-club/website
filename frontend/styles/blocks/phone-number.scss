@@ -20,7 +20,7 @@
   &__country-container {
     position: relative;
     border: 0.1rem solid rgba($color: #000000, $alpha: 0.1);
-    height: 6.25rem;
+    height: 5rem;
     width: 100%;
     max-width: 160px;
 
@@ -57,7 +57,7 @@
   }
 
   &__tel-input {
-    height: 6.25rem;
+    height: 5rem;
     padding: 20px 16px !important;
     transition: .3s;
 
