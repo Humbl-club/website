@@ -1,4 +1,4 @@
-<div class="account-wrapper flex flex-col items-center">
+<div class="account-wrapper body-1 flex flex-col items-center">
   <h1 class="headline-2 w-full text-start">
     {{ 'customer.register.title' | t }}
   </h1>
@@ -73,33 +73,38 @@
       autocomplete="family-name"
     >
 
-    <phone-number client:visible>
-      <div class="field contact__fields_phone">
-        <label class="field__label" for="ContactForm-phone">Country Code</label>
+    <div class="body-1 col-span-2">
+      <phone-number client:visible>
+        <div class="field contact__fields_phone">
+          <label class="field__label" for="ContactForm-phone">Country Code</label>
 
-        <input
-          aria-required="true"
-          type="tel"
-          id="ContactForm-phone"
-          class="field__input inp"
-          name="contact[phone]"
-          value=""
-        >
-      </div>
-    </phone-number>
-
-    <country-list client:idle>
-      <cart-select client:visible>
-        <div class="custom-select">
-          <label class="field__label" for="ContactForm-country">Country/Region</label>
-
-          <select id="ContactForm-country" name="contact[country]"></select>
-          <div class="select-selected">Country</div>
+          <input
+            aria-required="true"
+            type="tel"
+            id="ContactForm-phone"
+            class="field__input inp"
+            name="contact[phone]"
+            value=""
+          >
         </div>
-      </cart-select>
-    </country-list>
+      </phone-number>
+    </div>
 
-    <button class="btn btn-blue account-createbtn">
+    <div class="contact_country body-1 col-span-2">
+      <country-list>
+        <cart-select client:visible>
+          <div class="custom-select">
+            <label class="field__label" for="ContactForm-country">Country/Region</label>
+
+            <select id="ContactForm-country" name="contact[country]"></select>
+            <div class="select-selected">Country</div>
+          </div>
+        </cart-select>
+      </country-list>
+      <div id="errorField" class="error-text"></div>
+    </div>
+
+    <button class="btn btn-blue account-createbtn" type="submit">
       {{ 'customer.register.submit' | t }}
     </button>
   {%- endform -%}

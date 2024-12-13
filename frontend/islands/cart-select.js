@@ -1,5 +1,11 @@
 class CartSelect extends window.HTMLElement {
   connectedCallback() {
+    setTimeout(() => {
+      this.init()
+    }, 100)
+  }
+
+  init() {
     let i, j, ll, selElmnt, a, b, c
     /* Look for any elements with the class "custom-select": */
     const x = this.getElementsByClassName('custom-select')
