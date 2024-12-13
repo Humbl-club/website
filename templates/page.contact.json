@@ -65,10 +65,15 @@
         "img_bg_color": "#d9d4d0",
         "working_time": "<p>The HUMBL client service is open from <strong>Monday to Saturday, 9 am to 9 pm</strong>, Eastern time</p>"
       }
+    },
+    "modal-contact-form": {
+      "type": "modal-contact-form",
+      "settings": {}
     }
   },
   "order": [
     "main",
-    "contac_page_nJ9RWw"
+    "contac_page_nJ9RWw",
+    "modal-contact-form"
   ]
 }
