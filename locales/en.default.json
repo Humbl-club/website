@@ -308,6 +308,7 @@
       "remove": "Remove",
       "remove_title": "Remove {{ title }}",
       "move_to_wishlist": "Move to wishlist",
+      "delete_from_wishlist": "Delete from wishlist",
       "estimated_total": "Estimated total",
       "new_estimated_total": "New estimated total",
       "note": "Order special instructions",
@@ -344,6 +345,7 @@
       "taxes_included_and_shipping_policy_html": "Tax included. <a href=\"{{ link }}\">Shipping</a> calculated at checkout.",
       "taxes_and_shipping_at_checkout": "Taxes and shipping calculated at checkout",
       "complete_the_look": "Complete the look",
+      "no_results": "No results",
       "free_shipping": "Free shipping on orders over {{ count }}",
       "shipping": "SHIPPING",
     },
@@ -466,7 +468,7 @@
       "guest_continue": "Continue",
       "guest_title": "Continue as a guest",
       "password": "Password",
-      "title": "Login",
+      "title": "My Account",
       "sign_in": "Sign in",
       "submit": "Submit",
       "alternate_provider_separator": "or"
@@ -508,7 +510,7 @@
       "none": "You haven't placed any orders yet."
     },
     "recover_password": {
-      "title": "Reset your password",
+      "title": "Retrieve Password",
       "subtext": "We will send you an email to reset your password",
       "success": "We've sent you an email with a link to update your password."
     },
@@ -518,7 +520,7 @@
       "last_name": "Last name",
       "email": "Email",
       "password": "Password",
-      "submit": "Create"
+      "submit": "Create account"
     },
     "reset_password": {
       "title": "Reset account password",

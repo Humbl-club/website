@@ -32,19 +32,31 @@
 
   <div class="blog-img img-cover">
     {%- if article.image -%}
-      {%- assign item_width_scaled = item_width | times: 2 -%}
-      {%- assign item_height_scaled = item_height | times: 2 -%}
-      {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
-      <img
-        src="{{ article.image.src | image_url: width: item_width_scaled, height: item_height_scaled }}"
-        alt="{{ article.image.src.alt | escape }}"
-        {% if lazy_load == true %}
-          loading="lazy"
-        {% endif %}
-        width="{{ item_width }}"
-        height="{{ item_height }}"
-      >
-      {% comment %}theme-check-enable ImgLazyLoading{% endcomment %}
+      {% capture image_desctop %}
+        {%- assign item_width_scaled = item_width | times: 2 -%}
+        {%- assign item_height_scaled = item_height | times: 2 -%}
+          <img
+            src="{{ article.image.src | image_url: width: item_width_scaled, height: item_height_scaled }}"
+            alt="{{ article.image.src.alt | escape }}"
+            {% if lazy_load == true %}
+              loading="lazy"
+            {% endif %}
+            width="{{ item_width }}"
+            height="{{ item_height }}"
+          >
+        {% endcapture %}
+
+      {% if article.metafields.custom.mobile_image != null %}
+        <picture>
+          <source
+            media="(max-width: 412px)"
+            srcset="{{ article.metafields.custom.mobile_image | image_url: width: 412 }}"
+          >
+          {{ image_desctop }}
+        </picture>
+      {% else %}
+        {{ image_desctop }}
+      {% endif %}
     {%- endif -%}
   </div>
   <div class="relative flex flex-col overflow-hidden">

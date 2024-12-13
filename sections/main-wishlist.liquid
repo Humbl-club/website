@@ -1,0 +1,27 @@
+{% render 'account-aside', wishlist: true %}
+
+<div class="account-content section-pt">
+  <div class="account-wrapper">
+    <main-wishlist client:idle></main-wishlist>
+  </div>
+</div>
+
+{% render 'quick-add-modal' %}
+
+{% schema %}
+{
+  "name": "main-wishlist",
+  "tag": "section",
+  "class": "main-wishlist account-main wrapper",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "main-wishlist"
+    }
+  ]
+}
+{% endschema %}

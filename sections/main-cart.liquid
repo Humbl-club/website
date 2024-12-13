@@ -29,12 +29,12 @@
           {% if item.image %}
             {% comment %} Leave empty space due to a:empty CSS display: none rule {% endcomment %}
             <a href="{{ item.url }}" class="absolute inset-0 h-full w-full" tabindex="-1" aria-hidden="true"> </a>
+            {% assign height_by_aspect = 134 | divided_by: item.image.aspect_ratio | floor %}
             <img
-              src="{{ item.image | image_url: width: 134, height: 150 }}"
+              src="{{ item.image | image_url: width: 134 }}"
               alt="{{ item.image.alt | escape }}"
-              loading="lazy"
               width="134"
-              height="150"
+              height="{{ height_by_aspect }}"
             >
           {% endif %}
         </div>
@@ -63,7 +63,7 @@
                 </p>
               {% endif %}
 
-              {% render 'cart-buttons', class: '--mobile-hidden' %}
+              {% render 'cart-buttons', item: item.product, class: '--mobile-hidden' %}
             {%- endif -%}
           </div>
 
@@ -102,7 +102,7 @@
           <div class="cart-total">
             {{ item.original_line_price | money }}
           </div>
-          {% render 'cart-buttons', class: '--desctop-hidden' %}
+          {% render 'cart-buttons', item: item.product, class: '--desctop-hidden' %}
         </div>
 
         <p

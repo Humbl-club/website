@@ -1,7 +1,11 @@
 <div class="cart-links {{ class }}">
-  <button type="button" class="cart-link button-title-3">
-    {{ 'sections.cart.move_to_wishlist' | t }}
-  </button>
+  <card-favorite class="flex">
+    <button type="button" class="cart-link cart-favorite favorite-label button-title-3">
+      <span class="add">{{ 'sections.cart.move_to_wishlist' | t }}</span>
+      <span class="delete">{{ 'sections.cart.delete_from_wishlist' | t }}</span>
+    </button>
+    <button class="st-wishlist-button" data-type="details" data-handle="{{ item.handle }}" hidden></button>
+  </card-favorite>
 
   <cart-remove-button
     id="Remove-{{ item.index | plus: 1 }}"

@@ -8,37 +8,33 @@
  * ------------------------------------------------------------
  */
 {
-  "layout": "password",
   "sections": {
     "main": {
-      "type": "email-signup-banner",
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "main_wishlist": {
+      "type": "main-wishlist",
+      "settings": {}
+    },
+    "1734005921978de03a": {
+      "type": "apps",
       "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "Opening soon"
-          }
-        },
-        "paragraph": {
-          "type": "paragraph",
-          "settings": {
-            "text": "<p>Be the first to know when we launch.<\/p>"
-          }
-        },
-        "email_form": {
-          "type": "email_form",
+        "swishlist_simple_wishlist_wishlist_page_hNLHg8": {
+          "type": "shopify://apps/swishlist-simple-wishlist/blocks/wishlist_page/bfcb80f2-f00d-42ae-909a-9f00c726327b",
           "settings": {}
         }
       },
       "block_order": [
-        "heading",
-        "paragraph",
-        "email_form"
+        "swishlist_simple_wishlist_wishlist_page_hNLHg8"
       ],
       "settings": {}
     }
   },
   "order": [
-    "main"
+    "main",
+    "main_wishlist",
+    "1734005921978de03a"
   ]
 }

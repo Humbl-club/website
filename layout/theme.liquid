@@ -46,13 +46,18 @@
     {%- liquid
       render 'vite-tag' with 'theme.css', preload_stylesheet: true
       render 'vite-tag' with 'theme.js'
-      if request.page_type contains 'customers/'
+      if request.page_type contains 'customers/' or page.handle == 'wishlist'
         render 'vite-tag' with 'customers.js'
+        render 'vite-tag' with 'account.scss', preload_stylesheet: true
       endif
       if template == 'product'
         render 'vite-tag' with 'product.scss', preload_stylesheet: true
       endif
     -%}
+
+    {% if template == 'blog' or template == 'article' %}
+      {% render 'vite-tag' with 'blog.scss', preload_stylesheet: true %}
+    {% endif %}
 
     {{ content_for_header }}
   </head>
@@ -69,10 +74,6 @@
 
     {% if template == 'product' %}
       <div class="product-mobile-spacer"></div>
-    {% endif %}
-
-    {% if template == 'blog' %}
-      {% render 'vite-tag' with 'blog.scss', preload_stylesheet: true %}
     {% endif %}
 
     <ul hidden>

@@ -9,7 +9,7 @@
       tabindex="-1"
     >
       <div class="cart-drawer-header">
-        <h2 class="capitalize">
+        <h2 class="title-1 capitalize">
           {{ 'sections.cart.title' | t }}
           {% if cart != empty %}({{ cart.item_count }}){% endif %}
         </h2>
@@ -103,9 +103,18 @@
                         </button>
                       </quantity-input>
                       <div class="item-actions-buttons">
-                        <button type="button" class="item-actions-button">
-                          {{ 'sections.cart.move_to_wishlist' | t }}
-                        </button>
+                        <card-favorite class="flex">
+                          <button type="button" class="item-actions-button cart-drawer-favorite favorite-label">
+                            <span class="add">{{ 'sections.cart.move_to_wishlist' | t }}</span>
+                            <span class="delete">{{ 'sections.cart.delete_from_wishlist' | t }}</span>
+                          </button>
+                          <button
+                            class="st-wishlist-button"
+                            data-type="details"
+                            data-handle="{{ item.product.handle }}"
+                            hidden
+                          ></button>
+                        </card-favorite>
                         <cart-remove-button
                           id="CartDrawer-Remove-{{ item.index | plus: 1 }}"
                           class="remove-item"

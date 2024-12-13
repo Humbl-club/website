@@ -14,13 +14,13 @@
   {% assign image_hover = card_product.media[1] %}
   {% comment %} <button class="st-wishlist-button" data-type="details" data-handle="{{ card_product.handle }}">helo</button> {% endcomment %}
   <div class="card {% if wrapper_class != blank %} {{ wrapper_class }}{% endif %}">
-    {% render 'card-favorite' %}
+    {% render 'card-favorite', product: card_product %}
 
     <div class="card-image img-cover">
       {% if image_hover %}
         {{
           image_hover
-          | image_url: width: 884, height: 1000
+          | image_url: width: 884
           | image_tag:
             loading: 'lazy',
             width: 442,
@@ -36,13 +36,13 @@
         <picture>
           {% if section.settings.columns_mobile == '2' %}
             <source
-              srcset="{{ card_product.featured_media | image_url: width: 364, height: 414 }}"
+              srcset="{{ card_product.featured_media | image_url: width: 364 }}"
               media="(max-width:412px)"
             >
           {% endif %}
           <img
             class="card-img"
-            src="{{ card_product.featured_media | image_url: width: 884, height: 1000 }}"
+            src="{{ card_product.featured_media | image_url: width: 884 }}"
             alt="{{ card_product.featured_media.alt | escape }}"
             {% unless lazy_load == false %}
               loading="lazy"

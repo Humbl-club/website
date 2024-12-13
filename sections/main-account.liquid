@@ -1,15 +1,9 @@
-<div class="grid w-full justify-items-start gap-8 p-6 py-8 md:p-8 lg:p-12">
-  <div class="w-full">
-    <h1 class="w-full max-w-md font-heading text-heading font-heading-weight">{{ 'customer.account.title' | t }}</h1>
-    <a href="{{ routes.account_logout_url }}" class="mt-4 block w-fit">
-      {{ 'customer.log_out' | t }}
-    </a>
-  </div>
+{% render 'account-aside' %}
 
-  <div class="w-full grid-cols-[1fr_auto] gap-8 lg:grid">
-    <div>
-      <h2 class="pb-6 font-heading text-lead font-heading-weight">{{ 'customer.orders.title' | t }}</h2>
-
+<div class="account-content">
+  <div class="account-wrapper">
+    <div class="account-target section-pt" id="info" style="scroll-margin-block-start: 64px"></div>
+    <div class="account-target section-pt" id="orders" style="scroll-margin-block-start: 64px">
       {% paginate customer.orders by 20 %}
         {%- if customer.orders.size > 0 -%}
           <table role="table" class="w-full table-auto border-collapse border-b border-primary md:border">
@@ -139,21 +133,12 @@
         {%- endif -%}
       {% endpaginate %}
     </div>
-
-    <div>
-      <h2 class="my-6 font-heading text-lead font-heading-weight lg:mt-0">{{ 'customer.account.details' | t }}</h2>
-
-      {{ customer.default_address | format_address }}
-
-      <a class="mt-6 block w-fit" href="{{ routes.account_addresses_url }}">
-        {{ 'customer.account.view_addresses' | t }} ({{ customer.addresses_count }})
-      </a>
-    </div>
   </div>
 </div>
 
 {% schema %}
 {
-  "name": "Account"
+  "name": "Account",
+  "class": "account-main wrapper"
 }
 {% endschema %}

@@ -28,7 +28,8 @@ module.exports = {
       spacing: {
         nav: 'var(--height-nav)',
         screen: 'var(--screen-height, 100vh)',
-        8: '0.8rem'
+        8: '0.8rem',
+        32: '3.2rem'
       },
       height: {
         screen: 'var(--screen-height, 100vh)',
@@ -65,7 +66,6 @@ module.exports = {
     }
   },
   plugins: [
-    require('@tailwindcss/typography'),
     plugin(({ addVariant }) => {
       addVariant('no-js', '.no-js &')
     })

@@ -18,11 +18,9 @@
 
 .complementary-subimg {
   width: 13.4rem;
-  height: 14rem;
 
   @include mixins.breakpoint(vars.$xl-bp) {
     width: 8.8rem;
-    height: 10rem;
   }
 }
 
@@ -83,7 +81,7 @@
 }
 
 .complementary-title {
-  max-width: 23rem;
+  max-width: 24rem;
 
   @include mixins.breakpoint(vars.$sm-bp) {
     max-width: 20rem;

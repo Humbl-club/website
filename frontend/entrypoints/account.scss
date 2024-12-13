@@ -1,0 +1,88 @@
+@use "../styles/mixins";
+@use "../styles/vars";
+
+main {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.account-forgot {
+  margin-top: 3.2rem;
+  margin-bottom: 3.2rem;
+}
+
+.account-block {
+  margin-top: 3.2rem;
+  width: 100%;
+}
+
+.account-wrapper {
+  width: calc(59.6rem + 1.6rem + 1.6rem);
+  max-width: 100%;
+  padding-left: 1.6rem;
+  padding-right: 1.6rem;
+  box-sizing: border-box;
+
+  @include mixins.breakpoint(vars.$xl-bp) {
+    width: 100%;
+  }
+}
+
+.account-create {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.account-recblock {
+  margin-top: 3.2rem;
+}
+
+.account-createbtn {
+  grid-column: 2 span;
+  margin-top: 2rem;
+}
+
+.account-main {
+  align-self: flex-start;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 18.8rem 1fr;
+  padding-top: 0;
+}
+
+.account-aside {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  position: sticky;
+  top: 10rem;
+}
+
+.account-link {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  &.active {
+    opacity: 1;
+  }
+}
+
+.account-logout {
+  margin-top: 6.5rem;
+}
+
+.account-content {
+  display: flex;
+  justify-content: center;
+  padding-right: 18.8rem;
+}
+
+.account-target {
+  display: none;
+  animation: fadeEffect var(--time);
+  &:target {
+    display: block;
+  }
+}

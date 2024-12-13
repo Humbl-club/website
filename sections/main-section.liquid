@@ -16,6 +16,10 @@
       | escape
     }}
   </picture>
+
+  {% for item in shop.metafields %}
+    {{ item | json }}
+  {% endfor %}
 {% endif %}
 
 {% schema %}

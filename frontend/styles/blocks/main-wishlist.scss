@@ -1,0 +1,86 @@
+@use "../mixins";
+@use "../vars";
+
+#st-wishlist-page {
+  .st-wishlist-loading,
+  &.st-wishlist-loading {
+    display: none;
+  }
+  display: block;
+}
+
+.st-page-container {
+  padding: 0!important;
+}
+
+.st-atc-button,
+.st-product-card_actions,
+.st-product-card_options,
+.st-page_controls,
+.st-page-container h2,
+.st-wishlist-shares  {
+  display: none!important;
+}
+.st-page_content,
+.st-page_products {
+  display: flex!important;
+  flex-direction: column!important;
+  width: 100%!important;
+  padding: 0!important  ;
+  gap: 2rem!important;
+  margin: 0!important;
+}
+
+.st-product-card {
+  display: flex!important;
+  flex-direction: row!important;
+  padding: 0!important;
+  gap: 2rem!important;
+  box-shadow: none!important;
+  padding-bottom: 2rem!important;
+  border-bottom: 0.1rem solid rgba($color: #000000, $alpha: 0.1)!important;
+}
+
+.st-image,
+.st-product-card_image {
+  height: 15rem!important;
+  width: 13.4rem!important;
+  background-color: var(--milk);
+  margin: 0!important;
+  padding: 0!important; 
+
+  img {
+    width: 100%!important;
+    height: 100%!important;
+    object-fit: contain;
+    position: relative!important;
+  }
+}
+
+.st-image {
+  padding: 0!important;
+}
+
+.st-product-card_quantity {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.st-product-card_price,
+.st-product-card_title a{
+  text-align: start!important;
+  font-family: var(--font-family)!important;
+  font-weight: 400!important;
+  font-size: 1.6rem!important;
+  line-height: 150%!important;
+  letter-spacing: -0.04em!important;
+  color: var(--black)!important;  
+}
+
+.main-wishlist-bot {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1.6rem;
+}
