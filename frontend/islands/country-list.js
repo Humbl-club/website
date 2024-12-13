@@ -1,4 +1,3 @@
-import '@/styles/blocks/country-list.scss'
 import {json} from "@/lib/countries.js";
 class CountryList extends window.HTMLElement {
   connectedCallback() {
