@@ -1,18 +1,6 @@
-<nav class="account-aside">
-  {% if customer %}
-    <a href="{{ routes.account_url }}#info" class="account-link button-title-4 opacity-50">Account Details</a>
-    <a href="{{ routes.account_addresses_url }}" class="account-link button-title-4 opacity-50">Address book</a>
-    <a href="{{ routes.account_url }}#orders" class="account-link button-title-4 opacity-50">Order History</a>
-    <a href="{{ routes.account_url }}#sizes" class="account-link button-title-4 opacity-50">My Sizes</a>
-  {% endif %}
-  <a href="/pages/wishlist" class="account-link button-title-4 active opacity-50">Wishlist</a>
+{% render 'account-aside', wishlist: true %}
 
-  {% if customer %}
-    <a class="link account-logout" href="{{ routes.account_logout_url }}">{{ 'customer.log_out' | t }}</a>
-  {% endif %}
-</nav>
-
-<div class="account-content">
+<div class="account-content section-pt">
   <div class="account-wrapper">
     <main-wishlist client:idle></main-wishlist>
   </div>

@@ -2,6 +2,7 @@
 @use "../vars";
 
 #st-wishlist-page {
+  .st-wishlist-loading,
   &.st-wishlist-loading {
     display: none;
   }
@@ -27,6 +28,7 @@
   width: 100%!important;
   padding: 0!important  ;
   gap: 2rem!important;
+  margin: 0!important;
 }
 
 .st-product-card {
