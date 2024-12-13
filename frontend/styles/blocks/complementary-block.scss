@@ -81,7 +81,7 @@
 }
 
 .complementary-title {
-  max-width: 23rem;
+  max-width: 24rem;
 
   @include mixins.breakpoint(vars.$sm-bp) {
     max-width: 20rem;

@@ -5,9 +5,11 @@
     <a href="{{ routes.account_url }}#orders" class="account-link button-title-4 opacity-50">Order History</a>
     <a href="{{ routes.account_url }}#sizes" class="account-link button-title-4 opacity-50">My Sizes</a>
   {% endif %}
-  <a href="/pages/wishlist" class="account-link button-title-4 opacity-50">Wishlist</a>
+  <a href="/pages/wishlist" class="account-link button-title-4 active opacity-50">Wishlist</a>
 
-  <a class="link account-logout" href="{{ routes.account_logout_url }}">{{ 'customer.log_out' | t }}</a>
+  {% if customer %}
+    <a class="link account-logout" href="{{ routes.account_logout_url }}">{{ 'customer.log_out' | t }}</a>
+  {% endif %}
 </nav>
 
 <div class="account-content">
@@ -15,6 +17,8 @@
     <main-wishlist client:idle></main-wishlist>
   </div>
 </div>
+
+{% render 'quick-add-modal' %}
 
 {% schema %}
 {

@@ -63,6 +63,9 @@ main {
 .account-link {
   padding-top: 1rem;
   padding-bottom: 1rem;
+  &.active {
+    opacity: 1;
+  }
 }
 
 .account-logout {

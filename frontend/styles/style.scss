@@ -302,7 +302,11 @@ h3,
   font-size: 1.6rem;
   line-height: 150%;
   letter-spacing: -0.04em;
+}
 
+.st-toast.st-toast--success .content .content_title p {
+  font-weight: 400!important;
+  line-height: 105%!important;
 }
 
 .body-1 {
@@ -865,6 +869,10 @@ menu-drawer {
     left: 50%;
     transform: translate(-50%, -50%)
   }
+}
+
+#st-wishlist-page {
+  display: none
 }
 
 /* Blocks */
