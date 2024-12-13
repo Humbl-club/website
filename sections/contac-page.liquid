@@ -1,7 +1,7 @@
 {{ 'contact-page.css' | asset_url | stylesheet_tag }}
 
 <section class="section-{{ section.id }}-padding contact-page">
-        <div class="contact-page__wrapper ">
+        <div class="contact-page__wrapper wrapper">
             {%- if section.settings.about_image != blank -%}
                 <div class="contact-page__img {% if section.settings.mob_image_order == "image-over" %}over-text{%- else -%}under-text{%- endif -%}"
                      style="background-color: {{ section.settings.img_bg_color }}">
@@ -32,7 +32,7 @@
                                 <a href="{{ link_value }}">{{ link_title }}</a>
 
                             {% elsif field_type == "form" %}
-                              <div class="contact-page__data_points_point_pop-up">{{ link_title }}</div>
+                              <div class="contact-page__data_points_point_pop-up" data-modal="modal-contact">{{ link_title }}</div>
                             {% endif %}
                         </div>
                     {% endfor %}

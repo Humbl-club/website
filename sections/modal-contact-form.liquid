@@ -1,14 +1,13 @@
-
-
-<menu-drawer id="modal-sizes" class="modal-sizes" client:idle data-open="false">
+<menu-drawer id="modal-contact" class="modal-sizes" client:idle data-open="false">
   <div class="modal-overlay add-opacity"></div>
   <div class="modal">
     <div class="modal-header">
-      <div class="title-1">Size Guide</div>
+      <div class="title-1">Send Inquiry</div>
+
       <button class="modal-close modal-close-styles">{% render 'icon-close' %}</button>
     </div>
 
-    <div class="modal-inner">
+    <div class="modal-inner modal-form">
       <div class="modal-page">
         {% render 'contact-form' %}
       </div>
@@ -19,7 +18,73 @@
 {% schema %}
 {
   "name": "Section name",
-  "settings": [],
+  "class": "margin-top-0",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "Contact Us",
+      "label": "Form Heading"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "Heading H2"
+        },
+        {
+          "value": "h1",
+          "label": "Heading H1"
+        },
+        {
+          "value": "h0",
+          "label": "Large Heading"
+        },
+        {
+          "value": "hxl",
+          "label": "Extra Large Heading"
+        },
+        {
+          "value": "hxxl",
+          "label": "Huge Heading"
+        }
+      ],
+      "default": "h1",
+      "label": "Heading Size"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color Scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Padding Settings"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 36
+    }
+  ],
   "presets": [
     {
       "name": "Modal Contact Form"
