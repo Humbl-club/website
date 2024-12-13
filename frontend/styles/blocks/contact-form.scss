@@ -30,7 +30,7 @@ contact-form {
     margin-bottom: 80px;
 
     & input, & select {
-      height: 6.25rem;
+      height: 5rem;
     }
 
     & input {
@@ -72,41 +72,6 @@ contact-form {
       }
     }
 
-    &_inquiry, &_country {
-      position: relative;
-
-      & label {
-        position: absolute;
-        font-family: var(--font-family);
-        font-size: 10px;
-        font-weight: 400;
-        line-height: 15px;
-        letter-spacing: -0.04em;
-        z-index: 1;
-        opacity: 0.5;
-        top: 10px;
-        left: 16px;
-        pointer-events: none;
-      }
-
-      .select-selected {
-        height: 6.25rem;
-        position: relative;
-        display: flex;
-        align-items: center;
-        border: 1px solid rgba(0, 0, 0, 0.1);
-        padding: 27px 16px 13px;
-
-        &.select-arrow-active {
-          border: 0.1rem solid var(--black);
-        }
-      }
-
-      .select-items {
-        border: 1px solid rgba(0, 0, 0, 0.1);
-      }
-    }
-
     &_email {
       & input {
         transition: .3s;
@@ -119,7 +84,7 @@ contact-form {
 
     &_info {
       & textarea {
-        min-height: 6.25rem;
+        min-height: 5rem;
         max-height: 200px;
         height: 100%;
       }
@@ -130,25 +95,6 @@ contact-form {
     display: flex;
     position: relative;
     gap: 10px;
-
-    //&_errors {
-    //  position: absolute;
-    //  top: -30px;
-    //  width: 100%;
-    //  transition: .3s;
-    //  font-family: var(--font-family);
-    //  font-size: 10px;
-    //  font-weight: 400;
-    //  line-height: 15px;
-    //  letter-spacing: -0.04em;
-    //  display: flex;
-    //  flex-direction: column;
-    //  align-items: center;
-    //
-    //  .error-tel {
-    //    margin-bottom: 10px;
-    //  }
-    //}
 
     .button {
       width: 50%;
@@ -188,5 +134,40 @@ contact-form {
     .color- {
       height: 100%;
     }
+  }
+}
+
+.contact_inquiry, .contact_country {
+  position: relative;
+
+  & label {
+    position: absolute;
+    font-family: var(--font-family);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5rem;
+    letter-spacing: -0.04em;
+    z-index: 1;
+    opacity: 0.5;
+    top: 1rem;
+    left: 1.6rem;
+    pointer-events: none;
+  }
+
+  .select-selected {
+    height: 5rem;
+    position: relative;
+    display: flex;
+    align-items: center;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 27px 16px 13px;
+
+    &.select-arrow-active {
+      border: 0.1rem solid var(--black);
+    }
+  }
+
+  .select-items {
+    border: 1px solid rgba(0, 0, 0, 0.1);
   }
 }
