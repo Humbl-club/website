@@ -73,6 +73,32 @@
       autocomplete="family-name"
     >
 
+    <phone-number client:visible>
+      <div class="field contact__fields_phone">
+        <label class="field__label" for="ContactForm-phone">Country Code</label>
+
+        <input
+          aria-required="true"
+          type="tel"
+          id="ContactForm-phone"
+          class="field__input inp"
+          name="contact[phone]"
+          value=""
+        >
+      </div>
+    </phone-number>
+
+    <country-list client:idle>
+      <cart-select client:visible>
+        <div class="custom-select">
+          <label class="field__label" for="ContactForm-country">Country/Region</label>
+
+          <select id="ContactForm-country" name="contact[country]"></select>
+          <div class="select-selected">Country</div>
+        </div>
+      </cart-select>
+    </country-list>
+
     <button class="btn btn-blue account-createbtn">
       {{ 'customer.register.submit' | t }}
     </button>
