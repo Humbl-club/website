@@ -1,8 +1,6 @@
 class CartSelect extends window.HTMLElement {
   connectedCallback() {
-    setTimeout(() => {
-      this.init()
-    }, 100)
+    this.init()
   }
 
   init() {
@@ -51,33 +49,36 @@ class CartSelect extends window.HTMLElement {
         b.appendChild(c)
       }
       x[i].appendChild(b)
-      a.addEventListener('click', function (e) {
-        /* When the select box is clicked, close any other select boxes,
-        and open/close the current select box: */
-        e.stopPropagation()
-        closeAllSelect(this)
+      if (!x[i].classList.contains('inited')) {
+        a.addEventListener('click', function (e) {
+          /* When the select box is clicked, close any other select boxes,
+          and open/close the current select box: */
+          e.stopPropagation()
+          closeAllSelect(this)
 
-        const rect = this.getBoundingClientRect()
-        const dropdownHeight = this.nextElementSibling.offsetHeight
-        let drawer = this.closest('cart-drawer-items')
-        if (drawer) {
-          drawer = drawer.offsetHeight + drawer.getBoundingClientRect().top
-        } else {
-          drawer = window.innerHeight
-        }
-        const spaceBelow = drawer - rect.bottom
-        // Check if there's enough space below to show the dropdown
-        if (spaceBelow < dropdownHeight) {
-          // Position dropdown above the button
-          this.nextElementSibling.classList.add('--top')
-        } else {
-          // Position dropdown below the button
-          this.nextElementSibling.classList.remove('--top')
-        }
+          const rect = this.getBoundingClientRect()
+          const dropdownHeight = this.nextElementSibling.offsetHeight
+          let drawer = this.closest('cart-drawer-items')
+          if (drawer) {
+            drawer = drawer.offsetHeight + drawer.getBoundingClientRect().top
+          } else {
+            drawer = window.innerHeight
+          }
+          const spaceBelow = drawer - rect.bottom
+          // Check if there's enough space below to show the dropdown
+          if (spaceBelow < dropdownHeight) {
+            // Position dropdown above the button
+            this.nextElementSibling.classList.add('--top')
+          } else {
+            // Position dropdown below the button
+            this.nextElementSibling.classList.remove('--top')
+          }
 
-        this.nextElementSibling.classList.toggle('select-hide')
-        this.classList.toggle('select-arrow-active')
-      })
+          this.nextElementSibling.classList.toggle('select-hide')
+          this.classList.toggle('select-arrow-active')
+        })
+      }
+
       x[i].classList.add('inited')
     }
 

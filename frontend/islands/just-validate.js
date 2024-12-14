@@ -19,11 +19,37 @@ class ValidateIsland extends window.HTMLElement {
   }
 
   connectedCallback() {
+    const checkboxes = this.querySelectorAll('input[type="checkbox"][required]')
+    if (checkboxes.length) {
+      checkboxes.forEach((checkbox) => {
+        this.validate.addField(checkbox, [
+          {
+            rule: 'required'
+          }
+        ])
+      })
+    }
+
+    const password = this.querySelector('.validation-password')
+    if (password) {
+      this.validate.addField(password, [
+        {
+          rule: 'password'
+        },
+        {
+          rule: 'required'
+        }
+      ])
+    }
+
     const redEmail = this.querySelector('.email-required')
     if (redEmail) {
       this.validate.addField(redEmail, [
         {
           rule: 'email'
+        },
+        {
+          rule: 'required'
         }
       ])
     }
@@ -34,7 +60,7 @@ class ValidateIsland extends window.HTMLElement {
       this.validate.addField(date, [
         {
           plugin: JustValidatePluginDate(() => ({
-            format: 'mm/dd/yyyy'
+            format: 'dd/MM/yyyy'
           })),
           errorMessage: 'Date should be in dd/MM/yyyy format'
         }

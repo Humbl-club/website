@@ -9,6 +9,15 @@ class CountryList extends window.HTMLElement {
         option.textContent = country.name
         countrySelect.appendChild(option)
       })
+
+      const cartSelect = this.querySelector('cart-select')
+      if (cartSelect && 'init' in cartSelect) {
+        const selectitems = cartSelect.querySelector('.select-items')
+        if (selectitems) {
+          selectitems.remove()
+        }
+        cartSelect.init()
+      }
     }
   }
 }
