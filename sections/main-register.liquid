@@ -51,6 +51,26 @@
         {%- endif -%}
       </div>
 
+      <div class="col-span-2">
+        <input
+          type="password"
+          id="RegisterForm-password-confirm"
+          class="inp validation-password-confirm"
+          aria-required="true"
+          placeholder="{{ 'customer.register.confirm_password' | t }}*"
+          {% if form.errors contains 'password' %}
+            aria-invalid="true"
+            aria-describedby="RegisterForm-password-error"
+          {% endif %}
+        >
+        {%- if form.errors contains 'password' -%}
+          <span id="RegisterForm-password-error-confirm_password" class="error-text">
+            {{ form.errors.translated_fields.password | capitalize }}
+            {{ form.errors.messages.password }}
+          </span>
+        {%- endif -%}
+      </div>
+
       <input
         type="text"
         name="customer[first_name]"
@@ -87,21 +107,27 @@
         </country-list>
       </div>
 
-      <input
-        type="text"
-        name="customer[note][facts.birth_date]"
-        id="RegisterForm-BirthDate"
-        class="inp date-validation col-span-2"
-        placeholder="{{ 'customer.register.birthday' | t }}"
-        {% if form.birthday %}
-          value="{{ form.birthday }}"
-        {% endif %}
-        autocomplete="family-name"
-      >
+      <date-formatter class="col-span-2 block">
+        <input
+          type="text"
+          id="RegisterForm-BirthDate"
+          class="inp date-validation"
+          placeholder="{{ 'customer.register.birthday' | t }}"
+          {% if form.birthday %}
+            value="{{ form.birthday }}"
+          {% endif %}
+          autocomplete="family-name"
+        >
+        <input type="date" name="customer[note][facts.birth_date]" hidden>
+      </date-formatter>
 
       <button class="btn btn-blue account-createbtn" type="submit">
         {{ 'customer.register.submit' | t }}
       </button>
+
+      <a href="{{ routes.account_login_url }}" class="btn btn-white col-span-2">
+        {{ 'customer.login_page.cancel' | t }}
+      </a>
 
       <div class="col-span-2">
         <label class="checkbox account-checkbox">

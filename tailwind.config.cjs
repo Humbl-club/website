@@ -29,7 +29,8 @@ module.exports = {
         nav: 'var(--height-nav)',
         screen: 'var(--screen-height, 100vh)',
         8: '0.8rem',
-        32: '3.2rem'
+        32: '3.2rem',
+        10: '1rem'
       },
       height: {
         screen: 'var(--screen-height, 100vh)',

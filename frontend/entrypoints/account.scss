@@ -86,6 +86,9 @@ main {
   animation: fadeEffect var(--time);
   &:target {
     display: block;
+    & ~ .account-target-info {
+      display: none;
+    }
   }
 }
 

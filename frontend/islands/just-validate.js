@@ -42,6 +42,28 @@ class ValidateIsland extends window.HTMLElement {
       ])
     }
 
+    const passwordConfirm = this.querySelector('.validation-password-confirm')
+    if (passwordConfirm && password) {
+      password.addEventListener('blur', () => {
+        this.validate.addField(passwordConfirm, [
+          {
+            rule: 'required'
+          },
+          {
+            validator: (value) => {
+              if (password && passwordConfirm) {
+                const repeatPasswordValue = password.value
+                return value === repeatPasswordValue
+              }
+
+              return true
+            },
+            errorMessage: 'Passwords should be the same'
+          }
+        ])
+      })
+    }
+
     const redEmail = this.querySelector('.email-required')
     if (redEmail) {
       this.validate.addField(redEmail, [

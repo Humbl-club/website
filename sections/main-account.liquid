@@ -2,7 +2,6 @@
 
 <div class="account-content">
   <div class="account-wrapper">
-    <div class="account-target section-pt" id="info" style="scroll-margin-block-start: var(--header-spacer)"></div>
     <div class="account-target section-pt" id="orders" style="scroll-margin-block-start: var(--header-spacer)">
       {% paginate customer.orders by 20 %}
         {%- if customer.orders.size > 0 -%}
@@ -132,6 +131,157 @@
           {%- endif -%}
         {%- endif -%}
       {% endpaginate %}
+    </div>
+
+    <div class="account-target-info section-pt" id="info" style="scroll-margin-block-start: var(--header-spacer)">
+      <just-validate class="block w-full">
+        {%- form 'create_customer', novalidate: 'novalidate', class: 'w-full account-create' -%}
+          <div class="col-span-2">
+            <input
+              type="email"
+              name="customer[email]"
+              id="RegisterForm-email"
+              class="inp email-required col-span-2"
+              {% if form.email %}
+                value="{{ form.email }}"
+              {% endif %}
+              spellcheck="false"
+              autocapitalize="off"
+              autocomplete="email"
+              aria-required="true"
+              placeholder="{{ 'customer.register.email' | t }}*"
+              {% if form.errors contains 'email' %}
+                aria-invalid="true"
+                aria-describedby="RegisterForm-email-error"
+              {% endif %}
+            >
+            {%- if form.errors contains 'email' -%}
+              <span id="RegisterForm-email-error" class="error-text">
+                {{ form.errors.translated_fields.email | capitalize }}
+                {{ form.errors.messages.email }}.
+              </span>
+            {%- endif -%}
+          </div>
+          <div class="col-span-2">
+            <input
+              type="password"
+              name="customer[password]"
+              id="RegisterForm-password"
+              class="inp validation-password"
+              aria-required="true"
+              placeholder="{{ 'customer.register.password' | t }}*"
+              {% if form.errors contains 'password' %}
+                aria-invalid="true"
+                aria-describedby="RegisterForm-password-error"
+              {% endif %}
+            >
+            {%- if form.errors contains 'password' -%}
+              <span id="RegisterForm-password-error" class="error-text">
+                {{ form.errors.translated_fields.password | capitalize }}
+                {{ form.errors.messages.password }}
+              </span>
+            {%- endif -%}
+          </div>
+
+          <div class="col-span-2">
+            <input
+              type="password"
+              id="RegisterForm-password-confirm"
+              class="inp validation-password-confirm"
+              aria-required="true"
+              placeholder="{{ 'customer.register.confirm_password' | t }}*"
+              {% if form.errors contains 'password' %}
+                aria-invalid="true"
+                aria-describedby="RegisterForm-password-error"
+              {% endif %}
+            >
+            {%- if form.errors contains 'password' -%}
+              <span id="RegisterForm-password-error-confirm_password" class="error-text">
+                {{ form.errors.translated_fields.password | capitalize }}
+                {{ form.errors.messages.password }}
+              </span>
+            {%- endif -%}
+          </div>
+
+          <input
+            type="text"
+            name="customer[first_name]"
+            id="RegisterForm-FirstName"
+            {% if form.first_name %}
+              value="{{ form.first_name }}"
+            {% endif %}
+            class="inp required-text"
+            placeholder="{{ 'customer.register.first_name' | t }}"
+            autocomplete="given-name"
+          >
+          <input
+            type="text"
+            name="customer[last_name]"
+            id="RegisterForm-LastName"
+            class="inp required-text"
+            placeholder="{{ 'customer.register.last_name' | t }}"
+            {% if form.last_name %}
+              value="{{ form.last_name }}"
+            {% endif %}
+            autocomplete="family-name"
+          >
+
+          <div class="contact_country col-span-2">
+            <country-list>
+              <cart-select client:visible>
+                <div class="custom-select">
+                  <label class="field__label" for="ContactForm-country">Country/Region</label>
+
+                  <select id="ContactForm-country" name="customer[note][custom.country]"></select>
+                  <div class="select-selected">Country</div>
+                </div>
+              </cart-select>
+            </country-list>
+          </div>
+
+          <date-formatter class="col-span-2 block">
+            <input
+              type="text"
+              id="RegisterForm-BirthDate"
+              class="inp date-validation"
+              placeholder="{{ 'customer.register.birthday' | t }}"
+              {% if form.birthday %}
+                value="{{ form.birthday }}"
+              {% endif %}
+              autocomplete="family-name"
+            >
+            <input type="date" name="customer[note][facts.birth_date]" hidden>
+          </date-formatter>
+
+          <button class="btn btn-blue account-createbtn" type="submit">
+            {{ 'customer.register.submit' | t }}
+          </button>
+
+          <a href="{{ routes.account_login_url }}" class="btn btn-white col-span-2">
+            {{ 'customer.login_page.cancel' | t }}
+          </a>
+
+          <div class="col-span-2">
+            <label class="checkbox account-checkbox">
+              <input type="checkbox" required checked>
+              <span class="checkbox-box"></span>
+              <span>
+                I agree to the <a class="link" href="/policies/terms-and-conditions">terms and conditions</a> and
+                <a class="link" href="/policies/privacy-policy">privacy policy.</a>
+              </span>
+            </label>
+
+            <label class="checkbox account-checkbox">
+              <input type="hidden" name="customer[accepts_marketing]" value="false">
+              <input type="checkbox" name="customer[accepts_marketing]" value="true" checked>
+              <span class="checkbox-box"></span>
+              <span> Sign me up for the mailing list. </span>
+            </label>
+          </div>
+
+          <div id="errors-container_custom-name"></div>
+        {%- endform -%}
+      </just-validate>
     </div>
   </div>
 </div>
