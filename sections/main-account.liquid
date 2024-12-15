@@ -223,6 +223,21 @@
             </cart-select>
           </div>
 
+          <phone-number class="col-span-2 block">
+            <div class="field contact__fields_phone">
+              <label class="field__label" for="ContactForm-phone">Country Code</label>
+
+              <input
+                aria-required="true"
+                type="tel"
+                id="ContactForm-phone"
+                class="field__input inp"
+                name="contact[phone]"
+                value=""
+              >
+            </div>
+          </phone-number>
+
           <button class="btn btn-blue account-createbtn" type="submit">
             {{ 'customer.account.save' | t }}
           </button>
