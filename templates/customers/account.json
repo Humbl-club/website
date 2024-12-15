@@ -1,1 +1,57 @@
-{"sections":{"main":{"type":"main-account","settings":{}}},"order":["main"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-account",
+      "settings": {}
+    },
+    "173428701304078d86": {
+      "type": "apps",
+      "blocks": {
+        "amplius_customer_fields_metafield_editor_JA6hhw": {
+          "type": "shopify://apps/amplius-customer-fields/blocks/metafield-editor/eaa81ad4-be0b-4bba-b7f0-43630aba9eaf",
+          "settings": {
+            "alignment": "flex-start",
+            "top_spacing": 50,
+            "bottom_spacing": 50,
+            "width": 512,
+            "title_font_size": 24,
+            "title_padding_bottom": 0,
+            "description_font_size": 16,
+            "description_padding_bottom": 0,
+            "consent_disclaimer_font_size": 12,
+            "consent_disclaimer_padding_top": 0,
+            "input_height": 32,
+            "input_border_radius": 0,
+            "input_border_color": "",
+            "input_border_width": 1,
+            "field_spacing": 12,
+            "submit_button_width": 512,
+            "submit_button_height": 40,
+            "submit_button_background_color": "",
+            "submit_button_text_color": "#000000",
+            "submit_button_border_color": "#000000",
+            "submit_button_border_width": 1,
+            "submit_button_border_radius": 0
+          }
+        }
+      },
+      "block_order": [
+        "amplius_customer_fields_metafield_editor_JA6hhw"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "173428701304078d86"
+  ]
+}
