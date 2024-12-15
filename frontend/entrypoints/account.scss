@@ -33,7 +33,6 @@ main {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
-  margin-top: 2rem;
   position: relative;
   padding-bottom: 1rem;
 }
@@ -66,6 +65,7 @@ main {
 .account-link {
   padding-top: 1rem;
   padding-bottom: 1rem;
+  transition: opacity var(--time);
   &.active {
     opacity: 1;
   }
@@ -90,6 +90,10 @@ main {
       display: none;
     }
   }
+}
+
+.account-target-info {
+  animation: fadeEffect var(--time);
 }
 
 #errors-container_custom-name {

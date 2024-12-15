@@ -135,21 +135,19 @@
 
     <div class="account-target-info section-pt" id="info" style="scroll-margin-block-start: var(--header-spacer)">
       <just-validate class="block w-full">
-        {%- form 'create_customer', novalidate: 'novalidate', class: 'w-full account-create' -%}
+        <form class="account-create w-full">
           <div class="col-span-2">
             <input
               type="email"
-              name="customer[email]"
               id="RegisterForm-email"
               class="inp email-required col-span-2"
-              {% if form.email %}
-                value="{{ form.email }}"
-              {% endif %}
+              value="{{ customer.email }}"
               spellcheck="false"
               autocapitalize="off"
               autocomplete="email"
               aria-required="true"
               placeholder="{{ 'customer.register.email' | t }}*"
+              disabled
               {% if form.errors contains 'email' %}
                 aria-invalid="true"
                 aria-describedby="RegisterForm-email-error"
@@ -162,125 +160,75 @@
               </span>
             {%- endif -%}
           </div>
-          <div class="col-span-2">
-            <input
-              type="password"
-              name="customer[password]"
-              id="RegisterForm-password"
-              class="inp validation-password"
-              aria-required="true"
-              placeholder="{{ 'customer.register.password' | t }}*"
-              {% if form.errors contains 'password' %}
-                aria-invalid="true"
-                aria-describedby="RegisterForm-password-error"
-              {% endif %}
-            >
-            {%- if form.errors contains 'password' -%}
-              <span id="RegisterForm-password-error" class="error-text">
-                {{ form.errors.translated_fields.password | capitalize }}
-                {{ form.errors.messages.password }}
-              </span>
-            {%- endif -%}
-          </div>
-
-          <div class="col-span-2">
-            <input
-              type="password"
-              id="RegisterForm-password-confirm"
-              class="inp validation-password-confirm"
-              aria-required="true"
-              placeholder="{{ 'customer.register.confirm_password' | t }}*"
-              {% if form.errors contains 'password' %}
-                aria-invalid="true"
-                aria-describedby="RegisterForm-password-error"
-              {% endif %}
-            >
-            {%- if form.errors contains 'password' -%}
-              <span id="RegisterForm-password-error-confirm_password" class="error-text">
-                {{ form.errors.translated_fields.password | capitalize }}
-                {{ form.errors.messages.password }}
-              </span>
-            {%- endif -%}
-          </div>
-
           <input
             type="text"
-            name="customer[first_name]"
             id="RegisterForm-FirstName"
-            {% if form.first_name %}
-              value="{{ form.first_name }}"
-            {% endif %}
+            value="{{ customer.first_name }}"
             class="inp required-text"
             placeholder="{{ 'customer.register.first_name' | t }}"
             autocomplete="given-name"
+            disabled
           >
           <input
             type="text"
-            name="customer[last_name]"
             id="RegisterForm-LastName"
             class="inp required-text"
             placeholder="{{ 'customer.register.last_name' | t }}"
-            {% if form.last_name %}
-              value="{{ form.last_name }}"
-            {% endif %}
+            value="{{ customer.last_name }}"
             autocomplete="family-name"
+            disabled
           >
+          <date-formatter class="block">
+            {%- assign date = customer.metafields.facts.birth_date | split: '-' -%}
+            {% if date.size > 1 %}
+              {%- assign date = date[1] | append: '/' | append: date[2] | append: '/' | append: date[0] -%}
+            {% endif %}
 
-          <div class="contact_country col-span-2">
-            <country-list>
-              <cart-select client:visible>
-                <div class="custom-select">
-                  <label class="field__label" for="ContactForm-country">Country/Region</label>
-
-                  <select id="ContactForm-country" name="customer[note][custom.country]"></select>
-                  <div class="select-selected">Country</div>
-                </div>
-              </cart-select>
-            </country-list>
-          </div>
-
-          <date-formatter class="col-span-2 block">
             <input
               type="text"
               id="RegisterForm-BirthDate"
               class="inp date-validation"
               placeholder="{{ 'customer.register.birthday' | t }}"
-              {% if form.birthday %}
-                value="{{ form.birthday }}"
-              {% endif %}
-              autocomplete="family-name"
+              autocomplete="birthdate"
+              value="{{ date }}"
             >
-            <input type="date" name="customer[note][facts.birth_date]" hidden>
+            <input
+              type="date"
+              value="{{ customer.metafields.facts.birth_date }}"
+              hidden
+            >
           </date-formatter>
 
-          <button class="btn btn-blue account-createbtn" type="submit">
-            {{ 'customer.register.submit' | t }}
-          </button>
+          <input
+            type="text"
+            id="RegisterForm-instagram"
+            class="inp"
+            placeholder="{{ 'customer.register.instagram' | t }}"
+            {% if customer.metafields.custom.instagram %}
+              value="{{ customer.metafields.custom.instagram }}"
+            {% endif %}
+            autocomplete="instagram"
+          >
 
-          <a href="{{ routes.account_login_url }}" class="btn btn-white col-span-2">
-            {{ 'customer.login_page.cancel' | t }}
-          </a>
+          <div class="contact_country col-span-2">
+            <cart-select client:visible data-selected="{{ customer.metafields.custom.country }}">
+              <div class="custom-select">
+                <label class="field__label" for="ContactForm-country">Nationality</label>
 
-          <div class="col-span-2">
-            <label class="checkbox account-checkbox">
-              <input type="checkbox" required checked>
-              <span class="checkbox-box"></span>
-              <span>
-                I agree to the <a class="link" href="/policies/terms-and-conditions">terms and conditions</a> and
-                <a class="link" href="/policies/privacy-policy">privacy policy.</a>
-              </span>
-            </label>
-
-            <label class="checkbox account-checkbox">
-              <input type="hidden" name="customer[accepts_marketing]" value="false">
-              <input type="checkbox" name="customer[accepts_marketing]" value="true" checked>
-              <span class="checkbox-box"></span>
-              <span> Sign me up for the mailing list. </span>
-            </label>
+                <select id="ContactForm-country" name="customer[note][custom.country]">
+                  {{ all_country_option_tags }}
+                </select>
+                <div class="select-selected">Select</div>
+              </div>
+            </cart-select>
           </div>
 
+          <button class="btn btn-blue account-createbtn" type="submit">
+            {{ 'customer.account.save' | t }}
+          </button>
+
           <div id="errors-container_custom-name"></div>
-        {%- endform -%}
+        </form>
       </just-validate>
     </div>
   </div>

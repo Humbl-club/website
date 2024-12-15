@@ -21,6 +21,17 @@ class CartSelect extends window.HTMLElement {
         create a new DIV that will act as an option item: */
         c = document.createElement('DIV')
         c.innerHTML = selElmnt.options[j].innerHTML
+        if (
+          this?.dataset?.selected &&
+          this.dataset.selected.toLowerCase().trim() ===
+            selElmnt.options[j].innerHTML.toLowerCase().trim()
+        ) {
+          selElmnt.options[j].selected = true
+          const btn = c
+          setTimeout(() => {
+            btn.click()
+          })
+        }
         c.addEventListener('click', function (e) {
           /* When an item is clicked, update the original select box,
           and the selected item: */
