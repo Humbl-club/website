@@ -73,6 +73,54 @@ class FacetFiltersForm extends window.HTMLElement {
 
     const facetWrapper = this.querySelector('#FacetsWrapperDesktop')
     if (facetWrapper) facetWrapper.addEventListener('keyup', onKeyUpEscape)
+
+    this.initSizeCheckbox()
+  }
+
+  initSizeCheckbox() {
+    this.sizes = []
+    this.sizeCheckbox = this.querySelector('[data-sizes]')
+    if (this.sizeCheckbox) {
+      const arr = this.sizeCheckbox.dataset.sizes.split(',')
+      if (arr.length) {
+        arr.forEach((el) => {
+          const valueArr = el.replace(/[/[|\]]/gi, '').split(':')
+          if (valueArr.length > 0) {
+            this.sizes.push(valueArr[1])
+          }
+        })
+      }
+      const allSizesCheckboxes = this.querySelectorAll(
+        'input[id*="shopify.size"]'
+      )
+      if (allSizesCheckboxes.length) {
+        this.allSizesCheckboxes = allSizesCheckboxes
+        this.sizeCheckbox.addEventListener('change', () => {
+          if (this.sizeCheckbox.checked) {
+            this.allSizesCheckboxes.forEach((el) => {
+              if (this.sizeCheckbox.checked) {
+                this.sizes.forEach((size) => {
+                  if (el.dataset.textvalue.includes(size)) {
+                    el.setAttribute('checked', true)
+                    el.checked = true
+                  }
+                })
+                const event = new Event('input')
+                const facetForm = this.querySelector('form')
+                facetForm.dispatchEvent(event)
+              }
+            })
+          } else {
+            this.allSizesCheckboxes.forEach((el) => {
+              el.removeAttribute('checked')
+              el.checked = false
+            })
+            const facetForm = this.querySelector('form')
+            facetForm.reset()
+          }
+        })
+      }
+    }
   }
 
   static setListeners() {
@@ -161,6 +209,7 @@ class FacetFiltersForm extends window.HTMLElement {
     FacetFiltersForm.renderProductCount(html)
     initButtons()
     initFacetContainer()
+    countFilters()
     if (typeof initializeScrollAnimationTrigger === 'function')
       window.initializeScrollAnimationTrigger(html.innerHTML)
   }
@@ -391,25 +440,14 @@ class FacetFiltersForm extends window.HTMLElement {
     const sortFilterForms = document.querySelectorAll('facet-filters-form form')
     if (event.srcElement.className === 'mobile-facets__checkbox') {
       const searchParams = this.createSearchParams(event.target.closest('form'))
+
       this.onSubmitForm(searchParams, event)
     } else {
       const forms = []
-      const isMobile =
-        event.target.closest('form').id === 'FacetFiltersFormMobile'
-
       sortFilterForms.forEach((form) => {
-        if (!isMobile) {
-          if (
-            form.id === 'FacetSortForm' ||
-            form.id === 'FacetFiltersForm' ||
-            form.id === 'FacetSortDrawerForm'
-          ) {
-            forms.push(this.createSearchParams(form))
-          }
-        } else if (form.id === 'FacetFiltersFormMobile') {
-          forms.push(this.createSearchParams(form))
-        }
+        forms.push(this.createSearchParams(form))
       })
+      console.log(forms, 'helo')
       this.onSubmitForm(forms.join('&'), event)
     }
   }

@@ -92,24 +92,50 @@
                                 <label class="{{ label_class }}">
                                   <span class="flex flex-col gap-8">
                                     <span class="subhead-2 opacity-50">My Sizes</span>
-                                    <span class="body-1">
-                                      <a
-                                        href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
-                                        class="link"
-                                      >
-                                        Sign in
-                                      </a>
-                                      to add your sizes
-                                    </span>
                                   </span>
                                   <span class="switch-wrap">
                                     <input
                                       type="checkbox"
-                                      disabled
+                                      {% if customer.metafields.custom.apparel_size
+                                        or customer.metafields.custom.footwear_size
+                                        or customer.metafields.custom.headwear_size
+                                      %}
+                                        data-sizes="[apparel:{{ customer.metafields.custom.apparel_size }}],[footwear:{{ customer.metafields.custom.footwear_size}}],[headwear:{{ customer.metafields.custom.headwear_size}}]"
+                                      {% else %}
+                                        disabled
+                                      {% endif %}
+                                      class="mobile-facets__checkbox"
                                     >
                                     <span class="switch-box"></span>
                                   </span>
                                 </label>
+                                <span class="body-1 flex flex-col">
+                                  {% if customer %}
+                                    {% if customer.metafields.custom.apparel_size %}
+                                      <span>Apparel: {{ customer.metafields.custom.apparel_size }}</span>
+                                    {% else %}
+                                      <span>Apparel: -</span>
+                                    {% endif %}
+                                    {% if customer.metafields.custom.footwear_size %}
+                                      <span>Footwear: {{ customer.metafields.custom.footwear_size }}</span>
+                                    {% else %}
+                                      <span>Footwear: -</span>
+                                    {% endif %}
+                                    {% if customer.metafields.custom.headwear_size %}
+                                      <span>Headwear: {{ customer.metafields.custom.headwear_size }}</span>
+                                    {% else %}
+                                      <span>Headwear: -</span>
+                                    {% endif %}
+                                  {% else %}
+                                    <a
+                                      href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
+                                      class="link"
+                                    >
+                                      Sign in
+                                    </a>
+                                    to add your sizes
+                                  {% endif %}
+                                </span>
                               </li>
 
                               <li class="mobile-facets__item list-menu__item facets-switches">
@@ -264,6 +290,7 @@
                                       name="{{ value.param_name }}"
                                       value="{{ value.value }}"
                                       id="{{ input_id }}"
+                                      data-textvalue="{{ value.label }}"
                                       {% if value.active %}
                                         checked
                                       {% endif %}
