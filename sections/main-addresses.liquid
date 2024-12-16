@@ -23,134 +23,113 @@
           aria-labelledBy: 'AddressNewHeading',
           class: 'flex [flex-flow:row_wrap]'
         -%}
-          <div class="mt-8 grid w-full gap-2 text-left md:mr-8 md:w-[calc(50%_-_theme(spacing.4))]">
-            <label for="AddressFirstNameNew">{{ 'customer.addresses.first_name' | t }}</label>
-            <input
-              class="appearance-none rounded border border-white bg-transparent bg-none px-4 py-3"
-              type="text"
-              id="AddressFirstNameNew"
-              name="address[first_name]"
-              value="{{ form.first_name }}"
-              autocomplete="given-name"
-            >
-          </div>
-          <div class="mt-8 grid w-full gap-2 text-left md:w-[calc(50%_-_theme(spacing.4))]">
-            <label for="AddressLastNameNew">{{ 'customer.addresses.last_name' | t }}</label>
-            <input
-              class="appearance-none rounded border border-white bg-transparent bg-none px-4 py-3"
-              type="text"
-              id="AddressLastNameNew"
-              name="address[last_name]"
-              value="{{ form.last_name }}"
-              autocomplete="family-name"
-            >
-          </div>
-          <div class="mt-8 grid w-full gap-2 text-left">
-            <label for="AddressCompanyNew">{{ 'customer.addresses.company' | t }}</label>
-            <input
-              class="appearance-none rounded border border-white bg-transparent bg-none px-4 py-3"
-              type="text"
-              id="AddressCompanyNew"
-              name="address[company]"
-              value="{{ form.company }}"
-              autocomplete="organization"
-            >
-          </div>
-          <div class="mt-8 grid w-full gap-2 text-left">
-            <label for="AddressAddress1New">{{ 'customer.addresses.address1' | t }}</label>
-            <input
-              class="appearance-none rounded border border-white bg-transparent bg-none px-4 py-3"
-              type="text"
-              id="AddressAddress1New"
-              name="address[address1]"
-              value="{{ form.address1 }}"
-              autocomplete="address-line1"
-            >
-          </div>
-          <div class="mt-8 grid w-full gap-2 text-left">
-            <label for="AddressAddress2New">{{ 'customer.addresses.address2' | t }}</label>
-            <input
-              class="appearance-none rounded border border-white bg-transparent bg-none px-4 py-3"
-              type="text"
-              id="AddressAddress2New"
-              name="address[address2]"
-              value="{{ form.address2 }}"
-              autocomplete="address-line2"
-            >
-          </div>
-          <div class="mt-8 grid w-full gap-2 text-left">
-            <label for="AddressCityNew">{{ 'customer.addresses.city' | t }}</label>
-            <input
-              class="appearance-none rounded border border-white bg-transparent bg-none px-4 py-3"
-              type="text"
-              id="AddressCityNew"
-              name="address[city]"
-              value="{{ form.city }}"
-              autocomplete="address-level2"
-            >
-          </div>
-          <div class="mt-8 grid w-full gap-2 text-left">
-            <label for="AddressCountryNew">{{ 'customer.addresses.country' | t }}</label>
-            <div class="relative mt-2 w-full">
-              <select
-                class="block w-full appearance-none rounded border border-white bg-transparent bg-none px-4 py-3"
-                id="AddressCountryNew"
-                name="address[country]"
-                data-default="{{ form.country }}"
-                autocomplete="country"
-              >
-                {{ all_country_option_tags }}
-              </select>
-              <span class="absolute right-4 top-1/2 -translate-y-1/2">
-                {%- render 'icon-caret' -%}
-              </span>
-            </div>
-          </div>
-          <div class="mt-8 grid w-full gap-2 text-left" id="AddressProvinceContainerNew" style="display: none">
-            <label for="AddressProvinceNew">{{ 'customer.addresses.province' | t }}</label>
-            <div class="relative mt-2 w-full">
-              <select
-                class="block w-full appearance-none rounded border border-white bg-transparent bg-none px-4 py-3"
-                id="AddressProvinceNew"
-                name="address[province]"
-                data-default="{{ form.province }}"
-                autocomplete="address-level1"
-              ></select>
-              <span class="absolute right-4 top-1/2 -translate-y-1/2">
-                {%- render 'icon-caret' -%}
-              </span>
-            </div>
-          </div>
-          <div class="mt-8 grid w-full gap-2 text-left">
-            <label for="AddressZipNew">{{ 'customer.addresses.zip' | t }}</label>
-            <input
-              class="appearance-none rounded border border-white bg-transparent bg-none px-4 py-3"
-              type="text"
-              id="AddressZipNew"
-              name="address[zip]"
-              value="{{ form.zip }}"
-              autocapitalize="characters"
-              autocomplete="postal-code"
-            >
-          </div>
-          <div class="mt-8 grid w-full gap-2 text-left">
-            <label for="AddressPhoneNew">{{ 'customer.addresses.phone' | t }}</label>
-            <input
-              class="appearance-none rounded border border-white bg-transparent bg-none px-4 py-3"
-              type="tel"
-              id="AddressPhoneNew"
-              name="address[phone]"
-              value="{{ form.phone }}"
-              autocomplete="tel"
-            >
-          </div>
+          <input
+            class="appearance-none rounded border border-white bg-transparent bg-none px-4 py-3"
+            type="text"
+            id="AddressFirstNameNew"
+            name="address[first_name]"
+            value="{{ form.first_name }}"
+            autocomplete="given-name"
+            placeholder="{{ 'customer.addresses.first_name' | t }}"
+            class="inp"
+          >
+
+          <input
+            class="inp"
+            type="text"
+            id="AddressLastNameNew"
+            name="address[last_name]"
+            value="{{ form.last_name }}"
+            autocomplete="family-name"
+            placeholder="{{ 'customer.addresses.last_name' | t }}"
+          >
+
+          <input
+            class="inp"
+            type="text"
+            id="AddressCompanyNew"
+            name="address[company]"
+            value="{{ form.company }}"
+            autocomplete="organization"
+            placeholder="{{ 'customer.addresses.company' | t }}"
+          >
+
+          <input
+            class="inp"
+            type="text"
+            id="AddressAddress1New"
+            name="address[address1]"
+            value="{{ form.address1 }}"
+            autocomplete="address-line1"
+            placeholder="{{ 'customer.addresses.address1' | t }}"
+          >
+
+          <input
+            class="inp"
+            type="text"
+            id="AddressAddress2New"
+            name="address[address2]"
+            value="{{ form.address2 }}"
+            autocomplete="address-line2"
+            placeholder="{{ 'customer.addresses.address2' | t }}"
+          >
+
+          <input
+            class="appearance-none rounded border border-white bg-transparent bg-none px-4 py-3"
+            type="text"
+            id="AddressCityNew"
+            name="address[city]"
+            value="{{ form.city }}"
+            autocomplete="address-level2"
+            placeholder="{{ 'customer.addresses.city' | t }}"
+          >
+
+          <select
+            id="AddressCountryNew"
+            name="address[country]"
+            data-default="{{ form.country }}"
+            autocomplete="country"
+            placeholder="{{ 'customer.addresses.country' | t }}"
+          >
+            {{ all_country_option_tags }}
+          </select>
+
+          <select
+            id="AddressProvinceNew"
+            name="address[province]"
+            data-default="{{ form.province }}"
+            autocomplete="address-level1"
+            placeholder="{{ 'customer.addresses.province' | t }}"
+          ></select>
+
+          <input
+            class="inp"
+            type="text"
+            id="AddressZipNew"
+            name="address[zip]"
+            value="{{ form.zip }}"
+            autocapitalize="characters"
+            autocomplete="postal-code"
+            placeholder="{{ 'customer.addresses.zip' | t }}"
+          >
+
+          <input
+            class="inp"
+            type="tel"
+            id="AddressPhoneNew"
+            name="address[phone]"
+            value="{{ form.phone }}"
+            autocomplete="tel"
+            placeholder="{{ 'customer.addresses.phone' | t }}"
+          >
+
           <div class="mt-2 flex items-center gap-2">
             {{ form.set_as_default_checkbox }}
             <label for="address_default_address_new">{{ 'customer.addresses.set_default' | t }}</label>
           </div>
           <div class="mt-8 w-full text-left">
-            <button class="button mr-2 bg-primary text-contrast">{{ 'customer.addresses.add' | t }}</button>
-            <button class="button border border-primary/10 bg-contrast text-primary" type="reset">
+            <button class="btn btn-blue">{{ 'customer.addresses.add' | t }}</button>
+            <button class="btn btn-white" type="reset">
               {{ 'customer.addresses.cancel' | t }}
             </button>
           </div>
