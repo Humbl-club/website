@@ -26,12 +26,14 @@
                 <div class="contact__fields" {%- if form.posted_successfully? -%}style="display: none"{% endif %}>
                     <div class="contact__fields_name">
                         <div class="field contact__fields_name_first-name">
-                            <input aria-required="true" type="text" id="ContactForm-first-name" class="field__input inp names"
+                            <input aria-required="true" type="text" id="ContactForm-first-name"
+                                   class="field__input inp names"
                                    name="contact[first_name]" placeholder="First Name" required>
                         </div>
 
                         <div class="field contact__fields_name_last-name">
-                            <input aria-required="true" type="text" id="ContactForm-last-name" class="field__input inp names"
+                            <input aria-required="true" type="text" id="ContactForm-last-name"
+                                   class="field__input inp names"
                                    name="contact[last_name]"
                                    placeholder="Last Name" required>
                         </div>
@@ -41,9 +43,10 @@
                         <div class="field contact__fields_phone">
                             <label class="field__label" for="ContactForm-phone">Country Code</label>
 
-                            <input aria-required="true" type="tel" id="ContactForm-phone" class="field__input inp"
+                            <input required aria-required="true" type="tel" id="ContactForm-phone"
+                                   class="field__input inp"
                                    name="contact[phone]"
-                                   value="">
+                            >
                         </div>
                     </phone-number>
 
@@ -99,9 +102,6 @@
 
 
                 <div class="contact__button" {%- if form.posted_successfully? -%}style="display: none"{% endif %}>
-                        <div class="error-field" id="errorField"></div>
-
-
                     <button type="reset" class="button modal-close btn btn-white">
                         Cancel
                     </button>

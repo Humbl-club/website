@@ -71,8 +71,11 @@
   }
 
   &__data {
-    max-width: 752px;
+    max-width: 645px;
     margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
     & h2 {
       font-family: var(--third-family);
@@ -83,6 +86,7 @@
       line-height: 110%;
       color: #fff;
       margin: 0 0 32px;
+      text-transform: none;
 
       @media screen and (min-width: vars.$xl-bp) {
         font-size: 40px;
@@ -91,6 +95,7 @@
 
     & p {
       font-family: var(--font-family);
+      max-width: 645px;
       letter-spacing: -0.04em;
       font-weight: 400;
       font-size: 16px;

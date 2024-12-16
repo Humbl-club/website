@@ -547,6 +547,7 @@ main {
   text-decoration: underline;
   text-decoration-skip-ink: none;
   transition: text-decoration-color var(--time);
+  text-decoration-thickness: 0.1rem;
 
   @media (hover: hover) and (pointer: fine) {
     &:hover {

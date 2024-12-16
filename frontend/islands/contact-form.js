@@ -2,83 +2,114 @@ import '@/styles/blocks/contact-form.scss'
 
 class ContactForm extends window.HTMLElement {
     connectedCallback() {
-        this.init()
+        this.init();
 
-        //email validation
-        let emailInput = this.querySelector('#ContactForm-email'),
-            errorElement = this.querySelector("#errorField"),
-            btnSubmit = this.querySelector('button[type="submit"]');
+        const btnSubmit = this.querySelector('button[type="submit"]');
+        const allInputs = this.querySelectorAll('input');
 
-        emailInput.addEventListener('input', (event) => {
-            setTimeout(function () {
-                let emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
-                    emailMsg = 'Enter a valid email',
-                    emailValue = emailInput.value.trim();
+        const validateAllFields = () => {
+            let hasError = false;
+
+            allInputs.forEach((input) => {
+                if (input.classList.contains('error') || input.value.trim() === "") {
+                    hasError = true;
+                }
+            });
+
+            if (hasError) {
+                btnSubmit.setAttribute('disabled', 'true');
+            } else {
+                btnSubmit.removeAttribute('disabled');
+            }
+        };
+
+        // Email validation
+        const emailInput = this.querySelector('#ContactForm-email');
+        emailInput.addEventListener('input', () => {
+            setTimeout(() => {
+                const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                const emailValue = emailInput.value.trim();
+                const emailMsg = 'Enter a valid email';
 
                 if (!emailRegex.test(emailValue)) {
                     emailInput.classList.add("error");
-                    errorElement.innerHTML = emailMsg;
-                    btnSubmit.setAttribute('disabled', 'true');
-
+                    showError(emailInput, emailMsg);
                 } else {
-                    if (emailInput.classList.contains('error')) {
-                        emailInput.classList.remove("error");
-                    }
-
-                    btnSubmit.removeAttribute('disabled');
-                    errorElement.innerHTML = "";
+                    emailInput.classList.remove("error");
+                    clearError(emailInput);
                 }
-            }, 1000)
+                validateAllFields();
+            }, 1000);
         });
 
+        // Order number validation
+        const orderNumberInput = this.querySelector('#ContactForm-order-number');
+        orderNumberInput.addEventListener('input', () => {
+            setTimeout(() => {
+                const orderValue = orderNumberInput.value.trim();
+                const orderMsg = 'Order number cannot be empty';
 
-        //names validation
-        let nameFields = this.querySelectorAll('.names');
+                if (orderValue === "") {
+                    orderNumberInput.classList.add("error");
+                    showError(orderNumberInput, orderMsg);
+                } else {
+                    orderNumberInput.classList.remove("error");
+                    clearError(orderNumberInput);
+                }
+                validateAllFields();
+            }, 1000);
+        });
 
-        nameFields.forEach(function (field) {
-            field.addEventListener('input', function (event) {
-                let firstNameInput = document.querySelector('#ContactForm-first-name'),
-                    lastNameInput = document.querySelector('#ContactForm-last-name'),
-                    errorElement = document.querySelector("#errorField");
+        // Name validation
+        const nameFields = this.querySelectorAll('.names');
+        nameFields.forEach((field) => {
+            field.addEventListener('input', () => {
+                setTimeout(() => {
+                    const validateName = (input) => {
+                        const value = input.value.trim();
+                        return /^[^\d\s]+$/.test(value) && value.length > 0;
+                    };
 
-                setTimeout(function () {
-                    function validateField(input) {
-                        let value = input.value.trim();
-                        if (/^\d+$/.test(value)) return false;
-                        return value.length > 0;
-                    }
+                    const nameMsg = 'Enter a valid name';
 
-                    let firstNameValid = validateField(firstNameInput),
-                        lastNameValid = validateField(lastNameInput),
-                        nameMsg = 'The name field must be filled in and must not contain spaces and numbers only';
-
-                    if (!firstNameValid) {
-                        errorElement.innerHTML = nameMsg;
-                        addError(firstNameInput);
+                    if (!validateName(field)) {
+                        field.classList.add("error");
+                        showError(field, nameMsg);
                     } else {
-                        removeError(firstNameInput);
+                        field.classList.remove("error");
+                        clearError(field);
                     }
-
-                    if (!lastNameValid) {
-                        errorElement.innerHTML = nameMsg;
-                        addError(lastNameInput);
-                    } else {
-                        removeError(lastNameInput);
-                    }
-
-                    function addError(field) {
-                        field.classList.add('error');
-                        btnSubmit.setAttribute('disabled', 'true');
-                    }
-
-                    function removeError(field) {
-                        field.classList.remove('error');
-                        errorElement.innerHTML = '';
-                        btnSubmit.removeAttribute('disabled');
-                    }
-                }, 1000)
+                    validateAllFields();
+                }, 1000);
             });
-        })
+        });
+
+        // Function for displaying the error
+        function showError(input, message) {
+            let errorElement = input.nextElementSibling;
+            if (!errorElement || !errorElement.classList.contains('error-message')) {
+                errorElement = document.createElement('div');
+                errorElement.classList.add('error-field');
+                input.insertAdjacentElement('afterend', errorElement);
+            }
+            errorElement.textContent = message;
+        }
+
+        // Function for clearing an error
+        function clearError(input) {
+            const errorElement = input.nextElementSibling;
+            if (errorElement && errorElement.classList.contains('error-field')) {
+                errorElement.remove();
+            }
+        }
+
+        // Initialisation of validation of all fields
+        allInputs.forEach((input) => {
+            input.addEventListener('input', validateAllFields);
+        });
+
+        // Initial check
+        validateAllFields();
     }
 
 //ajax submit
