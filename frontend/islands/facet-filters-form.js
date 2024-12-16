@@ -85,7 +85,7 @@ class FacetFiltersForm extends window.HTMLElement {
       if (arr.length) {
         arr.forEach((el) => {
           const valueArr = el.replace(/[/[|\]]/gi, '').split(':')
-          if (valueArr.length > 0 && valueArr[1] !== '-') {
+          if (valueArr.length > 0 && valueArr[1] !== '') {
             this.sizes.push(valueArr[1])
           }
         })
@@ -447,7 +447,6 @@ class FacetFiltersForm extends window.HTMLElement {
       sortFilterForms.forEach((form) => {
         forms.push(this.createSearchParams(form))
       })
-      console.log(forms, 'helo')
       this.onSubmitForm(forms.join('&'), event)
     }
   }
