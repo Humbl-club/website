@@ -2,8 +2,6 @@ import '@/styles/blocks/main-wishlist.scss'
 
 class MainWishlist extends window.HTMLElement {
   connectedCallback() {
-    console.log('main-wishlist connected')
-
     const wishlistPage = document.getElementById('st-wishlist-page')
 
     if (wishlistPage) {
@@ -47,7 +45,6 @@ class MainWishlist extends window.HTMLElement {
               }
             })
           }
-          console.log(record)
         })
       })
 
