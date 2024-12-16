@@ -1,0 +1,24 @@
+{{ 'footer-anchor.css' | asset_url | stylesheet_tag }}
+<div class="footer-anchor wrapper" id="collection-bot">
+    <button
+            class="footer-anchor-up"
+            onclick="document.body.scrollIntoView({behavior: 'smooth'})"
+            aria-label="go up"
+    >
+        {% render 'icon-up' %}
+    </button>
+</div>
+
+{% schema %}
+{
+  "name": "Footer Anchor",
+  "tag": "section",
+  "class": "section margin-top-0",
+  "presets": [
+    {
+      "name": "Footer Anchor",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

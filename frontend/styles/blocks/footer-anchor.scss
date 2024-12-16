@@ -1,0 +1,30 @@
+@use "../mixins";
+@use "../vars";
+
+.footer-anchor {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+
+  &::before {
+    content: '';
+
+    @include mixins.breakpoint(vars.$xl-bp) {
+      content: normal;
+    }
+  }
+}
+
+.footer-anchor-up {
+  align-self: flex-end;
+  width: 2.4rem;
+  height: 2.4rem;
+  fill: var(--black);
+
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      fill: var(--blue);
+    }
+  }
+}
