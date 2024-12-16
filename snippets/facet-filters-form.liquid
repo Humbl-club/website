@@ -109,8 +109,8 @@
                                     <span class="switch-box"></span>
                                   </span>
                                 </label>
-                                <span class="body-1 flex flex-col">
-                                  {% if customer %}
+                                {% if customer %}
+                                  <span class="body-1 flex flex-col">
                                     {% if customer.metafields.custom.apparel_size %}
                                       <span>Apparel: {{ customer.metafields.custom.apparel_size }}</span>
                                     {% else %}
@@ -126,16 +126,16 @@
                                     {% else %}
                                       <span>Headwear: -</span>
                                     {% endif %}
-                                  {% else %}
-                                    <a
-                                      href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
-                                      class="link"
-                                    >
-                                      Sign in
-                                    </a>
-                                    to add your sizes
-                                  {% endif %}
-                                </span>
+                                  </span>
+                                {% else %}
+                                  <a
+                                    href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
+                                    class="link"
+                                  >
+                                    Sign in
+                                  </a>
+                                  to add your sizes
+                                {% endif %}
                               </li>
 
                               <li class="mobile-facets__item list-menu__item facets-switches">
