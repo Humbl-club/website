@@ -128,13 +128,15 @@
                                     {% endif %}
                                   </span>
                                 {% else %}
-                                  <a
-                                    href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
-                                    class="link"
-                                  >
-                                    Sign in
-                                  </a>
-                                  to add your sizes
+                                  <span class="body-1">
+                                    <a
+                                      href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
+                                      class="link"
+                                    >
+                                      Sign in
+                                    </a>
+                                    to add your sizes
+                                  </span>
                                 {% endif %}
                               </li>
 

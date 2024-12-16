@@ -1,6 +1,13 @@
 @use "../mixins";
 @use "../vars";
 
+.main-collection {
+  padding-top: 0!important;
+  &:first-child {
+    padding-top: 0!important;
+  }
+}
+
 .collection {
   position: relative;
 }
