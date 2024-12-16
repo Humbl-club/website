@@ -74,33 +74,38 @@
             placeholder="{{ 'customer.addresses.address2' | t }}"
           >
 
-          <input
-            class="appearance-none rounded border border-white bg-transparent bg-none px-4 py-3"
-            type="text"
-            id="AddressCityNew"
-            name="address[city]"
-            value="{{ form.city }}"
-            autocomplete="address-level2"
-            placeholder="{{ 'customer.addresses.city' | t }}"
-          >
-
-          <select
-            id="AddressCountryNew"
-            name="address[country]"
-            data-default="{{ form.country }}"
-            autocomplete="country"
-            placeholder="{{ 'customer.addresses.country' | t }}"
-          >
-            {{ all_country_option_tags }}
-          </select>
-
-          <select
-            id="AddressProvinceNew"
-            name="address[province]"
-            data-default="{{ form.province }}"
-            autocomplete="address-level1"
-            placeholder="{{ 'customer.addresses.province' | t }}"
-          ></select>
+          <div class="mt-8 grid w-full gap-2 text-left">
+            <label for="AddressCountryNew">{{ 'customer.addresses.country' | t }}</label>
+            <div class="relative mt-2 w-full">
+              <select
+                class="block w-full appearance-none rounded border border-white bg-transparent bg-none px-4 py-3"
+                id="AddressCountryNew"
+                name="address[country]"
+                data-default="{{ form.country }}"
+                autocomplete="country"
+              >
+                {{ all_country_option_tags }}
+              </select>
+              <span class="absolute right-4 top-1/2 -translate-y-1/2">
+                {%- render 'icon-caret' -%}
+              </span>
+            </div>
+          </div>
+          <div class="mt-8 grid w-full gap-2 text-left" id="AddressProvinceContainerNew" style="display: none">
+            <label for="AddressProvinceNew">{{ 'customer.addresses.province' | t }}</label>
+            <div class="relative mt-2 w-full">
+              <select
+                class="block w-full appearance-none rounded border border-white bg-transparent bg-none px-4 py-3"
+                id="AddressProvinceNew"
+                name="address[province]"
+                data-default="{{ form.province }}"
+                autocomplete="address-level1"
+              ></select>
+              <span class="absolute right-4 top-1/2 -translate-y-1/2">
+                {%- render 'icon-caret' -%}
+              </span>
+            </div>
+          </div>
 
           <input
             class="inp"
