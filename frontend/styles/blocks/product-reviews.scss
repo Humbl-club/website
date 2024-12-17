@@ -48,6 +48,9 @@
   .jdgm-row-stars {
     display: flex !important;
     justify-content: flex-start !important;
+    @include mixins.breakpoint(vars.$xl-bp) {
+      flex-direction: column;
+    }
   }
 
   .jdgm-rev-widg__header {

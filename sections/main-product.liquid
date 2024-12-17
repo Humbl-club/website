@@ -52,7 +52,7 @@
         -%}
         <div class="product-img img-cover swiper-slide">
           <picture>
-            <source srcset="{{ media.preview_image | image_url: width: 377 }}" media="(max-width:412px)">
+            <source srcset="{{ media.preview_image | image_url: width: 377, height: 470 }}" media="(max-width:412px)">
             {% assign height_by_aspect = 595 | divided_by: media.aspect_ratio | floor %}
             {{
               media.preview_image
