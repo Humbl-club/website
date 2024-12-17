@@ -24,9 +24,7 @@
           >
             <summary class="mobile-facets__summary">
               <h2 class="body-1">
-                {% if block.settings.product_info == 'none' %}
-                  {{ block.settings.title | default: block.settings.page.title }}
-                {% endif %}
+                {{ block.settings.title | default: block.settings.page.title }}
               </h2>
             </summary>
             <div class="mobile-facets__submenu body-1" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
