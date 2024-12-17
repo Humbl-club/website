@@ -304,12 +304,12 @@
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
-  max-width: 27rem;
+  max-width: 23rem;
 }
 
 .product-colorbox {
-  width: 5rem;
-  height: 5rem;
+  width: 4rem;
+  height: 4rem;
   display: block;
   position: relative;
 
@@ -327,6 +327,10 @@
     height: 100%;
     transition: opacity var(--time);
     opacity: 0;
+  }
+
+  &[data-color="Clear white"] {
+    border: 0.1rem solid lightgrey;
   }
 
   &.checked {

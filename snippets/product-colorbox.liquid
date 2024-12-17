@@ -8,6 +8,7 @@
           href="{{ product.url }}"
           class="product-colorbox {% if checked == true%}checked{% endif %}"
           style="background-color: {{color}};"
+          data-color="{{ value.label }}"
         >
           <span class="sr-only">{{ value.label }}</span>
         </a>
