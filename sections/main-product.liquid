@@ -28,15 +28,15 @@
               </h2>
             </summary>
             <div class="mobile-facets__submenu body-1" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
-              {% if block.settings.product_info == 'none' %}
+              {% if block.settings.product_info == 'description' and product.description %}
+                {{ product.description }}
+              {% elsif block.settings.product_info == 'size' and product.metafields.custom.size_details %}
+                {{ product.metafields.custom.size_details }}
+              {% elsif block.settings.product_info == 'delivery' and product.metafields.custom.delivery_details %}
+                {{ product.metafields.custom.delivery_details }}
+              {% else %}
                 {{ block.settings.content }}
                 {{ block.settings.page.content }}
-              {% elsif block.settings.product_info == 'description' %}
-                {{ product.description }}
-              {% elsif block.settings.product_info == 'size' %}
-                {{ product.metafields.custom.size_details }}
-              {% elsif block.settings.product_info == 'delivery' %}
-                {{ product.metafields.custom.delivery_details }}
               {% endif %}
             </div>
           </details>
