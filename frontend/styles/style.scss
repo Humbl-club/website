@@ -501,11 +501,19 @@ main {
   justify-content: space-between;
   align-items: center;
 
+  .data-checkbox,
   input {
     position: absolute;
     pointer-events: none;
     opacity: 0;
-
+    &[data-disabled],
+    &:disabled {
+      background-color: transparent;
+      &::before {
+        background-color: #A0A0A0;
+      }
+    }
+    &.checked+.switch-box,
     &:checked+.switch-box {
       background-color: #34C759;
       border-color: #34C759;
@@ -528,10 +536,10 @@ main {
   position: relative;
   cursor: pointer;
   transition: background-color var(--time);
-
+  background-color: #A0A0A0;
   &::before {
     content: '';
-    background: #a0a0a0;
+    background: var(--white);
     width: 2rem;
     height: 2rem;
     border-radius: 100%;

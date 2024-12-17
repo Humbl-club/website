@@ -51,6 +51,8 @@ function countFilters() {
         const checkeds = details.querySelectorAll('input:checked')
         if (checkeds.length) {
           el.innerHTML = ` (${checkeds.length})`
+        } else {
+          el.innerHTML = ''
         }
       }
     })
@@ -115,8 +117,6 @@ class FacetFiltersForm extends window.HTMLElement {
               el.removeAttribute('checked')
               el.checked = false
             })
-            const facetForm = this.querySelector('form')
-            facetForm.reset()
           }
         })
       }
@@ -187,9 +187,16 @@ class FacetFiltersForm extends window.HTMLElement {
         FacetFiltersForm.renderFilters(html, event)
         FacetFiltersForm.renderProductGridContainer(html)
         FacetFiltersForm.renderProductCount(html)
-        initButtons()
-        initFacetContainer()
-        countFilters()
+
+        setTimeout(() => {
+          initButtons()
+          initFacetContainer()
+          countFilters()
+        })
+        const facet = document.querySelector('facet-filters-form')
+        if (facet) {
+          facet.initSizeCheckbox()
+        }
         const mobileModal = document.getElementById('mobile-modal')
         if (mobileModal) {
           setTimeout(() => {
@@ -207,9 +214,16 @@ class FacetFiltersForm extends window.HTMLElement {
     FacetFiltersForm.renderFilters(html, event)
     FacetFiltersForm.renderProductGridContainer(html)
     FacetFiltersForm.renderProductCount(html)
-    initButtons()
-    initFacetContainer()
-    countFilters()
+
+    setTimeout(() => {
+      initButtons()
+      initFacetContainer()
+      countFilters()
+    })
+    const facet = document.querySelector('facet-filters-form')
+    if (facet) {
+      facet.initSizeCheckbox()
+    }
     if (typeof initializeScrollAnimationTrigger === 'function')
       window.initializeScrollAnimationTrigger(html.innerHTML)
   }
