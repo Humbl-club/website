@@ -119,7 +119,7 @@
 
 .header-inner {
   overflow-y: auto;
-  padding-top: 15rem;
+  padding-top: 9rem;
   padding-bottom: 6rem;
 
   @include mixins.breakpoint(vars.$xl-bp) {
