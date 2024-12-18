@@ -119,9 +119,11 @@
 
 .header-inner {
   overflow-y: auto;
-  padding-top: 9rem;
+  padding-top: 12rem;
   padding-bottom: 6rem;
-
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
   @include mixins.breakpoint(vars.$xl-bp) {
     padding-top: 2rem;
     padding-bottom: 4rem;
@@ -187,7 +189,7 @@
 .header-nav-2 {
   display: flex;
   flex-direction: column;
-  margin-top: 7rem;
+  margin-top: 5rem;
 
   @include mixins.breakpoint(vars.$xl-bp) {
     margin-top: 4rem;
@@ -214,7 +216,7 @@
 }
 
 .search-modal-form {
-  margin-top: 6rem;
+  margin-top: 5rem;
 
   @include mixins.breakpoint(vars.$xl-bp) {
     margin-top: 4rem;
@@ -300,7 +302,7 @@ input:-webkit-autofill:active {
   color: var(--white);
 
   margin-top: auto;
-  padding-top: 7rem;
+  padding-top: 7rem; 
 
   @include mixins.breakpoint(vars.$xl-bp) {
     padding-top: 4rem;
@@ -318,7 +320,7 @@ input:-webkit-autofill:active {
 }
 
 .header-subscribe {
-  margin-top: 7rem;
+  margin-top: 5rem;
 
   @include mixins.breakpoint(vars.$xl-bp) {
     margin-top: 4rem;

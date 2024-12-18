@@ -102,7 +102,12 @@ class FacetFiltersForm extends window.HTMLElement {
             this.allSizesCheckboxes.forEach((el) => {
               if (this.sizeCheckbox.checked) {
                 this.sizes.forEach((size) => {
-                  if (el.dataset.textvalue.includes(size)) {
+                  if (
+                    el.dataset.textvalue
+                      .trim()
+                      .toLowerCase()
+                      .includes(size.trim().toLowerCase())
+                  ) {
                     el.setAttribute('checked', true)
                     el.checked = true
                   }
