@@ -50,12 +50,17 @@
         "about_title": "Our Founder",
         "about_text": "<p>Emily Oberg was born in Calgary, Alberta. In 2015 she moved to New York to work at Complex Magazine as an editorial producer. While there, she began developing the Sporty & Rich universe and identity— vintage sportswear tied with luxury. S&R started out as an Instagram mood board, followed by a print magazine and later, a small assortment of apparel. <br/>With no intention of turning it into a real brand, it naturally progressed into something more than what Emily initially envisioned. She now lives between Los Angeles and Paris— where the Sporty & Rich headquarters are based along with its team. From its inception, Emily has served as the brand's visual director, overseeing everything from design, marketing, casting, production, social strategy, collaborations and art direction.</p><p><a href=\"#\" target=\"_blank\" title=\"#\">Subscribe</a> to Emily Loves Newsletter</p>"
       }
+    },
+    "footer_anchor_9kc8xR": {
+      "type": "footer-anchor",
+      "settings": {}
     }
   },
   "order": [
     "first",
     "brand_block_Bzba97",
     "about_us_sides_37xy6A",
-    "about_us_sides_wcAmUW"
+    "about_us_sides_wcAmUW",
+    "footer_anchor_9kc8xR"
   ]
 }
