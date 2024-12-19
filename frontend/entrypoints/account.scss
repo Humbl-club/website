@@ -97,6 +97,9 @@ main {
 
 .account-logout {
   margin-top: 6.5rem;
+  @include mixins.breakpoint(vars.$xl-bp) {
+    margin-top: 0;
+  }
 }
 
 .account-content {
