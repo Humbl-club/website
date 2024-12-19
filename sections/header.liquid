@@ -71,8 +71,8 @@
     </header-drawer>
   {%- endif -%}
 
-  <div class="relative">
-    <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
+  <div class="header__heading-link">
+    <a href="{{ routes.root_url }}" class="link link--text focus-inset relative">
       {%- if settings.logo != blank -%}
         <div class="header-logo">
           {%- assign logo_alt = settings.logo.alt | default: shop.name | escape -%}
