@@ -5,7 +5,7 @@
   {%- assign h = 140 | divided_by: item.image.aspect_ratio | floor -%}
 
   <a href="{{ item.url }}" class="complementary-subimg img-cover">
-    {{ img | image_url: width: w, height: h | image_tag: loading: 'lazy', width: w, height: h, alt: img.alt | escape }}
+    {{ img | image_url: width: w, height: h | image_tag: loading: 'eager', width: w, height: h, alt: img.alt | escape }}
   </a>
   <div class="complementary-right">
     <h3 class="complementary-title">

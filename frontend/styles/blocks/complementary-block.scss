@@ -18,9 +18,10 @@
 
 .complementary-subimg {
   width: 13.4rem;
-
+  height: 14rem;
   @include mixins.breakpoint(vars.$xl-bp) {
     width: 8.8rem;
+    height: 10rem
   }
 }
 
