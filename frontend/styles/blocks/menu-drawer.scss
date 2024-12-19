@@ -179,48 +179,6 @@ menu-drawer {
   }
 }
 
-.modal-labels {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2.4rem;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -o-user-select: none;
-  user-select: none;
-
-  input {
-    display: none;
-
-    &:checked {
-      &+.radio2-label {
-        .radio2-box {
-          background-color: var(--black);
-
-          &::before {
-            opacity: 1;
-          }
-        }
-      }
-    }
-  }
-
-  @for $i from 1 through 3 {
-    #tab-#{$i}:checked ~ .modal-tabs .modal-tab[data-tab="#{$i}"] {
-      display: block;
-    }
-  }
-}
-
-.modal-tab {
-  display: none;
-}
-
-.modal-tabs{
-  width: 100%;
-}
-
 .modal-page-title {
   margin-top: 5.5rem; 
   @include mixins.breakpoint(vars.$xl-bp) {
