@@ -1,6 +1,8 @@
 {% if section.settings.image != blank %}
   <picture>
     {% if section.settings.image_mobile != blank %}
+      <source media="(max-width: 375px)" srcset="{{ section.settings.image_mobile | image_url: width: 375 }}">
+      <source media="(max-width: 412px)" srcset="{{ section.settings.image_mobile | image_url: width: 412 }}">
       <source media="(max-width: 500px)" srcset="{{ section.settings.image_mobile | image_url: width: 500 }}">
     {% endif %}
     {{
