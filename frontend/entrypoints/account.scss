@@ -52,6 +52,10 @@ main {
   display: grid;
   grid-template-columns: 18.8rem 1fr;
   padding-top: 0;
+  @include mixins.breakpoint(vars.$xl-bp) {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .account-aside {
@@ -60,12 +64,32 @@ main {
   max-width: 100%;
   position: sticky;
   top: 10rem;
+  @include mixins.breakpoint(vars.$xl-bp) {
+    top: 0;
+    padding-top: 0;
+    flex-direction: row;
+    white-space: nowrap;
+    background-color: #f7f7f7;
+    overflow-x: auto;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
 }
 
 .account-link {
   padding-top: 1rem;
   padding-bottom: 1rem;
   transition: opacity var(--time);
+  @include mixins.breakpoint(vars.$xl-bp) {
+    padding: 1.6rem 1rem;
+    &:first-child {
+      padding-left: 0;
+    }
+    &:last-child {
+      padding-right: 0;
+    }
+  }
   &.active {
     opacity: 1;
   }
@@ -79,6 +103,9 @@ main {
   display: flex;
   justify-content: center;
   padding-right: 18.8rem;
+  @include mixins.breakpoint(vars.$xl-bp) {
+    padding-right: 0;
+  }
 }
 
 .account-target {

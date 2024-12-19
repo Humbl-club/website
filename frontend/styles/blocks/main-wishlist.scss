@@ -9,6 +9,10 @@
   display: block;
 }
 
+.st-page {
+  margin: 0!important;
+}
+
 .st-page-container {
   padding: 0!important;
 }
@@ -48,7 +52,10 @@
   background-color: var(--milk);
   margin: 0!important;
   padding: 0!important; 
-
+  @include mixins.breakpoint(vars.$xl-bp) {
+    height: 10rem!important;
+    width: 8.8rem!important;
+  }
   img {
     width: 100%!important;
     height: 100%!important;
@@ -66,7 +73,9 @@
   top: 0;
   right: 0;
 }
-
+.st-product-card_title {
+  max-height: 100%!important;
+}
 .st-product-card_price,
 .st-product-card_title a{
   text-align: start!important;
@@ -76,6 +85,12 @@
   line-height: 150%!important;
   letter-spacing: -0.04em!important;
   color: var(--black)!important;  
+  max-width: 30rem!important;
+  height: auto!important;
+  @include mixins.breakpoint(vars.$xl-bp) {
+    font-size: 1.4rem!important;
+    max-width: 10rem!important;
+  }
 }
 
 .main-wishlist-bot {
