@@ -3,26 +3,27 @@
   Do not attempt to modify this file directly, as any changes will be overwritten by the next build.
 {% endcomment %}
 {% assign path = vite-tag | replace: '~/', '../' | replace: '@/', '../' %}
-{% if path == "/frontend/entrypoints/account.scss" or path == "account.scss" %}
-  {{ 'account.l7fSB_ON.min.css' | asset_url | split: '?' | first | stylesheet_tag: preload: preload_stylesheet }}
-{% elsif path == "/frontend/entrypoints/blog.scss" or path == "blog.scss" %}
-  {{ 'blog.XKRoNGdM.min.css' | asset_url | split: '?' | first | stylesheet_tag: preload: preload_stylesheet }}
-{% elsif path == "/frontend/entrypoints/collection-footer.scss" or path == "collection-footer.scss" %}
-  {{ 'collection-footer.l0sNRNKZ.min.js' | asset_url | split: '?' | first | stylesheet_tag: preload: preload_stylesheet }}
-{% elsif path == "/frontend/entrypoints/collection-gallery.scss" or path == "collection-gallery.scss" %}
-  {{ 'collection-gallery.Dy-lM0F1.min.css' | asset_url | split: '?' | first | stylesheet_tag: preload: preload_stylesheet }}
-{% elsif path == "/frontend/entrypoints/customers.js" or path == "customers.js" %}
-  <script src="{{ 'customers.D6MsfQAB.min.js' | asset_url | split: '?' | first }}" type="module" crossorigin="anonymous"></script>
-  <link rel="modulepreload" href="{{ 'modulepreload-polyfill.ylYzXbQE.min.js' | asset_url | split: '?' | first }}" crossorigin="anonymous">
-{% elsif path == "/frontend/entrypoints/gallery.scss" or path == "gallery.scss" %}
-  {{ 'gallery.ZLdD6LdU.min.css' | asset_url | split: '?' | first | stylesheet_tag: preload: preload_stylesheet }}
-{% elsif path == "/frontend/entrypoints/page-collection.scss" or path == "page-collection.scss" %}
-  {{ 'page-collection.Den4iBrc.min.css' | asset_url | split: '?' | first | stylesheet_tag: preload: preload_stylesheet }}
-{% elsif path == "/frontend/entrypoints/product.scss" or path == "product.scss" %}
-  {{ 'product.Cq3s-V2b.min.css' | asset_url | split: '?' | first | stylesheet_tag: preload: preload_stylesheet }}
-{% elsif path == "/frontend/entrypoints/theme.css" or path == "theme.css" %}
-  {{ 'theme.Cf21yx6b.min.css' | asset_url | split: '?' | first | stylesheet_tag: preload: preload_stylesheet }}
-{% elsif path == "/frontend/entrypoints/theme.js" or path == "theme.js" %}
-  <script src="{{ 'theme.Bbk9cUuc.min.js' | asset_url | split: '?' | first }}" type="module" crossorigin="anonymous"></script>
-  <link rel="modulepreload" href="{{ 'modulepreload-polyfill.ylYzXbQE.min.js' | asset_url | split: '?' | first }}" crossorigin="anonymous">
+{% liquid
+  assign path_prefix = path | slice: 0
+  if path_prefix == '/'
+    assign file_url_prefix = 'http://localhost:5173'
+  else
+    assign file_url_prefix = 'http://localhost:5173/frontend/entrypoints/'
+  endif
+  assign file_url = path | prepend: file_url_prefix
+  assign file_name = path | split: '/' | last
+  if file_name contains '.'
+    assign file_extension = file_name | split: '.' | last
+  endif
+  assign css_extensions = 'css|less|sass|scss|styl|stylus|pcss|postcss' | split: '|'
+  assign is_css = false
+  if css_extensions contains file_extension
+    assign is_css = true
+  endif
+%}
+<script src="http://localhost:5173/@vite/client" type="module"></script>
+{% if is_css == true %}
+  <link rel="stylesheet" href="{{ file_url }}" crossorigin="anonymous">
+{% else %}
+  <script src="{{ file_url }}" type="module"></script>
 {% endif %}
