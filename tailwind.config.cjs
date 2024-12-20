@@ -30,7 +30,9 @@ module.exports = {
         screen: 'var(--screen-height, 100vh)',
         8: '0.8rem',
         32: '3.2rem',
-        10: '1rem'
+        10: '1rem',
+        20: '2rem',
+        70: '7rem'
       },
       height: {
         screen: 'var(--screen-height, 100vh)',
