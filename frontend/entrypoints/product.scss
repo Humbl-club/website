@@ -348,6 +348,9 @@
   height: 1rem;
   margin-right: 1rem;
   display: inline-block;
+  &[data-color="Clear white"] {
+    border: 0.1rem solid lightgrey;
+  }
 }
 
 .product-complementary {

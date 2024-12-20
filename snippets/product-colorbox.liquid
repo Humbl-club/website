@@ -16,7 +16,11 @@
           href="{{ product.url }}"
           class="product-select-item button-title-2 {% if checked == true%}same-as-selected{% endif %}"
         >
-          <span class="product-colorbox-mobile" style="background-color: {{color}};"></span>
+          <span
+            class="product-colorbox-mobile"
+            style="background-color: {{color}};"
+            data-color="{{ value.label }}"
+          ></span>
           {{- value.label -}}
         </a>
       </div>
