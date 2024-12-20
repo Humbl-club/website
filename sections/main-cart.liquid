@@ -10,7 +10,10 @@
 
   <div class="cart-empty section-pt wrapper">
     <p class="headline-2">{{ 'sections.cart.empty' | t }}</p>
-    <a href="{{ section.settings.collection.url }}" class="cart-link">
+    <a
+      href="{% if section.settings.collection %}{{ section.settings.collection.url }}{%else%}{{routes.root_url}}{% endif %}"
+      class="cart-link"
+    >
       {{ 'general.continue_shopping' | t }}
     </a>
   </div>
