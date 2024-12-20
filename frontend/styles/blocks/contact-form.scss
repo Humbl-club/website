@@ -115,10 +115,13 @@ contact-form {
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
 
     .color- {
       height: 100%;
+    }
+
+    &.submitted {
+      justify-content: center;
     }
   }
 }

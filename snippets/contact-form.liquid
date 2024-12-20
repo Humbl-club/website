@@ -28,14 +28,14 @@
                         <div class="field contact__fields_name_first-name">
                             <input aria-required="true" type="text" id="ContactForm-first-name"
                                    class="field__input inp names"
-                                   name="contact[first_name]" placeholder="First Name" required>
+                                   name="contact[first_name]" placeholder="First Name*" required>
                         </div>
 
                         <div class="field contact__fields_name_last-name">
                             <input aria-required="true" type="text" id="ContactForm-last-name"
                                    class="field__input inp names"
                                    name="contact[last_name]"
-                                   placeholder="Last Name" required>
+                                   placeholder="Last Name*" required>
                         </div>
                     </div>
 
@@ -46,6 +46,7 @@
                             <input required aria-required="true" type="tel" id="ContactForm-phone"
                                    class="field__input inp"
                                    name="contact[phone]"
+                                   placeholder="Phone*"
                             >
                         </div>
                     </phone-number>
@@ -57,9 +58,10 @@
                                     <label class="field__label" for="ContactForm-country">Country/Region</label>
 
                                     <select id="ContactForm-country" name="contact[country]">
+                                        <option value="Not Selected">Not Selected</option>
 
                                     </select>
-                                    <div class="select-selected">Country</div>
+                                    <div class="select-selected">Country*</div>
                                 </div>
                             </cart-select>
                         </country-list>
@@ -67,12 +69,12 @@
 
                     <div class="field field--with-error contact__fields_email">
                         <input type="email" id="ContactForm-email" class="field__input inp" name="contact[email]"
-                               placeholder="Email" required>
+                               placeholder="Email*" required>
                     </div>
 
                     <div class="field contact__fields_order">
                         <input type="text" id="ContactForm-order-number" class="field__input inp"
-                               name="contact[order_number]" aria-required="true" placeholder="Order Number">
+                               name="contact[order_number]" aria-required="true" placeholder="Order Number*">
                     </div>
 
                     <div class="field contact_inquiry">
@@ -81,14 +83,14 @@
                                 <label class="field__label" for="ContactForm-inquiry-type">Type of Inquiry</label>
 
                                 <select id="ContactForm-inquiry-type" name="contact[inquiry_type]">
-                                    <option value="order">Order Information</option>
-                                    <option value="product">Product Information</option>
-                                    <option value="reservation">Reservation</option>
-                                    <option value="returns">Returns</option>
-                                    <option value="visit">Store Visit</option>
-                                    <option value="difficulties">Technical Difficulties</option>
-                                    <option value="other">Other</option>
+                                    <option value="Not Selected">Not Selected</option>
+                                    <option value="Reservation">Reservation</option>
+                                    <option value="Returns">Returns</option>
+                                    <option value="Store Visit">Store Visit</option>
+                                    <option value="Technical Difficulties">Technical Difficulties</option>
+                                    <option value="Other">Other</option>
                                 </select>
+
                                 <div class="select-selected">Order Information</div>
                             </div>
                         </cart-select>

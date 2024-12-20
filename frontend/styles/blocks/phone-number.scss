@@ -17,6 +17,12 @@
     align-items: center;
   }
 
+  &__search-input {
+    &:focus-visible {
+      outline: none;
+    }
+  }
+
   &__country-container {
     position: relative;
     border: 0.1rem solid rgba($color: #000000, $alpha: 0.1);
@@ -55,7 +61,6 @@
 
     &:focus-visible {
       outline: none;
-      border: 0.1rem solid var(--black);
       transition: border-color var(--time);
     }
   }
@@ -63,7 +68,6 @@
   &__tel-input {
     height: 5rem;
     padding: 20px 16px !important;
-    transition: .3s;
 
     &.error {
       border-color: red;
