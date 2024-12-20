@@ -10,7 +10,7 @@
 
   <div class="cart-empty section-pt wrapper">
     <p class="headline-2">{{ 'sections.cart.empty' | t }}</p>
-    <a href="/collections/all-colors" class="cart-link">
+    <a href="{{ section.settings.collection.url }}" class="cart-link">
       {{ 'general.continue_shopping' | t }}
     </a>
   </div>
@@ -118,7 +118,7 @@
         <h2 class="headline-1">{{ 'sections.cart.subtotalwithvat' | t }}</h2>
         <p class="headline-1">{{ cart.total_price | money_without_trailing_zeros }}</p>
       </div>
-      {%- assign free_shipping = 200 -%}
+      {%- assign free_shipping = section.settings.price -%}
       <div class="cart-line">
         <h3 class="headline-2 opacity-50">{{ 'sections.cart.shipping' | t }}</h3>
         <p>{{- 'sections.cart.free_shipping' | t: count: free_shipping -}}</p>
@@ -175,6 +175,20 @@
 {% schema %}
 {
   "name": "Cart page",
-  "class": "cart-main"
+  "class": "cart-main",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "info": "Link to collection page if cart is empty",
+      "label": "Collection"
+    },
+    {
+      "type": "number",
+      "label": "Free price shipping",
+      "id": "price",
+      "default": 50
+    }
+  ]
 }
 {% endschema %}
