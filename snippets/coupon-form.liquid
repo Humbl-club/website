@@ -1,0 +1,13 @@
+<coupon-form data-action="/discount/" class="flex-col opacity-0 {{ class }}" client:idle>
+  <div class="coupon-line flex">
+    <input class="inp coupon-input" type="text" name="discount" placeholder="Discount code">
+    <button type="button" class="btn btn-blue coupon-btn">Apply</button>
+  </div>
+  {% if cart.discount_applications.size > 0 %}
+    <div class="coupon-discounts">
+      {% for item in cart.discount_applications %}
+        <span class="coupon-discount body-2 opacity-50">{{ item.title }}</span>
+      {% endfor %}
+    </div>
+  {% endif %}
+</coupon-form>

@@ -1,0 +1,34 @@
+@use "../mixins";
+@use "../vars";
+
+.cart-coupon {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.cart-drawer-coupon {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin-bottom: 3.2rem;
+  @include mixins.breakpoint(vars.$xl-bp) {
+    margin-bottom: 2rem;
+  }
+}
+
+.coupon-line {
+  display: flex;
+  align-items: stretch;
+}
+
+.coupon-discounts {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.coupon-discount {
+  padding: 0.5rem;
+}

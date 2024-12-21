@@ -927,6 +927,17 @@ menu-drawer {
   display: none
 }
 
+.coupon-btn {
+  padding: 1rem 2rem;
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @include mixins.breakpoint(vars.$xl-bp) {
+    font-size: 1.4rem;
+  }
+} 
+
 /* Blocks */
 
 @include meta.load-css("importsBlocks");

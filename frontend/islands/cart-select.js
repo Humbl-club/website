@@ -15,7 +15,7 @@ class CartSelect extends window.HTMLElement {
       a = this.querySelector('.select-selected')
       /* For each element, create a new DIV that will contain the option list: */
       b = document.createElement('DIV')
-      b.setAttribute('class', 'select-items select-hide')
+      b.setAttribute('class', 'select-items select-hide --top')
       for (j = 1; j < ll; j++) {
         /* For each option in the original select element,
         create a new DIV that will act as an option item: */
