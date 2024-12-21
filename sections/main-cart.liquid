@@ -119,7 +119,12 @@
     <div class="cart-note wrapper-mobile">
       <div id="cart-subtotal" class="cart-line cart-subtotal">
         <h2 class="headline-1">{{ 'sections.cart.subtotalwithvat' | t }}</h2>
-        <p class="headline-1">{{ cart.total_price | money_without_trailing_zeros }}</p>
+        <div class="flex items-baseline gap-10">
+          {% if cart.original_total_price != cart.total_price %}
+            <s class="opacity-50">{{ cart.original_total_price | money_without_trailing_zeros }}</s>
+          {% endif %}
+          <p class="headline-1">{{ cart.total_price | money_without_trailing_zeros }}</p>
+        </div>
       </div>
       {%- assign free_shipping = section.settings.price -%}
       <div class="cart-line">
