@@ -1,9 +1,7 @@
 <div class="item-info-price">
   {% if item.original_line_price != item.final_line_price %}
-    <div>
-      <span class="">{{ 'products.product.price.regular_price' | t }}</span>
+    <div class="flex items-baseline gap-10">
       <s class="">{{ item.original_line_price | money_without_trailing_zeros }}</s>
-      <span class="">{{ 'products.product.price.sale_price' | t }}</span>
       <span>{{ item.final_line_price | money_without_trailing_zeros }}</span>
     </div>
   {% else %}
