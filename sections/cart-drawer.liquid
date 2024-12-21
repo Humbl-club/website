@@ -156,7 +156,12 @@
         <div class="cart-drawer-footer">
           <div class="subtotal">
             <h2 class="subtotal-label headline-1">{{ 'sections.cart.subtotal' | t }}</h2>
-            <p class="subtotal-amount headline-1">{{ cart.total_price | money_without_trailing_zeros }}</p>
+            <div class="flex items-baseline gap-10">
+              {% if cart.original_total_price != cart.total_price %}
+                <s class="opacity-50">{{ cart.original_total_price | money_without_trailing_zeros }}</s>
+              {% endif %}
+              <p class="subtotal-amount headline-1">{{ cart.total_price | money_without_trailing_zeros }}</p>
+            </div>
           </div>
 
           <div class="cart-drawer-footer-buttons">
