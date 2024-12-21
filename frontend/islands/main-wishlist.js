@@ -40,6 +40,13 @@ class MainWishlist extends window.HTMLElement {
                     form.appendChild(block)
                   }
 
+                  const link = el.querySelector('.st-product-card_title a')
+                  if (link) {
+                    const clone = link.cloneNode(true)
+                    clone.classList.add('hidden-link')
+                    el.prepend(clone)
+                  }
+
                   // block.appendChild(addBtn)
                 }
               }
