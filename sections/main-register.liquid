@@ -1,5 +1,5 @@
 <div class="account-wrapper body-1 flex flex-col items-center">
-  <h1 class="headline-2 w-full text-start">
+  <h1 class="headline-2 mb-20 w-full text-start">
     {{ 'customer.register.title' | t }}
   </h1>
   <just-validate class="block w-full">
@@ -148,6 +148,23 @@
       </div>
 
       <div id="errors-container_custom-name"></div>
+
+      {%- if form.errors -%}
+        <ul class="error-text col-span-2 list-inside list-disc">
+          {%- for field in form.errors -%}
+            <li>
+              {%- if field == 'form' -%}
+                {{ form.errors.messages[field] }}
+              {%- else -%}
+                <a href="#RegisterForm-{{ field }}">
+                  {{ form.errors.translated_fields[field] | capitalize }}
+                  {{ form.errors.messages[field] }}
+                </a>
+              {%- endif -%}
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
     {%- endform -%}
   </just-validate>
 </div>

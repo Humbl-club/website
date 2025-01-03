@@ -11,7 +11,7 @@ class ValidateIsland extends window.HTMLElement {
       },
       errorLabelCssClass: ['error-text'],
       errorFieldCssClass: ['error'],
-      validateBeforeSubmitting: true,
+      validateBeforeSubmitting: false,
       errorsContainer: '#errors-container_custom-name'
     }
 
@@ -107,6 +107,10 @@ class ValidateIsland extends window.HTMLElement {
         ])
       })
     }
+
+    this.validate.onSuccess((event) => {
+      event.currentTarget.submit()
+    })
   }
 }
 

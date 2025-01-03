@@ -117,7 +117,7 @@
     {%- endfor -%}
 
     <div class="cart-note wrapper-mobile">
-      {% render 'coupon-form', class: 'cart-line cart-coupon' %}
+      {% comment %} {% render 'coupon-form', class: 'cart-line cart-coupon' %} {% endcomment %}
 
       <div id="cart-subtotal" class="cart-line cart-subtotal">
         {% render 'cart-subtotal' %}

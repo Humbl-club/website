@@ -39,12 +39,12 @@
     {%- endform -%}
   </div>
 
-  <h1 id="login" class="title-1 [#recover:target_~_&]:hidden">
+  <h2 id="login" class="title-1 w-full text-left normal-case [#recover:target_~_&]:hidden">
     {{ 'customer.login_page.title' | t }}
-  </h1>
+  </h2>
   <div class="account-block [#recover:target_~_#login_+_&]:hidden">
     {%- if recover_success == true -%}
-      <h3 class="mb-10" tabindex="-1" autofocus>
+      <h3 class="mb-10 text-center">
         {{ 'customer.recover_password.success' | t }}
       </h3>
     {%- endif -%}
