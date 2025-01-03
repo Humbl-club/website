@@ -58,6 +58,17 @@ main {
   }
 }
 
+.main-wishlist {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 0;
+  padding-left: 0;
+  .account-content {
+    padding-right: 0;
+  }
+}
+
 .account-aside {
   display: flex;
   flex-direction: column;
@@ -141,4 +152,67 @@ main {
 .account-checkbox {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+}
+
+.customerHub .chContent .chContent-Wrapper {
+  width: 1810px!important;
+}
+
+.customerHub .chContent .chContent-Wrapper .chContent-Body .chContent-Body-Menu {
+  position: absolute!important;
+}
+
+.customerHub .chContent .chContent-Wrapper .chContent-Body .chContent-Body-Page .chContent-Body-Page-General,
+.customerHub .chContent .chContent-Wrapper .chContent-Body .chContent-Body-Page.chProfilePage {
+  max-width: 59.6rem;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.chFMn .chFlowMobileMenuScroller .chfmms-item.is-home .chfmms-item-icon .ch-hic,
+.chFMn .chFlowMobileMenuScroller .chfmms-item .chfmms-item-icon,
+.customerHub .chContent .chContent-Wrapper .chContent-Body .chContent-Body-Page .chContent-Body-Page-General .chContent-Body-Page-General-Title,
+.customerHub .chContent .chContent-Wrapper .chContent-Body .chContent-Body-Menu .chContent-Body-Menu-Block .chContent-Body-Menu-Block-Item#chMenuItem-dashboard,
+.customerHub .chContent .chContent-Wrapper .chContent-Body .chContent-Body-Menu .chProfile, 
+.customerHub .chContent .chContent-Wrapper .chContent-Body .chContent-Body-Menu .chContent-Body-Menu-Customer,
+.customerHub .chTitle .chTitle-Wrapper .chTitle-Wrapper-Heading,
+.customerHub .chContent .chContent-Wrapper .chContent-Body .chContent-Body-Menu .chContent-Body-Menu-Block .chContent-Body-Menu-Block-Item .chContent-Body-Menu-Block-Item-Icon {
+  display: none!important; 
+}
+
+.customerHub .chContent .chContent-Wrapper .chContent-Body .chContent-Body-Menu .chContent-Body-Menu-Block .chContent-Body-Menu-Block-Item .chContent-Body-Menu-Block-Item-Text {
+  font-family: var(--second-family)!important;
+  font-weight: 400!important;
+  font-size: 1.6rem!important;
+  line-height: 120%!important;
+  letter-spacing: -0.06em!important;
+  text-transform: uppercase!important;
+  color: rgba(0, 0, 0, 0.5)!important;
+}
+
+.customerHub .chContent .chContent-Wrapper .chContent-Body .chContent-Body-Menu .chContent-Body-Menu-Block .chContent-Body-Menu-Block-Item {
+  background-color: transparent!important;
+  border: 0!important;
+  box-shadow: none!important;
+}
+
+.customerHub .chContent .chContent-Wrapper .chContent-Body .chContent-Body-Menu .chContent-Body-Menu-Block .chContent-Body-Menu-Block-Item.chContent-Body-Menu-Block-Active {
+  background-color: transparent!important;
+  border: 0!important;
+  box-shadow: none!important;
+  color: var(--black)!important;
+}
+
+.customerHub .chContent .chContent-Wrapper .chContent-Body .chContent-Body-Page .chContent-Body-Page-General .chContent-Body-Page-Profile .chContent-Body-Page-Content-Wrapper #chMfFields .chContent-BPG-group-Value, .customerHub .chContent .chContent-Wrapper .chContent-Body .chContent-Body-Page .chContent-Body-Page-General .chContent-Body-Page-Profile .chContent-Body-Page-Content-Wrapper .chContent-BPG-group .chContent-BPG-group-Value {
+  width: calc(50% - 20px)!important;
+}
+
+.customerHub .chContent .chContent-Wrapper .chContent-Body .chContent-Body-Page {
+  width: 100%!important;
+}
+
+.customerHub .chContent .chContent-Wrapper .chContent-Body .chContent-Body-Page .chContent-Body-Page-General .chContent-Body-Page-Content-Wrapper {
+  border: 0!important;
+  box-shadow: none!important;
+  background-color: transparent!important;
 }
