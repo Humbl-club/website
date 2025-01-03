@@ -31,15 +31,27 @@
           <div class="header-inner">
             <nav class="header-nav">
               {%- for link in section.settings.menu.links -%}
-                <a
-                  href="{{ link.url }}"
-                  {% if link.current %}
-                    aria-current="page"
-                  {% endif %}
-                  class="header-wrapper"
-                >
-                  {{ link.title | escape }}
-                </a>
+                {% if link.url contains 'account' %}
+                  <a
+                    href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}"
+                    {% if link.current %}
+                      aria-current="page"
+                    {% endif %}
+                    class="header-wrapper"
+                  >
+                    {{ link.title | escape }}
+                  </a>
+                {% else %}
+                  <a
+                    href="{{ link.url }}"
+                    {% if link.current %}
+                      aria-current="page"
+                    {% endif %}
+                    class="header-wrapper"
+                  >
+                    {{ link.title | escape }}
+                  </a>
+                {% endif %}
               {%- endfor -%}
             </nav>
 
