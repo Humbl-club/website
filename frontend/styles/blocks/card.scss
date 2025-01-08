@@ -87,9 +87,9 @@
   background-color: var(--milk);
   position: relative;
   height: 57.8rem;
-
+  z-index: 1;
   @include mixins.breakpoint(vars.$sm-bp) {
-    height: 20rem;
+    height: 21rem;
     &:before {
       content: '';
       width: 4.2rem;
