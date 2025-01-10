@@ -11,15 +11,18 @@ function media({ query }) {
 
 function visible({ element }) {
   return new Promise(function (resolve) {
-    const observer = new window.IntersectionObserver(async function (entries) {
-      for (const entry of entries) {
-        if (entry.isIntersecting) {
-          observer.disconnect()
-          resolve(true)
-          break
+    const observer = new window.IntersectionObserver(
+      async function (entries) {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            observer.disconnect()
+            resolve(true)
+            break
+          }
         }
-      }
-    })
+      },
+      { rootMargin: '300px 0px' }
+    )
     observer.observe(element)
   })
 }
