@@ -330,7 +330,8 @@
     opacity: 0;
   }
 
-  &[data-color="Clear white"] {
+  &[data-color="Clear white"],
+  &[data-color="Clear White"] {
     border: 0.1rem solid lightgrey;
   }
 
