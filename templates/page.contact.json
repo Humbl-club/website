@@ -17,22 +17,13 @@
     "contac_page_nJ9RWw": {
       "type": "contac-page",
       "blocks": {
-        "link_block_4848Ga": {
-          "type": "link_block",
-          "settings": {
-            "link_heading": "Phone",
-            "field_type": "tel",
-            "link_value": "+1 833 368 5963",
-            "link_title": "+1 833 368 5963"
-          }
-        },
         "link_block_d8kbdQ": {
           "type": "link_block",
           "settings": {
             "link_heading": "Customer Service",
             "field_type": "mailto",
-            "link_value": "humbl@gmail.com",
-            "link_title": "humbl@gmail.com"
+            "link_value": "info@humbl.club",
+            "link_title": "info@humbl.club"
           }
         },
         "link_block_E4tVRf": {
@@ -55,20 +46,26 @@
         }
       },
       "block_order": [
-        "link_block_4848Ga",
         "link_block_d8kbdQ",
         "link_block_E4tVRf",
         "link_block_icMN4W"
       ],
+      "custom_css": [],
       "settings": {
-        "about_image": "shopify://shop_images/image_34f7dd37-f779-4526-9718-9e8e1d005436.jpg",
+        "about_image": "shopify://shop_images/IMG_1908_1_1.jpg",
         "img_bg_color": "#d9d4d0",
-        "working_time": "<p>The HUMBL client service is open from <strong>Monday to Saturday, 9 am to 9 pm</strong>, Eastern time</p>"
+        "working_time": "<p>The HUMBL client service is open from <strong>Monday to Friday, 9 am to 6 pm</strong>, Eastern time</p>"
       }
     },
     "modal-contact-form": {
       "type": "modal-contact-form",
-      "settings": {}
+      "settings": {
+        "heading": "Contact Us",
+        "heading_size": "h1",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
