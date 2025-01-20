@@ -8,8 +8,6 @@
   {% else %}
     <picture>
       {% if section.settings.image_mobile != blank %}
-        <source media="(max-width: 375px)" srcset="{{ section.settings.image_mobile | image_url: width: 750 }}">
-        <source media="(max-width: 412px)" srcset="{{ section.settings.image_mobile | image_url: width: 824 }}">
         <source media="(max-width: 500px)" srcset="{{ section.settings.image_mobile | image_url: width: 1000 }}">
       {% endif %}
       {{
@@ -19,7 +17,7 @@
           loading: 'eager',
           width: section.settings.image.width,
           height: section.settings.image.height,
-          widths: '375, 412, 500, 768, 1100, 1500, 1780, 1920, 2000, 3000, 3840',
+          widths: '1100, 1500, 1780, 1920, 2000, 3000, 3840',
           alt: section.settings.image.alt,
           fetchpriority: 'high'
         | escape
