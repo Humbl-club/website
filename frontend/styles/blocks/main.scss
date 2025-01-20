@@ -25,7 +25,7 @@
     width: 100%;
     object-fit: contain;
     object-position: top;
-    @include mixins.breakpoint(vars.$xl-bp) {
+    @include mixins.breakpoint(vars.$sm-bp) {
       object-fit: cover;
     }
   }
