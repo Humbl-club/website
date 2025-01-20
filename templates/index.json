@@ -12,8 +12,7 @@
     "main-section": {
       "type": "main-section",
       "settings": {
-        "image": "shopify://shop_images/Homepage.jpg",
-        "image_mobile": "shopify://shop_images/3x.jpg"
+        "video": "shopify://files/videos/Humbl_DayInLife_01_V2.mp4"
       }
     }
   },

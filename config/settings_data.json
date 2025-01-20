@@ -10,10 +10,15 @@
 {
   "logo": "shopify://shop_images/Logo.svg",
   "current": {
-    "logo": "shopify://shop_images/Logo.svg",
-    "logo_width": 100,
+    "logo": "shopify://shop_images/SecondaryLogo_14_c134616d-685e-48b1-8ab3-e352b584c10b.png",
+    "logo_width": 110,
+    "colors_primary": "#000000",
+    "colors_contrast": "#ffffff",
+    "colors_accent": "#2d4f7f",
     "cart_type": "drawer",
-    "favicon": "shopify://shop_images/favicon-32x32.png",
+    "favicon": "shopify://shop_images/SubmarkLogo_5_19e80834-0d66-456e-a3ba-8236851e6bb2.png",
+    "social_instagram_link": "https://www.instagram.com/humbl.club/",
+    "social_tiktok_link": "https://www.tiktok.com/@humbl.club",
     "sections": {
       "header": {
         "type": "header",
@@ -21,6 +26,10 @@
           "menu": "test-sidebar",
           "menu2": "test-secondary"
         }
+      },
+      "cart-drawer": {
+        "type": "cart-drawer",
+        "settings": {}
       }
     },
     "content_for_index": [],
@@ -32,6 +41,11 @@
       },
       "6933373160360723723": {
         "type": "shopify://apps/swishlist-simple-wishlist/blocks/wishlist_settings/bfcb80f2-f00d-42ae-909a-9f00c726327b",
+        "disabled": false,
+        "settings": {}
+      },
+      "21474836472147483647": {
+        "type": "shopify://apps/ecomposer-landing-page-builder/blocks/app-embed/a0fc26e1-7741-4773-8b27-39389b4fb4a0",
         "disabled": false,
         "settings": {}
       }
