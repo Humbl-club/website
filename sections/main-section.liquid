@@ -1,9 +1,20 @@
 {% if section.settings.video %}
-  {% assign poster = section.settings.image | image_url: width: 1920 %}
-  {{
-    section.settings.video
-    | video_tag: autoplay: true, loop: true, muted: true, controls: false, image_size: '1920x', poster: poster
-  }}
+  <div class="video-desctop">
+    {% assign poster = section.settings.image | image_url: width: 1920 %}
+    {{
+      section.settings.video
+      | video_tag: autoplay: true, loop: true, muted: true, controls: false, image_size: '1920x', poster: poster
+    }}
+  </div>
+
+  <div class="video-mobile">
+    {% assign poster_mobile = section.settings.image | image_url: width: 600 %}
+    {{
+      section.settings.video_mobile
+      | video_tag: autoplay: true, loop: true, muted: true, controls: false, image_size: '600x', poster: poster_mobile
+    }}
+  </div>
+
 {% else %}
   {% if section.settings.image != blank %}
     <picture>
@@ -49,6 +60,11 @@
       "type": "video",
       "id": "video",
       "label": "t:sections.video.settings.video.label"
+    },
+    {
+      "type": "video",
+      "id": "video_mobile",
+      "label": "Mobile video"
     }
   ]
 }

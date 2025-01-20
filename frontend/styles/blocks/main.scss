@@ -23,10 +23,24 @@
   video {
     height: 100%;
     width: 100%;
-    object-fit: contain;
-    object-position: top;
+    object-fit: cover;
+    object-position: center;
     @include mixins.breakpoint(vars.$sm-bp) {
       object-fit: cover;
     }
   }
+
+  .video-mobile {
+    display: none;
+    @include mixins.breakpoint(vars.$sm-bp) {
+      display: block;
+    }
+  }
+
+  .video-desctop {
+    @include mixins.breakpoint(vars.$sm-bp) {
+      display: none;
+    }
+  }
+
 }
