@@ -23,7 +23,10 @@
   video {
     height: 100%;
     width: 100%;
-    object-fit: cover;
+    object-fit: contain;
     object-position: top;
+    @include mixins.breakpoint(vars.$xl-bp) {
+      object-fit: cover;
+    }
   }
 }
