@@ -1,19 +1,21 @@
 {% if section.settings.video %}
-  <div class="video-desctop">
-    {% assign poster = section.settings.image | image_url: width: 1920 %}
-    {{
-      section.settings.video
-      | video_tag: autoplay: true, loop: true, muted: true, controls: false, image_size: '1920x', poster: poster
-    }}
-  </div>
+  {% if section.settings.video_mobile != blank %}<div class="video-desctop">{% endif %}
+  {% assign poster = section.settings.image | image_url: width: 1920 %}
+  {{
+    section.settings.video
+    | video_tag: autoplay: true, loop: true, muted: true, controls: false, image_size: '1920x', poster: poster
+  }}
+  {% if section.settings.video_mobile != blank %}</div>{% endif %}
 
-  <div class="video-mobile">
-    {% assign poster_mobile = section.settings.image | image_url: width: 600 %}
-    {{
-      section.settings.video_mobile
-      | video_tag: autoplay: true, loop: true, muted: true, controls: false, image_size: '600x', poster: poster_mobile
-    }}
-  </div>
+  {% if section.settings.video_mobile != blank %}
+    <div class="video-mobile">
+      {% assign poster_mobile = section.settings.image | image_url: width: 600 %}
+      {{
+        section.settings.video_mobile
+        | video_tag: autoplay: true, loop: true, muted: true, controls: false, image_size: '600x', poster: poster_mobile
+      }}
+    </div>
+  {% endif %}
 
 {% else %}
   {% if section.settings.image != blank %}
