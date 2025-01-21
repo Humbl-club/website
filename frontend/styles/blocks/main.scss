@@ -25,20 +25,19 @@
     width: 100%;
     object-fit: cover;
     object-position: center;
-    @include mixins.breakpoint(vars.$sm-bp) {
-      object-fit: cover;
-    }
   }
 
+  .img-mobile,
   .video-mobile {
     display: none;
-    @include mixins.breakpoint(vars.$sm-bp) {
+    @include mixins.breakpoint(vars.$xl-bp) {
       display: block;
     }
   }
 
+  .img-desctop,
   .video-desctop {
-    @include mixins.breakpoint(vars.$sm-bp) {
+    @include mixins.breakpoint(vars.$xl-bp) {
       display: none;
     }
   }

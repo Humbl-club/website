@@ -12,7 +12,8 @@
     "main-section": {
       "type": "main-section",
       "settings": {
-        "video": "shopify://files/videos/7777758-uhd_4096_2160_25fps.mp4"
+        "image": "shopify://shop_images/IMG_9060.jpg",
+        "video_mobile": "shopify://files/videos/Humbl_BTS_02_V2 Logo.mov"
       }
     }
   },
