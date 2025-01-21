@@ -12,7 +12,7 @@
       class: 'video-desctop'
   }}
 
-  {% assign poster_mobile = section.settings.image | image_url: width: 600 %}
+  {% assign poster_mobile = section.settings.image_mobile | image_url: width: 600 %}
   {{
     section.settings.video_mobile
     | video_tag:
