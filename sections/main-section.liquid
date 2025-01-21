@@ -22,7 +22,7 @@
 {% if section.settings.image != blank %}
   <picture
     {% if section.settings.video == blank or section.settings.video_mobile == blank %}
-      class="{% if section.settings.video != blank %} img-mobile {%else%} img-desctop {% endif %}"
+      class="{% if section.settings.video != blank %} img-mobile {%elsif section.settings.video_mobile != blank %} img-desctop {% endif %}"
     {% endif %}
   >
     {% if section.settings.image_mobile != blank %}
