@@ -1,22 +1,29 @@
 {% if section.settings.video or section.settings.video_mobile %}
-  <video
-    loop
-    muted
-    autoplay
-    preload="metadata"
-    {% if section.settings.video == blank or section.settings.video_mobile == blank %}
-      class="{% if section.settings.video != blank %} video-desctop {%else%} video-mobile {% endif %}"
-    {% endif %}
-    fetchpriority="high"
-  >
-    {% for item in section.settings.video.sources %}
-      <source src="{{ item.url }}" type="{{ item.mime_type }}">
-    {% endfor %}
+  {% assign poster = section.settings.image | image_url: width: 1920 %}
+  {{
+    section.settings.video
+    | video_tag:
+      autoplay: true,
+      loop: true,
+      muted: true,
+      controls: false,
+      image_size: '1920x',
+      poster: poster,
+      class: 'video-desctop'
+  }}
 
-    {% for item in section.settings.video_mobile.sources %}
-      <source src="{{ item.url }}" type="{{ item.mime_type }}" media="(max-width: 1024px)">
-    {% endfor %}
-  </video>
+  {% assign poster_mobile = section.settings.image | image_url: width: 600 %}
+  {{
+    section.settings.video_mobile
+    | video_tag:
+      autoplay: true,
+      loop: true,
+      muted: true,
+      controls: false,
+      image_size: '600x',
+      poster: poster_mobile,
+      class: 'video-mobile'
+  }}
 {% endif %}
 
 {% if section.settings.image != blank %}
