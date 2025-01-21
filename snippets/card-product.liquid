@@ -33,7 +33,7 @@
             {%- if image_hover.width >= 3000 -%}{{ image_hover | image_url: width: 3000 }} 3000w,{%- endif -%}
             {{ image_hover | image_url }} {{ image_hover.width }}w
           "
-          sizes="(max-width: 412px) 412px, (max-width: 2500px) 600px, (max-width: 3500px) 1000px"
+          sizes="(max-width: 412px) 700px, (max-width: 2500px) 600px, (max-width: 3500px) 1000px"
           width="442"
           height="578"
           alt="{{ image_hover.alt }}"
@@ -59,7 +59,7 @@
             {%- if card_product.featured_media.width >= 3000 -%}{{ card_product.featured_media | image_url: width: 3000 }} 3000w,{%- endif -%}
             {{ card_product.featured_media | image_url }} {{ card_product.featured_media.width }}w
           "
-          sizes="(max-width: 412px) 412px, (max-width: 2500px) 600px, (max-width: 3500px) 1000px"
+          sizes="(max-width: 412px) 700px, (max-width: 2500px) 600px, (max-width: 3500px) 1000px"
           alt="{{ card_product.featured_media.alt | escape }}"
           {% unless lazy_load == false %}
             loading="lazy"
